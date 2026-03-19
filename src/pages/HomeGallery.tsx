@@ -109,6 +109,7 @@ export function HomeGallery() {
               >
                 <div className="wall-card-inner">
                   <img
+                    key={`${look.id}-${look.hero}`}
                     src={look.hero}
                     alt=""
                     className="wall-img"

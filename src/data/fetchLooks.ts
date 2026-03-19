@@ -1,7 +1,8 @@
 import type { Look } from '../types';
 import seedLooks from './looks.json';
 
-const STORAGE_MCP_KEY = 'lookbook_mcp_looks';
+/** Bump when seed shape or image strategy changes so stale session overrides are ignored. */
+const STORAGE_MCP_KEY = 'lookbook_mcp_looks_v3';
 
 /**
  * MVP: seed JSON is the default. If you later wire an MCP tool or API,

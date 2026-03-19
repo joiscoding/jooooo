@@ -24,7 +24,9 @@ Open the URL shown (usually `http://localhost:5173`).
 
 ## Photos
 
-Hero and gallery images use **Unsplash** URLs in `src/data/looks.json`. Replace with your own licensed assets anytime.
+Hero and gallery images are served from **`public/looks/`** (JPEGs). `src/data/looks.json` points at paths like `/looks/…jpg`. Regenerate files by swapping URLs in JSON and downloading, or replace with your own licensed assets.
+
+To refresh thumbnails from Unsplash URLs, download each URL into `public/looks/` and update the JSON paths accordingly.
 
 ## MCP / custom data (optional)
 
@@ -32,7 +34,7 @@ By default the app loads `looks.json`. To simulate MCP-injected data in the same
 
 ```js
 sessionStorage.setItem(
-  'lookbook_mcp_looks',
+  'lookbook_mcp_looks_v3',
   JSON.stringify([
     /* array of looks matching the same shape as looks.json */
   ])
@@ -40,7 +42,7 @@ sessionStorage.setItem(
 location.reload();
 ```
 
-Clear with: `sessionStorage.removeItem('lookbook_mcp_looks')`.
+Clear with: `sessionStorage.removeItem('lookbook_mcp_looks_v3')`.
 
 ## Build
 

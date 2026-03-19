@@ -68,7 +68,12 @@ export function LookDetail() {
       <div className="look-detail-grid">
         <div className="look-visual">
           <div className="look-hero-wrap">
-            <img src={look.hero} alt="" className="look-hero" />
+            <img
+              key={look.hero}
+              src={look.hero}
+              alt=""
+              className="look-hero"
+            />
           </div>
           {look.gallery.length > 0 && (
             <div className="look-thumbs">
