@@ -91,8 +91,13 @@ export function HomeGallery() {
     [looks],
   );
 
-  const featuredLook = filtered[0] ?? looks[0];
-  const supportingLooks = filtered.slice(1, 4);
+  const defaultFeaturedLook =
+    looks.find((look) => look.id === 'boardroom-soft') ?? looks[0];
+  const featuredLook =
+    filter === 'all' ? defaultFeaturedLook : filtered[0] ?? defaultFeaturedLook;
+  const supportingLooks = filtered
+    .filter((look) => look.id !== featuredLook?.id)
+    .slice(0, 3);
   const activeStory =
     filter === 'all'
       ? {
@@ -257,7 +262,7 @@ export function HomeGallery() {
                       src={look.hero}
                       alt={look.title}
                       className="look-card-image"
-                      loading={i < 4 ? 'eager' : 'lazy'}
+                      loading="eager"
                     />
                     <span className="look-card-badge">
                       {i === 0 ? 'Editors pick' : look.season}
