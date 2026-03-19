@@ -4,21 +4,6 @@ import { fetchLooks } from '../data/fetchLooks';
 import type { Look, StyleTag } from '../types';
 import { STYLE_LABELS, STYLE_ORDER } from '../types';
 
-const WALL_PATTERN = [
-  { c: 'span 5', r: 'span 5' },
-  { c: 'span 4', r: 'span 3' },
-  { c: 'span 3', r: 'span 4' },
-  { c: 'span 4', r: 'span 4' },
-  { c: 'span 5', r: 'span 3' },
-  { c: 'span 3', r: 'span 3' },
-  { c: 'span 4', r: 'span 5' },
-  { c: 'span 5', r: 'span 4' },
-  { c: 'span 3', r: 'span 3' },
-  { c: 'span 4', r: 'span 3' },
-  { c: 'span 5', r: 'span 5' },
-  { c: 'span 3', r: 'span 4' },
-] as const;
-
 export function HomeGallery() {
   const [looks, setLooks] = useState<Look[]>([]);
   const [filter, setFilter] = useState<StyleTag | 'all'>('all');
@@ -86,26 +71,13 @@ export function HomeGallery() {
       {filtered.length === 0 ? (
         <p className="empty-state">No looks in this filter.</p>
       ) : (
-        <div
-          className={
-            filter === 'all' ? 'gallery-wall' : 'gallery-wall gallery-uniform'
-          }
-        >
+        <div className="gallery-wall">
           {filtered.map((look, i) => {
-            const pat = WALL_PATTERN[i % WALL_PATTERN.length];
-            const style =
-              filter === 'all'
-                ? {
-                    gridColumn: pat.c,
-                    gridRow: pat.r,
-                  }
-                : undefined;
             return (
               <Link
                 key={look.id}
                 to={`/look/${look.id}`}
                 className="wall-card"
-                style={style}
               >
                 <div className="wall-card-inner">
                   <img

@@ -1,18 +1,36 @@
 [
   {
-    "id": "concrete-lines",
-    "title": "Concrete Lines",
+    "id": "crosswalk-khaki",
+    "title": "Crosswalk Khaki",
+    "tag": "streetwear",
+    "season": "Transitional",
+    "occasion": "Downtown",
+    "keyItems": [
+      "Boxy overshirt",
+      "Relaxed chino",
+      "Low-profile sneaker"
+    ],
+    "hero": "/looks/streetwear-urban-01-v2.jpg",
+    "gallery": [
+      "/looks/streetwear-urban-01-v2.jpg",
+      "/looks/streetwear-urban-02-v2.jpg"
+    ]
+  },
+  {
+    "id": "neon-borough",
+    "title": "Neon Borough",
     "tag": "streetwear",
     "season": "All season",
-    "occasion": "Urban",
+    "occasion": "Night out",
     "keyItems": [
-      "Oversized tee",
-      "Technical pants",
-      "Chunky sneakers"
+      "Technical shell",
+      "Wide-leg denim",
+      "Trail runner"
     ],
-    "hero": "/looks/1685328403732-64be6bb9d112-w1200h1500.jpg",
+    "hero": "/looks/streetwear-urban-02-v2.jpg",
     "gallery": [
-      "/looks/1676144998604-aa10e96b5157-w1000h1250.jpg"
+      "/looks/streetwear-urban-02-v2.jpg",
+      "/looks/streetwear-urban-01-v2.jpg"
     ]
   },
   {
@@ -28,7 +46,14 @@
     ],
     "hero": "/looks/1768809250854-2f4b1e8f19cc-w1200h1600.jpg",
     "gallery": [
-      "/looks/1732492211688-b1984227af93-w1000h1300.jpg"
+      "/looks/1732492211688-b1984227af93-w1000h1300.jpg",
+      "/looks/1679412330231-4a049ffd294b-w1200h1500.jpg",
+      "/looks/1521572267360-ee0c2909d518-w1200h1600.jpg",
+      "/looks/1600117025146-5092075da653-w1200h1500.jpg",
+      "/looks/1549153166-54374660cb65-w1200h1500.jpg",
+      "/looks/1552252059-9d77e4059ad1-w1000h1250.jpg",
+      "/looks/1573513500284-ca52c282f78a-w1200h1600.jpg",
+      "/looks/1597815413302-8037c47f5a75-w1200h1600.jpg"
     ]
   },
   {
@@ -44,23 +69,14 @@
     ],
     "hero": "/looks/1630877268428-616cc533239a-w1200h1500.jpg",
     "gallery": [
-      "/looks/1762575910569-46971cd69df3-w1000h1250.jpg"
-    ]
-  },
-  {
-    "id": "indigo-denim",
-    "title": "Indigo & Canvas",
-    "tag": "workwear",
-    "season": "Fall",
-    "occasion": "Studio day",
-    "keyItems": [
-      "Selvedge denim",
-      "Chore jacket",
-      "Leather boots"
-    ],
-    "hero": "/looks/1597815413302-8037c47f5a75-w1200h1600.jpg",
-    "gallery": [
-      "/looks/1549153166-54374660cb65-w1000h1300.jpg"
+      "/looks/1762575910569-46971cd69df3-w1000h1250.jpg",
+      "/looks/1476480862126-209bfaa8edc8-w1200h1600.jpg",
+      "/looks/1517836357463-d25dfeac3438-w1000h1300.jpg",
+      "/looks/1521572267360-ee0c2909d518-w1200h1600.jpg",
+      "/looks/1573513500284-ca52c282f78a-w1200h1600.jpg",
+      "/looks/1597815413302-8037c47f5a75-w1200h1600.jpg",
+      "/looks/1600117025146-5092075da653-w1200h1500.jpg",
+      "/looks/1676144998604-aa10e96b5157-w1000h1250.jpg"
     ]
   },
   {
@@ -76,23 +92,13 @@
     ],
     "hero": "/looks/1600117025146-5092075da653-w1200h1500.jpg",
     "gallery": [
-      "/looks/1552252059-9d77e4059ad1-w1000h1250.jpg"
-    ]
-  },
-  {
-    "id": "night-grid",
-    "title": "Night Grid",
-    "tag": "streetwear",
-    "season": "Winter",
-    "occasion": "Evening",
-    "keyItems": [
-      "Puffer",
-      "Cargo pants",
-      "High-tops"
-    ],
-    "hero": "/looks/1573513500284-ca52c282f78a-w1200h1600.jpg",
-    "gallery": [
-      "/looks/1712514045707-a060b7307bc6-w1000h1300.jpg"
+      "/looks/1552252059-9d77e4059ad1-w1000h1250.jpg",
+      "/looks/1521572267360-ee0c2909d518-w1200h1600.jpg",
+      "/looks/1732492211688-b1984227af93-w1000h1300.jpg",
+      "/looks/1768809250854-2f4b1e8f19cc-w1200h1600.jpg",
+      "/looks/1679412330231-4a049ffd294b-w1200h1500.jpg",
+      "/looks/1712514045707-a060b7307bc6-w1000h1300.jpg",
+      "/looks/1476480862126-209bfaa8edc8-w1200h1600.jpg"
     ]
   },
   {
@@ -108,7 +114,12 @@
     ],
     "hero": "/looks/1679412330231-4a049ffd294b-w1200h1500.jpg",
     "gallery": [
-      "/looks/1732492211688-b1984227af93-w1000h1250.jpg"
+      "/looks/1732492211688-b1984227af93-w1000h1300.jpg",
+      "/looks/1768809250854-2f4b1e8f19cc-w1200h1600.jpg",
+      "/looks/1521572267360-ee0c2909d518-w1200h1600.jpg",
+      "/looks/1552252059-9d77e4059ad1-w1000h1250.jpg",
+      "/looks/1476480862126-209bfaa8edc8-w1200h1600.jpg",
+      "/looks/1549153166-54374660cb65-w1200h1500.jpg"
     ]
   },
   {
@@ -124,23 +135,14 @@
     ],
     "hero": "/looks/1476480862126-209bfaa8edc8-w1200h1600.jpg",
     "gallery": [
-      "/looks/1517836357463-d25dfeac3438-w1000h1300.jpg"
-    ]
-  },
-  {
-    "id": "waxed-field",
-    "title": "Waxed Field",
-    "tag": "workwear",
-    "season": "Rain",
-    "occasion": "Country",
-    "keyItems": [
-      "Waxed jacket",
-      "Flannel",
-      "Raw denim"
-    ],
-    "hero": "/looks/1549153166-54374660cb65-w1200h1500.jpg",
-    "gallery": [
-      "/looks/1597815413302-8037c47f5a75-w1000h1250.jpg"
+      "/looks/1517836357463-d25dfeac3438-w1000h1300.jpg",
+      "/looks/1630877268428-616cc533239a-w1200h1500.jpg",
+      "/looks/1762575910569-46971cd69df3-w1000h1250.jpg",
+      "/looks/1521572267360-ee0c2909d518-w1200h1600.jpg",
+      "/looks/1549153166-54374660cb65-w1200h1500.jpg",
+      "/looks/1552252059-9d77e4059ad1-w1000h1250.jpg",
+      "/looks/1573513500284-ca52c282f78a-w1200h1600.jpg",
+      "/looks/1597815413302-8037c47f5a75-w1200h1600.jpg"
     ]
   },
   {
@@ -156,23 +158,127 @@
     ],
     "hero": "/looks/1521572267360-ee0c2909d518-w1200h1600.jpg",
     "gallery": [
-      "/looks/1585487000160-6ebcfceb0d03-w1000h1300.jpg"
+      "/looks/1600117025146-5092075da653-w1200h1500.jpg",
+      "/looks/1552252059-9d77e4059ad1-w1000h1250.jpg",
+      "/looks/1732492211688-b1984227af93-w1000h1300.jpg",
+      "/looks/1768809250854-2f4b1e8f19cc-w1200h1600.jpg",
+      "/looks/1630877268428-616cc533239a-w1200h1500.jpg",
+      "/looks/1679412330231-4a049ffd294b-w1200h1500.jpg",
+      "/looks/1712514045707-a060b7307bc6-w1000h1300.jpg"
     ]
   },
   {
-    "id": "grafitti-layer",
-    "title": "Graffiti Layer",
-    "tag": "streetwear",
-    "season": "Layering",
-    "occasion": "Festival",
+    "id": "soft-monochrome",
+    "title": "Soft Monochrome",
+    "tag": "minimal",
+    "season": "Spring",
+    "occasion": "City weekend",
     "keyItems": [
-      "Hoodie",
-      "Wide denim",
-      "Skate shoe"
+      "Fine knit",
+      "Relaxed trouser",
+      "Leather loafer"
     ],
-    "hero": "/looks/1558769132-cb1aea458c5e-w1200h1500.jpg",
+    "hero": "/looks/1552252059-9d77e4059ad1-w1000h1250.jpg",
     "gallery": [
-      "/looks/1529626455594-4ff0802cfb7e-w1000h1250.jpg"
+      "/looks/1600117025146-5092075da653-w1200h1500.jpg",
+      "/looks/1521572267360-ee0c2909d518-w1200h1600.jpg",
+      "/looks/1732492211688-b1984227af93-w1000h1300.jpg",
+      "/looks/1768809250854-2f4b1e8f19cc-w1200h1600.jpg"
+    ]
+  },
+  {
+    "id": "city-charcoal",
+    "title": "City Charcoal",
+    "tag": "classic",
+    "season": "Autumn",
+    "occasion": "Client lunch",
+    "keyItems": [
+      "Wool overshirt",
+      "Fine gauge knit",
+      "Pressed trouser"
+    ],
+    "hero": "/looks/1732492211688-b1984227af93-w1000h1300.jpg",
+    "gallery": [
+      "/looks/1768809250854-2f4b1e8f19cc-w1200h1600.jpg",
+      "/looks/1679412330231-4a049ffd294b-w1200h1500.jpg",
+      "/looks/1521572267360-ee0c2909d518-w1200h1600.jpg",
+      "/looks/1600117025146-5092075da653-w1200h1500.jpg",
+      "/looks/1552252059-9d77e4059ad1-w1000h1250.jpg"
+    ]
+  },
+  {
+    "id": "weekend-stride",
+    "title": "Weekend Stride",
+    "tag": "athleisure",
+    "season": "Spring",
+    "occasion": "Morning coffee run",
+    "keyItems": [
+      "Track jacket",
+      "Nylon short",
+      "Retro trainer"
+    ],
+    "hero": "/looks/1517836357463-d25dfeac3438-w1000h1300.jpg",
+    "gallery": [
+      "/looks/1630877268428-616cc533239a-w1200h1500.jpg",
+      "/looks/1476480862126-209bfaa8edc8-w1200h1600.jpg",
+      "/looks/1762575910569-46971cd69df3-w1000h1250.jpg",
+      "/looks/1521572267360-ee0c2909d518-w1200h1600.jpg"
+    ]
+  },
+  {
+    "id": "court-warmup",
+    "title": "Court Warmup",
+    "tag": "athleisure",
+    "season": "Transitional",
+    "occasion": "Travel day",
+    "keyItems": [
+      "Zip shell",
+      "Tapered pant",
+      "Cushioned runner"
+    ],
+    "hero": "/looks/1762575910569-46971cd69df3-w1000h1250.jpg",
+    "gallery": [
+      "/looks/1517836357463-d25dfeac3438-w1000h1300.jpg",
+      "/looks/1630877268428-616cc533239a-w1200h1500.jpg",
+      "/looks/1476480862126-209bfaa8edc8-w1200h1600.jpg",
+      "/looks/1600117025146-5092075da653-w1200h1500.jpg",
+      "/looks/1676144998604-aa10e96b5157-w1000h1250.jpg"
+    ]
+  },
+  {
+    "id": "utility-grain",
+    "title": "Utility Grain",
+    "tag": "workwear",
+    "season": "Cold weather",
+    "occasion": "Workshop",
+    "keyItems": [
+      "Canvas overshirt",
+      "Straight denim",
+      "Service boot"
+    ],
+    "hero": "/looks/1549153166-54374660cb65-w1200h1500.jpg",
+    "gallery": [
+      "/looks/1597815413302-8037c47f5a75-w1200h1600.jpg",
+      "/looks/1676144998604-aa10e96b5157-w1000h1250.jpg",
+      "/looks/1573513500284-ca52c282f78a-w1200h1600.jpg"
+    ]
+  },
+  {
+    "id": "forge-layer",
+    "title": "Forge Layer",
+    "tag": "workwear",
+    "season": "Rainy season",
+    "occasion": "Weekend errands",
+    "keyItems": [
+      "Denim shirt",
+      "Painter pant",
+      "Moc boot"
+    ],
+    "hero": "/looks/1597815413302-8037c47f5a75-w1200h1600.jpg",
+    "gallery": [
+      "/looks/1549153166-54374660cb65-w1200h1500.jpg",
+      "/looks/1600117025146-5092075da653-w1200h1500.jpg",
+      "/looks/1630877268428-616cc533239a-w1200h1500.jpg"
     ]
   }
 ]
