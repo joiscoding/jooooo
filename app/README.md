@@ -1,73 +1,52 @@
-# React + TypeScript + Vite
+# ÉDIT — Men's Lookbook
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A COS-inspired, Scandinavian-minimal men's fashion lookbook web app. Browse curated outfit-first "looks" with image-led discovery, filter by aesthetic style, and save favorites to local albums.
 
-Currently, two official plugins are available:
+## Quick Start
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+cd app
+npm install
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Open [http://localhost:5173](http://localhost:5173) in your browser.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Features
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- **Editorial Homepage** — Full-bleed hero with staggered gallery wall and style category previews
+- **Gallery** — Masonry layout with 5 aesthetic filters (Minimal, Streetwear, Classic, Athleisure, Workwear)
+- **Look Detail** — Full look information with key pieces, season, occasion, and "Save to Album"
+- **Albums** — Create named albums, save looks, add external links. Persisted in localStorage across refreshes
+- **Responsive** — Desktop, tablet, and mobile layouts
+- **Animations** — Subtle scroll-triggered and page transition animations via Framer Motion
+
+## Tech Stack
+
+- React 19 + TypeScript
+- Vite
+- Tailwind CSS v4
+- React Router v7
+- Framer Motion
+- Lucide React (icons)
+- localStorage for album persistence
+
+## Project Structure
+
 ```
+app/
+├── src/
+│   ├── components/     # Navbar, Footer, Layout, AddToAlbumModal
+│   ├── data/           # Seed look data (15 curated looks)
+│   ├── pages/          # Home, Gallery, LookDetail, Albums, AlbumDetail
+│   ├── store/          # localStorage-backed album management
+│   ├── App.tsx         # Router setup
+│   ├── main.tsx        # Entry point
+│   └── index.css       # Tailwind + custom design tokens
+├── index.html
+└── package.json
+```
+
+## Design
+
+Inspired by COS (cos.com) — quiet, modern, Scandinavian-minimal direction with clean layout, strong photography, restrained neutrals, and an editorial seasonal feel. Uses Inter for body text and Playfair Display for headings.
