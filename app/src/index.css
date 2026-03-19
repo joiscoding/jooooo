@@ -1,0 +1,39 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --color-stone-925: #1a1917;
+  --color-warm-50: #faf9f7;
+  --color-warm-100: #f5f3f0;
+  --color-warm-200: #e8e5e0;
+  --color-warm-300: #d4d0c8;
+  --color-warm-400: #b5b0a5;
+  --color-warm-500: #8a8478;
+  --color-warm-600: #6b6558;
+  --color-warm-700: #504b40;
+  --color-warm-800: #373329;
+  --color-warm-900: #1f1c15;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  body {
+    @apply bg-warm-50 text-stone-925 font-sans;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply px-6 py-2.5 bg-stone-925 text-warm-50 text-sm tracking-widest uppercase
+           hover:bg-warm-800 transition-colors duration-300;
+  }
+  .btn-outline {
+    @apply px-6 py-2.5 border border-stone-925 text-stone-925 text-sm tracking-widest uppercase
+           hover:bg-stone-925 hover:text-warm-50 transition-colors duration-300;
+  }
+}
