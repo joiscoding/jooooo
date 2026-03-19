@@ -18,7 +18,11 @@ vendor/
 
 # Build & caches
 dist/
+*.tsbuildinfo
 build/
 .next/
 .cache/
 *.log
+
+# Playwright capture artifacts (optional local previews)
+capture-output/

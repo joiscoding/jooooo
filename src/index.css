@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    @apply antialiased text-ink bg-paper;
+  }
+  body {
+    @apply min-h-screen;
+  }
+  a {
+    @apply underline-offset-4 decoration-stone/40 hover:decoration-ink transition-colors;
+  }
+}
