@@ -9,7 +9,7 @@ npm install
 npm run dev
 ```
 
-Open the URL shown (usually `http://localhost:5173`).
+The Vite dev server is configured to listen on `0.0.0.0:5173`, so you can open the URL shown by your local machine or cloud IDE.
 
 ## MVP checklist
 
