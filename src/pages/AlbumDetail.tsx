@@ -63,7 +63,9 @@ export function AlbumDetail() {
             return (
               <li key={id} className="album-look-card">
                 <Link to={`/look/${look.id}`} className="album-look-link">
-                  <img src={look.hero} alt="" className="album-look-img" />
+                  <div className="album-look-img-wrap">
+                    <img src={look.hero} alt="" className="album-look-img" />
+                  </div>
                   <div className="album-look-meta">
                     <span className="wall-tag">{STYLE_LABELS[look.tag]}</span>
                     <h2 className="wall-title">{look.title}</h2>

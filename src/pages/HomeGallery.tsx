@@ -53,14 +53,16 @@ export function HomeGallery() {
   return (
     <div className="home">
       <section className="home-hero">
-        <p className="eyebrow">Men · Seasonal edit</p>
-        <h1 className="home-title">
-          Looks built for <em>quiet</em> confidence.
-        </h1>
-        <p className="home-lede">
-          Image-led discovery — minimal chrome, strong photography. Filter by
-          mood or scroll the wall.
-        </p>
+        <div className="home-hero-inner">
+          <p className="eyebrow">Men · Seasonal edit</p>
+          <h1 className="home-title">
+            Quality essentials. <em>Thoughtfully</em> styled.
+          </h1>
+          <p className="home-lede">
+            A calm, image-first browse — like flipping a lookbook. Refine by
+            mood, then open any look for details.
+          </p>
+        </div>
       </section>
 
       <section className="filters-bar" aria-label="Style filters">
@@ -108,13 +110,15 @@ export function HomeGallery() {
                 style={style}
               >
                 <div className="wall-card-inner">
-                  <img
-                    src={look.hero}
-                    alt=""
-                    className="wall-img"
-                    loading={i < 4 ? 'eager' : 'lazy'}
-                  />
-                  <div className="wall-meta">
+                  <div className="wall-img-wrap">
+                    <img
+                      src={look.hero}
+                      alt=""
+                      className="wall-img"
+                      loading={i < 4 ? 'eager' : 'lazy'}
+                    />
+                  </div>
+                  <div className="wall-meta-below">
                     <span className="wall-tag">{STYLE_LABELS[look.tag]}</span>
                     <h2 className="wall-title">{look.title}</h2>
                   </div>

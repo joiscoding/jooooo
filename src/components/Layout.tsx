@@ -30,7 +30,7 @@ export function Layout({ children }: { children: ReactNode }) {
       <main className="main">{children}</main>
       <footer className="site-footer">
         <p>
-          Demo — photos via{' '}
+          Demo lookbook — photography via{' '}
           <a
             href="https://unsplash.com"
             target="_blank"
@@ -38,7 +38,7 @@ export function Layout({ children }: { children: ReactNode }) {
           >
             Unsplash
           </a>
-          . Modern style, designed to last.
+          . Timeless pieces, honest presentation.
         </p>
       </footer>
     </div>
