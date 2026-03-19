@@ -1,24 +1,6 @@
-# Dependencies
-node_modules/
-vendor/
-
-# Environment & secrets
+node_modules
+dist
+.DS_Store
+*.local
 .env
 .env.*
-!.env.example
-*.pem
-*.key
-
-# OS & editors
-.DS_Store
-.idea/
-.vscode/
-*.swp
-*.swo
-
-# Build & caches
-dist/
-build/
-.next/
-.cache/
-*.log
