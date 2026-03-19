@@ -1,0 +1,152 @@
+import type { Look } from '../types'
+
+export const seedLooks: Look[] = [
+  {
+    id: 'quiet-passage',
+    slug: 'quiet-passage',
+    title: 'Quiet Passage',
+    label: 'Stone layers for long city mornings',
+    styleTag: 'minimal-quiet',
+    season: 'Spring Campaign',
+    occasion: 'Studio visits and early meetings',
+    category: 'Outerwear',
+    summary:
+      'A light tonal overcoat, knit tee, and relaxed trouser create an easy column of beige and washed grey.',
+    description:
+      'Designed for movement between appointments, Quiet Passage keeps the silhouette fluid and the palette calm. It is the kind of look that feels complete without appearing overworked.',
+    heroImage: '/looks/look-minimal-01.png',
+    gallery: [
+      '/looks/look-minimal-01.png',
+      '/looks/look-layered-01.png',
+      '/looks/look-minimal-02.png',
+    ],
+    keyItems: ['Soft overcoat', 'Fine-gauge knit tee', 'Relaxed wool trouser', 'Minimal leather sneaker'],
+    imageAlt: 'Model in a stone overcoat with relaxed tailored separates.',
+  },
+  {
+    id: 'soft-rhythm',
+    slug: 'soft-rhythm',
+    title: 'Soft Rhythm',
+    label: 'Monochrome knitwear with a gallery pace',
+    styleTag: 'minimal-quiet',
+    season: 'Transitional Edit',
+    occasion: 'Weekend lunches and travel days',
+    category: 'Knitwear',
+    summary:
+      'Cream knitwear, loose trousers, and clean proportions deliver a quiet look that still reads considered.',
+    description:
+      'Soft Rhythm leans into texture instead of contrast. The result is a modern uniform that feels warm, premium, and uncomplicated from first layer to final shoe choice.',
+    heroImage: '/looks/look-minimal-02.png',
+    gallery: ['/looks/look-minimal-02.png', '/looks/look-minimal-01.png'],
+    keyItems: ['Chunky crew knit', 'Relaxed pleated trouser', 'Suede slip-on', 'Lightweight overshirt'],
+    imageAlt: 'Model in cream knitwear and relaxed neutral trousers.',
+  },
+  {
+    id: 'city-after-class',
+    slug: 'city-after-class',
+    title: 'City After Class',
+    label: 'Elevated streetwear in muted layers',
+    styleTag: 'streetwear-urban',
+    season: 'Urban Summer',
+    occasion: 'Coffee runs, evening hangs, and quick commutes',
+    category: 'Jackets',
+    summary:
+      'A structured bomber, wide trouser, and understated sneaker combination that keeps things young without tipping into noise.',
+    description:
+      'City After Class focuses on shape, not graphics. The layers are easy, the fabric story is clean, and the footwear stays crisp enough for a premium retail mood.',
+    heroImage: '/looks/look-street-01.png',
+    gallery: ['/looks/look-street-01.png', '/looks/look-evening-01.png'],
+    keyItems: ['Matte bomber jacket', 'Relaxed leg trouser', 'Low-profile sneaker', 'Cross-body pouch'],
+    imageAlt: 'Model in muted streetwear with a bomber jacket and sneakers.',
+  },
+  {
+    id: 'studio-appointment',
+    slug: 'studio-appointment',
+    title: 'Studio Appointment',
+    label: 'Relaxed tailoring with softened edges',
+    styleTag: 'classic-tailored',
+    season: 'Spring Tailoring',
+    occasion: 'Presentations, dinners, and dress-casual workdays',
+    category: 'Tailoring',
+    summary:
+      'A knit polo under a soft blazer lands between formal and effortless, with enough structure to sharpen the day.',
+    description:
+      'Studio Appointment takes classic menswear cues and strips out stiffness. The finish is polished, but the silhouette stays breathable and modern from shoulder to hem.',
+    heroImage: '/looks/look-tailored-01.png',
+    gallery: ['/looks/look-tailored-01.png', '/looks/look-minimal-01.png'],
+    keyItems: ['Unstructured blazer', 'Knit polo', 'Pleated trouser', 'Leather derby'],
+    imageAlt: 'Model in a relaxed blazer and pleated tailored trousers.',
+  },
+  {
+    id: 'fast-interval',
+    slug: 'fast-interval',
+    title: 'Fast Interval',
+    label: 'Sport-led layers in a restrained palette',
+    styleTag: 'athleisure-sporty',
+    season: 'Performance Edit',
+    occasion: 'Travel, off-duty errands, and light training days',
+    category: 'Technical',
+    summary:
+      'A technical jacket with clean joggers and tonal trainers gives athleisure the quieter finish the collection needs.',
+    description:
+      'Fast Interval keeps performance references but removes visual clutter. Every piece is streamlined, lightweight, and built for all-day wear in motion.',
+    heroImage: '/looks/look-sport-01.png',
+    gallery: ['/looks/look-sport-01.png', '/looks/look-street-01.png'],
+    keyItems: ['Technical zip jacket', 'Tapered jogger', 'Performance trainer', 'Base-layer tee'],
+    imageAlt: 'Model in a technical jacket, joggers, and clean athletic trainers.',
+  },
+  {
+    id: 'makers-shift',
+    slug: 'makers-shift',
+    title: "Maker's Shift",
+    label: 'Heritage workwear, refined for now',
+    styleTag: 'workwear-heritage',
+    season: 'Utility Capsule',
+    occasion: 'Weekend markets, studio builds, and layered commutes',
+    category: 'Utility',
+    summary:
+      'A chore coat, straight denim, and leather boot grounding give workwear depth without feeling costume-like.',
+    description:
+      "Maker's Shift draws from heritage uniforms but keeps the line clean. The fabrics are textured, the palette is grounded, and the overall look still fits a modern wardrobe.",
+    heroImage: '/looks/look-workwear-01.png',
+    gallery: ['/looks/look-workwear-01.png', '/looks/look-layered-01.png'],
+    keyItems: ['Canvas chore jacket', 'Straight-leg denim', 'Leather boot', 'Heavyweight tee'],
+    imageAlt: 'Model in a chore jacket, denim, and boots.',
+  },
+  {
+    id: 'after-hours-column',
+    slug: 'after-hours-column',
+    title: 'After-Hours Column',
+    label: 'Dark evening layers with quiet drama',
+    styleTag: 'classic-tailored',
+    season: 'Evening Edit',
+    occasion: 'Reservations, openings, and late events',
+    category: 'Eveningwear',
+    summary:
+      'An overshirt, wide trouser, and polished loafer build a darker silhouette that still feels understated.',
+    description:
+      'After-Hours Column leans on proportion instead of shine. It works when the room is dressed up, but never loses the calm language of the collection.',
+    heroImage: '/looks/look-evening-01.png',
+    gallery: ['/looks/look-evening-01.png', '/looks/look-tailored-01.png'],
+    keyItems: ['Dark overshirt', 'Wide trouser', 'Polished loafer', 'Fine merino layer'],
+    imageAlt: 'Model in a dark overshirt and wide evening trousers.',
+  },
+  {
+    id: 'long-light',
+    slug: 'long-light',
+    title: 'Long Light',
+    label: 'Layered outerwear with a calm editorial line',
+    styleTag: 'workwear-heritage',
+    season: 'Season Opener',
+    occasion: 'Travel days, cool mornings, and city walks',
+    category: 'Coats',
+    summary:
+      'A long coat, fine knit, and relaxed trouser pair in soft beige tones for an editorial take on everyday layering.',
+    description:
+      'Long Light bridges quiet minimalism and utility. The coat gives presence, while the lighter textures keep the whole look approachable and wearable.',
+    heroImage: '/looks/look-layered-01.png',
+    gallery: ['/looks/look-layered-01.png', '/looks/look-minimal-01.png', '/looks/look-workwear-01.png'],
+    keyItems: ['Long topcoat', 'Fine knit', 'Relaxed trouser', 'Soft leather trainer'],
+    imageAlt: 'Model in a long coat with soft knitwear and relaxed trousers.',
+  },
+]

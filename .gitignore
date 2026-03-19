@@ -22,3 +22,6 @@ build/
 .next/
 .cache/
 *.log
+captures/
+playwright-report/
+test-results/
