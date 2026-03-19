@@ -9,7 +9,9 @@ npm install
 npm run dev
 ```
 
-Open the URL shown (usually `http://localhost:5173`).
+Open the URL shown (usually `http://localhost:5173`). The dev server listens on all interfaces (`host: true` in Vite), so you can also use the machine’s LAN IP when testing from another device or a remote environment.
+
+In VS Code / Cursor, run the default build task (**Tasks: Run Build Task**) to start the dev server.
 
 ## MVP checklist
 
