@@ -8,6 +8,7 @@
     "dev:host": "vite --host 0.0.0.0",
     "build": "tsc -b && vite build",
     "capture:demo": "node ./scripts/capture-demo.mjs",
+    "capture:walkthrough": "node ./scripts/capture-walkthrough.mjs",
     "lint": "eslint .",
     "preview": "vite preview --host 0.0.0.0"
   },
