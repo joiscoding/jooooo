@@ -21,65 +21,85 @@ export function AlbumDetail() {
 
   if (!albumId || !album) {
     return (
-      <div className="page-narrow">
-        <p className="muted">Album not found.</p>
-        <Link to="/albums">← Albums</Link>
+      <div className="pdp-empty">
+        <p>Album not found.</p>
+        <Link to="/albums" className="text-link">&larr; Back to Albums</Link>
       </div>
     );
   }
 
   return (
     <div className="album-detail-page">
-      <Link to="/albums" className="back-link">
-        ← Albums
-      </Link>
-      <header className="page-head">
-        <h1 className="page-title">{album.name}</h1>
-        <p className="muted">{album.lookIds.length} saved look(s)</p>
+      <nav className="breadcrumb" aria-label="Breadcrumb">
+        <Link to="/">Gallery</Link>
+        <span className="breadcrumb-sep">/</span>
+        <Link to="/albums">Albums</Link>
+        <span className="breadcrumb-sep">/</span>
+        <span className="breadcrumb-current">{album.name}</span>
+      </nav>
+
+      <header className="albums-header">
+        <h1 className="albums-title">{album.name}</h1>
+        <p className="albums-subtitle">
+          {album.lookIds.length} saved look{album.lookIds.length === 1 ? '' : 's'}
+        </p>
       </header>
 
       {album.lookIds.length === 0 ? (
-        <p className="empty-state">
-          Empty album. Add looks from the gallery or look pages.
-        </p>
+        <div className="albums-empty">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">
+            <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
+            <circle cx="8.5" cy="8.5" r="1.5" />
+            <polyline points="21 15 16 10 5 21" />
+          </svg>
+          <p>No looks saved yet</p>
+          <span>Browse the <Link to="/">gallery</Link> to find looks you love.</span>
+        </div>
       ) : (
-        <ul className="album-looks-grid">
+        <div className="product-grid">
           {album.lookIds.map((id) => {
             const look = looksMap.get(id);
             if (!look) {
               return (
-                <li key={id} className="album-look-card missing">
+                <div key={id} className="product-card product-card-missing">
                   <p>Look removed from catalog</p>
                   <button
                     type="button"
-                    className="btn text-danger"
+                    className="pdp-btn pdp-btn-secondary"
                     onClick={() => removeLookFromAlbum(album.id, id)}
                   >
-                    Remove from album
+                    Remove
                   </button>
-                </li>
+                </div>
               );
             }
             return (
-              <li key={id} className="album-look-card">
-                <Link to={`/look/${look.id}`} className="album-look-link">
-                  <img src={look.hero} alt="" className="album-look-img" />
-                  <div className="album-look-meta">
-                    <span className="wall-tag">{STYLE_LABELS[look.tag]}</span>
-                    <h2 className="wall-title">{look.title}</h2>
+              <div key={id} className="product-card">
+                <Link to={`/look/${look.id}`} className="product-card-link">
+                  <div className="product-img-wrap">
+                    <img src={look.hero} alt={look.title} className="product-img" loading="lazy" />
+                  </div>
+                  <div className="product-info">
+                    <span className="product-tag">{STYLE_LABELS[look.tag]}</span>
+                    <h3 className="product-name">{look.title}</h3>
+                    <p className="product-meta">{look.season} &middot; {look.occasion}</p>
                   </div>
                 </Link>
                 <button
                   type="button"
-                  className="btn remove-from-album"
+                  className="album-remove-btn"
                   onClick={() => removeLookFromAlbum(album.id, id)}
+                  aria-label={`Remove ${look.title} from album`}
                 >
-                  Remove
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <line x1="18" y1="6" x2="6" y2="18" />
+                    <line x1="6" y1="6" x2="18" y2="18" />
+                  </svg>
                 </button>
-              </li>
+              </div>
             );
           })}
-        </ul>
+        </div>
       )}
     </div>
   );
