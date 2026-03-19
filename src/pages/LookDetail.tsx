@@ -68,12 +68,12 @@ export function LookDetail() {
       <div className="look-detail-grid">
         <div className="look-visual">
           <div className="look-hero-wrap">
-            <img src={look.hero} alt="" className="look-hero" />
+            <img src={look.hero} alt={look.title} className="look-hero" />
           </div>
           {look.gallery.length > 0 && (
             <div className="look-thumbs">
               {images.map((src, i) => (
-                <img key={i} src={src} alt="" className="look-thumb" />
+                <img key={i} src={src} alt={look.title} className="look-thumb" />
               ))}
             </div>
           )}
@@ -82,6 +82,10 @@ export function LookDetail() {
         <div className="look-copy">
           <p className="eyebrow">{STYLE_LABELS[look.tag]}</p>
           <h1 className="look-detail-title">{look.title}</h1>
+          <p className="look-detail-lede">
+            Built for {look.occasion.toLowerCase()} moments, with an emphasis on{' '}
+            {look.keyItems[0].toLowerCase()} and easy layering.
+          </p>
           <dl className="look-facts">
             <div>
               <dt>Season</dt>
@@ -92,9 +96,19 @@ export function LookDetail() {
               <dd>{look.occasion}</dd>
             </div>
           </dl>
+          <div className="detail-benefits">
+            <div className="detail-benefit-card">
+              <span className="detail-benefit-label">Why it works</span>
+              <p>Balanced proportions, quieter color, and one strong hero layer.</p>
+            </div>
+            <div className="detail-benefit-card">
+              <span className="detail-benefit-label">Best for</span>
+              <p>{look.season} dressing with enough polish for repeat wear.</p>
+            </div>
+          </div>
           <div className="key-items">
             <h2 className="h-small">Key items</h2>
-            <ul>
+            <ul className="key-items-list">
               {look.keyItems.map((item) => (
                 <li key={item}>{item}</li>
               ))}

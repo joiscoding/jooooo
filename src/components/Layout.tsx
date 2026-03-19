@@ -7,6 +7,10 @@ export function Layout({ children }: { children: ReactNode }) {
 
   return (
     <div className="layout">
+      <div className="utility-bar">
+        <p>Inspired by modern essentials retail: clearer value cues, calmer browsing.</p>
+        <span>Free-flowing discovery · Premium visual rhythm</span>
+      </div>
       <header className="site-header">
         <Link to="/" className="logo">
           <span className="logo-serif">Studio</span>
@@ -26,20 +30,37 @@ export function Layout({ children }: { children: ReactNode }) {
             Albums
           </Link>
         </nav>
+        <div className="header-meta">Editorial, filterable, saveable looks</div>
       </header>
       <main className="main">{children}</main>
       <footer className="site-footer">
-        <p>
-          Demo — photos via{' '}
-          <a
-            href="https://unsplash.com"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Unsplash
-          </a>
-          . Modern style, designed to last.
-        </p>
+        <div className="site-footer-grid">
+          <div>
+            <p className="site-footer-label">Studio Lookbook</p>
+            <p>
+              A calmer, more curated browse flow inspired by modern essentials
+              retail.
+            </p>
+          </div>
+          <div>
+            <p className="site-footer-label">What changed</p>
+            <p>Editorial hero, trust messaging, clearer cards, and easier discovery.</p>
+          </div>
+          <div>
+            <p className="site-footer-label">Image credit</p>
+            <p>
+              Photos via{' '}
+              <a
+                href="https://unsplash.com"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Unsplash
+              </a>
+              .
+            </p>
+          </div>
+        </div>
       </footer>
     </div>
   );
