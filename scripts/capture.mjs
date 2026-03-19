@@ -71,7 +71,11 @@ async function main() {
     await page.mouse.wheel(0, 300);
     await wait(500);
 
+    const recording = page.video();
     await page.close();
+    if (recording) {
+      await recording.saveAs(join(outDir, 'preview.webm'));
+    }
     await context.close();
     await browser.close();
   } finally {
