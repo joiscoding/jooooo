@@ -34,7 +34,7 @@ By default the app loads `looks.json`. To simulate MCP-injected data in the same
 
 ```js
 sessionStorage.setItem(
-  'lookbook_mcp_looks_v3',
+  'lookbook_mcp_looks_v13',
   JSON.stringify([
     /* array of looks matching the same shape as looks.json */
   ])
@@ -42,7 +42,7 @@ sessionStorage.setItem(
 location.reload();
 ```
 
-Clear with: `sessionStorage.removeItem('lookbook_mcp_looks_v3')`.
+Clear with: `sessionStorage.removeItem('lookbook_mcp_looks_v13')`.
 
 ## Build
 
