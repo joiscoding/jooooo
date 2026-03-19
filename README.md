@@ -32,16 +32,16 @@ npm run preview
 
 Preview serves at **http://localhost:4173**.
 
-## Screenshots & screen recording (Playwright)
+## Screenshots & demo screen recording (Playwright)
 
-After a build, this starts preview, captures PNGs, and records a short session video:
+After a build, this records a **full walkthrough** of the UI (scrolls, filters, look detail, new album, link on album, albums list, back home) plus PNGs:
 
 ```bash
 npm run build
 npm run capture
 ```
 
-Outputs go to `capture-output/` (gitignored). Committed reference captures live in **`docs/preview/`**. Install browsers once if needed:
+Video: `capture-output/demo-walkthrough.webm` (silent automated tour). Outputs are also copied to **`docs/preview/`** in the repo. Install browsers once if needed:
 
 ```bash
 npx playwright install chromium
