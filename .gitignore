@@ -1,6 +1,7 @@
 node_modules
 dist
 demo-theme-toggle.webm
+demo-capture/
 .DS_Store
 *.local
 .env
