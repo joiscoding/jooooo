@@ -692,14 +692,16 @@ function AlbumDetailPage({
     )
   }
 
-  const savedLooks = album.lookIds
+  const currentAlbum = album
+
+  const savedLooks = currentAlbum.lookIds
     .map((lookId) => looksById.get(lookId))
     .filter((entry): entry is Look => Boolean(entry))
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
 
-    const message = onAddAlbumLink(album.id, label, url)
+    const message = onAddAlbumLink(currentAlbum.id, label, url)
     setStatus(message)
 
     if (message.startsWith('Added')) {
@@ -716,9 +718,10 @@ function AlbumDetailPage({
             Back to albums
           </Link>
           <p className="eyebrow">Album detail</p>
-          <h1>{album.name}</h1>
+          <h1>{currentAlbum.name}</h1>
           <p className="hero-copy__lead">
-            {album.note || 'Use this album to collect saved looks plus outside links that support the story.'}
+            {currentAlbum.note ||
+              'Use this album to collect saved looks plus outside links that support the story.'}
           </p>
 
           <dl className="hero-stats hero-stats--compact">
@@ -728,11 +731,11 @@ function AlbumDetailPage({
             </div>
             <div>
               <dt>Added links</dt>
-              <dd>{album.links.length}</dd>
+              <dd>{currentAlbum.links.length}</dd>
             </div>
             <div>
               <dt>Updated</dt>
-              <dd>{formatDate(album.updatedAt)}</dd>
+              <dd>{formatDate(currentAlbum.updatedAt)}</dd>
             </div>
           </dl>
         </div>
@@ -768,9 +771,9 @@ function AlbumDetailPage({
               <p>Store product pages, moodboards, or editorials next to the looks.</p>
             </div>
 
-            {album.links.length ? (
+            {currentAlbum.links.length ? (
               <ul>
-                {album.links.map((link) => (
+                {currentAlbum.links.map((link) => (
                   <li key={link.id}>
                     <div>
                       <strong>{link.label}</strong>
@@ -781,7 +784,7 @@ function AlbumDetailPage({
                     <button
                       className="inline-button"
                       type="button"
-                      onClick={() => setStatus(onRemoveAlbumLink(album.id, link.id))}
+                      onClick={() => setStatus(onRemoveAlbumLink(currentAlbum.id, link.id))}
                     >
                       Remove
                     </button>
@@ -824,7 +827,7 @@ function AlbumDetailPage({
                     <button
                       className="secondary-button"
                       type="button"
-                      onClick={() => setStatus(onRemoveLookFromAlbum(album.id, look.id))}
+                      onClick={() => setStatus(onRemoveLookFromAlbum(currentAlbum.id, look.id))}
                     >
                       Remove
                     </button>
@@ -860,23 +863,38 @@ function SaveToAlbumDialog({
   onClose: () => void
   onSave: (request: SaveRequest) => void
 }) {
+  if (!look) {
+    return null
+  }
+
+  return (
+    <SaveToAlbumDialogCard
+      key={`${look.id}-${albums.length}-${albums[0]?.id ?? 'none'}`}
+      look={look}
+      albums={albums}
+      onClose={onClose}
+      onSave={onSave}
+    />
+  )
+}
+
+function SaveToAlbumDialogCard({
+  look,
+  albums,
+  onClose,
+  onSave,
+}: {
+  look: Look
+  albums: Album[]
+  onClose: () => void
+  onSave: (request: SaveRequest) => void
+}) {
   const [mode, setMode] = useState<'existing' | 'new'>(albums.length ? 'existing' : 'new')
   const [selectedAlbumId, setSelectedAlbumId] = useState(albums[0]?.id ?? '')
   const [newAlbumName, setNewAlbumName] = useState('')
   const [newAlbumNote, setNewAlbumNote] = useState('')
 
   useEffect(() => {
-    setMode(albums.length ? 'existing' : 'new')
-    setSelectedAlbumId(albums[0]?.id ?? '')
-    setNewAlbumName('')
-    setNewAlbumNote('')
-  }, [look, albums])
-
-  useEffect(() => {
-    if (!look) {
-      return undefined
-    }
-
     function handleKeyDown(event: KeyboardEvent) {
       if (event.key === 'Escape') {
         onClose()
@@ -885,11 +903,7 @@ function SaveToAlbumDialog({
 
     window.addEventListener('keydown', handleKeyDown)
     return () => window.removeEventListener('keydown', handleKeyDown)
-  }, [look, onClose])
-
-  if (!look) {
-    return null
-  }
+  }, [onClose])
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
@@ -1073,6 +1087,7 @@ function AppShell() {
     }
 
     let resolvedAlbum: Album | null = null
+    let resolvedAlbumName = ''
     let reusedExisting = false
 
     setAlbums((current) => {
@@ -1081,6 +1096,7 @@ function AppShell() {
       if (existingAlbum) {
         reusedExisting = true
         resolvedAlbum = existingAlbum
+        resolvedAlbumName = existingAlbum.name
         return current
       }
 
@@ -1095,15 +1111,16 @@ function AppShell() {
         updatedAt: timestamp,
       }
       resolvedAlbum = createdAlbum
+      resolvedAlbumName = createdAlbum.name
 
       return [createdAlbum, ...current]
     })
 
-    if (resolvedAlbum) {
+    if (resolvedAlbumName) {
       setToastMessage(
         reusedExisting
-          ? `Album "${resolvedAlbum.name}" already exists.`
-          : `Created album "${resolvedAlbum.name}".`,
+          ? `Album "${resolvedAlbumName}" already exists.`
+          : `Created album "${resolvedAlbumName}".`,
       )
     }
 

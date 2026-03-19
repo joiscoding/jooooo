@@ -50,7 +50,7 @@ async function capture() {
     await page.getByRole('button', { name: 'Save look' }).click()
     await waitForApp(page)
 
-    await page.getByRole('link', { name: 'Albums' }).click()
+    await page.getByRole('link', { name: 'Albums', exact: true }).click()
     await waitForApp(page)
     await page.screenshot({
       path: path.join(screenshotsDir, '02-albums.png'),
