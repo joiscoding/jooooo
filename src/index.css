@@ -167,13 +167,6 @@ img {
   font-style: italic;
 }
 
-.home-lede {
-  margin: 0;
-  color: var(--ink-muted);
-  font-size: 1rem;
-  line-height: 1.6;
-}
-
 .filters-bar {
   display: flex;
   flex-wrap: wrap;

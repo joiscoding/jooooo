@@ -42,10 +42,6 @@ export function HomeGallery() {
         <h1 className="home-title">
           Looks built for <em>quiet</em> confidence.
         </h1>
-        <p className="home-lede">
-          Image-led discovery — minimal chrome, strong photography. Filter by
-          mood or scroll the wall.
-        </p>
       </section>
 
       <section className="filters-bar" aria-label="Style filters">
