@@ -4,6 +4,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { AlbumsProvider } from './context/AlbumsContext';
 import App from './App';
 import './index.css';
+import './landing.css';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
