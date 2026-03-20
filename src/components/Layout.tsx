@@ -4,20 +4,28 @@ import type { ReactNode } from 'react';
 export function Layout({ children }: { children: ReactNode }) {
   const { pathname } = useLocation();
   const isAlbums = pathname.startsWith('/albums');
+  const isLookbook = pathname === '/lookbook' || pathname.startsWith('/look/');
+  const isLanding = pathname === '/';
 
   return (
     <div className="layout">
       <header className="site-header">
         <Link to="/" className="logo">
-          <span className="logo-serif">Studio</span>
-          <span className="logo-sans">Lookbook</span>
+          <span className="logo-serif">Fasco</span>
+          <span className="logo-sans">Fashion</span>
         </Link>
         <nav className="nav">
           <Link
             to="/"
-            className={pathname === '/' ? 'nav-link active' : 'nav-link'}
+            className={isLanding ? 'nav-link active' : 'nav-link'}
           >
-            Gallery
+            Home
+          </Link>
+          <Link
+            to="/lookbook"
+            className={isLookbook ? 'nav-link active' : 'nav-link'}
+          >
+            Lookbook
           </Link>
           <Link
             to="/albums"
@@ -27,10 +35,11 @@ export function Layout({ children }: { children: ReactNode }) {
           </Link>
         </nav>
       </header>
-      <main className="main">{children}</main>
+      <main className={isLanding ? 'main main--landing' : 'main'}>{children}</main>
       <footer className="site-footer">
         <p>
-          Demo — photos via{' '}
+          Fasco — inspired by the community Figma template. Photography on the
+          landing page from{' '}
           <a
             href="https://unsplash.com"
             target="_blank"
@@ -38,7 +47,7 @@ export function Layout({ children }: { children: ReactNode }) {
           >
             Unsplash
           </a>
-          . Modern style, designed to last.
+          .
         </p>
       </footer>
     </div>
