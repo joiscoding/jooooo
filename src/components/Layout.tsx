@@ -4,6 +4,7 @@ import type { ReactNode } from 'react';
 export function Layout({ children }: { children: ReactNode }) {
   const { pathname } = useLocation();
   const isAlbums = pathname.startsWith('/albums');
+  const isLookbook = pathname === '/lookbook' || pathname.startsWith('/look/');
 
   return (
     <div className="layout">
@@ -14,8 +15,8 @@ export function Layout({ children }: { children: ReactNode }) {
         </Link>
         <nav className="nav">
           <Link
-            to="/"
-            className={pathname === '/' ? 'nav-link active' : 'nav-link'}
+            to="/lookbook"
+            className={isLookbook ? 'nav-link active' : 'nav-link'}
           >
             Gallery
           </Link>

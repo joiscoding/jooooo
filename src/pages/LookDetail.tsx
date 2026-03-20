@@ -28,7 +28,7 @@ export function LookDetail() {
   }, [toast]);
 
   if (!lookId) {
-    navigate('/');
+    navigate('/lookbook');
     return null;
   }
 
@@ -36,7 +36,7 @@ export function LookDetail() {
     return (
       <div className="page-narrow">
         <p className="muted">Look not found.</p>
-        <Link to="/">Back to gallery</Link>
+        <Link to="/lookbook">Back to gallery</Link>
       </div>
     );
   }
