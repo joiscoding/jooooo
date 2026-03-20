@@ -2,6 +2,10 @@
 
 Local demo aligned with **PROJECT_BRIEF.md**: editorial gallery, five style filters, look detail, albums persisted in **localStorage** (no database).
 
+**Figma** (reverse from the landing page): [men’s lookbook demo — localhost](https://www.figma.com/design/OjlGUtFACU9iTR0sWgKKpR/mens-lookbook-demo-localhost?node-id=1-48&t=r9I681ZGqssj8ojh-0)
+
+**Figma template** (Community): [FASCO — Fashion Ecommerce Website Page](https://www.figma.com/design/r8UAbgDHpyntbBc0Jo7YDX/FASCO--Fashion-Ecommerce-Website-Page--Community-?node-id=0-384&t=pyaoQE1dqwNrEQuw-0)
+
 ## Run locally
 
 ```bash
