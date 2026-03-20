@@ -3,21 +3,25 @@ import type { ReactNode } from 'react';
 
 export function Layout({ children }: { children: ReactNode }) {
   const { pathname } = useLocation();
+  const isShop = pathname.startsWith('/shop') || pathname.startsWith('/look');
   const isAlbums = pathname.startsWith('/albums');
 
   return (
     <div className="layout">
       <header className="site-header">
         <Link to="/" className="logo">
-          <span className="logo-serif">Studio</span>
-          <span className="logo-sans">Lookbook</span>
+          <span className="logo-serif">FASCO</span>
+          <span className="logo-sans">Fashion</span>
         </Link>
         <nav className="nav">
           <Link
             to="/"
             className={pathname === '/' ? 'nav-link active' : 'nav-link'}
           >
-            Gallery
+            Home
+          </Link>
+          <Link to="/shop" className={isShop ? 'nav-link active' : 'nav-link'}>
+            Shop
           </Link>
           <Link
             to="/albums"
@@ -30,7 +34,7 @@ export function Layout({ children }: { children: ReactNode }) {
       <main className="main">{children}</main>
       <footer className="site-footer">
         <p>
-          Demo — photos via{' '}
+          FASCO-inspired landing page demo — photos via{' '}
           <a
             href="https://unsplash.com"
             target="_blank"

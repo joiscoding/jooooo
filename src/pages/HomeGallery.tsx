@@ -1,13 +1,18 @@
 import { useEffect, useMemo, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import { fetchLooks } from '../data/fetchLooks';
 import type { Look, StyleTag } from '../types';
 import { STYLE_LABELS, STYLE_ORDER } from '../types';
 
 export function HomeGallery() {
   const [looks, setLooks] = useState<Look[]>([]);
-  const [filter, setFilter] = useState<StyleTag | 'all'>('all');
   const [loading, setLoading] = useState(true);
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const filterParam = searchParams.get('filter');
+  const filter: StyleTag | 'all' = STYLE_ORDER.includes(filterParam as StyleTag)
+    ? (filterParam as StyleTag)
+    : 'all';
 
   useEffect(() => {
     let cancelled = false;
@@ -27,6 +32,18 @@ export function HomeGallery() {
     return looks.filter((l) => l.tag === filter);
   }, [looks, filter]);
 
+  function updateFilter(nextFilter: StyleTag | 'all') {
+    const nextParams = new URLSearchParams(searchParams);
+
+    if (nextFilter === 'all') {
+      nextParams.delete('filter');
+    } else {
+      nextParams.set('filter', nextFilter);
+    }
+
+    setSearchParams(nextParams, { replace: true });
+  }
+
   if (loading) {
     return (
       <div className="page-loading">
@@ -38,17 +55,24 @@ export function HomeGallery() {
   return (
     <div className="home">
       <section className="home-hero">
-        <p className="eyebrow">Men · Seasonal edit</p>
+        <p className="eyebrow">FASCO / Shop the edits</p>
         <h1 className="home-title">
-          Looks built for <em>quiet</em> confidence.
+          Browse the looks behind the <em>landing</em> page.
         </h1>
+        <p className="home-intro">
+          Filter by mood, then jump into any look to review key pieces or save it
+          to an album.
+        </p>
+        <Link to="/" className="inline-link shop-back-link">
+          Return to the landing page →
+        </Link>
       </section>
 
       <section className="filters-bar" aria-label="Style filters">
         <button
           type="button"
           className={filter === 'all' ? 'filter-pill active' : 'filter-pill'}
-          onClick={() => setFilter('all')}
+          onClick={() => updateFilter('all')}
         >
           All looks
         </button>
@@ -57,7 +81,7 @@ export function HomeGallery() {
             key={tag}
             type="button"
             className={filter === tag ? 'filter-pill active' : 'filter-pill'}
-            onClick={() => setFilter(tag)}
+            onClick={() => updateFilter(tag)}
           >
             {STYLE_LABELS[tag]}
           </button>
