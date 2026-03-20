@@ -1,6 +1,6 @@
 # Men’s lookbook demo
 
-Local demo aligned with **PROJECT_BRIEF.md**: editorial gallery, five style filters, look detail, albums persisted in **localStorage** (no database).
+Local demo aligned with **PROJECT_BRIEF.md**: **FASCO-style landing** at `/`, editorial gallery at **`/lookbook`**, five style filters, look detail, albums persisted in **localStorage** (no database).
 
 ## Run locally
 
@@ -9,7 +9,23 @@ npm install
 npm run dev
 ```
 
-Open the URL shown (usually `http://localhost:5173`).
+Open the URL shown (usually `http://localhost:5173`). **Home** is the fashion landing; open **Gallery** for the offset lookbook wall.
+
+## Landing demo (screenshots + scroll video)
+
+Starts Vite, then captures assets under **`demo-output/`** (gitignored):
+
+```bash
+npm run demo:record
+```
+
+Produces `landing-hero.png`, `landing-full.png`, `lookbook.png`, and `landing-demo-scroll.webm`.
+
+Optional Slack post via incoming webhook:
+
+```bash
+SLACK_WEBHOOK_URL=https://hooks.slack.com/services/... npm run demo:slack "FASCO landing shipped"
+```
 
 ## MVP checklist
 
