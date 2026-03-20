@@ -440,7 +440,7 @@ export function LandingPage() {
           </blockquote>
           <p className="quote-band-attribution">
             The refreshed home page keeps that premium cadence while preserving
-            the existing gallery and album flows underneath it.
+            the existing shop and album flows underneath it.
           </p>
         </div>
       </section>

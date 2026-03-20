@@ -40,7 +40,7 @@ export function AlbumDetail() {
 
       {album.lookIds.length === 0 ? (
         <p className="empty-state">
-          Empty album. Add looks from the gallery or look pages.
+          Empty album. Add looks from the shop or any look page.
         </p>
       ) : (
         <ul className="album-looks-grid">
