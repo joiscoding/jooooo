@@ -7,11 +7,10 @@ export function Layout({ children }: { children: ReactNode }) {
 
   return (
     <div className="layout">
+      <div className="announcement-bar">
+        Complimentary Shipping &amp; Returns on All Orders
+      </div>
       <header className="site-header">
-        <Link to="/" className="logo">
-          <span className="logo-serif">Studio</span>
-          <span className="logo-sans">Lookbook</span>
-        </Link>
         <nav className="nav">
           <Link
             to="/"
@@ -23,9 +22,17 @@ export function Layout({ children }: { children: ReactNode }) {
             to="/albums"
             className={isAlbums ? 'nav-link active' : 'nav-link'}
           >
-            Albums
+            Collections
           </Link>
         </nav>
+        <Link to="/" className="logo">
+          <span className="logo-serif">Studio</span>
+          <span className="logo-sans">Lookbook</span>
+        </Link>
+        <div className="nav" style={{ visibility: 'hidden' }}>
+          <span className="nav-link">Gallery</span>
+          <span className="nav-link">Collections</span>
+        </div>
       </header>
       <main className="main">{children}</main>
       <footer className="site-footer">
@@ -38,7 +45,7 @@ export function Layout({ children }: { children: ReactNode }) {
           >
             Unsplash
           </a>
-          . Modern style, designed to last.
+          . Timeless style, designed to last.
         </p>
       </footer>
     </div>
