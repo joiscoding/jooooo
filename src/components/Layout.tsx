@@ -9,15 +9,14 @@ export function Layout({ children }: { children: ReactNode }) {
     <div className="layout">
       <header className="site-header">
         <Link to="/" className="logo">
-          <span className="logo-serif">Studio</span>
-          <span className="logo-sans">Lookbook</span>
+          <span className="logo-mark">COLLECTION</span>
         </Link>
         <nav className="nav">
           <Link
             to="/"
             className={pathname === '/' ? 'nav-link active' : 'nav-link'}
           >
-            Gallery
+            Collection
           </Link>
           <Link
             to="/albums"
@@ -27,10 +26,14 @@ export function Layout({ children }: { children: ReactNode }) {
           </Link>
         </nav>
       </header>
-      <main className="main">{children}</main>
+      <main
+        className={pathname === '/' ? 'main main--home' : 'main'}
+      >
+        {children}
+      </main>
       <footer className="site-footer">
         <p>
-          Demo — photos via{' '}
+          Images —{' '}
           <a
             href="https://unsplash.com"
             target="_blank"
@@ -38,7 +41,7 @@ export function Layout({ children }: { children: ReactNode }) {
           >
             Unsplash
           </a>
-          . Modern style, designed to last.
+          . All rights reserved.
         </p>
       </footer>
     </div>
