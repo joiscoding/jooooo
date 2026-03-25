@@ -1,284 +1,246 @@
 [
   {
-    "id": "crosswalk-khaki",
-    "title": "Crosswalk Khaki",
-    "tag": "streetwear",
-    "season": "Transitional",
-    "occasion": "Downtown",
-    "keyItems": [
-      "Boxy overshirt",
-      "Relaxed chino",
-      "Low-profile sneaker"
-    ],
-    "hero": "/looks/streetwear-urban-01-v2.jpg",
-    "gallery": [
-      "/looks/streetwear-urban-01-v2.jpg",
-      "/looks/streetwear-urban-02-v2.jpg"
-    ]
-  },
-  {
-    "id": "neon-borough",
-    "title": "Neon Borough",
-    "tag": "streetwear",
+    "id": "power-session",
+    "title": "Power Session",
+    "tag": "training",
     "season": "All season",
-    "occasion": "Night out",
+    "occasion": "Gym / weights",
     "keyItems": [
-      "Technical shell",
-      "Wide-leg denim",
-      "Trail runner"
+      "Compression tank",
+      "Performance shorts",
+      "Cross-training shoes"
     ],
-    "hero": "/looks/streetwear-urban-02-v2.jpg",
+    "hero": "/looks/1517836357463-d25dfeac3438-w1000h1300.jpg",
     "gallery": [
-      "/looks/streetwear-urban-02-v2.jpg",
-      "/looks/streetwear-urban-01-v2.jpg"
-    ]
-  },
-  {
-    "id": "boardroom-soft",
-    "title": "Boardroom Soft",
-    "tag": "classic",
-    "season": "Year-round",
-    "occasion": "Work",
-    "keyItems": [
-      "Unstructured blazer",
-      "Oxford shirt",
-      "Tapered chinos"
-    ],
-    "hero": "/looks/1768809250854-2f4b1e8f19cc-w1200h1600.jpg",
-    "gallery": [
-      "/looks/1732492211688-b1984227af93-w1000h1300.jpg",
-      "/looks/1679412330231-4a049ffd294b-w1200h1500.jpg",
-      "/looks/1521572267360-ee0c2909d518-w1200h1600.jpg",
-      "/looks/1600117025146-5092075da653-w1200h1500.jpg",
-      "/looks/1549153166-54374660cb65-w1200h1500.jpg",
-      "/looks/1552252059-9d77e4059ad1-w1000h1250.jpg",
-      "/looks/1573513500284-ca52c282f78a-w1200h1600.jpg",
-      "/looks/1597815413302-8037c47f5a75-w1200h1600.jpg"
-    ]
-  },
-  {
-    "id": "track-recovery",
-    "title": "Track & Recovery",
-    "tag": "athleisure",
-    "season": "Transitional",
-    "occasion": "Travel / gym",
-    "keyItems": [
-      "Quarter-zip",
-      "Tapered joggers",
-      "Running trainers"
-    ],
-    "hero": "/looks/1630877268428-616cc533239a-w1200h1500.jpg",
-    "gallery": [
-      "/looks/1762575910569-46971cd69df3-w1000h1250.jpg",
-      "/looks/1476480862126-209bfaa8edc8-w1200h1600.jpg",
       "/looks/1517836357463-d25dfeac3438-w1000h1300.jpg",
-      "/looks/1521572267360-ee0c2909d518-w1200h1600.jpg",
-      "/looks/1573513500284-ca52c282f78a-w1200h1600.jpg",
-      "/looks/1597815413302-8037c47f5a75-w1200h1600.jpg",
-      "/looks/1600117025146-5092075da653-w1200h1500.jpg",
-      "/looks/1676144998604-aa10e96b5157-w1000h1250.jpg"
+      "/looks/1630877268428-616cc533239a-w1200h1500.jpg"
     ]
   },
   {
-    "id": "sand-stone",
-    "title": "Sand & Stone",
-    "tag": "minimal",
-    "season": "Summer",
-    "occasion": "Resort",
-    "keyItems": [
-      "Knit polo",
-      "Wide-leg pants",
-      "Slides"
-    ],
-    "hero": "/looks/1600117025146-5092075da653-w1200h1500.jpg",
-    "gallery": [
-      "/looks/1552252059-9d77e4059ad1-w1000h1250.jpg",
-      "/looks/1521572267360-ee0c2909d518-w1200h1600.jpg",
-      "/looks/1732492211688-b1984227af93-w1000h1300.jpg",
-      "/looks/1768809250854-2f4b1e8f19cc-w1200h1600.jpg",
-      "/looks/1679412330231-4a049ffd294b-w1200h1500.jpg",
-      "/looks/1712514045707-a060b7307bc6-w1000h1300.jpg",
-      "/looks/1476480862126-209bfaa8edc8-w1200h1600.jpg"
-    ]
-  },
-  {
-    "id": "navy-precision",
-    "title": "Navy Precision",
-    "tag": "classic",
-    "season": "Winter",
-    "occasion": "Formal-casual",
-    "keyItems": [
-      "Double-breasted coat",
-      "Turtleneck",
-      "Wool trousers"
-    ],
-    "hero": "/looks/1679412330231-4a049ffd294b-w1200h1500.jpg",
-    "gallery": [
-      "/looks/1732492211688-b1984227af93-w1000h1300.jpg",
-      "/looks/1768809250854-2f4b1e8f19cc-w1200h1600.jpg",
-      "/looks/1521572267360-ee0c2909d518-w1200h1600.jpg",
-      "/looks/1552252059-9d77e4059ad1-w1000h1250.jpg",
-      "/looks/1476480862126-209bfaa8edc8-w1200h1600.jpg",
-      "/looks/1549153166-54374660cb65-w1200h1500.jpg"
-    ]
-  },
-  {
-    "id": "morning-lap",
-    "title": "Morning Lap",
-    "tag": "athleisure",
+    "id": "circuit-breaker",
+    "title": "Circuit Breaker",
+    "tag": "training",
     "season": "Spring",
-    "occasion": "Outdoor",
+    "occasion": "HIIT / Circuit",
     "keyItems": [
-      "Tech shell",
-      "Shorts",
-      "Trail runners"
+      "Mesh panel tee",
+      "Stretch joggers",
+      "Training sneakers"
     ],
     "hero": "/looks/1476480862126-209bfaa8edc8-w1200h1600.jpg",
     "gallery": [
-      "/looks/1517836357463-d25dfeac3438-w1000h1300.jpg",
+      "/looks/1476480862126-209bfaa8edc8-w1200h1600.jpg",
+      "/looks/1762575910569-46971cd69df3-w1000h1250.jpg"
+    ]
+  },
+  {
+    "id": "cool-down",
+    "title": "Cool Down",
+    "tag": "recovery",
+    "season": "Transitional",
+    "occasion": "Post-workout",
+    "keyItems": [
+      "Oversized hoodie",
+      "Relaxed joggers",
+      "Recovery slides"
+    ],
+    "hero": "/looks/1630877268428-616cc533239a-w1200h1500.jpg",
+    "gallery": [
       "/looks/1630877268428-616cc533239a-w1200h1500.jpg",
       "/looks/1762575910569-46971cd69df3-w1000h1250.jpg",
-      "/looks/1521572267360-ee0c2909d518-w1200h1600.jpg",
-      "/looks/1549153166-54374660cb65-w1200h1500.jpg",
-      "/looks/1552252059-9d77e4059ad1-w1000h1250.jpg",
-      "/looks/1573513500284-ca52c282f78a-w1200h1600.jpg",
-      "/looks/1597815413302-8037c47f5a75-w1200h1600.jpg"
+      "/looks/1517836357463-d25dfeac3438-w1000h1300.jpg"
     ]
   },
   {
-    "id": "paper-white",
-    "title": "Paper White",
-    "tag": "minimal",
-    "season": "High summer",
-    "occasion": "Gallery opening",
+    "id": "rest-day",
+    "title": "Rest Day",
+    "tag": "recovery",
+    "season": "All season",
+    "occasion": "Lounge / Rest",
     "keyItems": [
-      "Poplin shirt",
-      "Cropped trouser",
-      "Minimal sneaker"
-    ],
-    "hero": "/looks/1521572267360-ee0c2909d518-w1200h1600.jpg",
-    "gallery": [
-      "/looks/1600117025146-5092075da653-w1200h1500.jpg",
-      "/looks/1552252059-9d77e4059ad1-w1000h1250.jpg",
-      "/looks/1732492211688-b1984227af93-w1000h1300.jpg",
-      "/looks/1768809250854-2f4b1e8f19cc-w1200h1600.jpg",
-      "/looks/1630877268428-616cc533239a-w1200h1500.jpg",
-      "/looks/1679412330231-4a049ffd294b-w1200h1500.jpg",
-      "/looks/1712514045707-a060b7307bc6-w1000h1300.jpg"
-    ]
-  },
-  {
-    "id": "soft-monochrome",
-    "title": "Soft Monochrome",
-    "tag": "minimal",
-    "season": "Spring",
-    "occasion": "City weekend",
-    "keyItems": [
-      "Fine knit",
-      "Relaxed trouser",
-      "Leather loafer"
+      "French terry crewneck",
+      "Tapered sweats",
+      "Cushioned slides"
     ],
     "hero": "/looks/1552252059-9d77e4059ad1-w1000h1250.jpg",
     "gallery": [
-      "/looks/1600117025146-5092075da653-w1200h1500.jpg",
-      "/looks/1521572267360-ee0c2909d518-w1200h1600.jpg",
-      "/looks/1732492211688-b1984227af93-w1000h1300.jpg",
-      "/looks/1768809250854-2f4b1e8f19cc-w1200h1600.jpg"
+      "/looks/1552252059-9d77e4059ad1-w1000h1250.jpg",
+      "/looks/1600117025146-5092075da653-w1200h1500.jpg"
     ]
   },
   {
-    "id": "city-charcoal",
-    "title": "City Charcoal",
-    "tag": "classic",
-    "season": "Autumn",
-    "occasion": "Client lunch",
+    "id": "track-elite",
+    "title": "Track Elite",
+    "tag": "performance",
+    "season": "Summer",
+    "occasion": "Running / track",
     "keyItems": [
-      "Wool overshirt",
-      "Fine gauge knit",
-      "Pressed trouser"
+      "Lightweight singlet",
+      "Split shorts",
+      "Carbon-plate racer"
     ],
-    "hero": "/looks/1732492211688-b1984227af93-w1000h1300.jpg",
+    "hero": "/looks/1762575910569-46971cd69df3-w1000h1250.jpg",
     "gallery": [
-      "/looks/1768809250854-2f4b1e8f19cc-w1200h1600.jpg",
-      "/looks/1679412330231-4a049ffd294b-w1200h1500.jpg",
-      "/looks/1521572267360-ee0c2909d518-w1200h1600.jpg",
+      "/looks/1762575910569-46971cd69df3-w1000h1250.jpg",
+      "/looks/1476480862126-209bfaa8edc8-w1200h1600.jpg",
+      "/looks/1517836357463-d25dfeac3438-w1000h1300.jpg"
+    ]
+  },
+  {
+    "id": "endurance-mode",
+    "title": "Endurance Mode",
+    "tag": "performance",
+    "season": "Transitional",
+    "occasion": "Marathon / endurance",
+    "keyItems": [
+      "Reflective shell",
+      "Compression tights",
+      "Distance runners"
+    ],
+    "hero": "/looks/1573513500284-ca52c282f78a-w1200h1600.jpg",
+    "gallery": [
+      "/looks/1573513500284-ca52c282f78a-w1200h1600.jpg",
+      "/looks/1630877268428-616cc533239a-w1200h1500.jpg"
+    ]
+  },
+  {
+    "id": "studio-to-street",
+    "title": "Studio to Street",
+    "tag": "lifestyle",
+    "season": "Year-round",
+    "occasion": "Athleisure / casual",
+    "keyItems": [
+      "Quarter-zip pullover",
+      "Tapered joggers",
+      "Retro trainers"
+    ],
+    "hero": "/looks/1600117025146-5092075da653-w1200h1500.jpg",
+    "gallery": [
       "/looks/1600117025146-5092075da653-w1200h1500.jpg",
+      "/looks/1521572267360-ee0c2909d518-w1200h1600.jpg",
       "/looks/1552252059-9d77e4059ad1-w1000h1250.jpg"
     ]
   },
   {
-    "id": "weekend-stride",
-    "title": "Weekend Stride",
-    "tag": "athleisure",
+    "id": "weekend-active",
+    "title": "Weekend Active",
+    "tag": "lifestyle",
     "season": "Spring",
-    "occasion": "Morning coffee run",
+    "occasion": "Brunch / coffee run",
     "keyItems": [
-      "Track jacket",
-      "Nylon short",
-      "Retro trainer"
+      "Performance polo",
+      "Stretch chinos",
+      "Minimal sneakers"
     ],
-    "hero": "/looks/1517836357463-d25dfeac3438-w1000h1300.jpg",
+    "hero": "/looks/1521572267360-ee0c2909d518-w1200h1600.jpg",
     "gallery": [
-      "/looks/1630877268428-616cc533239a-w1200h1500.jpg",
-      "/looks/1476480862126-209bfaa8edc8-w1200h1600.jpg",
-      "/looks/1762575910569-46971cd69df3-w1000h1250.jpg",
-      "/looks/1521572267360-ee0c2909d518-w1200h1600.jpg"
-    ]
-  },
-  {
-    "id": "court-warmup",
-    "title": "Court Warmup",
-    "tag": "athleisure",
-    "season": "Transitional",
-    "occasion": "Travel day",
-    "keyItems": [
-      "Zip shell",
-      "Tapered pant",
-      "Cushioned runner"
-    ],
-    "hero": "/looks/1762575910569-46971cd69df3-w1000h1250.jpg",
-    "gallery": [
-      "/looks/1517836357463-d25dfeac3438-w1000h1300.jpg",
-      "/looks/1630877268428-616cc533239a-w1200h1500.jpg",
-      "/looks/1476480862126-209bfaa8edc8-w1200h1600.jpg",
+      "/looks/1521572267360-ee0c2909d518-w1200h1600.jpg",
       "/looks/1600117025146-5092075da653-w1200h1500.jpg",
-      "/looks/1676144998604-aa10e96b5157-w1000h1250.jpg"
+      "/looks/1732492211688-b1984227af93-w1000h1300.jpg"
     ]
   },
   {
-    "id": "utility-grain",
-    "title": "Utility Grain",
-    "tag": "workwear",
-    "season": "Cold weather",
-    "occasion": "Workshop",
+    "id": "game-day",
+    "title": "Game Day",
+    "tag": "competition",
+    "season": "All season",
+    "occasion": "Competition",
     "keyItems": [
-      "Canvas overshirt",
-      "Straight denim",
-      "Service boot"
+      "Pro compression top",
+      "Performance shorts",
+      "Competition trainers"
     ],
     "hero": "/looks/1549153166-54374660cb65-w1200h1500.jpg",
     "gallery": [
+      "/looks/1549153166-54374660cb65-w1200h1500.jpg",
+      "/looks/1597815413302-8037c47f5a75-w1200h1600.jpg"
+    ]
+  },
+  {
+    "id": "podium-ready",
+    "title": "Podium Ready",
+    "tag": "competition",
+    "season": "Transitional",
+    "occasion": "Events / meets",
+    "keyItems": [
+      "Warm-up jacket",
+      "Race tights",
+      "Sprint spikes"
+    ],
+    "hero": "/looks/1597815413302-8037c47f5a75-w1200h1600.jpg",
+    "gallery": [
       "/looks/1597815413302-8037c47f5a75-w1200h1600.jpg",
-      "/looks/1676144998604-aa10e96b5157-w1000h1250.jpg",
+      "/looks/1549153166-54374660cb65-w1200h1500.jpg",
       "/looks/1573513500284-ca52c282f78a-w1200h1600.jpg"
     ]
   },
   {
-    "id": "forge-layer",
-    "title": "Forge Layer",
-    "tag": "workwear",
-    "season": "Rainy season",
-    "occasion": "Weekend errands",
+    "id": "iron-hour",
+    "title": "Iron Hour",
+    "tag": "training",
+    "season": "Winter",
+    "occasion": "Strength training",
     "keyItems": [
-      "Denim shirt",
-      "Painter pant",
-      "Moc boot"
+      "Fitted tank",
+      "Cargo joggers",
+      "Lifting shoes"
     ],
-    "hero": "/looks/1597815413302-8037c47f5a75-w1200h1600.jpg",
+    "hero": "/looks/1676144998604-aa10e96b5157-w1000h1250.jpg",
     "gallery": [
-      "/looks/1549153166-54374660cb65-w1200h1500.jpg",
-      "/looks/1600117025146-5092075da653-w1200h1500.jpg",
-      "/looks/1630877268428-616cc533239a-w1200h1500.jpg"
+      "/looks/1676144998604-aa10e96b5157-w1000h1250.jpg",
+      "/looks/1517836357463-d25dfeac3438-w1000h1300.jpg"
+    ]
+  },
+  {
+    "id": "morning-flow",
+    "title": "Morning Flow",
+    "tag": "recovery",
+    "season": "Summer",
+    "occasion": "Yoga / stretch",
+    "keyItems": [
+      "Bamboo blend tee",
+      "Stretch shorts",
+      "Barefoot trainers"
+    ],
+    "hero": "/looks/1712514045707-a060b7307bc6-w1000h1300.jpg",
+    "gallery": [
+      "/looks/1712514045707-a060b7307bc6-w1000h1300.jpg",
+      "/looks/1552252059-9d77e4059ad1-w1000h1250.jpg"
+    ]
+  },
+  {
+    "id": "peak-output",
+    "title": "Peak Output",
+    "tag": "performance",
+    "season": "Summer",
+    "occasion": "CrossFit / functional",
+    "keyItems": [
+      "Ventilated tank",
+      "Board shorts",
+      "Rope-climb shoes"
+    ],
+    "hero": "/looks/1768809250854-2f4b1e8f19cc-w1200h1600.jpg",
+    "gallery": [
+      "/looks/1768809250854-2f4b1e8f19cc-w1200h1600.jpg",
+      "/looks/1679412330231-4a049ffd294b-w1200h1500.jpg"
+    ]
+  },
+  {
+    "id": "after-hours",
+    "title": "After Hours",
+    "tag": "lifestyle",
+    "season": "Autumn",
+    "occasion": "Dinner / social",
+    "keyItems": [
+      "Tech bomber",
+      "Slim joggers",
+      "Clean low-tops"
+    ],
+    "hero": "/looks/1732492211688-b1984227af93-w1000h1300.jpg",
+    "gallery": [
+      "/looks/1732492211688-b1984227af93-w1000h1300.jpg",
+      "/looks/1768809250854-2f4b1e8f19cc-w1200h1600.jpg",
+      "/looks/1679412330231-4a049ffd294b-w1200h1500.jpg"
     ]
   }
 ]

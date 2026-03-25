@@ -1,9 +1,9 @@
 export type StyleTag =
-  | 'minimal'
-  | 'streetwear'
-  | 'classic'
-  | 'athleisure'
-  | 'workwear';
+  | 'training'
+  | 'recovery'
+  | 'performance'
+  | 'lifestyle'
+  | 'competition';
 
 export interface Look {
   id: string;
@@ -23,17 +23,17 @@ export interface Album {
 }
 
 export const STYLE_LABELS: Record<StyleTag, string> = {
-  minimal: 'Minimal / quiet',
-  streetwear: 'Streetwear / urban',
-  classic: 'Classic / tailored',
-  athleisure: 'Athleisure / sporty',
-  workwear: 'Workwear / heritage',
+  training: 'Training',
+  recovery: 'Recovery',
+  performance: 'Performance',
+  lifestyle: 'Lifestyle',
+  competition: 'Competition',
 };
 
 export const STYLE_ORDER: StyleTag[] = [
-  'minimal',
-  'streetwear',
-  'classic',
-  'athleisure',
-  'workwear',
+  'training',
+  'recovery',
+  'performance',
+  'lifestyle',
+  'competition',
 ];
