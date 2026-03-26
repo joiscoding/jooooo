@@ -71,6 +71,19 @@ Risk:
 - If malicious or malformed data were written into browser storage by another script running on the same origin, the app could render inconsistent state or behave unpredictably
 - This is not a Datadog issue, but it is the only meaningful ingestion-related trust boundary in this repository
 
+### Medium: vulnerable Vite/esbuild development toolchain was present
+
+Affected files before remediation:
+
+- `package.json`
+- `package-lock.json`
+
+Risk:
+
+- The repository pinned Vite `^5.4.10`, which pulled an `esbuild` range affected by advisory `GHSA-67mh-4wv8-2f99`
+- `npm audit` reported a moderate issue where a website could send requests to the development server and read the response under certain conditions
+- This impacts the local development toolchain rather than production application logic, but it is still a meaningful security issue in the repository
+
 ### Informational: no server-side attack surface present here
 
 Not present in this repository:
@@ -99,6 +112,11 @@ The following hardening changes were implemented:
 2. `src/hooks/useAlbums.ts`
    - added runtime validation for stored album objects
    - rejects malformed `localStorage` payloads and falls back to an empty list
+
+3. Front-end build tooling
+   - upgraded `vite` to `^8.0.3`
+   - upgraded `@vitejs/plugin-react` to `^6.0.1`
+   - re-ran `npm audit` and confirmed zero remaining vulnerabilities
 
 ## Residual risk
 
