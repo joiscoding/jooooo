@@ -3,12 +3,23 @@ import type { Album } from '../types';
 
 const KEY = 'lookbook_albums_v1';
 
+function isAlbum(value: unknown): value is Album {
+  if (!value || typeof value !== 'object') return false;
+  const candidate = value as Partial<Album>;
+  return (
+    typeof candidate.id === 'string' &&
+    typeof candidate.name === 'string' &&
+    Array.isArray(candidate.lookIds) &&
+    candidate.lookIds.every((lookId) => typeof lookId === 'string')
+  );
+}
+
 function load(): Album[] {
   try {
     const raw = localStorage.getItem(KEY);
     if (!raw) return [];
-    const parsed = JSON.parse(raw) as Album[];
-    return Array.isArray(parsed) ? parsed : [];
+    const parsed = JSON.parse(raw) as unknown;
+    return Array.isArray(parsed) && parsed.every(isAlbum) ? parsed : [];
   } catch {
     return [];
   }
