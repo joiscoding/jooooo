@@ -1,5 +1,6 @@
 import { Link, useLocation } from 'react-router-dom';
 import type { ReactNode } from 'react';
+import { SiteHeaderMenu } from './SiteHeaderMenu';
 
 export function Layout({ children }: { children: ReactNode }) {
   const { pathname } = useLocation();
@@ -12,6 +13,7 @@ export function Layout({ children }: { children: ReactNode }) {
           <span className="logo-serif">Studio</span>
           <span className="logo-sans">Lookbook</span>
         </Link>
+        <div className="header-right">
         <nav className="nav">
           <Link
             to="/"
@@ -26,6 +28,8 @@ export function Layout({ children }: { children: ReactNode }) {
             Albums
           </Link>
         </nav>
+        <SiteHeaderMenu />
+        </div>
       </header>
       <main className="main">{children}</main>
       <footer className="site-footer">
