@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { fetchLooks } from '../data/fetchLooks';
 import type { Look, StyleTag } from '../types';
 import { STYLE_LABELS, STYLE_ORDER } from '../types';
+import { ListEmptyState } from '../components/ListEmptyState';
 
 export function HomeGallery() {
   const [looks, setLooks] = useState<Look[]>([]);
@@ -37,7 +38,7 @@ export function HomeGallery() {
 
   return (
     <div className="home">
-      <section className="home-hero">
+      <section id="home-hero" className="home-hero">
         <p className="eyebrow">Men · Seasonal edit</p>
         <h1 className="home-title">
           Looks built for <em>quiet</em> confidence.
@@ -65,7 +66,31 @@ export function HomeGallery() {
       </section>
 
       {filtered.length === 0 ? (
-        <p className="empty-state">No looks in this filter.</p>
+        <ListEmptyState
+          title={
+            filter === 'all'
+              ? 'No looks to show'
+              : `No ${STYLE_LABELS[filter]} looks`
+          }
+          body={
+            filter === 'all'
+              ? 'The lookbook catalog is empty right now. Check back soon for new edits.'
+              : 'Nothing matches this style filter. Try another tag or show all looks.'
+          }
+          primaryAction={
+            filter === 'all'
+              ? { label: 'Learn about this demo', href: '#home-hero' }
+              : {
+                  label: 'Show all looks',
+                  onClick: () => setFilter('all'),
+                }
+          }
+          secondaryAction={
+            filter === 'all'
+              ? undefined
+              : { label: 'Browse albums', to: '/albums' }
+          }
+        />
       ) : (
         <div className="gallery-wall">
           {filtered.map((look, i) => {
