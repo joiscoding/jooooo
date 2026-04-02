@@ -1,5 +1,5 @@
 import { describe, expect, it, beforeEach, afterEach, vi } from 'vitest';
-import { render, screen } from '@testing-library/react';
+import { cleanup, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import {
   ThemeProvider,
@@ -18,7 +18,7 @@ type MatchMediaStub = {
 };
 
 let mediaStub: MatchMediaStub;
-let matchMediaSpy: ReturnType<typeof vi.spyOn>;
+let originalMatchMedia: ((query: string) => MediaQueryList) | undefined;
 
 function mockMatchMedia(initialDark: boolean) {
   mediaStub = {
@@ -39,14 +39,18 @@ function mockMatchMedia(initialDark: boolean) {
     },
   };
 
-  matchMediaSpy = vi
-    .spyOn(window, 'matchMedia')
-    .mockImplementation(() => mediaStub as unknown as MediaQueryList);
+  Object.defineProperty(window, 'matchMedia', {
+    configurable: true,
+    writable: true,
+    value: vi.fn().mockImplementation(
+      () => mediaStub as unknown as MediaQueryList
+    ),
+  });
 }
 
 function emitSystemChange(isDark: boolean) {
   mediaStub.matches = isDark;
-  for (const listener of mediaStub.listeners) {
+  for (const listener of [...mediaStub.listeners]) {
     listener();
   }
 }
@@ -71,13 +75,19 @@ function ThemeHarness() {
 
 describe('ThemeContext', () => {
   beforeEach(() => {
+    originalMatchMedia = window.matchMedia;
     localStorage.clear();
     document.documentElement.className = '';
     mockMatchMedia(false);
   });
 
   afterEach(() => {
-    matchMediaSpy.mockRestore();
+    cleanup();
+    Object.defineProperty(window, 'matchMedia', {
+      configurable: true,
+      writable: true,
+      value: originalMatchMedia,
+    });
   });
 
   it('uses stored preference at startup', () => {
