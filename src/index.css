@@ -12,6 +12,15 @@
   --max: 1180px;
 }
 
+[data-theme='dark'] {
+  --bg: #141516;
+  --bg-elevated: #1d1f21;
+  --ink: #f2f2f0;
+  --ink-muted: #b7b7b3;
+  --line: #313336;
+  --accent: #efefed;
+}
+
 *,
 *::before,
 *::after {
@@ -63,7 +72,7 @@ img {
   justify-content: space-between;
   padding: 0 1.5rem;
   height: var(--header-h);
-  background: rgba(244, 242, 239, 0.92);
+  background: color-mix(in srgb, var(--bg) 92%, transparent);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--line);
 }
@@ -97,6 +106,53 @@ img {
 .nav {
   display: flex;
   gap: 1.75rem;
+}
+
+.theme-toggle {
+  margin: 0;
+  padding: 0.2rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  display: inline-flex;
+  gap: 0.2rem;
+  background: var(--bg-elevated);
+}
+
+.theme-option {
+  position: relative;
+  display: inline-flex;
+}
+
+.theme-option input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.theme-option span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 3.7rem;
+  padding: 0.2rem 0.55rem;
+  border-radius: 999px;
+  font-size: 0.64rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ink-muted);
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.theme-option input:focus-visible + span {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+}
+
+.theme-option input:checked + span {
+  background: var(--accent);
+  color: var(--bg);
 }
 
 .nav-link {
@@ -137,6 +193,18 @@ img {
 .site-footer a {
   color: var(--ink-muted);
   text-decoration: underline;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 /* Home */
@@ -433,7 +501,7 @@ img {
   font-size: 0.9rem;
   padding: 0.6rem 0.75rem;
   border: 1px solid var(--line);
-  background: #fff;
+  background: var(--bg-elevated);
   border-radius: var(--radius);
   color: var(--ink);
   flex: 1;
@@ -612,8 +680,33 @@ img {
   position: absolute;
   top: 0.5rem;
   right: 0.5rem;
-  background: rgba(255, 255, 255, 0.92);
+  background: color-mix(in srgb, var(--bg-elevated) 92%, transparent);
   border: none;
   font-size: 0.65rem;
   padding: 0.35rem 0.5rem;
+}
+
+@media (max-width: 860px) {
+  .site-header {
+    height: auto;
+    min-height: var(--header-h);
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.6rem 1rem;
+    padding-top: 0.55rem;
+    padding-bottom: 0.55rem;
+  }
+
+  .logo {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .nav {
+    order: 2;
+  }
+
+  .theme-toggle {
+    order: 3;
+  }
 }
