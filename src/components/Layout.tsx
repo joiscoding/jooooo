@@ -4,6 +4,7 @@ import type { ReactNode } from 'react';
 export function Layout({ children }: { children: ReactNode }) {
   const { pathname } = useLocation();
   const isAlbums = pathname.startsWith('/albums');
+  const isWebhooks = pathname.startsWith('/webhooks');
 
   return (
     <div className="layout">
@@ -24,6 +25,12 @@ export function Layout({ children }: { children: ReactNode }) {
             className={isAlbums ? 'nav-link active' : 'nav-link'}
           >
             Albums
+          </Link>
+          <Link
+            to="/webhooks"
+            className={isWebhooks ? 'nav-link active' : 'nav-link'}
+          >
+            Webhooks
           </Link>
         </nav>
       </header>

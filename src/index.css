@@ -617,3 +617,147 @@ img {
   font-size: 0.65rem;
   padding: 0.35rem 0.5rem;
 }
+
+/* Webhook lab (LB-7 demo) */
+.webhook-lab {
+  padding: 0 1.5rem 3rem;
+}
+
+.webhook-lab-header {
+  margin-bottom: 2rem;
+}
+
+.webhook-lab-title {
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  font-weight: 400;
+  margin: 0.25rem 0 0.75rem;
+}
+
+.webhook-lab-lede {
+  max-width: 40rem;
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.webhook-lab-panel {
+  background: var(--bg-elevated);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.webhook-lab-field {
+  margin-bottom: 1.25rem;
+}
+
+.webhook-lab-field:last-of-type {
+  margin-bottom: 1rem;
+}
+
+.webhook-lab-label {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--ink-muted);
+  margin-bottom: 0.5rem;
+}
+
+.webhook-lab-modes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.webhook-lab-radio {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.webhook-lab-hint {
+  margin: 0.5rem 0 0;
+  font-size: 0.8rem;
+}
+
+.webhook-lab-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.webhook-lab-presets {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.webhook-lab-textarea {
+  width: 100%;
+  font-family: ui-monospace, monospace;
+  font-size: 0.8rem;
+  line-height: 1.45;
+  padding: 0.75rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: #fff;
+  color: var(--ink);
+  resize: vertical;
+  min-height: 12rem;
+}
+
+.webhook-lab-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.webhook-lab-error {
+  color: #8b2942;
+  font-size: 0.9rem;
+  margin: 0 0 1rem;
+}
+
+.webhook-lab-result {
+  background: var(--bg-elevated);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1.25rem 1.5rem;
+}
+
+.webhook-lab-result-title {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  font-weight: 400;
+  margin: 0 0 1rem;
+}
+
+.webhook-lab-dl {
+  display: grid;
+  grid-template-columns: minmax(6rem, auto) 1fr;
+  gap: 0.35rem 1.25rem;
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.webhook-lab-dl dt {
+  margin: 0;
+  color: var(--ink-muted);
+  font-weight: 500;
+}
+
+.webhook-lab-dl dd {
+  margin: 0;
+}
+
+.webhook-lab-warn {
+  color: #8b5a00;
+}
