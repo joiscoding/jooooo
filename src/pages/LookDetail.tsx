@@ -2,12 +2,14 @@ import { useEffect, useState, type FormEvent } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { fetchLooks } from '../data/fetchLooks';
 import { useAlbumsContext } from '../context/AlbumsContext';
+import { useCopyPageLink } from '../hooks/useCopyPageLink';
 import type { Look } from '../types';
 import { STYLE_LABELS } from '../types';
 
 export function LookDetail() {
   const { lookId } = useParams<{ lookId: string }>();
   const navigate = useNavigate();
+  const copyPageLink = useCopyPageLink();
   const { albums, createAlbum, addLookToAlbum } = useAlbumsContext();
   const [look, setLook] = useState<Look | null>(null);
   const [newAlbumName, setNewAlbumName] = useState('');
@@ -86,7 +88,16 @@ export function LookDetail() {
 
         <div className="look-copy">
           <p className="eyebrow">{STYLE_LABELS[look.tag]}</p>
-          <h1 className="look-detail-title">{look.title}</h1>
+          <div className="look-title-row">
+            <h1 className="look-detail-title">{look.title}</h1>
+            <button
+              type="button"
+              className="btn ghost look-copy-link-btn"
+              onClick={() => void copyPageLink()}
+            >
+              Copy link
+            </button>
+          </div>
           <dl className="look-facts">
             <div>
               <dt>Season</dt>
