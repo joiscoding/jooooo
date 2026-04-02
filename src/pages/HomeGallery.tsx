@@ -27,6 +27,9 @@ export function HomeGallery() {
     return looks.filter((l) => l.tag === filter);
   }, [looks, filter]);
 
+  const heroLook = looks[0];
+  const featuredLooks = looks.slice(1, 3);
+
   if (loading) {
     return (
       <div className="page-loading">
@@ -37,12 +40,51 @@ export function HomeGallery() {
 
   return (
     <div className="home">
-      <section className="home-hero">
-        <p className="eyebrow">Men · Seasonal edit</p>
-        <h1 className="home-title">
-          Looks built for <em>quiet</em> confidence.
-        </h1>
-      </section>
+      {heroLook && (
+        <Link to={`/look/${heroLook.id}`} style={{ textDecoration: 'none' }}>
+          <section className="home-hero">
+            <img
+              src={heroLook.hero}
+              alt=""
+              className="hero-image"
+            />
+            <div className="hero-content">
+              <p className="eyebrow">Spring / Summer 2026</p>
+              <h1 className="home-title">
+                Looks Built for <em>Quiet</em> Confidence
+              </h1>
+              <span className="hero-cta">
+                Explore the Collection
+              </span>
+            </div>
+          </section>
+        </Link>
+      )}
+
+      {featuredLooks.length === 2 && (
+        <div className="editorial-two-up">
+          {featuredLooks.map((look) => (
+            <Link
+              key={look.id}
+              to={`/look/${look.id}`}
+              className="editorial-card"
+              style={{ textDecoration: 'none' }}
+            >
+              <img src={look.hero} alt="" />
+              <div className="editorial-card-content">
+                <span className="wall-tag">{STYLE_LABELS[look.tag]}</span>
+                <h2 className="wall-title">{look.title}</h2>
+                <span className="wall-card-cta">Shop Now</span>
+              </div>
+            </Link>
+          ))}
+        </div>
+      )}
+
+      <div className="section-header">
+        <p className="section-label">Studio Lookbook</p>
+        <h2 className="section-title">The World of Style</h2>
+      </div>
 
       <section className="filters-bar" aria-label="Style filters">
         <button
@@ -50,7 +92,7 @@ export function HomeGallery() {
           className={filter === 'all' ? 'filter-pill active' : 'filter-pill'}
           onClick={() => setFilter('all')}
         >
-          All looks
+          All Looks
         </button>
         {STYLE_ORDER.map((tag) => (
           <button
@@ -68,29 +110,28 @@ export function HomeGallery() {
         <p className="empty-state">No looks in this filter.</p>
       ) : (
         <div className="gallery-wall">
-          {filtered.map((look, i) => {
-            return (
-              <Link
-                key={look.id}
-                to={`/look/${look.id}`}
-                className="wall-card"
-              >
-                <div className="wall-card-inner">
-                  <img
-                    key={`${look.id}-${look.hero}`}
-                    src={look.hero}
-                    alt=""
-                    className="wall-img"
-                    loading={i < 4 ? 'eager' : 'lazy'}
-                  />
-                  <div className="wall-meta">
-                    <span className="wall-tag">{STYLE_LABELS[look.tag]}</span>
-                    <h2 className="wall-title">{look.title}</h2>
-                  </div>
+          {filtered.map((look, i) => (
+            <Link
+              key={look.id}
+              to={`/look/${look.id}`}
+              className="wall-card"
+            >
+              <div className="wall-card-inner">
+                <img
+                  key={`${look.id}-${look.hero}`}
+                  src={look.hero}
+                  alt=""
+                  className="wall-img"
+                  loading={i < 4 ? 'eager' : 'lazy'}
+                />
+                <div className="wall-meta">
+                  <span className="wall-tag">{STYLE_LABELS[look.tag]}</span>
+                  <h2 className="wall-title">{look.title}</h2>
+                  <span className="wall-card-cta">View Look</span>
                 </div>
-              </Link>
-            );
-          })}
+              </div>
+            </Link>
+          ))}
         </div>
       )}
     </div>
