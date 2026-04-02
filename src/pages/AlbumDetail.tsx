@@ -4,6 +4,7 @@ import { fetchLooks } from '../data/fetchLooks';
 import { useAlbumsContext } from '../context/AlbumsContext';
 import type { Look } from '../types';
 import { STYLE_LABELS } from '../types';
+import { ListEmptyState } from '../components/ListEmptyState';
 
 export function AlbumDetail() {
   const { albumId } = useParams<{ albumId: string }>();
@@ -39,9 +40,12 @@ export function AlbumDetail() {
       </header>
 
       {album.lookIds.length === 0 ? (
-        <p className="empty-state">
-          Empty album. Add looks from the gallery or look pages.
-        </p>
+        <ListEmptyState
+          title="This album is empty"
+          body="Save looks from the gallery or any look page to fill this album with outfits you want to revisit."
+          primaryAction={{ label: 'Browse the gallery', to: '/' }}
+          secondaryAction={{ label: 'Back to albums', to: '/albums' }}
+        />
       ) : (
         <ul className="album-looks-grid">
           {album.lookIds.map((id) => {

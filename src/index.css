@@ -288,6 +288,36 @@ img {
   text-align: center;
 }
 
+.list-empty-state {
+  max-width: 28rem;
+  margin: 0 auto;
+  padding: 3rem 1rem;
+  text-align: center;
+}
+
+.list-empty-state__title {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: var(--ink);
+  margin: 0 0 0.75rem;
+  line-height: 1.25;
+}
+
+.list-empty-state__body {
+  margin: 0 0 1.5rem;
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+
+.list-empty-state__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+  align-items: center;
+}
+
 .muted {
   color: var(--ink-muted);
 }
