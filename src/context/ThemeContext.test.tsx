@@ -1,4 +1,4 @@
-import { cleanup, render, screen } from '@testing-library/react';
+import { act, cleanup, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 import { ThemeProvider, useThemeContext } from './ThemeContext';
@@ -133,7 +133,9 @@ describe('ThemeProvider', () => {
     expect(screen.getByTestId('resolved')).toHaveTextContent('light');
     expect(document.documentElement).toHaveAttribute('data-theme', 'light');
 
-    media.setMatches(true);
+    act(() => {
+      media.setMatches(true);
+    });
     expect(screen.getByTestId('resolved')).toHaveTextContent('dark');
     expect(document.documentElement).toHaveAttribute('data-theme', 'dark');
 
@@ -141,7 +143,9 @@ describe('ThemeProvider', () => {
     expect(screen.getByTestId('resolved')).toHaveTextContent('light');
     expect(document.documentElement).toHaveAttribute('data-theme', 'light');
 
-    media.setMatches(true);
+    act(() => {
+      media.setMatches(true);
+    });
     expect(screen.getByTestId('resolved')).toHaveTextContent('light');
     expect(document.documentElement).toHaveAttribute('data-theme', 'light');
   });
