@@ -1,10 +1,30 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useSearch } from '../context/SearchContext';
 import { fetchLooks } from '../data/fetchLooks';
 import type { Look, StyleTag } from '../types';
 import { STYLE_LABELS, STYLE_ORDER } from '../types';
 
+function normalizeSearch(s: string): string {
+  return s.trim().toLowerCase();
+}
+
+function lookMatchesQuery(look: Look, q: string): boolean {
+  if (!q) return true;
+  const hay = [
+    look.title,
+    STYLE_LABELS[look.tag],
+    look.season,
+    look.occasion,
+    ...look.keyItems,
+  ]
+    .join(' ')
+    .toLowerCase();
+  return hay.includes(q);
+}
+
 export function HomeGallery() {
+  const { query } = useSearch();
   const [looks, setLooks] = useState<Look[]>([]);
   const [filter, setFilter] = useState<StyleTag | 'all'>('all');
   const [loading, setLoading] = useState(true);
@@ -22,10 +42,18 @@ export function HomeGallery() {
     };
   }, []);
 
+  const searchNorm = useMemo(() => normalizeSearch(query), [query]);
+
   const filtered = useMemo(() => {
-    if (filter === 'all') return looks;
-    return looks.filter((l) => l.tag === filter);
-  }, [looks, filter]);
+    let list = looks;
+    if (filter !== 'all') {
+      list = list.filter((l) => l.tag === filter);
+    }
+    if (searchNorm) {
+      list = list.filter((l) => lookMatchesQuery(l, searchNorm));
+    }
+    return list;
+  }, [looks, filter, searchNorm]);
 
   if (loading) {
     return (
