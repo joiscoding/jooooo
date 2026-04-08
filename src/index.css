@@ -61,11 +61,106 @@ img {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 1rem;
   padding: 0 1.5rem;
   height: var(--header-h);
   background: rgba(244, 242, 239, 0.92);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--line);
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  flex: 1;
+  justify-content: flex-end;
+  min-width: 0;
+}
+
+.global-search-wrap {
+  position: relative;
+  flex: 0 1 220px;
+  max-width: 280px;
+  width: 100%;
+}
+
+.global-search-input {
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  width: 100%;
+  padding: 0.5rem 3.25rem 0.5rem 0.75rem;
+  border: 1px solid var(--line);
+  background: var(--bg-elevated);
+  border-radius: var(--radius);
+  color: var(--ink);
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.global-search-input::placeholder {
+  color: var(--ink-muted);
+  opacity: 0.85;
+}
+
+.global-search-input:hover {
+  border-color: var(--ink-muted);
+}
+
+.global-search-input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px rgba(44, 44, 44, 0.12);
+}
+
+.global-search-kbd-hint {
+  position: absolute;
+  right: 0.45rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--ink-muted);
+  padding: 0.2rem 0.4rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.65);
+  pointer-events: none;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (max-width: 720px) {
+  .header-actions {
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    row-gap: 0.5rem;
+  }
+
+  .global-search-wrap {
+    flex: 1 1 100%;
+    max-width: none;
+    order: 3;
+  }
+
+  .site-header {
+    height: auto;
+    min-height: var(--header-h);
+    padding-top: 0.65rem;
+    padding-bottom: 0.65rem;
+  }
 }
 
 .logo {
