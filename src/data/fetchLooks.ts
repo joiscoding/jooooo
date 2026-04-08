@@ -19,7 +19,7 @@ const COLLECTION_DEFINITIONS: Record<
   string,
   Omit<EditorialCollection, 'coverLookId' | 'lookIds'>
 > = {
-  townhouse-evening: {
+  'townhouse-evening': {
     slug: 'townhouse-evening',
     eyebrow: 'Editorial chapter I',
     title: 'Townhouse Evening',
@@ -28,7 +28,7 @@ const COLLECTION_DEFINITIONS: Record<
     tag: 'classic',
     tone: 'For dinner reservations, late meetings, and polished arrivals.',
   },
-  sporting-club: {
+  'sporting-club': {
     slug: 'sporting-club',
     eyebrow: 'Editorial chapter II',
     title: 'Sporting Club',
@@ -37,7 +37,7 @@ const COLLECTION_DEFINITIONS: Record<
     tag: 'athleisure',
     tone: 'Performance ease balanced with quiet luxury finishes.',
   },
-  estate-weekend: {
+  'estate-weekend': {
     slug: 'estate-weekend',
     eyebrow: 'Editorial chapter III',
     title: 'Estate Weekend',
@@ -46,7 +46,7 @@ const COLLECTION_DEFINITIONS: Record<
     tag: 'minimal',
     tone: 'Easy silhouettes for terraces, galleries, and long lunches.',
   },
-  metropolitan-casual: {
+  'metropolitan-casual': {
     slug: 'metropolitan-casual',
     eyebrow: 'Editorial chapter IV',
     title: 'Metropolitan Casual',
@@ -55,7 +55,7 @@ const COLLECTION_DEFINITIONS: Record<
     tag: 'streetwear',
     tone: 'City energy grounded by tailored proportions and restrained palettes.',
   },
-  field-uniform: {
+  'field-uniform': {
     slug: 'field-uniform',
     eyebrow: 'Editorial chapter V',
     title: 'Field Uniform',
