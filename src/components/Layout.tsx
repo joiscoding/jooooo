@@ -7,38 +7,48 @@ export function Layout({ children }: { children: ReactNode }) {
 
   return (
     <div className="layout">
+      <div className="utility-bar">
+        <span>Autumn Journal 2026</span>
+        <span>Heritage mood, modern tailoring</span>
+      </div>
       <header className="site-header">
         <Link to="/" className="logo">
-          <span className="logo-serif">Studio</span>
-          <span className="logo-sans">Lookbook</span>
+          <span className="logo-kicker">MENSWEAR EDIT</span>
+          <span className="logo-serif">Crestline</span>
         </Link>
         <nav className="nav">
           <Link
             to="/"
             className={pathname === '/' ? 'nav-link active' : 'nav-link'}
           >
-            Gallery
+            Journal
           </Link>
           <Link
             to="/albums"
             className={isAlbums ? 'nav-link active' : 'nav-link'}
           >
-            Albums
+            Trunks
           </Link>
         </nav>
       </header>
       <main className="main">{children}</main>
       <footer className="site-footer">
-        <p>
-          Demo — photos via{' '}
-          <a
-            href="https://unsplash.com"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Unsplash
-          </a>
-          . Modern style, designed to last.
+        <div>
+          <p className="footer-heading">Crestline Journal</p>
+          <p>
+            Editorial demo for menswear storytelling. Photography sourced from{' '}
+            <a
+              href="https://unsplash.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Unsplash
+            </a>
+            .
+          </p>
+        </div>
+        <p className="footer-note">
+          Designed as a calm, luxury-inspired lookbook with local album saving.
         </p>
       </footer>
     </div>
