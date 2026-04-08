@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { ListEmptyState } from '../components/ListEmptyState';
 import { fetchLooks } from '../data/fetchLooks';
 import type { Look, StyleTag } from '../types';
 import { STYLE_LABELS, STYLE_ORDER } from '../types';
@@ -64,8 +65,24 @@ export function HomeGallery() {
         ))}
       </section>
 
-      {filtered.length === 0 ? (
-        <p className="empty-state">No looks in this filter.</p>
+      {looks.length === 0 ? (
+        <ListEmptyState
+          title="No looks to show yet"
+          description="Looks load from seed data by default. If you use MCP or an API, populate session storage or your source so the gallery can fill in."
+          primaryAction={{ label: 'Refresh this page', onClick: () => window.location.reload() }}
+          secondaryAction={{
+            label: 'Open project brief',
+            href: 'https://github.com/joiscoding/jooooo/blob/main/PROJECT_BRIEF.md',
+            external: true,
+          }}
+        />
+      ) : filtered.length === 0 ? (
+        <ListEmptyState
+          title="No looks in this style"
+          description="Try another filter or view everything in the gallery."
+          primaryAction={{ label: 'Show all looks', onClick: () => setFilter('all') }}
+          secondaryAction={{ label: 'Browse albums', to: '/albums' }}
+        />
       ) : (
         <div className="gallery-wall">
           {filtered.map((look, i) => {
