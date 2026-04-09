@@ -120,7 +120,7 @@ export function LookbookLanding() {
             Filter by vibe — every look is shoppable as a full outfit story.
           </p>
         </div>
-        <LooksBrowser />
+        <LooksBrowser looks={looks} />
       </section>
     </div>
   );

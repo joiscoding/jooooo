@@ -4,12 +4,17 @@ import { fetchLooks } from '../data/fetchLooks';
 import type { Look, StyleTag } from '../types';
 import { STYLE_LABELS, STYLE_ORDER } from '../types';
 
-export function LooksBrowser() {
-  const [looks, setLooks] = useState<Look[]>([]);
+interface LooksBrowserProps {
+  looks?: Look[];
+}
+
+export function LooksBrowser({ looks: initialLooks }: LooksBrowserProps) {
+  const [looks, setLooks] = useState<Look[]>(initialLooks ?? []);
   const [filter, setFilter] = useState<StyleTag | 'all'>('all');
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(!initialLooks);
 
   useEffect(() => {
+    if (initialLooks) return;
     let cancelled = false;
     fetchLooks().then((data) => {
       if (!cancelled) {
@@ -20,7 +25,7 @@ export function LooksBrowser() {
     return () => {
       cancelled = true;
     };
-  }, []);
+  }, [initialLooks]);
 
   const filtered = useMemo(() => {
     if (filter === 'all') return looks;
