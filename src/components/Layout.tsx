@@ -9,37 +9,47 @@ export function Layout({ children }: { children: ReactNode }) {
     <div className="layout">
       <header className="site-header">
         <Link to="/" className="logo">
-          <span className="logo-serif">Studio</span>
-          <span className="logo-sans">Lookbook</span>
+          <span className="logo-mark">Studio</span>
+          <span className="logo-stack">
+            <span className="logo-sans">Lookbook</span>
+            <span className="logo-subline">B2B style hub</span>
+          </span>
         </Link>
-        <nav className="nav">
-          <Link
-            to="/"
-            className={pathname === '/' ? 'nav-link active' : 'nav-link'}
-          >
-            Gallery
-          </Link>
-          <Link
-            to="/albums"
-            className={isAlbums ? 'nav-link active' : 'nav-link'}
-          >
-            Albums
-          </Link>
-        </nav>
+        <div className="header-actions">
+          <nav className="nav">
+            <Link
+              to="/"
+              className={pathname === '/' ? 'nav-link active' : 'nav-link'}
+            >
+              Landing
+            </Link>
+            <Link
+              to="/albums"
+              className={isAlbums ? 'nav-link active' : 'nav-link'}
+            >
+              Albums
+            </Link>
+          </nav>
+          <span className="header-chip">Seasonal board ready</span>
+        </div>
       </header>
       <main className="main">{children}</main>
       <footer className="site-footer">
-        <p>
-          Demo — photos via{' '}
-          <a
-            href="https://unsplash.com"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Unsplash
-          </a>
-          . Modern style, designed to last.
-        </p>
+        <div className="site-footer-inner">
+          <p className="site-footer-title">Studio Lookbook / Inspiration concept</p>
+          <p>
+            Metro AG-inspired UX direction for a merchandised fashion landing page.
+            Photos via{' '}
+            <a
+              href="https://unsplash.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Unsplash
+            </a>
+            .
+          </p>
+        </div>
       </footer>
     </div>
   );
