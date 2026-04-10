@@ -1058,6 +1058,10 @@ a {
   gap: 1.25rem;
 }
 
+.feature-tiles.featured-overview {
+  margin-bottom: 1.5rem;
+}
+
 .feature-tile {
   display: grid;
   grid-template-rows: 280px auto;

@@ -145,6 +145,33 @@ export function HomeGallery() {
         ))}
       </section>
 
+      <section className="feature-tiles-shell" aria-label="Featured categories">
+        <div className="section-heading">
+          <div>
+            <p className="eyebrow">Featured lanes</p>
+            <h2 className="section-title">Built to spotlight key commercial stories.</h2>
+          </div>
+          <p className="section-copy">
+            Use these entry points as campaign-style promos before teams dive into
+            the filtered assortment below.
+          </p>
+        </div>
+        <div className="feature-tiles">
+          {featuredLooks.map((look) => (
+            <Link key={look.id} to={`/look/${look.id}`} className="feature-tile">
+              <img src={look.hero} alt={look.title} className="feature-tile-image" />
+              <div className="feature-tile-body">
+                <p className="feature-tile-kicker">{STYLE_LABELS[look.tag]}</p>
+                <h2>{look.title}</h2>
+                <p>
+                  {look.season} / {look.occasion}
+                </p>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </section>
+
       <section className="section-shell">
         <div className="section-heading">
           <div>
@@ -175,21 +202,6 @@ export function HomeGallery() {
             </button>
           ))}
         </div>
-      </section>
-
-      <section className="feature-tiles" aria-label="Featured categories">
-        {featuredLooks.map((look) => (
-          <Link key={look.id} to={`/look/${look.id}`} className="feature-tile">
-            <img src={look.hero} alt={look.title} className="feature-tile-image" />
-            <div className="feature-tile-body">
-              <p className="feature-tile-kicker">{STYLE_LABELS[look.tag]}</p>
-              <h2>{look.title}</h2>
-              <p>
-                {look.season} / {look.occasion}
-              </p>
-            </div>
-          </Link>
-        ))}
       </section>
 
       <section className="catalog-shell" id="catalog">
