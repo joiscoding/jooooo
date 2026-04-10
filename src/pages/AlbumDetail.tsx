@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
+import { ListEmptyState } from '../components/ListEmptyState';
 import { fetchLooks } from '../data/fetchLooks';
 import { useAlbumsContext } from '../context/AlbumsContext';
 import type { Look } from '../types';
@@ -7,6 +8,7 @@ import { STYLE_LABELS } from '../types';
 
 export function AlbumDetail() {
   const { albumId } = useParams<{ albumId: string }>();
+  const navigate = useNavigate();
   const { albums, removeLookFromAlbum } = useAlbumsContext();
   const [looksMap, setLooksMap] = useState<Map<string, Look>>(new Map());
 
@@ -39,9 +41,20 @@ export function AlbumDetail() {
       </header>
 
       {album.lookIds.length === 0 ? (
-        <p className="empty-state">
-          Empty album. Add looks from the gallery or look pages.
-        </p>
+        <ListEmptyState
+          title="This album is empty"
+          description="Save looks from the gallery or from any look page — they’ll show up here for quick revisits."
+          primaryAction={{
+            label: 'Browse looks',
+            onClick: () => navigate('/'),
+            variant: 'primary',
+          }}
+          secondaryAction={{
+            label: 'Back to albums',
+            to: '/albums',
+            variant: 'ghost',
+          }}
+        />
       ) : (
         <ul className="album-looks-grid">
           {album.lookIds.map((id) => {
