@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { CopyLinkButton } from '../components/CopyLinkButton';
 import { fetchLooks } from '../data/fetchLooks';
 import type { Look, StyleTag } from '../types';
 import { STYLE_LABELS, STYLE_ORDER } from '../types';
@@ -86,6 +87,14 @@ export function HomeGallery() {
                   <div className="wall-meta">
                     <span className="wall-tag">{STYLE_LABELS[look.tag]}</span>
                     <h2 className="wall-title">{look.title}</h2>
+                  </div>
+                  <div className="wall-card-actions">
+                    <CopyLinkButton
+                      pathname={`/look/${look.id}`}
+                      label="Copy link"
+                      className="btn wall-copy-btn"
+                      title={`Copy link to ${look.title}`}
+                    />
                   </div>
                 </div>
               </Link>

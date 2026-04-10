@@ -1,5 +1,6 @@
 import { useEffect, useState, type FormEvent } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
+import { CopyLinkButton } from '../components/CopyLinkButton';
 import { fetchLooks } from '../data/fetchLooks';
 import { useAlbumsContext } from '../context/AlbumsContext';
 import type { Look } from '../types';
@@ -86,7 +87,14 @@ export function LookDetail() {
 
         <div className="look-copy">
           <p className="eyebrow">{STYLE_LABELS[look.tag]}</p>
-          <h1 className="look-detail-title">{look.title}</h1>
+          <div className="look-detail-title-row">
+            <h1 className="look-detail-title">{look.title}</h1>
+            <CopyLinkButton
+              pathname={`/look/${look.id}`}
+              label="Copy link"
+              className="btn ghost look-copy-link"
+            />
+          </div>
           <dl className="look-facts">
             <div>
               <dt>Season</dt>
