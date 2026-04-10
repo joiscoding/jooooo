@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { ListEmptyState } from '../components/ListEmptyState';
 import { fetchLooks } from '../data/fetchLooks';
 import type { Look, StyleTag } from '../types';
 import { STYLE_LABELS, STYLE_ORDER } from '../types';
@@ -26,6 +27,8 @@ export function HomeGallery() {
     if (filter === 'all') return looks;
     return looks.filter((l) => l.tag === filter);
   }, [looks, filter]);
+
+  const hasAnyLooks = looks.length > 0;
 
   if (loading) {
     return (
@@ -65,7 +68,37 @@ export function HomeGallery() {
       </section>
 
       {filtered.length === 0 ? (
-        <p className="empty-state">No looks in this filter.</p>
+        hasAnyLooks && filter !== 'all' ? (
+          <ListEmptyState
+            title="Nothing matches this filter"
+            description={`Try “All looks” or pick another style — there’s nothing tagged “${STYLE_LABELS[filter]}” right now.`}
+            primaryAction={{
+              label: 'Show all looks',
+              onClick: () => setFilter('all'),
+              variant: 'primary',
+            }}
+            secondaryAction={{
+              label: 'Save looks to an album',
+              to: '/albums',
+              variant: 'ghost',
+            }}
+          />
+        ) : (
+          <ListEmptyState
+            title="No looks to show yet"
+            description="Looks load from the bundled catalog by default. If you cleared data or use a custom source, add looks or restore the seed set to fill the gallery."
+            primaryAction={{
+              label: 'Refresh this page',
+              onClick: () => window.location.reload(),
+              variant: 'primary',
+            }}
+            secondaryAction={{
+              label: 'Organize albums',
+              to: '/albums',
+              variant: 'ghost',
+            }}
+          />
+        )
       ) : (
         <div className="gallery-wall">
           {filtered.map((look, i) => {
