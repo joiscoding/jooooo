@@ -114,6 +114,84 @@ img {
   text-decoration: none;
 }
 
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.header-menu-wrap {
+  position: relative;
+}
+
+.header-menu-trigger {
+  font-family: var(--font-sans);
+  font-size: 1.25rem;
+  line-height: 1;
+  width: 2.25rem;
+  height: 2.25rem;
+  padding: 0;
+  border: 1px solid var(--line);
+  background: var(--bg-elevated);
+  color: var(--ink-muted);
+  border-radius: var(--radius);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header-menu-trigger:hover {
+  color: var(--ink);
+  border-color: var(--ink-muted);
+}
+
+.header-menu-dropdown {
+  position: absolute;
+  top: calc(100% + 0.35rem);
+  right: 0;
+  min-width: 12rem;
+  padding: 0.35rem 0;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  z-index: 60;
+}
+
+.header-menu-item {
+  display: block;
+  width: 100%;
+  text-align: left;
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  padding: 0.6rem 1rem;
+  border: none;
+  background: none;
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.header-menu-item:hover {
+  background: var(--bg);
+}
+
+.global-toast {
+  position: fixed;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 200;
+  max-width: min(90vw, 22rem);
+  padding: 0.65rem 1.1rem;
+  font-size: 0.85rem;
+  color: var(--ink);
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: 0 10px 36px rgba(0, 0, 0, 0.12);
+}
+
 .main {
   flex: 1;
   width: 100%;
@@ -237,6 +315,26 @@ img {
   flex-direction: column;
 }
 
+.wall-card-actions {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  z-index: 2;
+}
+
+.wall-copy-btn {
+  background: rgba(255, 255, 255, 0.92);
+  border: none;
+  font-size: 0.65rem;
+  padding: 0.35rem 0.55rem;
+  color: var(--ink);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+}
+
+.wall-copy-btn:hover {
+  background: #fff;
+}
+
 .wall-img {
   flex: 1;
   width: 100%;
@@ -357,12 +455,28 @@ img {
   opacity: 0.9;
 }
 
+.look-detail-title-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem 1rem;
+  margin-bottom: 1.25rem;
+}
+
 .look-detail-title {
   font-family: var(--font-serif);
   font-size: clamp(1.75rem, 3vw, 2.25rem);
   font-weight: 400;
-  margin: 0 0 1.25rem;
+  margin: 0;
   letter-spacing: -0.02em;
+  flex: 1;
+  min-width: 0;
+}
+
+.look-copy-link {
+  flex-shrink: 0;
+  align-self: center;
 }
 
 .look-facts {
@@ -521,9 +635,16 @@ img {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1rem;
+  gap: 0.75rem;
   padding: 1rem 0;
   border-bottom: 1px solid var(--line);
+  flex-wrap: wrap;
+}
+
+.album-copy-link {
+  font-size: 0.65rem;
+  padding: 0.4rem 0.65rem;
+  flex-shrink: 0;
 }
 
 .album-link {
@@ -551,6 +672,20 @@ img {
 .album-detail-page {
   max-width: var(--max);
   margin: 0 auto;
+}
+
+.album-detail-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.album-page-copy {
+  flex-shrink: 0;
+  font-size: 0.7rem;
+  padding: 0.5rem 0.85rem;
 }
 
 .album-looks-grid {
@@ -608,10 +743,25 @@ img {
   font-size: 1rem;
 }
 
-.remove-from-album {
+.album-look-card-actions {
   position: absolute;
   top: 0.5rem;
   right: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.35rem;
+  z-index: 2;
+}
+
+.album-look-copy {
+  background: rgba(255, 255, 255, 0.92);
+  border: none;
+  font-size: 0.65rem;
+  padding: 0.35rem 0.5rem;
+}
+
+.remove-from-album {
   background: rgba(255, 255, 255, 0.92);
   border: none;
   font-size: 0.65rem;
