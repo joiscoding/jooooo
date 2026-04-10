@@ -61,11 +61,76 @@ img {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 1rem;
   padding: 0 1.5rem;
-  height: var(--header-h);
+  min-height: var(--header-h);
+  flex-wrap: wrap;
+  row-gap: 0.65rem;
+  padding-top: 0.65rem;
+  padding-bottom: 0.65rem;
   background: rgba(244, 242, 239, 0.92);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--line);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.header-search {
+  position: relative;
+  flex: 1 1 12rem;
+  max-width: 22rem;
+  min-width: 0;
+}
+
+.header-search-input {
+  width: 100%;
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  padding: 0.55rem 3.25rem 0.55rem 0.85rem;
+  border: 1px solid var(--line);
+  background: var(--bg-elevated);
+  border-radius: var(--radius);
+  color: var(--ink);
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.header-search-input::placeholder {
+  color: var(--ink-muted);
+  opacity: 0.85;
+}
+
+.header-search-input:focus {
+  border-color: var(--ink-muted);
+  box-shadow: 0 0 0 2px rgba(26, 26, 26, 0.06);
+}
+
+.header-search-kbd {
+  position: absolute;
+  right: 0.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: var(--font-sans);
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  padding: 0.2rem 0.4rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.75);
+  color: var(--ink-muted);
+  pointer-events: none;
+  line-height: 1;
 }
 
 .logo {
