@@ -9,8 +9,13 @@ export function Layout({ children }: { children: ReactNode }) {
     <div className="layout">
       <header className="site-header">
         <Link to="/" className="logo">
-          <span className="logo-serif">Studio</span>
-          <span className="logo-sans">Lookbook</span>
+          <span className="logo-mark">
+            METRO<span>.</span>
+          </span>
+          <div className="logo-sub">
+            <span className="logo-sub-line">Style</span>
+            <span className="logo-sub-name">Lookbook</span>
+          </div>
         </Link>
         <nav className="nav">
           <Link
@@ -30,7 +35,7 @@ export function Layout({ children }: { children: ReactNode }) {
       <main className="main">{children}</main>
       <footer className="site-footer">
         <p>
-          Demo — photos via{' '}
+          METRO Style Demo &mdash; Photos via{' '}
           <a
             href="https://unsplash.com"
             target="_blank"

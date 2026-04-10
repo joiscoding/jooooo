@@ -38,60 +38,70 @@ export function HomeGallery() {
   return (
     <div className="home">
       <section className="home-hero">
-        <p className="eyebrow">Men · Seasonal edit</p>
-        <h1 className="home-title">
-          Looks built for <em>quiet</em> confidence.
-        </h1>
+        <div className="hero-inner">
+          <p className="eyebrow">Men · Seasonal Edit 2026</p>
+          <h1 className="home-title">
+            Style Built for <em>Professionals</em>
+          </h1>
+          <div className="hero-cta">Explore the Collection</div>
+        </div>
       </section>
 
-      <section className="filters-bar" aria-label="Style filters">
-        <button
-          type="button"
-          className={filter === 'all' ? 'filter-pill active' : 'filter-pill'}
-          onClick={() => setFilter('all')}
-        >
-          All looks
-        </button>
-        {STYLE_ORDER.map((tag) => (
+      <div className="filters-section">
+        <span className="filters-label">Filter:</span>
+        <div className="filters-bar" aria-label="Style filters">
           <button
-            key={tag}
             type="button"
-            className={filter === tag ? 'filter-pill active' : 'filter-pill'}
-            onClick={() => setFilter(tag)}
+            className={filter === 'all' ? 'filter-pill active' : 'filter-pill'}
+            onClick={() => setFilter('all')}
           >
-            {STYLE_LABELS[tag]}
+            All looks
           </button>
-        ))}
-      </section>
+          {STYLE_ORDER.map((tag) => (
+            <button
+              key={tag}
+              type="button"
+              className={filter === tag ? 'filter-pill active' : 'filter-pill'}
+              onClick={() => setFilter(tag)}
+            >
+              {STYLE_LABELS[tag]}
+            </button>
+          ))}
+        </div>
+      </div>
 
       {filtered.length === 0 ? (
         <p className="empty-state">No looks in this filter.</p>
       ) : (
-        <div className="gallery-wall">
-          {filtered.map((look, i) => {
-            return (
-              <Link
-                key={look.id}
-                to={`/look/${look.id}`}
-                className="wall-card"
-              >
-                <div className="wall-card-inner">
-                  <img
-                    key={`${look.id}-${look.hero}`}
-                    src={look.hero}
-                    alt=""
-                    className="wall-img"
-                    loading={i < 4 ? 'eager' : 'lazy'}
-                  />
-                  <div className="wall-meta">
-                    <span className="wall-tag">{STYLE_LABELS[look.tag]}</span>
-                    <h2 className="wall-title">{look.title}</h2>
+        <>
+          <p className="gallery-count">{filtered.length} look{filtered.length !== 1 ? 's' : ''}</p>
+          <div className="gallery-wall">
+            {filtered.map((look, i) => {
+              return (
+                <Link
+                  key={look.id}
+                  to={`/look/${look.id}`}
+                  className="wall-card"
+                >
+                  <div className="wall-card-inner">
+                    <img
+                      key={`${look.id}-${look.hero}`}
+                      src={look.hero}
+                      alt=""
+                      className="wall-img"
+                      loading={i < 4 ? 'eager' : 'lazy'}
+                    />
+                    <div className="wall-meta">
+                      <span className="wall-tag">{STYLE_LABELS[look.tag]}</span>
+                      <h2 className="wall-title">{look.title}</h2>
+                    </div>
+                    {i === 0 && <span className="wall-card-badge">New</span>}
                   </div>
-                </div>
-              </Link>
-            );
-          })}
-        </div>
+                </Link>
+              );
+            })}
+          </div>
+        </>
       )}
     </div>
   );
