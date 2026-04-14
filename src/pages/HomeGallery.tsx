@@ -27,71 +27,113 @@ export function HomeGallery() {
     return looks.filter((l) => l.tag === filter);
   }, [looks, filter]);
 
+  const heroLook = filtered[0] ?? looks[0];
+  const editorialPair = useMemo(() => {
+    const pool = filter === 'all' ? looks : filtered;
+    if (pool.length < 3) return [] as Look[];
+    return [pool[1], pool[2]] as [Look, Look];
+  }, [looks, filtered, filter]);
+
   if (loading) {
     return (
-      <div className="page-loading">
-        <p className="muted">Loading lookbook…</p>
+      <div className="zara-home">
+        <div className="zara-loading">
+          <p>Loading</p>
+        </div>
       </div>
     );
   }
 
   return (
-    <div className="home">
-      <section className="home-hero">
-        <p className="eyebrow">Men · Seasonal edit</p>
-        <h1 className="home-title">
-          Looks built for <em>quiet</em> confidence.
-        </h1>
-      </section>
+    <div className="zara-home">
+      {heroLook ? (
+        <section className="zara-hero" aria-labelledby="zara-hero-heading">
+          <Link
+            to={`/look/${heroLook.id}`}
+            className="zara-hero-link"
+            aria-describedby="zara-hero-heading"
+          >
+            <div className="zara-hero-media">
+              <img
+                src={heroLook.hero}
+                alt=""
+                className="zara-hero-img"
+                fetchPriority="high"
+              />
+            </div>
+            <div className="zara-hero-overlay">
+              <p id="zara-hero-heading" className="zara-hero-kicker">
+                New in
+              </p>
+              <h1 className="zara-hero-title">{heroLook.title}</h1>
+              <span className="zara-hero-cta">View</span>
+            </div>
+          </Link>
+        </section>
+      ) : null}
 
-      <section className="filters-bar" aria-label="Style filters">
+      {editorialPair.length === 2 ? (
+        <section className="zara-split" aria-label="Editorial picks">
+          {editorialPair.map((look) => (
+            <Link
+              key={look.id}
+              to={`/look/${look.id}`}
+              className="zara-split-cell"
+            >
+              <img src={look.hero} alt="" className="zara-split-img" />
+              <span className="zara-split-label">{look.title}</span>
+            </Link>
+          ))}
+        </section>
+      ) : null}
+
+      <nav className="zara-filters" aria-label="Style filters">
         <button
           type="button"
-          className={filter === 'all' ? 'filter-pill active' : 'filter-pill'}
+          className={filter === 'all' ? 'zara-filter is-active' : 'zara-filter'}
           onClick={() => setFilter('all')}
         >
-          All looks
+          View all
         </button>
         {STYLE_ORDER.map((tag) => (
           <button
             key={tag}
             type="button"
-            className={filter === tag ? 'filter-pill active' : 'filter-pill'}
+            className={filter === tag ? 'zara-filter is-active' : 'zara-filter'}
             onClick={() => setFilter(tag)}
           >
             {STYLE_LABELS[tag]}
           </button>
         ))}
-      </section>
+      </nav>
 
       {filtered.length === 0 ? (
-        <p className="empty-state">No looks in this filter.</p>
+        <p className="zara-empty">No looks in this category.</p>
       ) : (
-        <div className="gallery-wall">
-          {filtered.map((look, i) => {
-            return (
-              <Link
-                key={look.id}
-                to={`/look/${look.id}`}
-                className="wall-card"
-              >
-                <div className="wall-card-inner">
-                  <img
-                    key={`${look.id}-${look.hero}`}
-                    src={look.hero}
-                    alt=""
-                    className="wall-img"
-                    loading={i < 4 ? 'eager' : 'lazy'}
-                  />
-                  <div className="wall-meta">
-                    <span className="wall-tag">{STYLE_LABELS[look.tag]}</span>
-                    <h2 className="wall-title">{look.title}</h2>
+        <section className="zara-grid-wrap" aria-label="Looks">
+          <ul className="zara-grid">
+            {filtered.map((look, i) => (
+              <li key={look.id} className="zara-tile">
+                <Link to={`/look/${look.id}`} className="zara-tile-link">
+                  <div className="zara-tile-media">
+                    <img
+                      src={look.hero}
+                      alt=""
+                      className="zara-tile-img"
+                      loading={i < 8 ? 'eager' : 'lazy'}
+                    />
                   </div>
-                </div>
-              </Link>
-            );
-          })}
-        </div>
+                  <div className="zara-tile-meta">
+                    <span className="zara-tile-name">{look.title}</span>
+                    <span className="zara-tile-tag">
+                      {STYLE_LABELS[look.tag]}
+                    </span>
+                  </div>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </section>
       )}
     </div>
   );
