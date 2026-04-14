@@ -1,13 +1,17 @@
 import { useEffect, useMemo, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import { fetchLooks } from '../data/fetchLooks';
 import type { Look, StyleTag } from '../types';
 import { STYLE_LABELS, STYLE_ORDER } from '../types';
 
 export function HomeGallery() {
   const [looks, setLooks] = useState<Look[]>([]);
-  const [filter, setFilter] = useState<StyleTag | 'all'>('all');
   const [loading, setLoading] = useState(true);
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const filterParam = searchParams.get('filter') as StyleTag | null;
+  const filter: StyleTag | 'all' =
+    filterParam && STYLE_ORDER.includes(filterParam) ? filterParam : 'all';
 
   useEffect(() => {
     let cancelled = false;
@@ -27,6 +31,14 @@ export function HomeGallery() {
     return looks.filter((l) => l.tag === filter);
   }, [looks, filter]);
 
+  function setFilter(tag: StyleTag | 'all') {
+    if (tag === 'all') {
+      setSearchParams({});
+    } else {
+      setSearchParams({ filter: tag });
+    }
+  }
+
   if (loading) {
     return (
       <div className="page-loading">
@@ -38,9 +50,9 @@ export function HomeGallery() {
   return (
     <div className="home">
       <section className="home-hero">
-        <p className="eyebrow">Men · Seasonal edit</p>
+        <p className="eyebrow">ABC Fitness · 2026 Collection</p>
         <h1 className="home-title">
-          Looks built for <em>quiet</em> confidence.
+          Looks built for <em>performance</em>.
         </h1>
       </section>
 
