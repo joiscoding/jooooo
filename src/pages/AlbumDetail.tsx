@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
+import { CopyLinkButton } from '../components/CopyLinkButton';
 import { fetchLooks } from '../data/fetchLooks';
+import { buildCanonicalUrlForPath } from '../lib/canonicalUrl';
 import { useAlbumsContext } from '../context/AlbumsContext';
 import type { Look } from '../types';
 import { STYLE_LABELS } from '../types';
@@ -60,6 +62,10 @@ export function AlbumDetail() {
                 </li>
               );
             }
+            const lookPageUrl = buildCanonicalUrlForPath(
+              window.location.origin,
+              `/look/${look.id}`
+            );
             return (
               <li key={id} className="album-look-card">
                 <Link to={`/look/${look.id}`} className="album-look-link">
@@ -74,6 +80,11 @@ export function AlbumDetail() {
                     <h2 className="wall-title">{look.title}</h2>
                   </div>
                 </Link>
+                <CopyLinkButton
+                  url={lookPageUrl}
+                  className="btn album-copy-look-link"
+                  label="Copy look link"
+                />
                 <button
                   type="button"
                   className="btn remove-from-album"

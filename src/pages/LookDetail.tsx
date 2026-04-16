@@ -1,5 +1,6 @@
 import { useEffect, useState, type FormEvent } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
+import { CopyLinkButton } from '../components/CopyLinkButton';
 import { fetchLooks } from '../data/fetchLooks';
 import { useAlbumsContext } from '../context/AlbumsContext';
 import type { Look } from '../types';
@@ -61,9 +62,12 @@ export function LookDetail() {
 
   return (
     <article className="look-detail">
-      <button type="button" className="back-link" onClick={() => navigate(-1)}>
-        ← Back
-      </button>
+      <div className="look-detail-top">
+        <button type="button" className="back-link" onClick={() => navigate(-1)}>
+          ← Back
+        </button>
+        <CopyLinkButton className="btn ghost look-copy-page-link" />
+      </div>
 
       <div className="look-detail-grid">
         <div className="look-visual">
