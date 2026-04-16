@@ -27,21 +27,59 @@ export function HomeGallery() {
     return looks.filter((l) => l.tag === filter);
   }, [looks, filter]);
 
+  const heroLook = looks[0];
+
   if (loading) {
     return (
-      <div className="page-loading">
-        <p className="muted">Loading lookbook…</p>
+      <div className="home home-rl">
+        <section className="home-hero-full home-hero-full--loading" aria-label="Hero">
+          <div className="home-hero-content">
+            <p className="home-hero-eyebrow">Men · Seasonal edit</p>
+            <h1 className="home-hero-headline">Loading lookbook…</h1>
+          </div>
+        </section>
       </div>
     );
   }
 
   return (
-    <div className="home">
-      <section className="home-hero">
-        <p className="eyebrow">Men · Seasonal edit</p>
-        <h1 className="home-title">
-          Looks built for <em>quiet</em> confidence.
-        </h1>
+    <div className="home home-rl">
+      <section className="home-hero-full" aria-label="Hero">
+        {heroLook ? (
+          <img
+            className="home-hero-bg"
+            src={heroLook.hero}
+            alt=""
+            loading="eager"
+            fetchPriority="high"
+          />
+        ) : null}
+        <div className="home-hero-overlay" aria-hidden />
+        <div className="home-hero-content">
+          <p className="home-hero-eyebrow">Men · Seasonal edit</p>
+          <h1 className="home-hero-headline">
+            The art of <em>effortless</em> elegance.
+          </h1>
+          <p className="home-hero-sub">
+            Curated looks for refined everyday dressing — classic proportion,
+            quiet confidence.
+          </p>
+          <a href="#lookbook" className="home-hero-cta">
+            Explore the collection
+          </a>
+        </div>
+      </section>
+
+      <div className="home-inner" id="lookbook">
+      <section className="home-section-intro" aria-labelledby="lookbook-heading">
+        <p className="home-section-kicker">The collection</p>
+        <h2 id="lookbook-heading" className="home-section-title">
+          Shop the edit
+        </h2>
+        <p className="home-section-lede">
+          Filter by mood — each look is styled as a complete idea you can make
+          your own.
+        </p>
       </section>
 
       <section className="filters-bar" aria-label="Style filters">
@@ -93,6 +131,7 @@ export function HomeGallery() {
           })}
         </div>
       )}
+      </div>
     </div>
   );
 }
