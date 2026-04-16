@@ -1,5 +1,6 @@
 import { useState, type FormEvent } from 'react';
 import { Link } from 'react-router-dom';
+import { ListEmptyState } from '../components/ListEmptyState';
 import { useAlbumsContext } from '../context/AlbumsContext';
 
 export function AlbumsList() {
@@ -23,7 +24,11 @@ export function AlbumsList() {
         </p>
       </header>
 
-      <form onSubmit={handleCreate} className="create-album-form">
+      <form
+        id="create-album"
+        onSubmit={handleCreate}
+        className="create-album-form"
+      >
         <input
           className="text-input"
           placeholder="New album name"
@@ -37,9 +42,17 @@ export function AlbumsList() {
       </form>
 
       {albums.length === 0 ? (
-        <p className="empty-state">
-          No albums yet. Create one above, or add a look from any look page.
-        </p>
+        <ListEmptyState
+          title="No albums yet"
+          description="Use the form above to create your first album, or save a look from the gallery to start a collection."
+        >
+          <a className="btn primary" href="#create-album">
+            Create an album
+          </a>
+          <Link to="/" className="btn ghost">
+            Browse the gallery
+          </Link>
+        </ListEmptyState>
       ) : (
         <ul className="album-list">
           {albums.map((a) => (

@@ -12,9 +12,9 @@ const STORAGE_MCP_KEY = 'lookbook_mcp_looks_v13';
 export async function fetchLooks(): Promise<Look[]> {
   try {
     const raw = sessionStorage.getItem(STORAGE_MCP_KEY);
-    if (raw) {
+    if (raw !== null) {
       const parsed = JSON.parse(raw) as unknown;
-      if (Array.isArray(parsed) && parsed.length > 0) {
+      if (Array.isArray(parsed)) {
         return parsed as Look[];
       }
     }

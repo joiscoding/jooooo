@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { ListEmptyState } from '../components/ListEmptyState';
 import { fetchLooks } from '../data/fetchLooks';
 import type { Look, StyleTag } from '../types';
 import { STYLE_LABELS, STYLE_ORDER } from '../types';
@@ -65,7 +66,44 @@ export function HomeGallery() {
       </section>
 
       {filtered.length === 0 ? (
-        <p className="empty-state">No looks in this filter.</p>
+        looks.length === 0 ? (
+          <ListEmptyState
+            title="Your gallery is empty"
+            description="This demo loads looks from the bundled catalog. If you cleared storage or imported an empty set, add looks back to browse outfits here."
+          >
+            <a
+              className="btn primary"
+              href="https://github.com/joiscoding/jooooo/blob/main/src/data/looks.json"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              View sample data format
+            </a>
+            <button
+              type="button"
+              className="btn ghost"
+              onClick={() => window.location.reload()}
+            >
+              Reload page
+            </button>
+          </ListEmptyState>
+        ) : (
+          <ListEmptyState
+            title="No looks match this filter"
+            description="Try another style, or see everything in the gallery."
+          >
+            <button
+              type="button"
+              className="btn primary"
+              onClick={() => setFilter('all')}
+            >
+              Show all looks
+            </button>
+            <Link to="/albums" className="btn ghost">
+              Go to albums
+            </Link>
+          </ListEmptyState>
+        )
       ) : (
         <div className="gallery-wall">
           {filtered.map((look, i) => {

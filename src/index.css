@@ -281,11 +281,56 @@ img {
   line-height: 1.2;
 }
 
-.page-loading,
-.empty-state {
+.page-loading {
   padding: 3rem 0;
   color: var(--ink-muted);
   text-align: center;
+}
+
+.list-empty-state {
+  margin: 2.5rem auto 0;
+  max-width: 26rem;
+  padding: 2.5rem 1.75rem;
+  text-align: center;
+  background: var(--bg-elevated);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+.list-empty-state-title {
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  font-weight: 400;
+  margin: 0 0 0.65rem;
+  color: var(--ink);
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+}
+
+.list-empty-state-desc {
+  margin: 0 0 1.5rem;
+  font-size: 0.95rem;
+  color: var(--ink-muted);
+  line-height: 1.55;
+}
+
+.list-empty-state-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.list-empty-state-actions .btn {
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.list-empty-state-actions .btn:hover {
+  text-decoration: none;
 }
 
 .muted {
