@@ -1,9 +1,12 @@
 import { Link, useLocation } from 'react-router-dom';
 import type { ReactNode } from 'react';
+import { GlobalSearch } from './GlobalSearch';
+import { useSearchKeyboard } from '../hooks/useSearchKeyboard';
 
 export function Layout({ children }: { children: ReactNode }) {
   const { pathname } = useLocation();
   const isAlbums = pathname.startsWith('/albums');
+  useSearchKeyboard();
 
   return (
     <div className="layout">
@@ -12,6 +15,7 @@ export function Layout({ children }: { children: ReactNode }) {
           <span className="logo-serif">Studio</span>
           <span className="logo-sans">Lookbook</span>
         </Link>
+        <GlobalSearch />
         <nav className="nav">
           <Link
             to="/"
