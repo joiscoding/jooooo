@@ -141,13 +141,6 @@ img {
   flex: 1;
 }
 
-.main-inner {
-  width: 100%;
-  max-width: var(--max);
-  margin: 0 auto;
-  padding: 2rem 1.5rem 4rem;
-}
-
 .site-footer {
   background: var(--bg-dark);
   color: rgba(255, 255, 255, 0.5);
