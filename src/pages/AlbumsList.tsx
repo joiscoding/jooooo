@@ -1,6 +1,8 @@
 import { useState, type FormEvent } from 'react';
 import { Link } from 'react-router-dom';
 import { useAlbumsContext } from '../context/AlbumsContext';
+import { CopyLinkButton } from '../components/CopyLinkButton';
+import { buildCanonicalUrl } from '../lib/canonicalUrl';
 
 export function AlbumsList() {
   const { albums, createAlbum, deleteAlbum } = useAlbumsContext();
@@ -42,25 +44,41 @@ export function AlbumsList() {
         </p>
       ) : (
         <ul className="album-list">
-          {albums.map((a) => (
-            <li key={a.id} className="album-list-item">
-              <Link to={`/albums/${a.id}`} className="album-link">
-                <span className="album-name">{a.name}</span>
-                <span className="album-count">
-                  {a.lookIds.length} look{a.lookIds.length === 1 ? '' : 's'}
-                </span>
-              </Link>
-              <button
-                type="button"
-                className="btn text-danger"
-                onClick={() => {
-                  if (confirm(`Delete album “${a.name}”?`)) deleteAlbum(a.id);
-                }}
-              >
-                Delete
-              </button>
-            </li>
-          ))}
+          {albums.map((a) => {
+            const albumUrl =
+              typeof window !== 'undefined'
+                ? buildCanonicalUrl(window.location.origin, `/albums/${a.id}`)
+                : '';
+            return (
+              <li key={a.id} className="album-list-item">
+                <Link to={`/albums/${a.id}`} className="album-link">
+                  <span className="album-name">{a.name}</span>
+                  <span className="album-count">
+                    {a.lookIds.length} look{a.lookIds.length === 1 ? '' : 's'}
+                  </span>
+                </Link>
+                <div className="album-list-actions">
+                  {albumUrl && (
+                    <CopyLinkButton
+                      url={albumUrl}
+                      size="md"
+                      className="album-list-copy"
+                      aria-label={`Copy link to album ${a.name}`}
+                    />
+                  )}
+                  <button
+                    type="button"
+                    className="btn text-danger"
+                    onClick={() => {
+                      if (confirm(`Delete album “${a.name}”?`)) deleteAlbum(a.id);
+                    }}
+                  >
+                    Delete
+                  </button>
+                </div>
+              </li>
+            );
+          })}
         </ul>
       )}
     </div>

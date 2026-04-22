@@ -2,6 +2,8 @@ import { useEffect, useState, type FormEvent } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { fetchLooks } from '../data/fetchLooks';
 import { useAlbumsContext } from '../context/AlbumsContext';
+import { CopyLinkButton } from '../components/CopyLinkButton';
+import { buildCanonicalUrl } from '../lib/canonicalUrl';
 import type { Look } from '../types';
 import { STYLE_LABELS } from '../types';
 
@@ -41,11 +43,19 @@ export function LookDetail() {
     );
   }
 
-  const images = [look.hero, ...look.gallery];
+  const currentLook = look;
+  const images = [currentLook.hero, ...currentLook.gallery];
+  const lookShareUrl =
+    typeof window !== 'undefined'
+      ? buildCanonicalUrl(
+          window.location.origin,
+          `/look/${currentLook.id}`
+        )
+      : '';
 
   function handleAddToExisting() {
     if (!selectedAlbumId) return;
-    addLookToAlbum(selectedAlbumId, look.id);
+    addLookToAlbum(selectedAlbumId, currentLook.id);
     setToast('Saved to album.');
   }
 
@@ -54,7 +64,7 @@ export function LookDetail() {
     const name = newAlbumName.trim();
     if (!name) return;
     const al = createAlbum(name);
-    addLookToAlbum(al.id, look.id);
+    addLookToAlbum(al.id, currentLook.id);
     setNewAlbumName('');
     setToast(`Created “${al.name}” and saved this look.`);
   }
@@ -69,13 +79,13 @@ export function LookDetail() {
         <div className="look-visual">
           <div className="look-hero-wrap">
             <img
-              key={look.hero}
-              src={look.hero}
+              key={currentLook.hero}
+              src={currentLook.hero}
               alt=""
               className="look-hero"
             />
           </div>
-          {look.gallery.length > 0 && (
+          {currentLook.gallery.length > 0 && (
             <div className="look-thumbs">
               {images.map((src, i) => (
                 <img key={i} src={src} alt="" className="look-thumb" />
@@ -85,22 +95,32 @@ export function LookDetail() {
         </div>
 
         <div className="look-copy">
-          <p className="eyebrow">{STYLE_LABELS[look.tag]}</p>
-          <h1 className="look-detail-title">{look.title}</h1>
+          <p className="eyebrow">{STYLE_LABELS[currentLook.tag]}</p>
+          <div className="look-title-row">
+            <h1 className="look-detail-title">{currentLook.title}</h1>
+            {lookShareUrl && (
+              <CopyLinkButton
+                url={lookShareUrl}
+                size="md"
+                className="look-copy-link"
+                aria-label="Copy link to this look"
+              />
+            )}
+          </div>
           <dl className="look-facts">
             <div>
               <dt>Season</dt>
-              <dd>{look.season}</dd>
+              <dd>{currentLook.season}</dd>
             </div>
             <div>
               <dt>Occasion</dt>
-              <dd>{look.occasion}</dd>
+              <dd>{currentLook.occasion}</dd>
             </div>
           </dl>
           <div className="key-items">
             <h2 className="h-small">Key items</h2>
             <ul>
-              {look.keyItems.map((item) => (
+              {currentLook.keyItems.map((item) => (
                 <li key={item}>{item}</li>
               ))}
             </ul>
