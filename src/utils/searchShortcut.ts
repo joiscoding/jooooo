@@ -1,7 +1,6 @@
 /**
  * Whether the key event should open/focus the global app search.
- * Cmd+K (macOS) or Ctrl+K (Windows/Linux). Avoids binding Meta+K on
- * non-Mac to reduce accidental focus when system shortcuts differ.
+ * Meta+K (Cmd on macOS) or Ctrl+K (Windows/Linux).
  */
 export function isSearchFocusShortcut(event: KeyboardEvent): boolean {
   if (event.key !== 'k' && event.key !== 'K') {
