@@ -1,9 +1,12 @@
 import { Link, useLocation } from 'react-router-dom';
 import type { ReactNode } from 'react';
+import { useTheme } from '../hooks/useTheme';
+import { ThemeToggle } from './ThemeToggle';
 
 export function Layout({ children }: { children: ReactNode }) {
   const { pathname } = useLocation();
   const isAlbums = pathname.startsWith('/albums');
+  const { preference, setTheme } = useTheme();
 
   return (
     <div className="layout">
@@ -12,20 +15,23 @@ export function Layout({ children }: { children: ReactNode }) {
           <span className="logo-serif">Studio</span>
           <span className="logo-sans">Lookbook</span>
         </Link>
-        <nav className="nav">
-          <Link
-            to="/"
-            className={pathname === '/' ? 'nav-link active' : 'nav-link'}
-          >
-            Gallery
-          </Link>
-          <Link
-            to="/albums"
-            className={isAlbums ? 'nav-link active' : 'nav-link'}
-          >
-            Albums
-          </Link>
-        </nav>
+        <div className="header-actions">
+          <nav className="nav" aria-label="Main">
+            <Link
+              to="/"
+              className={pathname === '/' ? 'nav-link active' : 'nav-link'}
+            >
+              Gallery
+            </Link>
+            <Link
+              to="/albums"
+              className={isAlbums ? 'nav-link active' : 'nav-link'}
+            >
+              Albums
+            </Link>
+          </nav>
+          <ThemeToggle preference={preference} onChange={setTheme} />
+        </div>
       </header>
       <main className="main">{children}</main>
       <footer className="site-footer">

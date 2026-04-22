@@ -4,6 +4,30 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Studio Lookbook — Men</title>
+    <script>
+      (function () {
+        var KEY = 'lookbook-theme';
+        var m = window.matchMedia('(prefers-color-scheme: dark)');
+        function readPref() {
+          try {
+            var s = localStorage.getItem(KEY);
+            if (s === 'light' || s === 'dark' || s === 'system') return s;
+          } catch (e) {}
+          return 'system';
+        }
+        function resolved(pref) {
+          if (pref === 'light') return 'light';
+          if (pref === 'dark') return 'dark';
+          return m.matches ? 'dark' : 'light';
+        }
+        var p = readPref();
+        var scheme = resolved(p);
+        var root = document.documentElement;
+        root.dataset.themePreference = p;
+        root.dataset.colorScheme = scheme;
+        root.style.colorScheme = scheme;
+      })();
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
