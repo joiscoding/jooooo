@@ -27,72 +27,126 @@ export function HomeGallery() {
     return looks.filter((l) => l.tag === filter);
   }, [looks, filter]);
 
+  const heroLook = looks[0];
+  const heroImage = heroLook?.hero ?? '';
+
   if (loading) {
     return (
-      <div className="page-loading">
-        <p className="muted">Loading lookbook…</p>
+      <div className="page-loading page-loading--editorial">
+        <p className="zara-loader-line" aria-hidden="true" />
+        <p className="zara-loader-text">Loading</p>
       </div>
     );
   }
 
   return (
-    <div className="home">
-      <section className="home-hero">
-        <p className="eyebrow">Men · Seasonal edit</p>
-        <h1 className="home-title">
-          Looks built for <em>quiet</em> confidence.
-        </h1>
-      </section>
-
-      <section className="filters-bar" aria-label="Style filters">
-        <button
-          type="button"
-          className={filter === 'all' ? 'filter-pill active' : 'filter-pill'}
-          onClick={() => setFilter('all')}
-        >
-          All looks
-        </button>
-        {STYLE_ORDER.map((tag) => (
-          <button
-            key={tag}
-            type="button"
-            className={filter === tag ? 'filter-pill active' : 'filter-pill'}
-            onClick={() => setFilter(tag)}
-          >
-            {STYLE_LABELS[tag]}
-          </button>
-        ))}
-      </section>
-
-      {filtered.length === 0 ? (
-        <p className="empty-state">No looks in this filter.</p>
-      ) : (
-        <div className="gallery-wall">
-          {filtered.map((look, i) => {
-            return (
+    <div className="home home--editorial">
+      {heroImage ? (
+        <section className="home-hero-editorial" aria-label="Season campaign">
+          <div className="home-hero-editorial-media">
+            <img
+              src={heroImage}
+              alt=""
+              className="home-hero-editorial-img"
+              fetchPriority="high"
+            />
+            <div className="home-hero-editorial-shade" aria-hidden="true" />
+          </div>
+          <div className="home-hero-editorial-copy">
+            <p className="home-hero-editorial-kicker">Collection</p>
+            <h1 className="home-hero-editorial-title">
+              {heroLook ? (
+                <>{heroLook.title}</>
+              ) : (
+                <>Men · Lookbook</>
+              )}
+            </h1>
+            <p className="home-hero-editorial-sub">Spring–Summer</p>
+            {heroLook && (
               <Link
-                key={look.id}
-                to={`/look/${look.id}`}
-                className="wall-card"
+                to={`/look/${heroLook.id}`}
+                className="home-hero-cta"
               >
-                <div className="wall-card-inner">
-                  <img
-                    key={`${look.id}-${look.hero}`}
-                    src={look.hero}
-                    alt=""
-                    className="wall-img"
-                    loading={i < 4 ? 'eager' : 'lazy'}
-                  />
-                  <div className="wall-meta">
-                    <span className="wall-tag">{STYLE_LABELS[look.tag]}</span>
-                    <h2 className="wall-title">{look.title}</h2>
-                  </div>
-                </div>
+                View look
               </Link>
-            );
-          })}
-        </div>
-      )}
+            )}
+          </div>
+        </section>
+      ) : null}
+
+      <div className="home-editorial-body">
+        <section
+          className="home-categories"
+          aria-label="Categories"
+        >
+          <p className="home-categories-label">Shop by edit</p>
+          <ul className="home-categories-list">
+            <li>
+              <button
+                type="button"
+                className={
+                  filter === 'all'
+                    ? 'home-category is-active'
+                    : 'home-category'
+                }
+                onClick={() => setFilter('all')}
+              >
+                All
+              </button>
+            </li>
+            {STYLE_ORDER.map((tag) => (
+              <li key={tag}>
+                <button
+                  type="button"
+                  className={
+                    filter === tag ? 'home-category is-active' : 'home-category'
+                  }
+                  onClick={() => setFilter(tag)}
+                >
+                  {STYLE_LABELS[tag].split(' / ')[0]}
+                </button>
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        {filtered.length === 0 ? (
+          <p className="empty-state home-empty">No looks in this edit.</p>
+        ) : (
+          <section
+            className="home-lookbook"
+            aria-label="Lookbook"
+          >
+            <header className="home-lookbook-head">
+              <h2 className="home-lookbook-title">The edit</h2>
+            </header>
+            <div className="gallery-wall gallery-wall--editorial">
+              {filtered.map((look, i) => (
+                <Link
+                  key={look.id}
+                  to={`/look/${look.id}`}
+                  className="wall-tile"
+                >
+                  <div className="wall-tile-media">
+                    <img
+                      src={look.hero}
+                      alt=""
+                      className="wall-tile-img"
+                      loading={i < 6 ? 'eager' : 'lazy'}
+                    />
+                  </div>
+                  <div className="wall-tile-cap">
+                    <span className="wall-tile-cat">
+                      {STYLE_LABELS[look.tag].split(' / ')[0]}
+                    </span>
+                    <span className="wall-tile-name">{look.title}</span>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </section>
+        )}
+      </div>
     </div>
   );
 }
