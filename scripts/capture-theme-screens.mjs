@@ -2,14 +2,14 @@
  * After `vite build`, run `npm run capture:ui` to start preview
  * and save theme toggle screenshots to CAPTURE_DIR.
  */
-import { spawn } from 'node:child_process';
+import { spawn, execFile } from 'node:child_process';
 import { access, mkdir, writeFile } from 'node:fs/promises';
+import { get } from 'node:http';
 import { join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { setTimeout as delay } from 'node:timers/promises';
 import process from 'node:process';
 import { promisify } from 'node:util';
-import { execFile } from 'node:child_process';
 import puppeteer from 'puppeteer-core';
 
 const execFileAsync = promisify(execFile);
@@ -24,15 +24,16 @@ const chromePath =
   process.env.CHROME_PATH ||
   '/usr/local/bin/google-chrome';
 
-function waitForUp(url, attempts = 50) {
+function waitForUp(targetUrl, attempts = 50) {
   return (async function again(i) {
-    if (i >= attempts) throw new Error(`Server not up: ${url}`);
-    try {
-      const res = await fetch(url);
-      if (res.ok) return;
-    } catch {
-      /* */
-    }
+    if (i >= attempts) throw new Error(`Server not up: ${targetUrl}`);
+    const ok = await new Promise((resolve) => {
+      get(targetUrl, (res) => {
+        res.resume();
+        resolve((res.statusCode ?? 0) < 500);
+      }).on('error', () => resolve(false));
+    });
+    if (ok) return;
     await delay(200);
     return again(i + 1);
   })(0);
