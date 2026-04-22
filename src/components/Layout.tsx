@@ -1,9 +1,23 @@
 import { Link, useLocation } from 'react-router-dom';
-import type { ReactNode } from 'react';
+import type { FormEvent, ReactNode } from 'react';
+import { useSearch } from '../context/SearchContext';
+import { useAppleKeyboardHint } from '../hooks/useAppleKeyboard';
 
 export function Layout({ children }: { children: ReactNode }) {
   const { pathname } = useLocation();
   const isAlbums = pathname.startsWith('/albums');
+  const { searchQuery, setSearchQuery, searchInputRef, searchInputId } =
+    useSearch();
+  const { modifierLabel } = useAppleKeyboardHint();
+
+  function onSearchFormSubmit(e: FormEvent) {
+    e.preventDefault();
+    const el = searchInputRef.current;
+    if (el) {
+      el.focus();
+      el.select();
+    }
+  }
 
   return (
     <div className="layout">
@@ -12,6 +26,34 @@ export function Layout({ children }: { children: ReactNode }) {
           <span className="logo-serif">Studio</span>
           <span className="logo-sans">Lookbook</span>
         </Link>
+        <form
+          className="header-search"
+          onSubmit={onSearchFormSubmit}
+          role="search"
+          aria-label="Search looks in the gallery"
+        >
+          <input
+            ref={searchInputRef}
+            id={searchInputId}
+            type="search"
+            className="header-search-input"
+            placeholder="Search looks"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            autoComplete="off"
+            enterKeyHint="search"
+            aria-label="Search looks"
+          />
+          <div className="search-shortcut-hint" aria-hidden>
+            <kbd className="kbd-pill">
+              {modifierLabel}
+            </kbd>
+            <span className="search-shortcut-plus" aria-hidden>
+              +
+            </span>
+            <kbd className="kbd-pill">K</kbd>
+          </div>
+        </form>
         <nav className="nav">
           <Link
             to="/"
