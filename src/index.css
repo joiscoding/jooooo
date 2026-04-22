@@ -288,6 +288,41 @@ img {
   text-align: center;
 }
 
+/* Shared list empty state (see ListEmptyState) */
+.list-empty-state {
+  max-width: 24rem;
+  margin: 0 auto;
+  padding: 2.5rem 1.25rem 3rem;
+  text-align: center;
+  color: var(--ink-muted);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.list-empty-state-title {
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  font-weight: 500;
+  color: var(--ink);
+  margin: 0 0 0.65rem;
+  line-height: 1.3;
+}
+
+.list-empty-state-desc {
+  margin: 0 0 1.25rem;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.list-empty-state-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  align-items: center;
+  justify-content: center;
+}
+
 .muted {
   color: var(--ink-muted);
 }
