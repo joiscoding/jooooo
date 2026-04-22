@@ -41,11 +41,12 @@ export function LookDetail() {
     );
   }
 
-  const images = [look.hero, ...look.gallery];
+  const current = look;
+  const images = [current.hero, ...current.gallery];
 
   function handleAddToExisting() {
     if (!selectedAlbumId) return;
-    addLookToAlbum(selectedAlbumId, look.id);
+    addLookToAlbum(selectedAlbumId, current.id);
     setToast('Saved to album.');
   }
 
@@ -54,7 +55,7 @@ export function LookDetail() {
     const name = newAlbumName.trim();
     if (!name) return;
     const al = createAlbum(name);
-    addLookToAlbum(al.id, look.id);
+    addLookToAlbum(al.id, current.id);
     setNewAlbumName('');
     setToast(`Created “${al.name}” and saved this look.`);
   }
@@ -69,13 +70,13 @@ export function LookDetail() {
         <div className="look-visual">
           <div className="look-hero-wrap">
             <img
-              key={look.hero}
-              src={look.hero}
+              key={current.hero}
+              src={current.hero}
               alt=""
               className="look-hero"
             />
           </div>
-          {look.gallery.length > 0 && (
+          {current.gallery.length > 0 && (
             <div className="look-thumbs">
               {images.map((src, i) => (
                 <img key={i} src={src} alt="" className="look-thumb" />
@@ -85,22 +86,22 @@ export function LookDetail() {
         </div>
 
         <div className="look-copy">
-          <p className="eyebrow">{STYLE_LABELS[look.tag]}</p>
-          <h1 className="look-detail-title">{look.title}</h1>
+          <p className="eyebrow">{STYLE_LABELS[current.tag]}</p>
+          <h1 className="look-detail-title">{current.title}</h1>
           <dl className="look-facts">
             <div>
               <dt>Season</dt>
-              <dd>{look.season}</dd>
+              <dd>{current.season}</dd>
             </div>
             <div>
               <dt>Occasion</dt>
-              <dd>{look.occasion}</dd>
+              <dd>{current.occasion}</dd>
             </div>
           </dl>
           <div className="key-items">
             <h2 className="h-small">Key items</h2>
             <ul>
-              {look.keyItems.map((item) => (
+              {current.keyItems.map((item) => (
                 <li key={item}>{item}</li>
               ))}
             </ul>
