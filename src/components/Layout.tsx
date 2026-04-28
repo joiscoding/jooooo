@@ -4,9 +4,14 @@ import type { ReactNode } from 'react';
 export function Layout({ children }: { children: ReactNode }) {
   const { pathname } = useLocation();
   const isAlbums = pathname.startsWith('/albums');
+  const isLinemanHome = pathname === '/';
 
   return (
-    <div className="layout">
+    <div
+      className={
+        isLinemanHome ? 'layout layout--lineman' : 'layout'
+      }
+    >
       <header className="site-header">
         <Link to="/" className="logo">
           <span className="logo-serif">Studio</span>
