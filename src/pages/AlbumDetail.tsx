@@ -4,11 +4,13 @@ import { fetchLooks } from '../data/fetchLooks';
 import { useAlbumsContext } from '../context/AlbumsContext';
 import type { Look } from '../types';
 import { STYLE_LABELS } from '../types';
+import { useCopyLink } from '../hooks/useCopyLink';
 
 export function AlbumDetail() {
   const { albumId } = useParams<{ albumId: string }>();
   const { albums, removeLookFromAlbum } = useAlbumsContext();
   const [looksMap, setLooksMap] = useState<Map<string, Look>>(new Map());
+  const copyLink = useCopyLink();
 
   const album = albums.find((a) => a.id === albumId);
 
@@ -33,9 +35,18 @@ export function AlbumDetail() {
       <Link to="/albums" className="back-link">
         ← Albums
       </Link>
-      <header className="page-head">
-        <h1 className="page-title">{album.name}</h1>
-        <p className="muted">{album.lookIds.length} saved look(s)</p>
+      <header className="page-head album-detail-head">
+        <div>
+          <h1 className="page-title">{album.name}</h1>
+          <p className="muted">{album.lookIds.length} saved look(s)</p>
+        </div>
+        <button
+          type="button"
+          className="btn ghost album-copy-page-btn"
+          onClick={() => void copyLink(`/albums/${album.id}`)}
+        >
+          Copy album link
+        </button>
       </header>
 
       {album.lookIds.length === 0 ? (
@@ -74,6 +85,14 @@ export function AlbumDetail() {
                     <h2 className="wall-title">{look.title}</h2>
                   </div>
                 </Link>
+                <button
+                  type="button"
+                  className="btn-icon album-look-copy-link"
+                  aria-label={`Copy link to ${look.title}`}
+                  onClick={() => void copyLink(`/look/${look.id}`)}
+                >
+                  Copy link
+                </button>
                 <button
                   type="button"
                   className="btn remove-from-album"

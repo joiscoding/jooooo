@@ -1,10 +1,12 @@
 import { useState, type FormEvent } from 'react';
 import { Link } from 'react-router-dom';
 import { useAlbumsContext } from '../context/AlbumsContext';
+import { useCopyLink } from '../hooks/useCopyLink';
 
 export function AlbumsList() {
   const { albums, createAlbum, deleteAlbum } = useAlbumsContext();
   const [name, setName] = useState('');
+  const copyLink = useCopyLink();
 
   function handleCreate(e: FormEvent) {
     e.preventDefault();
@@ -50,15 +52,24 @@ export function AlbumsList() {
                   {a.lookIds.length} look{a.lookIds.length === 1 ? '' : 's'}
                 </span>
               </Link>
-              <button
-                type="button"
-                className="btn text-danger"
-                onClick={() => {
-                  if (confirm(`Delete album “${a.name}”?`)) deleteAlbum(a.id);
-                }}
-              >
-                Delete
-              </button>
+              <div className="album-list-actions">
+                <button
+                  type="button"
+                  className="btn ghost album-row-copy"
+                  onClick={() => void copyLink(`/albums/${a.id}`)}
+                >
+                  Copy link
+                </button>
+                <button
+                  type="button"
+                  className="btn text-danger"
+                  onClick={() => {
+                    if (confirm(`Delete album “${a.name}”?`)) deleteAlbum(a.id);
+                  }}
+                >
+                  Delete
+                </button>
+              </div>
             </li>
           ))}
         </ul>

@@ -4,6 +4,7 @@ import { fetchLooks } from '../data/fetchLooks';
 import { useAlbumsContext } from '../context/AlbumsContext';
 import type { Look } from '../types';
 import { STYLE_LABELS } from '../types';
+import { useCopyLink } from '../hooks/useCopyLink';
 
 export function LookDetail() {
   const { lookId } = useParams<{ lookId: string }>();
@@ -13,6 +14,7 @@ export function LookDetail() {
   const [newAlbumName, setNewAlbumName] = useState('');
   const [selectedAlbumId, setSelectedAlbumId] = useState('');
   const [toast, setToast] = useState('');
+  const copyLookLink = useCopyLink();
 
   useEffect(() => {
     fetchLooks().then((all) => {
@@ -86,7 +88,16 @@ export function LookDetail() {
 
         <div className="look-copy">
           <p className="eyebrow">{STYLE_LABELS[look.tag]}</p>
-          <h1 className="look-detail-title">{look.title}</h1>
+          <div className="look-title-row">
+            <h1 className="look-detail-title">{look.title}</h1>
+            <button
+              type="button"
+              className="btn ghost look-copy-link-btn"
+              onClick={() => void copyLookLink(`/look/${look.id}`)}
+            >
+              Copy link
+            </button>
+          </div>
           <dl className="look-facts">
             <div>
               <dt>Season</dt>
