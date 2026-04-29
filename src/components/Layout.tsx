@@ -1,9 +1,11 @@
 import { Link, useLocation } from 'react-router-dom';
 import type { ReactNode } from 'react';
+import { useSearch } from '../context/SearchContext';
 
 export function Layout({ children }: { children: ReactNode }) {
   const { pathname } = useLocation();
   const isAlbums = pathname.startsWith('/albums');
+  const { query, setQuery, searchInputRef, shortcutHint } = useSearch();
 
   return (
     <div className="layout">
@@ -12,6 +14,27 @@ export function Layout({ children }: { children: ReactNode }) {
           <span className="logo-serif">Studio</span>
           <span className="logo-sans">Lookbook</span>
         </Link>
+        <div className="header-search-wrap">
+          <label className="header-search" htmlFor="global-search">
+            <span className="visually-hidden">Search looks</span>
+            <input
+              ref={searchInputRef}
+              id="global-search"
+              type="search"
+              name="q"
+              className="header-search-input"
+              placeholder="Search looks…"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              autoComplete="off"
+              spellCheck={false}
+              enterKeyHint="search"
+            />
+            <kbd className="header-search-kbd" aria-hidden="true">
+              {shortcutHint}
+            </kbd>
+          </label>
+        </div>
         <nav className="nav">
           <Link
             to="/"
