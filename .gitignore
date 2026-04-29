@@ -4,3 +4,8 @@ dist
 *.local
 .env
 .env.*
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+/artifacts/
