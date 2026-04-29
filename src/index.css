@@ -5,11 +5,23 @@
   --ink-muted: #5c5a57;
   --line: #e0ddd8;
   --accent: #2c2c2c;
+  --header-bg: rgba(244, 242, 239, 0.92);
   --font-sans: 'DM Sans', system-ui, sans-serif;
   --font-serif: 'Instrument Serif', Georgia, serif;
   --radius: 2px;
   --header-h: 4rem;
   --max: 1180px;
+}
+
+html.dark {
+  color-scheme: dark;
+  --bg: #121210;
+  --bg-elevated: #1c1c1a;
+  --ink: #eceae6;
+  --ink-muted: #9c9893;
+  --line: #343330;
+  --accent: #e8e6e1;
+  --header-bg: rgba(18, 18, 16, 0.92);
 }
 
 *,
@@ -63,9 +75,60 @@ img {
   justify-content: space-between;
   padding: 0 1.5rem;
   height: var(--header-h);
-  background: rgba(244, 242, 239, 0.92);
+  background: var(--header-bg);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--line);
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.45rem 0.65rem;
+  font-family: var(--font-sans);
+  font-size: 0.68rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ink-muted);
+  background: var(--bg-elevated);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s, background 0.2s;
+}
+
+.theme-toggle:hover {
+  color: var(--ink);
+  border-color: var(--ink-muted);
+}
+
+.theme-toggle-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ink);
+}
+
+.theme-toggle-label {
+  max-width: 7rem;
+  white-space: nowrap;
+}
+
+@media (max-width: 520px) {
+  .theme-toggle-label {
+    display: none;
+  }
+
+  .theme-toggle {
+    padding: 0.45rem;
+  }
 }
 
 .logo {
@@ -196,7 +259,7 @@ img {
 
 .filter-pill.active {
   background: var(--accent);
-  color: #f5f5f5;
+  color: var(--bg);
   border-color: var(--accent);
 }
 
@@ -433,7 +496,7 @@ img {
   font-size: 0.9rem;
   padding: 0.6rem 0.75rem;
   border: 1px solid var(--line);
-  background: #fff;
+  background: var(--bg-elevated);
   border-radius: var(--radius);
   color: var(--ink);
   flex: 1;
@@ -454,7 +517,7 @@ img {
 
 .btn.primary {
   background: var(--accent);
-  color: #fff;
+  color: var(--bg);
 }
 
 .btn.primary:disabled {
