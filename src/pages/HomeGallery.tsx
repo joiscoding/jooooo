@@ -1,6 +1,8 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useSearch } from '../context/SearchContext';
 import { fetchLooks } from '../data/fetchLooks';
+import { looksSearchText } from '../lib/looksSearchText';
 import type { Look, StyleTag } from '../types';
 import { STYLE_LABELS, STYLE_ORDER } from '../types';
 
@@ -8,6 +10,7 @@ export function HomeGallery() {
   const [looks, setLooks] = useState<Look[]>([]);
   const [filter, setFilter] = useState<StyleTag | 'all'>('all');
   const [loading, setLoading] = useState(true);
+  const { searchQuery } = useSearch();
 
   useEffect(() => {
     let cancelled = false;
@@ -23,9 +26,12 @@ export function HomeGallery() {
   }, []);
 
   const filtered = useMemo(() => {
-    if (filter === 'all') return looks;
-    return looks.filter((l) => l.tag === filter);
-  }, [looks, filter]);
+    const byTag =
+      filter === 'all' ? looks : looks.filter((l) => l.tag === filter);
+    const q = searchQuery.trim().toLowerCase();
+    if (!q) return byTag;
+    return byTag.filter((l) => looksSearchText(l).includes(q));
+  }, [looks, filter, searchQuery]);
 
   if (loading) {
     return (
