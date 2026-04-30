@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
+import { CopyLinkButton } from '../components/CopyLinkButton';
 import { fetchLooks } from '../data/fetchLooks';
 import { useAlbumsContext } from '../context/AlbumsContext';
 import type { Look } from '../types';
@@ -33,9 +34,16 @@ export function AlbumDetail() {
       <Link to="/albums" className="back-link">
         ← Albums
       </Link>
-      <header className="page-head">
-        <h1 className="page-title">{album.name}</h1>
-        <p className="muted">{album.lookIds.length} saved look(s)</p>
+      <header className="page-head album-detail-head">
+        <div>
+          <h1 className="page-title">{album.name}</h1>
+          <p className="muted">{album.lookIds.length} saved look(s)</p>
+        </div>
+        <CopyLinkButton
+          targetPath={`/albums/${album.id}`}
+          className="btn ghost"
+          aria-label="Copy link to this album"
+        />
       </header>
 
       {album.lookIds.length === 0 ? (
@@ -74,6 +82,11 @@ export function AlbumDetail() {
                     <h2 className="wall-title">{look.title}</h2>
                   </div>
                 </Link>
+                <CopyLinkButton
+                  targetPath={`/look/${look.id}`}
+                  className="btn ghost album-look-copy"
+                  aria-label={`Copy link to ${look.title}`}
+                />
                 <button
                   type="button"
                   className="btn remove-from-album"

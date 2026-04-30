@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { CopyLinkButton } from '../components/CopyLinkButton';
 import { fetchLooks } from '../data/fetchLooks';
 import type { Look, StyleTag } from '../types';
 import { STYLE_LABELS, STYLE_ORDER } from '../types';
@@ -76,6 +77,11 @@ export function HomeGallery() {
                 className="wall-card"
               >
                 <div className="wall-card-inner">
+                  <CopyLinkButton
+                    targetPath={`/look/${look.id}`}
+                    className="btn ghost wall-card-copy"
+                    aria-label={`Copy link to ${look.title}`}
+                  />
                   <img
                     key={`${look.id}-${look.hero}`}
                     src={look.hero}

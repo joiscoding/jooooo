@@ -114,6 +114,127 @@ img {
   text-decoration: none;
 }
 
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.header-overflow {
+  position: relative;
+}
+
+.header-overflow-trigger {
+  list-style: none;
+  cursor: pointer;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ink-muted);
+  padding: 0.35rem 0.5rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--bg-elevated);
+}
+
+.header-overflow-trigger::-webkit-details-marker {
+  display: none;
+}
+
+.header-overflow-trigger:hover {
+  color: var(--ink);
+}
+
+.header-overflow-panel {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 0.35rem);
+  min-width: 10rem;
+  padding: 0.35rem;
+  background: var(--bg-elevated);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  z-index: 60;
+}
+
+.header-overflow-item {
+  width: 100%;
+  text-align: left;
+  font-size: 0.75rem;
+}
+
+.global-toast {
+  position: fixed;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+  padding: 0.65rem 1.25rem;
+  background: var(--ink);
+  color: #fff;
+  font-size: 0.85rem;
+  border-radius: var(--radius);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  max-width: min(90vw, 24rem);
+  text-align: center;
+}
+
+.wall-card-copy {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  z-index: 2;
+  padding: 0.35rem 0.55rem;
+  font-size: 0.6rem;
+  background: rgba(255, 255, 255, 0.92);
+  border-color: rgba(0, 0, 0, 0.08);
+  color: var(--ink);
+}
+
+.wall-card-copy:hover {
+  background: #fff;
+}
+
+.look-title-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.look-copy-link-btn {
+  flex-shrink: 0;
+  margin-top: 1.5rem;
+}
+
+.album-detail-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.album-copy-link {
+  flex-shrink: 0;
+  font-size: 0.65rem;
+  padding: 0.4rem 0.65rem;
+}
+
+.album-look-copy {
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+  background: rgba(255, 255, 255, 0.92);
+  border: none;
+  font-size: 0.6rem;
+  padding: 0.35rem 0.5rem;
+  z-index: 2;
+}
+
 .main {
   flex: 1;
   width: 100%;
