@@ -36,7 +36,7 @@ export function LookDetail() {
     return (
       <div className="page-narrow">
         <p className="muted">Look not found.</p>
-        <Link to="/">Back to gallery</Link>
+        <Link to="/gallery">Back to gallery</Link>
       </div>
     );
   }
