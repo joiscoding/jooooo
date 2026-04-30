@@ -1,10 +1,12 @@
-import { useState, type FormEvent } from 'react';
+import { useRef, useState, type FormEvent } from 'react';
 import { Link } from 'react-router-dom';
 import { useAlbumsContext } from '../context/AlbumsContext';
+import { ListEmptyState } from '../components/ListEmptyState';
 
 export function AlbumsList() {
   const { albums, createAlbum, deleteAlbum } = useAlbumsContext();
   const [name, setName] = useState('');
+  const nameInputRef = useRef<HTMLInputElement>(null);
 
   function handleCreate(e: FormEvent) {
     e.preventDefault();
@@ -25,6 +27,7 @@ export function AlbumsList() {
 
       <form onSubmit={handleCreate} className="create-album-form">
         <input
+          ref={nameInputRef}
           className="text-input"
           placeholder="New album name"
           value={name}
@@ -37,9 +40,22 @@ export function AlbumsList() {
       </form>
 
       {albums.length === 0 ? (
-        <p className="empty-state">
-          No albums yet. Create one above, or add a look from any look page.
-        </p>
+        <ListEmptyState
+          title="No albums yet"
+          description="Create an album to collect looks from the gallery, or browse looks and save them from any look page."
+          primary={{
+            kind: 'button',
+            label: 'Create album',
+            onClick: () => {
+              nameInputRef.current?.focus();
+              nameInputRef.current?.scrollIntoView({
+                behavior: 'smooth',
+                block: 'center',
+              });
+            },
+          }}
+          secondary={{ kind: 'link', to: '/', label: 'Browse looks' }}
+        />
       ) : (
         <ul className="album-list">
           {albums.map((a) => (

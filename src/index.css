@@ -288,6 +288,48 @@ img {
   text-align: center;
 }
 
+.list-empty-state {
+  max-width: 26rem;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem;
+  text-align: center;
+  background: var(--bg-elevated);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+.list-empty-title {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  font-weight: 400;
+  margin: 0 0 0.75rem;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+
+.list-empty-desc {
+  margin: 0 0 1.5rem;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: var(--ink-muted);
+}
+
+.list-empty-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.list-empty-cta {
+  text-decoration: none;
+}
+
+.list-empty-cta.btn:hover {
+  text-decoration: none;
+}
+
 .muted {
   color: var(--ink-muted);
 }
