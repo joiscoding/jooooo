@@ -4,6 +4,8 @@ import { fetchLooks } from '../data/fetchLooks';
 import { useAlbumsContext } from '../context/AlbumsContext';
 import type { Look } from '../types';
 import { STYLE_LABELS } from '../types';
+import { CopyLinkButton } from '../components/CopyLinkButton';
+import { getCanonicalPageUrl } from '../lib/canonicalUrl';
 
 export function LookDetail() {
   const { lookId } = useParams<{ lookId: string }>();
@@ -61,9 +63,17 @@ export function LookDetail() {
 
   return (
     <article className="look-detail">
-      <button type="button" className="back-link" onClick={() => navigate(-1)}>
-        ← Back
-      </button>
+      <div className="look-detail-top">
+        <button type="button" className="back-link" onClick={() => navigate(-1)}>
+          ← Back
+        </button>
+        <CopyLinkButton
+          url={getCanonicalPageUrl()}
+          className="ghost look-detail-copy"
+          label="Copy link"
+          successMessage="Look link copied."
+        />
+      </div>
 
       <div className="look-detail-grid">
         <div className="look-visual">

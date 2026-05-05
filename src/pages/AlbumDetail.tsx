@@ -4,6 +4,8 @@ import { fetchLooks } from '../data/fetchLooks';
 import { useAlbumsContext } from '../context/AlbumsContext';
 import type { Look } from '../types';
 import { STYLE_LABELS } from '../types';
+import { CopyLinkButton } from '../components/CopyLinkButton';
+import { getCanonicalUrlForPath } from '../lib/canonicalUrl';
 
 export function AlbumDetail() {
   const { albumId } = useParams<{ albumId: string }>();
@@ -33,9 +35,17 @@ export function AlbumDetail() {
       <Link to="/albums" className="back-link">
         ← Albums
       </Link>
-      <header className="page-head">
-        <h1 className="page-title">{album.name}</h1>
-        <p className="muted">{album.lookIds.length} saved look(s)</p>
+      <header className="page-head album-detail-head">
+        <div>
+          <h1 className="page-title">{album.name}</h1>
+          <p className="muted">{album.lookIds.length} saved look(s)</p>
+        </div>
+        <CopyLinkButton
+          url={getCanonicalUrlForPath(`/albums/${album.id}`)}
+          className="ghost album-page-copy"
+          label="Copy album link"
+          successMessage="Album link copied."
+        />
       </header>
 
       {album.lookIds.length === 0 ? (
@@ -62,6 +72,11 @@ export function AlbumDetail() {
             }
             return (
               <li key={id} className="album-look-card">
+                <CopyLinkButton
+                  url={getCanonicalUrlForPath(`/look/${look.id}`)}
+                  className="ghost album-look-copy"
+                  label="Copy link"
+                />
                 <Link to={`/look/${look.id}`} className="album-look-link">
                   <img
                     key={`${look.id}-${look.hero}`}

@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { fetchLooks } from '../data/fetchLooks';
 import type { Look, StyleTag } from '../types';
 import { STYLE_LABELS, STYLE_ORDER } from '../types';
+import { CopyLinkButton } from '../components/CopyLinkButton';
+import { getCanonicalUrlForPath } from '../lib/canonicalUrl';
 
 export function HomeGallery() {
   const [looks, setLooks] = useState<Look[]>([]);
@@ -76,6 +78,11 @@ export function HomeGallery() {
                 className="wall-card"
               >
                 <div className="wall-card-inner">
+                  <CopyLinkButton
+                    url={getCanonicalUrlForPath(`/look/${look.id}`)}
+                    className="ghost wall-card-copy"
+                    label="Copy link"
+                  />
                   <img
                     key={`${look.id}-${look.hero}`}
                     src={look.hero}
