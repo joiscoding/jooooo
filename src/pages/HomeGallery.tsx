@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { fetchLooks } from '../data/fetchLooks';
+import { ListEmptyState } from '../components/ListEmptyState';
+import { clearLooksSessionOverride, fetchLooks } from '../data/fetchLooks';
 import type { Look, StyleTag } from '../types';
 import { STYLE_LABELS, STYLE_ORDER } from '../types';
 
@@ -65,7 +66,36 @@ export function HomeGallery() {
       </section>
 
       {filtered.length === 0 ? (
-        <p className="empty-state">No looks in this filter.</p>
+        looks.length === 0 ? (
+          <ListEmptyState
+            title="Nothing to show yet"
+            description="If the catalog was cleared or overridden in this browser, you can restore the bundled demo looks."
+            primaryAction={{
+              label: 'Reload default catalog',
+              onClick: () => {
+                clearLooksSessionOverride();
+                window.location.reload();
+              },
+            }}
+            secondaryAction={{
+              label: 'Manage albums',
+              to: '/albums',
+            }}
+          />
+        ) : (
+          <ListEmptyState
+            title="No looks in this style"
+            description="Try another filter or view everything in the gallery."
+            primaryAction={{
+              label: 'Show all looks',
+              onClick: () => setFilter('all'),
+            }}
+            secondaryAction={{
+              label: 'Open albums',
+              to: '/albums',
+            }}
+          />
+        )
       ) : (
         <div className="gallery-wall">
           {filtered.map((look, i) => {
