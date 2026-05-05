@@ -1,15 +1,37 @@
 :root {
   --bg: #f4f2ef;
   --bg-elevated: #faf9f7;
+  --surface: #ffffff;
   --ink: #1a1a1a;
   --ink-muted: #5c5a57;
   --line: #e0ddd8;
   --accent: #2c2c2c;
+  --on-accent: #f5f5f5;
+  --shadow-card: 0 12px 40px rgba(0, 0, 0, 0.08);
+  --header-bg: rgba(244, 242, 239, 0.92);
   --font-sans: 'DM Sans', system-ui, sans-serif;
   --font-serif: 'Instrument Serif', Georgia, serif;
   --radius: 2px;
   --header-h: 4rem;
   --max: 1180px;
+}
+
+html[data-theme='dark'] {
+  color-scheme: dark;
+  --bg: #121212;
+  --bg-elevated: #1c1c1c;
+  --surface: #242424;
+  --ink: #eceae7;
+  --ink-muted: #a8a6a3;
+  --line: #3a3936;
+  --accent: #e8e6e3;
+  --on-accent: #121212;
+  --shadow-card: 0 12px 40px rgba(0, 0, 0, 0.45);
+  --header-bg: rgba(18, 18, 18, 0.92);
+}
+
+html[data-theme='light'] {
+  color-scheme: light;
 }
 
 *,
@@ -61,11 +83,69 @@ img {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
   padding: 0 1.5rem;
-  height: var(--header-h);
-  background: rgba(244, 242, 239, 0.92);
+  min-height: var(--header-h);
+  background: var(--header-bg);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--line);
+}
+
+.site-header .nav {
+  margin-left: auto;
+}
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: stretch;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.theme-toggle-btn {
+  font-family: var(--font-sans);
+  font-size: 0.65rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 0.45rem 0.65rem;
+  border: none;
+  background: transparent;
+  color: var(--ink-muted);
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+
+.theme-toggle-btn:hover {
+  color: var(--ink);
+  background: var(--bg-elevated);
+}
+
+.theme-toggle-btn.active {
+  background: var(--accent);
+  color: var(--on-accent);
+}
+
+@media (max-width: 640px) {
+  .site-header {
+    padding-top: 0.65rem;
+    padding-bottom: 0.65rem;
+    height: auto;
+  }
+
+  .site-header .nav {
+    margin-left: 0;
+    order: 3;
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .theme-toggle {
+    margin-left: auto;
+  }
 }
 
 .logo {
@@ -196,7 +276,7 @@ img {
 
 .filter-pill.active {
   background: var(--accent);
-  color: #f5f5f5;
+  color: var(--on-accent);
   border-color: var(--accent);
 }
 
@@ -226,7 +306,7 @@ img {
 .wall-card:hover {
   text-decoration: none;
   transform: translateY(-2px);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+  box-shadow: var(--shadow-card);
 }
 
 .wall-card-inner {
@@ -433,7 +513,7 @@ img {
   font-size: 0.9rem;
   padding: 0.6rem 0.75rem;
   border: 1px solid var(--line);
-  background: #fff;
+  background: var(--surface);
   border-radius: var(--radius);
   color: var(--ink);
   flex: 1;
@@ -454,7 +534,7 @@ img {
 
 .btn.primary {
   background: var(--accent);
-  color: #fff;
+  color: var(--on-accent);
 }
 
 .btn.primary:disabled {
@@ -612,7 +692,7 @@ img {
   position: absolute;
   top: 0.5rem;
   right: 0.5rem;
-  background: rgba(255, 255, 255, 0.92);
+  background: color-mix(in srgb, var(--surface) 92%, transparent);
   border: none;
   font-size: 0.65rem;
   padding: 0.35rem 0.5rem;

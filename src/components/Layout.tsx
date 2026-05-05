@@ -1,5 +1,6 @@
 import { Link, useLocation } from 'react-router-dom';
 import type { ReactNode } from 'react';
+import { ThemeToggle } from './ThemeToggle';
 
 export function Layout({ children }: { children: ReactNode }) {
   const { pathname } = useLocation();
@@ -26,6 +27,7 @@ export function Layout({ children }: { children: ReactNode }) {
             Albums
           </Link>
         </nav>
+        <ThemeToggle />
       </header>
       <main className="main">{children}</main>
       <footer className="site-footer">

@@ -12,6 +12,34 @@
     />
   </head>
   <body>
+    <script>
+      (function () {
+        try {
+          var key = 'lookbook-theme';
+          var raw = localStorage.getItem(key);
+          var pref = 'system';
+          if (raw && raw !== '') {
+            try {
+              var p = JSON.parse(raw);
+              if (p === 'system' || p === 'light' || p === 'dark') pref = p;
+            } catch (e) {
+              if (raw === 'system' || raw === 'light' || raw === 'dark')
+                pref = raw;
+            }
+          }
+          var darkMq = window.matchMedia('(prefers-color-scheme: dark)');
+          var prefersDark = darkMq.matches;
+          var resolved =
+            pref === 'light' ? 'light' : pref === 'dark' ? 'dark' : prefersDark ? 'dark' : 'light';
+          document.documentElement.dataset.theme = resolved;
+          document.documentElement.style.colorScheme =
+            resolved === 'dark' ? 'dark' : 'light';
+        } catch (err) {
+          document.documentElement.dataset.theme = 'light';
+          document.documentElement.style.colorScheme = 'light';
+        }
+      })();
+    </script>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
