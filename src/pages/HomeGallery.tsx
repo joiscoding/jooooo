@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { fetchLooks } from '../data/fetchLooks';
+import { ListEmptyState } from '../components/ListEmptyState';
 import type { Look, StyleTag } from '../types';
 import { STYLE_LABELS, STYLE_ORDER } from '../types';
 
@@ -65,7 +66,35 @@ export function HomeGallery() {
       </section>
 
       {filtered.length === 0 ? (
-        <p className="empty-state">No looks in this filter.</p>
+        looks.length === 0 ? (
+          <ListEmptyState
+            title="No looks to show"
+            description="We could not load any looks. If you are overriding the catalog in session storage, check that the JSON is valid."
+            primaryAction={{
+              label: 'Reload page',
+              onClick: () => {
+                window.location.reload();
+              },
+            }}
+            secondaryAction={{
+              label: 'Photo credits (Unsplash)',
+              href: 'https://unsplash.com',
+            }}
+          />
+        ) : (
+          <ListEmptyState
+            title="Nothing matches this filter"
+            description="Try another style, or clear the filter to see the full seasonal edit."
+            primaryAction={{
+              label: 'Show all looks',
+              onClick: () => setFilter('all'),
+            }}
+            secondaryAction={{
+              label: 'Photo credits (Unsplash)',
+              href: 'https://unsplash.com',
+            }}
+          />
+        )
       ) : (
         <div className="gallery-wall">
           {filtered.map((look, i) => {

@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { fetchLooks } from '../data/fetchLooks';
 import { useAlbumsContext } from '../context/AlbumsContext';
+import { ListEmptyState } from '../components/ListEmptyState';
 import type { Look } from '../types';
 import { STYLE_LABELS } from '../types';
 
@@ -39,9 +40,12 @@ export function AlbumDetail() {
       </header>
 
       {album.lookIds.length === 0 ? (
-        <p className="empty-state">
-          Empty album. Add looks from the gallery or look pages.
-        </p>
+        <ListEmptyState
+          title="This album is empty"
+          description="Open any look and use “Add to album” to save it here, or start from the gallery and build a shortlist."
+          primaryAction={{ label: 'Browse the gallery', href: '/' }}
+          secondaryAction={{ label: 'Back to albums', href: '/albums' }}
+        />
       ) : (
         <ul className="album-looks-grid">
           {album.lookIds.map((id) => {

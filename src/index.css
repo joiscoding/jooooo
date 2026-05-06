@@ -281,11 +281,52 @@ img {
   line-height: 1.2;
 }
 
-.page-loading,
-.empty-state {
+.page-loading {
   padding: 3rem 0;
   color: var(--ink-muted);
   text-align: center;
+}
+
+.list-empty-state {
+  margin: 2.5rem auto 3rem;
+  max-width: 26rem;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  background: var(--bg-elevated);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+.list-empty-title {
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  font-weight: 400;
+  margin: 0 0 0.65rem;
+  color: var(--ink);
+  letter-spacing: -0.02em;
+}
+
+.list-empty-desc {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: var(--ink-muted);
+}
+
+.list-empty-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+  margin-top: 1.35rem;
+}
+
+.list-empty-cta {
+  text-decoration: none;
+}
+
+.list-empty-cta:hover {
+  text-decoration: none;
 }
 
 .muted {
