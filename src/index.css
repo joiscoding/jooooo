@@ -5,11 +5,25 @@
   --ink-muted: #5c5a57;
   --line: #e0ddd8;
   --accent: #2c2c2c;
+  --header-surface: rgba(244, 242, 239, 0.92);
+  --shadow-card: 0 12px 40px rgba(0, 0, 0, 0.08);
   --font-sans: 'DM Sans', system-ui, sans-serif;
   --font-serif: 'Instrument Serif', Georgia, serif;
   --radius: 2px;
   --header-h: 4rem;
   --max: 1180px;
+}
+
+[data-scheme='dark'] {
+  color-scheme: dark;
+  --bg: #141312;
+  --bg-elevated: #1e1d1b;
+  --ink: #eceae6;
+  --ink-muted: #a39e96;
+  --line: #33312d;
+  --accent: #d4d0c8;
+  --header-surface: rgba(20, 19, 18, 0.92);
+  --shadow-card: 0 12px 40px rgba(0, 0, 0, 0.45);
 }
 
 *,
@@ -61,11 +75,51 @@ img {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 1rem;
   padding: 0 1.5rem;
   height: var(--header-h);
-  background: rgba(244, 242, 239, 0.92);
+  background: var(--header-surface);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--line);
+}
+
+.header-tools {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.theme-toggle {
+  display: inline-flex;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--bg-elevated);
+}
+
+.theme-toggle-btn {
+  font-family: var(--font-sans);
+  font-size: 0.65rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 0.45rem 0.65rem;
+  border: none;
+  background: transparent;
+  color: var(--ink-muted);
+  cursor: pointer;
+  transition: color 0.15s, background 0.15s;
+}
+
+.theme-toggle-btn:hover {
+  color: var(--ink);
+}
+
+.theme-toggle-btn.active {
+  background: var(--accent);
+  color: var(--bg);
 }
 
 .logo {
@@ -196,7 +250,7 @@ img {
 
 .filter-pill.active {
   background: var(--accent);
-  color: #f5f5f5;
+  color: var(--bg);
   border-color: var(--accent);
 }
 
@@ -226,7 +280,7 @@ img {
 .wall-card:hover {
   text-decoration: none;
   transform: translateY(-2px);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+  box-shadow: var(--shadow-card);
 }
 
 .wall-card-inner {
@@ -433,7 +487,7 @@ img {
   font-size: 0.9rem;
   padding: 0.6rem 0.75rem;
   border: 1px solid var(--line);
-  background: #fff;
+  background: var(--bg-elevated);
   border-radius: var(--radius);
   color: var(--ink);
   flex: 1;
@@ -454,7 +508,7 @@ img {
 
 .btn.primary {
   background: var(--accent);
-  color: #fff;
+  color: var(--bg);
 }
 
 .btn.primary:disabled {

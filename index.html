@@ -3,6 +3,20 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+      (function () {
+        try {
+          var k = 'lookbook-theme';
+          var v = localStorage.getItem(k);
+          var m = window.matchMedia('(prefers-color-scheme: dark)');
+          var scheme =
+            v === 'dark' ? 'dark' : v === 'light' ? 'light' : m.matches ? 'dark' : 'light';
+          document.documentElement.setAttribute('data-scheme', scheme);
+        } catch {
+          document.documentElement.setAttribute('data-scheme', 'light');
+        }
+      })();
+    </script>
     <title>Studio Lookbook — Men</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
