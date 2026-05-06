@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { ListEmptyState } from '../components/ListEmptyState';
 import { fetchLooks } from '../data/fetchLooks';
 import type { Look, StyleTag } from '../types';
 import { STYLE_LABELS, STYLE_ORDER } from '../types';
@@ -65,7 +66,33 @@ export function HomeGallery() {
       </section>
 
       {filtered.length === 0 ? (
-        <p className="empty-state">No looks in this filter.</p>
+        looks.length === 0 ? (
+          <ListEmptyState
+            title="No looks to show"
+            description="The catalog is empty right now. Reload the page or check back later."
+            primaryAction={{
+              action: 'button',
+              label: 'Reload page',
+              onClick: () => {
+                window.location.reload();
+              },
+            }}
+            secondaryAction={{ action: 'route', label: 'View albums', to: '/albums' }}
+          />
+        ) : (
+          <ListEmptyState
+            title="Nothing matches this filter"
+            description="Try another style or reset filters to see every look."
+            primaryAction={{
+              action: 'button',
+              label: 'Show all looks',
+              onClick: () => {
+                setFilter('all');
+              },
+            }}
+            secondaryAction={{ action: 'route', label: 'Open albums', to: '/albums' }}
+          />
+        )
       ) : (
         <div className="gallery-wall">
           {filtered.map((look, i) => {
