@@ -38,7 +38,7 @@ export function Layout({ children }: { children: ReactNode }) {
           >
             Unsplash
           </a>
-          . Modern style, designed to last.
+          . Performance fabrics; polished, wearable energy.
         </p>
       </footer>
     </div>
