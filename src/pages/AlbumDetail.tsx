@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
+import { CopyLinkButton } from '../components/CopyLinkButton';
 import { fetchLooks } from '../data/fetchLooks';
 import { useAlbumsContext } from '../context/AlbumsContext';
 import type { Look } from '../types';
@@ -74,6 +75,13 @@ export function AlbumDetail() {
                     <h2 className="wall-title">{look.title}</h2>
                   </div>
                 </Link>
+                <CopyLinkButton
+                  path={`/look/${look.id}`}
+                  compact
+                  overlay
+                  label={`Copy link to ${look.title}`}
+                  className="album-look-copy"
+                />
                 <button
                   type="button"
                   className="btn remove-from-album"

@@ -1,5 +1,6 @@
 import { useState, type FormEvent } from 'react';
 import { Link } from 'react-router-dom';
+import { CopyLinkButton } from '../components/CopyLinkButton';
 import { useAlbumsContext } from '../context/AlbumsContext';
 
 export function AlbumsList() {
@@ -50,6 +51,12 @@ export function AlbumsList() {
                   {a.lookIds.length} look{a.lookIds.length === 1 ? '' : 's'}
                 </span>
               </Link>
+              <CopyLinkButton
+                path={`/albums/${a.id}`}
+                compact
+                label={`Copy link to album ${a.name}`}
+                className="album-row-copy"
+              />
               <button
                 type="button"
                 className="btn text-danger"
