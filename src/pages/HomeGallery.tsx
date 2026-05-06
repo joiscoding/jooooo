@@ -1,10 +1,16 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useSearch } from '../context/SearchContext';
 import { fetchLooks } from '../data/fetchLooks';
 import type { Look, StyleTag } from '../types';
 import { STYLE_LABELS, STYLE_ORDER } from '../types';
 
+function normalizeQuery(q: string): string {
+  return q.trim().toLowerCase();
+}
+
 export function HomeGallery() {
+  const { query } = useSearch();
   const [looks, setLooks] = useState<Look[]>([]);
   const [filter, setFilter] = useState<StyleTag | 'all'>('all');
   const [loading, setLoading] = useState(true);
@@ -23,9 +29,23 @@ export function HomeGallery() {
   }, []);
 
   const filtered = useMemo(() => {
-    if (filter === 'all') return looks;
-    return looks.filter((l) => l.tag === filter);
-  }, [looks, filter]);
+    const byTag =
+      filter === 'all' ? looks : looks.filter((l) => l.tag === filter);
+    const q = normalizeQuery(query);
+    if (!q) return byTag;
+    return byTag.filter((l) => {
+      const hay = [
+        l.title,
+        STYLE_LABELS[l.tag],
+        l.season,
+        l.occasion,
+        ...l.keyItems,
+      ]
+        .join(' ')
+        .toLowerCase();
+      return hay.includes(q);
+    });
+  }, [looks, filter, query]);
 
   if (loading) {
     return (
@@ -65,7 +85,11 @@ export function HomeGallery() {
       </section>
 
       {filtered.length === 0 ? (
-        <p className="empty-state">No looks in this filter.</p>
+        <p className="empty-state">
+          {normalizeQuery(query)
+            ? 'No looks match your search.'
+            : 'No looks in this filter.'}
+        </p>
       ) : (
         <div className="gallery-wall">
           {filtered.map((look, i) => {
