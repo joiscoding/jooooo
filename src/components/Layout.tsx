@@ -21,6 +21,7 @@ function NavLinks({
 
   return (
     <nav
+      id={variant === 'sidebar' ? 'sidebar-primary-nav' : undefined}
       className={navClass}
       aria-label="Primary"
       data-collapsed={variant === 'sidebar' && sidebarCollapsed ? 'true' : undefined}
@@ -85,7 +86,7 @@ export function Layout({ children }: { children: ReactNode }) {
             className="sidebar-toggle"
             onClick={toggleCollapsed}
             aria-expanded={!collapsed}
-            aria-controls="site-sidebar"
+            aria-controls="sidebar-primary-nav"
             aria-label={
               collapsed ? 'Expand navigation' : 'Collapse navigation'
             }
