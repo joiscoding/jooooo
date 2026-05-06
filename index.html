@@ -10,6 +10,26 @@
       href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Instrument+Serif:ital@0;1&display=swap"
       rel="stylesheet"
     />
+    <!-- Keep preference parsing aligned with src/theme/preferences.ts (THEME_STORAGE_KEY + parse rules). -->
+    <script>
+      (function () {
+        try {
+          var k = 'lookbook-theme';
+          var raw = localStorage.getItem(k);
+          var p =
+            raw === 'light' || raw === 'dark' || raw === 'system'
+              ? raw
+              : 'system';
+          var dark =
+            p === 'dark' ||
+            (p === 'system' &&
+              window.matchMedia('(prefers-color-scheme: dark)').matches);
+          document.documentElement.dataset.theme = dark ? 'dark' : 'light';
+        } catch (e) {
+          document.documentElement.dataset.theme = 'light';
+        }
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>
