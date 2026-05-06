@@ -4,6 +4,8 @@ import { fetchLooks } from '../data/fetchLooks';
 import { useAlbumsContext } from '../context/AlbumsContext';
 import type { Look } from '../types';
 import { STYLE_LABELS } from '../types';
+import { CopyLinkButton } from '../components/CopyLinkButton';
+import { buildCanonicalUrl } from '../lib/canonicalUrl';
 
 export function LookDetail() {
   const { lookId } = useParams<{ lookId: string }>();
@@ -13,6 +15,7 @@ export function LookDetail() {
   const [newAlbumName, setNewAlbumName] = useState('');
   const [selectedAlbumId, setSelectedAlbumId] = useState('');
   const [toast, setToast] = useState('');
+  const origin = typeof window !== 'undefined' ? window.location.origin : '';
 
   useEffect(() => {
     fetchLooks().then((all) => {
@@ -85,8 +88,18 @@ export function LookDetail() {
         </div>
 
         <div className="look-copy">
-          <p className="eyebrow">{STYLE_LABELS[look.tag]}</p>
-          <h1 className="look-detail-title">{look.title}</h1>
+          <div className="look-title-row">
+            <div>
+              <p className="eyebrow">{STYLE_LABELS[look.tag]}</p>
+              <h1 className="look-detail-title">{look.title}</h1>
+            </div>
+            <CopyLinkButton
+              url={buildCanonicalUrl(origin, `/look/${look.id}`)}
+              label="Copy link"
+              className="btn ghost copy-link-btn copy-link-btn--inline"
+              stopPropagation={false}
+            />
+          </div>
           <dl className="look-facts">
             <div>
               <dt>Season</dt>

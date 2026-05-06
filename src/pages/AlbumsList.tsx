@@ -1,10 +1,13 @@
 import { useState, type FormEvent } from 'react';
 import { Link } from 'react-router-dom';
 import { useAlbumsContext } from '../context/AlbumsContext';
+import { CopyLinkButton } from '../components/CopyLinkButton';
+import { buildCanonicalUrl } from '../lib/canonicalUrl';
 
 export function AlbumsList() {
   const { albums, createAlbum, deleteAlbum } = useAlbumsContext();
   const [name, setName] = useState('');
+  const origin = typeof window !== 'undefined' ? window.location.origin : '';
 
   function handleCreate(e: FormEvent) {
     e.preventDefault();
@@ -50,15 +53,22 @@ export function AlbumsList() {
                   {a.lookIds.length} look{a.lookIds.length === 1 ? '' : 's'}
                 </span>
               </Link>
-              <button
-                type="button"
-                className="btn text-danger"
-                onClick={() => {
-                  if (confirm(`Delete album “${a.name}”?`)) deleteAlbum(a.id);
-                }}
-              >
-                Delete
-              </button>
+              <div className="album-list-actions">
+                <CopyLinkButton
+                  url={buildCanonicalUrl(origin, `/albums/${a.id}`)}
+                  label="Copy album link"
+                  className="btn ghost copy-link-btn copy-link-btn--compact"
+                />
+                <button
+                  type="button"
+                  className="btn text-danger"
+                  onClick={() => {
+                    if (confirm(`Delete album “${a.name}”?`)) deleteAlbum(a.id);
+                  }}
+                >
+                  Delete
+                </button>
+              </div>
             </li>
           ))}
         </ul>

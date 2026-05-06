@@ -3,11 +3,14 @@ import { Link } from 'react-router-dom';
 import { fetchLooks } from '../data/fetchLooks';
 import type { Look, StyleTag } from '../types';
 import { STYLE_LABELS, STYLE_ORDER } from '../types';
+import { CopyLinkButton } from '../components/CopyLinkButton';
+import { buildCanonicalUrl } from '../lib/canonicalUrl';
 
 export function HomeGallery() {
   const [looks, setLooks] = useState<Look[]>([]);
   const [filter, setFilter] = useState<StyleTag | 'all'>('all');
   const [loading, setLoading] = useState(true);
+  const origin = typeof window !== 'undefined' ? window.location.origin : '';
 
   useEffect(() => {
     let cancelled = false;
@@ -69,26 +72,30 @@ export function HomeGallery() {
       ) : (
         <div className="gallery-wall">
           {filtered.map((look, i) => {
+            const lookUrl = buildCanonicalUrl(origin, `/look/${look.id}`);
             return (
-              <Link
-                key={look.id}
-                to={`/look/${look.id}`}
-                className="wall-card"
-              >
-                <div className="wall-card-inner">
-                  <img
-                    key={`${look.id}-${look.hero}`}
-                    src={look.hero}
-                    alt=""
-                    className="wall-img"
-                    loading={i < 4 ? 'eager' : 'lazy'}
-                  />
-                  <div className="wall-meta">
-                    <span className="wall-tag">{STYLE_LABELS[look.tag]}</span>
-                    <h2 className="wall-title">{look.title}</h2>
+              <div key={look.id} className="wall-card-wrap">
+                <Link to={`/look/${look.id}`} className="wall-card">
+                  <div className="wall-card-inner">
+                    <img
+                      key={`${look.id}-${look.hero}`}
+                      src={look.hero}
+                      alt=""
+                      className="wall-img"
+                      loading={i < 4 ? 'eager' : 'lazy'}
+                    />
+                    <div className="wall-meta">
+                      <span className="wall-tag">{STYLE_LABELS[look.tag]}</span>
+                      <h2 className="wall-title">{look.title}</h2>
+                    </div>
                   </div>
-                </div>
-              </Link>
+                </Link>
+                <CopyLinkButton
+                  url={lookUrl}
+                  label="Copy look link"
+                  className="btn copy-link-btn copy-link-btn--overlay"
+                />
+              </div>
             );
           })}
         </div>

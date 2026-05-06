@@ -4,11 +4,14 @@ import { fetchLooks } from '../data/fetchLooks';
 import { useAlbumsContext } from '../context/AlbumsContext';
 import type { Look } from '../types';
 import { STYLE_LABELS } from '../types';
+import { CopyLinkButton } from '../components/CopyLinkButton';
+import { buildCanonicalUrl } from '../lib/canonicalUrl';
 
 export function AlbumDetail() {
   const { albumId } = useParams<{ albumId: string }>();
   const { albums, removeLookFromAlbum } = useAlbumsContext();
   const [looksMap, setLooksMap] = useState<Map<string, Look>>(new Map());
+  const origin = typeof window !== 'undefined' ? window.location.origin : '';
 
   const album = albums.find((a) => a.id === albumId);
 
@@ -33,9 +36,17 @@ export function AlbumDetail() {
       <Link to="/albums" className="back-link">
         ← Albums
       </Link>
-      <header className="page-head">
-        <h1 className="page-title">{album.name}</h1>
-        <p className="muted">{album.lookIds.length} saved look(s)</p>
+      <header className="page-head album-detail-head">
+        <div>
+          <h1 className="page-title">{album.name}</h1>
+          <p className="muted">{album.lookIds.length} saved look(s)</p>
+        </div>
+        <CopyLinkButton
+          url={buildCanonicalUrl(origin, `/albums/${album.id}`)}
+          label="Copy album link"
+          className="btn ghost copy-link-btn"
+          stopPropagation={false}
+        />
       </header>
 
       {album.lookIds.length === 0 ? (
@@ -74,6 +85,11 @@ export function AlbumDetail() {
                     <h2 className="wall-title">{look.title}</h2>
                   </div>
                 </Link>
+                <CopyLinkButton
+                  url={buildCanonicalUrl(origin, `/look/${look.id}`)}
+                  label="Copy look link"
+                  className="btn copy-link-btn copy-link-btn--album-card"
+                />
                 <button
                   type="button"
                   className="btn remove-from-album"
