@@ -1,13 +1,25 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useGallerySearch } from '../context/GallerySearchContext';
 import { fetchLooks } from '../data/fetchLooks';
 import type { Look, StyleTag } from '../types';
 import { STYLE_LABELS, STYLE_ORDER } from '../types';
+
+function lookMatchesSearch(look: Look, raw: string): boolean {
+  const q = raw.trim().toLowerCase();
+  if (!q) return true;
+  if (look.title.toLowerCase().includes(q)) return true;
+  if (STYLE_LABELS[look.tag].toLowerCase().includes(q)) return true;
+  if (look.season.toLowerCase().includes(q)) return true;
+  if (look.occasion.toLowerCase().includes(q)) return true;
+  return look.keyItems.some((item) => item.toLowerCase().includes(q));
+}
 
 export function HomeGallery() {
   const [looks, setLooks] = useState<Look[]>([]);
   const [filter, setFilter] = useState<StyleTag | 'all'>('all');
   const [loading, setLoading] = useState(true);
+  const { query } = useGallerySearch();
 
   useEffect(() => {
     let cancelled = false;
@@ -23,6 +35,12 @@ export function HomeGallery() {
   }, []);
 
   const filtered = useMemo(() => {
+    const byTag =
+      filter === 'all' ? looks : looks.filter((l) => l.tag === filter);
+    return byTag.filter((l) => lookMatchesSearch(l, query));
+  }, [looks, filter, query]);
+
+  const byTagOnly = useMemo(() => {
     if (filter === 'all') return looks;
     return looks.filter((l) => l.tag === filter);
   }, [looks, filter]);
@@ -65,7 +83,11 @@ export function HomeGallery() {
       </section>
 
       {filtered.length === 0 ? (
-        <p className="empty-state">No looks in this filter.</p>
+        <p className="empty-state">
+          {byTagOnly.length > 0 && query.trim()
+            ? 'No looks match your search.'
+            : 'No looks in this filter.'}
+        </p>
       ) : (
         <div className="gallery-wall">
           {filtered.map((look, i) => {

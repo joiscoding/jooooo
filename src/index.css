@@ -60,9 +60,11 @@ img {
   z-index: 50;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 0 1.5rem;
-  height: var(--header-h);
+  gap: 1rem;
+  flex-wrap: wrap;
+  row-gap: 0.65rem;
+  padding: 0.65rem 1.5rem;
+  min-height: var(--header-h);
   background: rgba(244, 242, 239, 0.92);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--line);
@@ -73,6 +75,7 @@ img {
   align-items: baseline;
   gap: 0.35rem;
   text-decoration: none;
+  flex-shrink: 0;
 }
 
 .logo:hover {
@@ -97,6 +100,8 @@ img {
 .nav {
   display: flex;
   gap: 1.75rem;
+  margin-left: auto;
+  flex-shrink: 0;
 }
 
 .nav-link {
@@ -112,6 +117,89 @@ img {
 .nav-link.active {
   color: var(--ink);
   text-decoration: none;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.header-search {
+  flex: 1;
+  min-width: 0;
+  max-width: 22rem;
+}
+
+.header-search-field {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.2rem 0.55rem 0.2rem 0.75rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: #fff;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.03);
+}
+
+.header-search-field:focus-within {
+  border-color: var(--ink-muted);
+  outline: 1px solid var(--ink-muted);
+  outline-offset: 1px;
+}
+
+.header-search-input {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  background: transparent;
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  color: var(--ink);
+  padding: 0.35rem 0;
+}
+
+.header-search-input::placeholder {
+  color: var(--ink-muted);
+  opacity: 0.85;
+}
+
+.header-search-input:focus {
+  outline: none;
+}
+
+.header-search-kbd {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2rem;
+  flex-shrink: 0;
+  font-size: 0.65rem;
+  color: var(--ink-muted);
+  user-select: none;
+}
+
+.kbd-chip {
+  display: inline-block;
+  min-width: 1.35rem;
+  padding: 0.15rem 0.35rem;
+  font-family: var(--font-sans);
+  font-size: 0.62rem;
+  font-weight: 600;
+  line-height: 1.2;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--ink-muted);
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);
 }
 
 .main {
