@@ -25,10 +25,15 @@ export function HomeGallery() {
     };
   }, []);
 
-  const filtered = useMemo(() => {
-    const byTag = filter === 'all' ? looks : looks.filter((l) => l.tag === filter);
-    return filterLooksByQuery(byTag, query);
-  }, [looks, filter, query]);
+  const byTag = useMemo(() => {
+    if (filter === 'all') return looks;
+    return looks.filter((l) => l.tag === filter);
+  }, [looks, filter]);
+
+  const filtered = useMemo(() => filterLooksByQuery(byTag, query), [byTag, query]);
+
+  const emptyMessage =
+    byTag.length === 0 ? 'No looks in this filter.' : 'No looks match your search.';
 
   if (loading) {
     return (
@@ -68,11 +73,7 @@ export function HomeGallery() {
       </section>
 
       {filtered.length === 0 ? (
-        <p className="empty-state">
-          {looks.length > 0 && query.trim()
-            ? 'No looks match your search.'
-            : 'No looks in this filter.'}
-        </p>
+        <p className="empty-state">{emptyMessage}</p>
       ) : (
         <div className="gallery-wall">
           {filtered.map((look, i) => {
