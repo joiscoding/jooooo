@@ -9,15 +9,18 @@ function NavLinks({
   linkClassName,
   navId,
   variant,
+  sidebarCollapsed,
 }: {
   pathname: string;
   navClassName: string;
   linkClassName: string;
   navId?: string;
   variant: 'header' | 'sidebar';
+  sidebarCollapsed?: boolean;
 }) {
   const isAlbums = pathname.startsWith('/albums');
   const showInitials = variant === 'sidebar';
+  const collapsedSidebar = Boolean(showInitials && sidebarCollapsed);
 
   return (
     <nav
@@ -29,6 +32,7 @@ function NavLinks({
         to="/"
         className={pathname === '/' ? `${linkClassName} active` : linkClassName}
         title="Gallery"
+        {...(collapsedSidebar ? { 'aria-label': 'Gallery' } : {})}
       >
         <span className="nav-link-label">Gallery</span>
         {showInitials ? (
@@ -41,6 +45,7 @@ function NavLinks({
         to="/albums"
         className={isAlbums ? `${linkClassName} active` : linkClassName}
         title="Albums"
+        {...(collapsedSidebar ? { 'aria-label': 'Albums' } : {})}
       >
         <span className="nav-link-label">Albums</span>
         {showInitials ? (
@@ -71,7 +76,12 @@ export function Layout({ children }: { children: ReactNode }) {
       {isDesktop ? (
         <aside className="site-sidebar" aria-label="Site">
           <div className="site-sidebar-top">
-            <Link to="/" className="logo logo--sidebar" title="Studio Lookbook home">
+            <Link
+              to="/"
+              className="logo logo--sidebar"
+              title="Studio Lookbook home"
+              aria-label="Studio Lookbook home"
+            >
               <span className="logo-full">
                 <span className="logo-serif">Studio</span>
                 <span className="logo-sans">Lookbook</span>
@@ -86,6 +96,7 @@ export function Layout({ children }: { children: ReactNode }) {
               linkClassName="nav-link nav-link--sidebar"
               navId="layout-primary-nav"
               variant="sidebar"
+              sidebarCollapsed={navCollapsed}
             />
           </div>
           <button
