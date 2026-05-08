@@ -726,6 +726,15 @@ button {
   opacity: 0.9;
 }
 
+.eyebrow {
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--ink-muted);
+  margin: 0 0 0.75rem;
+}
+
 .look-detail-title {
   font-family: var(--font-display);
   font-size: clamp(1.4rem, 2.6vw, 2rem);
@@ -919,6 +928,14 @@ button {
   display: flex;
   flex-direction: column;
   gap: 0.2rem;
+}
+
+.wall-tag {
+  font-size: 0.62rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--ink-muted);
 }
 
 .album-look-meta .wall-title {

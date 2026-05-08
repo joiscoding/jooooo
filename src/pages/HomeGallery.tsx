@@ -23,7 +23,7 @@ export function HomeGallery() {
   }, []);
 
   const filtered = useMemo(() => {
-    if (filter === 'all') return looks;
+    if (filter === 'all') return looks.slice(3);
     return looks.filter((l) => l.tag === filter);
   }, [looks, filter]);
 

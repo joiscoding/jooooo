@@ -23,7 +23,7 @@ export function Layout({ children }: { children: ReactNode }) {
             </Link>
             <Link
               to="/"
-              className={isHome ? 'nav-link active' : 'nav-link'}
+              className="nav-link"
             >
               Lookbook
             </Link>
