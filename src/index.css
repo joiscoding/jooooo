@@ -28,6 +28,7 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: var(--header-h);
 }
 
 body {
@@ -276,8 +277,8 @@ img {
 }
 
 .btn.primary {
-  background: var(--white);
-  color: var(--accent);
+  background: var(--accent);
+  color: var(--white);
 }
 
 .btn.primary:disabled {
@@ -286,6 +287,17 @@ img {
 }
 
 .btn.ghost {
+  border-color: var(--line);
+  background: transparent;
+  color: var(--ink);
+}
+
+.hero-overlay .btn.primary {
+  background: var(--white);
+  color: var(--accent);
+}
+
+.hero-overlay .btn.ghost {
   border-color: rgba(255, 253, 249, 0.55);
   background: rgba(255, 253, 249, 0.05);
   color: var(--white);

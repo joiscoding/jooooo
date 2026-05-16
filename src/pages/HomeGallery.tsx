@@ -42,7 +42,7 @@ export function HomeGallery() {
         .filter((look): look is Look => Boolean(look)),
     [looks]
   );
-  const browseLooks = useMemo(() => filtered.slice(0, 8), [filtered]);
+  const browseLooks = filtered;
 
   if (loading) {
     return (

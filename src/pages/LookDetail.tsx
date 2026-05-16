@@ -145,7 +145,7 @@ export function LookDetail() {
             </form>
             {toast && <p className="toast" role="status">{toast}</p>}
             <Link to="/albums" className="inline-link">
-              View all albums →
+              View all albums
             </Link>
           </div>
         </div>
