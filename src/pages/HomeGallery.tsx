@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { CopyLinkButton } from '../components/CopyLinkButton';
 import { fetchLooks } from '../data/fetchLooks';
 import type { Look, StyleTag } from '../types';
 import { STYLE_LABELS, STYLE_ORDER } from '../types';
@@ -70,25 +71,32 @@ export function HomeGallery() {
         <div className="gallery-wall">
           {filtered.map((look, i) => {
             return (
-              <Link
-                key={look.id}
-                to={`/look/${look.id}`}
-                className="wall-card"
-              >
+              <div key={look.id} className="wall-card">
                 <div className="wall-card-inner">
-                  <img
-                    key={`${look.id}-${look.hero}`}
-                    src={look.hero}
-                    alt=""
-                    className="wall-img"
-                    loading={i < 4 ? 'eager' : 'lazy'}
+                  <CopyLinkButton
+                    pathname={`/look/${look.id}`}
+                    className="wall-card-copy"
+                    label="Copy link"
                   />
-                  <div className="wall-meta">
-                    <span className="wall-tag">{STYLE_LABELS[look.tag]}</span>
-                    <h2 className="wall-title">{look.title}</h2>
-                  </div>
+                  <Link
+                    to={`/look/${look.id}`}
+                    className="wall-card-body"
+                    aria-label={`Open look: ${look.title}`}
+                  >
+                    <img
+                      key={`${look.id}-${look.hero}`}
+                      src={look.hero}
+                      alt=""
+                      className="wall-img"
+                      loading={i < 4 ? 'eager' : 'lazy'}
+                    />
+                    <div className="wall-meta">
+                      <span className="wall-tag">{STYLE_LABELS[look.tag]}</span>
+                      <h2 className="wall-title">{look.title}</h2>
+                    </div>
+                  </Link>
                 </div>
-              </Link>
+              </div>
             );
           })}
         </div>
