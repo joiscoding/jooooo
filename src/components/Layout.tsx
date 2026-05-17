@@ -1,5 +1,6 @@
 import { Link, useLocation } from 'react-router-dom';
 import type { ReactNode } from 'react';
+import { GlobalSearchField } from './GlobalSearchField';
 
 export function Layout({ children }: { children: ReactNode }) {
   const { pathname } = useLocation();
@@ -12,6 +13,7 @@ export function Layout({ children }: { children: ReactNode }) {
           <span className="logo-serif">Studio</span>
           <span className="logo-sans">Lookbook</span>
         </Link>
+        <GlobalSearchField />
         <nav className="nav">
           <Link
             to="/"
