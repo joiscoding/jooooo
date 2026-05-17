@@ -1,10 +1,13 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useSearch } from '../context/SearchContext';
 import { fetchLooks } from '../data/fetchLooks';
 import type { Look, StyleTag } from '../types';
 import { STYLE_LABELS, STYLE_ORDER } from '../types';
+import { lookMatchesQuery } from '../utils/lookMatchesQuery';
 
 export function HomeGallery() {
+  const { query } = useSearch();
   const [looks, setLooks] = useState<Look[]>([]);
   const [filter, setFilter] = useState<StyleTag | 'all'>('all');
   const [loading, setLoading] = useState(true);
@@ -23,8 +26,14 @@ export function HomeGallery() {
   }, []);
 
   const filtered = useMemo(() => {
-    if (filter === 'all') return looks;
-    return looks.filter((l) => l.tag === filter);
+    const byTag =
+      filter === 'all' ? looks : looks.filter((l) => l.tag === filter);
+    return byTag.filter((l) => lookMatchesQuery(l, query));
+  }, [looks, filter, query]);
+
+  const byTagCount = useMemo(() => {
+    if (filter === 'all') return looks.length;
+    return looks.filter((l) => l.tag === filter).length;
   }, [looks, filter]);
 
   if (loading) {
@@ -65,7 +74,11 @@ export function HomeGallery() {
       </section>
 
       {filtered.length === 0 ? (
-        <p className="empty-state">No looks in this filter.</p>
+        <p className="empty-state">
+          {byTagCount === 0
+            ? 'No looks in this filter.'
+            : 'No looks match your search.'}
+        </p>
       ) : (
         <div className="gallery-wall">
           {filtered.map((look, i) => {
