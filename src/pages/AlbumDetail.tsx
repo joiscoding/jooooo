@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
+import { CopyLinkButton } from '../components/CopyLinkButton';
 import { fetchLooks } from '../data/fetchLooks';
 import { useAlbumsContext } from '../context/AlbumsContext';
 import type { Look } from '../types';
@@ -33,9 +34,18 @@ export function AlbumDetail() {
       <Link to="/albums" className="back-link">
         ← Albums
       </Link>
-      <header className="page-head">
-        <h1 className="page-title">{album.name}</h1>
-        <p className="muted">{album.lookIds.length} saved look(s)</p>
+      <header className="page-head album-detail-head">
+        <div className="album-detail-head-text">
+          <h1 className="page-title">{album.name}</h1>
+          <p className="muted">{album.lookIds.length} saved look(s)</p>
+        </div>
+        <CopyLinkButton
+          path={`/albums/${album.id}`}
+          ariaLabel={`Copy link to album ${album.name}`}
+          className="btn ghost btn-compact"
+        >
+          Copy album link
+        </CopyLinkButton>
       </header>
 
       {album.lookIds.length === 0 ? (
@@ -74,13 +84,22 @@ export function AlbumDetail() {
                     <h2 className="wall-title">{look.title}</h2>
                   </div>
                 </Link>
-                <button
-                  type="button"
-                  className="btn remove-from-album"
-                  onClick={() => removeLookFromAlbum(album.id, id)}
-                >
-                  Remove
-                </button>
+                <div className="album-look-actions">
+                  <CopyLinkButton
+                    path={`/look/${look.id}`}
+                    ariaLabel={`Copy link to ${look.title}`}
+                    className="btn ghost btn-tiny"
+                  >
+                    Copy look link
+                  </CopyLinkButton>
+                  <button
+                    type="button"
+                    className="btn remove-from-album"
+                    onClick={() => removeLookFromAlbum(album.id, id)}
+                  >
+                    Remove
+                  </button>
+                </div>
               </li>
             );
           })}

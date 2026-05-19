@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { CopyLinkButton } from '../components/CopyLinkButton';
 import { fetchLooks } from '../data/fetchLooks';
 import type { Look, StyleTag } from '../types';
 import { STYLE_LABELS, STYLE_ORDER } from '../types';
@@ -70,25 +71,30 @@ export function HomeGallery() {
         <div className="gallery-wall">
           {filtered.map((look, i) => {
             return (
-              <Link
-                key={look.id}
-                to={`/look/${look.id}`}
-                className="wall-card"
-              >
-                <div className="wall-card-inner">
-                  <img
-                    key={`${look.id}-${look.hero}`}
-                    src={look.hero}
-                    alt=""
-                    className="wall-img"
-                    loading={i < 4 ? 'eager' : 'lazy'}
-                  />
-                  <div className="wall-meta">
-                    <span className="wall-tag">{STYLE_LABELS[look.tag]}</span>
-                    <h2 className="wall-title">{look.title}</h2>
+              <div key={look.id} className="wall-card">
+                <Link to={`/look/${look.id}`} className="wall-card-hit">
+                  <div className="wall-card-inner">
+                    <img
+                      key={`${look.id}-${look.hero}`}
+                      src={look.hero}
+                      alt=""
+                      className="wall-img"
+                      loading={i < 4 ? 'eager' : 'lazy'}
+                    />
+                    <div className="wall-meta">
+                      <span className="wall-tag">{STYLE_LABELS[look.tag]}</span>
+                      <h2 className="wall-title">{look.title}</h2>
+                    </div>
                   </div>
-                </div>
-              </Link>
+                </Link>
+                <CopyLinkButton
+                  path={`/look/${look.id}`}
+                  ariaLabel={`Copy link to ${look.title}`}
+                  className="wall-card-copy"
+                >
+                  Copy link
+                </CopyLinkButton>
+              </div>
             );
           })}
         </div>
