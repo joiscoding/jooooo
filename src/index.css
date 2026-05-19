@@ -61,11 +61,110 @@ img {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 1rem;
   padding: 0 1.5rem;
   height: var(--header-h);
   background: rgba(244, 242, 239, 0.92);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--line);
+}
+
+.site-header-right {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.header-menu-wrap {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.header-menu-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--bg-elevated);
+  color: var(--ink-muted);
+  cursor: pointer;
+}
+
+.header-menu-trigger:hover {
+  color: var(--ink);
+  border-color: var(--ink-muted);
+}
+
+.header-menu-trigger-dots {
+  font-size: 0.85rem;
+  letter-spacing: 0.02em;
+  line-height: 1;
+}
+
+.header-menu {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 0.35rem);
+  min-width: 11rem;
+  padding: 0.35rem 0;
+  background: var(--bg-elevated);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+}
+
+.header-menu-item {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 0.55rem 1rem;
+  border: none;
+  background: none;
+  font: inherit;
+  font-size: 0.85rem;
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.header-menu-item:hover {
+  background: rgba(0, 0, 0, 0.04);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.global-toast-host {
+  position: fixed;
+  bottom: 1.25rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 300;
+  pointer-events: none;
+  max-width: min(90vw, 28rem);
+}
+
+.global-toast-msg {
+  margin: 0;
+  padding: 0.65rem 1.15rem;
+  background: var(--ink);
+  color: #faf9f7;
+  font-size: 0.875rem;
+  text-align: center;
+  border-radius: 999px;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.15);
 }
 
 .logo {
@@ -218,15 +317,44 @@ img {
   overflow: hidden;
   background: var(--line);
   border-radius: var(--radius);
-  color: inherit;
-  text-decoration: none;
   transition: transform 0.35s ease, box-shadow 0.35s ease;
 }
 
 .wall-card:hover {
-  text-decoration: none;
   transform: translateY(-2px);
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+}
+
+.wall-card-hit {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
+.wall-card-hit:hover {
+  text-decoration: none;
+}
+
+.wall-card-copy {
+  position: absolute;
+  top: 0.45rem;
+  right: 0.45rem;
+  z-index: 4;
+  font-size: 0.6rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.35rem 0.5rem;
+  border-radius: var(--radius);
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  background: rgba(0, 0, 0, 0.38);
+  color: #fff;
+  cursor: pointer;
+  backdrop-filter: blur(6px);
+}
+
+.wall-card-copy:hover {
+  background: rgba(0, 0, 0, 0.55);
 }
 
 .wall-card-inner {
@@ -357,12 +485,39 @@ img {
   opacity: 0.9;
 }
 
+.look-detail-title-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem 1rem;
+  margin-bottom: 1.25rem;
+}
+
 .look-detail-title {
   font-family: var(--font-serif);
   font-size: clamp(1.75rem, 3vw, 2.25rem);
   font-weight: 400;
-  margin: 0 0 1.25rem;
+  margin: 0;
   letter-spacing: -0.02em;
+  flex: 1 1 12rem;
+}
+
+.btn-compact {
+  flex-shrink: 0;
+  font-size: 0.7rem;
+  padding: 0.45rem 0.75rem;
+}
+
+.btn-tiny {
+  font-size: 0.65rem;
+  padding: 0.35rem 0.5rem;
+}
+
+.btn-album-copy {
+  flex-shrink: 0;
+  font-size: 0.7rem;
+  padding: 0.35rem 0.6rem;
 }
 
 .look-facts {
@@ -521,9 +676,10 @@ img {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1rem;
+  gap: 0.65rem;
   padding: 1rem 0;
   border-bottom: 1px solid var(--line);
+  flex-wrap: wrap;
 }
 
 .album-link {
@@ -551,6 +707,18 @@ img {
 .album-detail-page {
   max-width: var(--max);
   margin: 0 auto;
+}
+
+.album-detail-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.album-detail-head-text {
+  flex: 1 1 12rem;
 }
 
 .album-looks-grid {
@@ -608,12 +776,18 @@ img {
   font-size: 1rem;
 }
 
+.album-look-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  padding: 0.5rem 0.65rem;
+  background: var(--bg);
+  border-top: 1px solid var(--line);
+}
+
 .remove-from-album {
-  position: absolute;
-  top: 0.5rem;
-  right: 0.5rem;
-  background: rgba(255, 255, 255, 0.92);
-  border: none;
   font-size: 0.65rem;
   padding: 0.35rem 0.5rem;
 }
