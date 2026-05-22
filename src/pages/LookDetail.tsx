@@ -41,7 +41,7 @@ export function LookDetail() {
     );
   }
 
-  const images = [look.hero, ...look.gallery];
+  const images = look.gallery;
 
   function handleAddToExisting() {
     if (!selectedAlbumId || !look) return;
