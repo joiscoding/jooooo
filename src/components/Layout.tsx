@@ -7,7 +7,7 @@ export function Layout({ children }: { children: ReactNode }) {
   const isHome = pathname === '/';
 
   return (
-    <div className={`layout${isHome ? ' layout--home' : ''}`}>
+    <div className={'layout' + (isHome ? ' layout--home' : '')}>
       <header className="site-header">
         <Link to="/" className="logo">
           <span className="logo-mark" aria-hidden="true">
@@ -41,7 +41,7 @@ export function Layout({ children }: { children: ReactNode }) {
           </a>
         </div>
       </header>
-      <main className={`main${isHome ? ' main--home' : ''}`}>{children}</main>
+      <main className={'main' + (isHome ? ' main--home' : '')}>{children}</main>
       <footer className="site-footer">
         <p>
           Demo — visual rhythm inspired by enterprise fitness software sites.

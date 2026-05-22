@@ -119,12 +119,12 @@ export function HomeGallery() {
               return (
                 <Link
                   key={look.id}
-                  to={`/look/${look.id}`}
+                  to={'/look/' + look.id}
                   className="wall-card"
                 >
                   <div className="wall-card-inner">
                     <img
-                      key={`${look.id}-${look.hero}`}
+                      key={look.id + '-' + look.hero}
                       src={look.hero}
                       alt=""
                       className="wall-img"
