@@ -1,10 +1,12 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useSearch } from '../context/SearchContext';
 import { fetchLooks } from '../data/fetchLooks';
 import type { Look, StyleTag } from '../types';
 import { STYLE_LABELS, STYLE_ORDER } from '../types';
 
 export function HomeGallery() {
+  const { query } = useSearch();
   const [looks, setLooks] = useState<Look[]>([]);
   const [filter, setFilter] = useState<StyleTag | 'all'>('all');
   const [loading, setLoading] = useState(true);
@@ -26,6 +28,24 @@ export function HomeGallery() {
     if (filter === 'all') return looks;
     return looks.filter((l) => l.tag === filter);
   }, [looks, filter]);
+
+  const searchNeedle = query.trim().toLowerCase();
+
+  const visibleLooks = useMemo(() => {
+    if (!searchNeedle) return filtered;
+    return filtered.filter((look) => {
+      const blob = [
+        look.title,
+        STYLE_LABELS[look.tag],
+        look.season,
+        look.occasion,
+        ...look.keyItems,
+      ]
+        .join(' ')
+        .toLowerCase();
+      return blob.includes(searchNeedle);
+    });
+  }, [filtered, searchNeedle]);
 
   if (loading) {
     return (
@@ -64,11 +84,15 @@ export function HomeGallery() {
         ))}
       </section>
 
-      {filtered.length === 0 ? (
-        <p className="empty-state">No looks in this filter.</p>
+      {visibleLooks.length === 0 ? (
+        <p className="empty-state">
+          {searchNeedle
+            ? 'No looks match your search.'
+            : 'No looks in this filter.'}
+        </p>
       ) : (
         <div className="gallery-wall">
-          {filtered.map((look, i) => {
+          {visibleLooks.map((look, i) => {
             return (
               <Link
                 key={look.id}
