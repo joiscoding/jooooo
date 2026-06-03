@@ -3,21 +3,18 @@ import type { ReactNode } from 'react';
 
 export function Layout({ children }: { children: ReactNode }) {
   const { pathname } = useLocation();
+  const isHome = pathname === '/';
   const isAlbums = pathname.startsWith('/albums');
 
   return (
     <div className="layout">
       <header className="site-header">
-        <Link to="/" className="logo">
-          <span className="logo-serif">Studio</span>
-          <span className="logo-sans">Lookbook</span>
-        </Link>
-        <nav className="nav">
+        <nav className="nav nav--left" aria-label="Primary left">
           <Link
             to="/"
             className={pathname === '/' ? 'nav-link active' : 'nav-link'}
           >
-            Gallery
+            Lookbook
           </Link>
           <Link
             to="/albums"
@@ -26,20 +23,29 @@ export function Layout({ children }: { children: ReactNode }) {
             Albums
           </Link>
         </nav>
+        <Link to="/" className="logo logo--wordmark">
+          studio lookbook
+        </Link>
+        <div className="nav nav--right" aria-hidden>
+          <span className="nav-link nav-link--muted">Men</span>
+        </div>
       </header>
-      <main className="main">{children}</main>
+      <main className={isHome ? 'main main--flush' : 'main'}>{children}</main>
       <footer className="site-footer">
-        <p>
-          Demo — photos via{' '}
-          <a
-            href="https://unsplash.com"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Unsplash
-          </a>
-          . Modern style, designed to last.
-        </p>
+        <div className="site-footer__grid">
+          <p className="site-footer__brand">studio lookbook</p>
+          <p className="site-footer__legal">
+            Demo — photos via{' '}
+            <a
+              href="https://unsplash.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Unsplash
+            </a>
+            . Athletic luxury, designed to move.
+          </p>
+        </div>
       </footer>
     </div>
   );
