@@ -14,7 +14,7 @@ export async function fetchLooks(): Promise<Look[]> {
     const raw = sessionStorage.getItem(STORAGE_MCP_KEY);
     if (raw) {
       const parsed = JSON.parse(raw) as unknown;
-      if (Array.isArray(parsed) && parsed.length > 0) {
+      if (Array.isArray(parsed)) {
         return parsed as Look[];
       }
     }

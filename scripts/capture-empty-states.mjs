@@ -102,26 +102,22 @@ try {
   await new Promise((r) => setTimeout(r, 300));
   await shot('lb5-empty-album-detail.png');
 
+  await page.goto(`${base}/`, { waitUntil: 'load', timeout: 60000 });
   await page.evaluate((payload) => {
     sessionStorage.setItem('lookbook_mcp_looks_v13', payload);
   }, JSON.stringify(onlyStreetwear));
-  await page.goto(`${base}/`, { waitUntil: 'load', timeout: 60000 });
-  await page.evaluate(() => {
-    const buttons = [...document.querySelectorAll('.filters-bar button')];
-    const classic = buttons.find((b) =>
-      (b.textContent ?? '').includes('Classic'),
-    );
-    classic?.click();
-  });
-  await new Promise((r) => setTimeout(r, 500));
+  await page.reload({ waitUntil: 'load', timeout: 60000 });
+  await page.waitForSelector('.filters-bar');
+  await page.click('button.filter-pill:nth-of-type(4)');
+  await page.waitForSelector('.list-empty-state', { timeout: 10000 });
+  await new Promise((r) => setTimeout(r, 300));
   await shot('lb5-empty-gallery-filter.png');
 
-  await page.evaluate(() => sessionStorage.removeItem('lookbook_mcp_looks_v13'));
-  await page.goto(`${base}/`, { waitUntil: 'load', timeout: 60000 });
   await page.evaluate((payload) => {
     sessionStorage.setItem('lookbook_mcp_looks_v13', payload);
   }, JSON.stringify([]));
   await page.reload({ waitUntil: 'load', timeout: 60000 });
+  await page.waitForSelector('.list-empty-state', { timeout: 10000 });
   await new Promise((r) => setTimeout(r, 300));
   await shot('lb5-empty-catalog-edge.png');
 
