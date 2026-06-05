@@ -27,7 +27,7 @@ export function HomeGallery() {
     return looks.filter((l) => l.tag === filter);
   }, [looks, filter]);
 
-  const heroLook = looks[0];
+  const heroLook = filtered[0];
 
   if (loading) {
     return (
