@@ -139,39 +139,257 @@ img {
   text-decoration: underline;
 }
 
-/* Home */
-.home-hero {
-  margin-bottom: 2.5rem;
-  max-width: 36rem;
+/* ============ Home / landing ============ */
+.home {
+  --gutter: 1.5rem;
 }
 
 .eyebrow {
   font-size: 0.7rem;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.16em;
   color: var(--ink-muted);
   margin: 0 0 0.75rem;
 }
 
-.home-title {
-  font-family: var(--font-serif);
-  font-size: clamp(2rem, 5vw, 2.85rem);
-  font-weight: 400;
-  line-height:1.15;
-  margin: 0 0 1rem;
-  letter-spacing: -0.02em;
+/* Full-bleed cinematic hero — breaks out of the centered .main container. */
+.hero {
+  position: relative;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-top: -2rem;
+  min-height: min(82vh, 760px);
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  background: var(--ink);
 }
 
-.home-title em {
+.hero-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%;
+  animation: heroZoom 14s ease-out forwards;
+}
+
+@keyframes heroZoom {
+  from {
+    transform: scale(1.08);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+.hero-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+      to top,
+      rgba(15, 14, 13, 0.78) 0%,
+      rgba(15, 14, 13, 0.28) 42%,
+      rgba(15, 14, 13, 0.08) 70%,
+      rgba(15, 14, 13, 0.32) 100%
+    );
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 clamp(1.5rem, 5vw, 4rem) clamp(2.5rem, 6vw, 4.5rem);
+  color: #fff;
+  animation: fadeUp 0.9s ease both;
+}
+
+.hero-dateline {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  color: rgba(255, 255, 255, 0.82);
+  margin: 0 0 1.25rem;
+}
+
+.hero-dot {
+  font-size: 0.6rem;
+  opacity: 0.7;
+}
+
+.hero-title {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: clamp(2.6rem, 7.5vw, 5.75rem);
+  line-height: 0.98;
+  letter-spacing: -0.02em;
+  margin: 0;
+  max-width: 16ch;
+  text-wrap: balance;
+}
+
+.hero-title em {
   font-style: italic;
+}
+
+.hero-sub {
+  margin: 1.25rem 0 0;
+  max-width: 34ch;
+  font-size: clamp(0.95rem, 1.4vw, 1.1rem);
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.86);
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.75rem;
+  margin-top: 2rem;
+}
+
+.btn-line {
+  display: inline-block;
+  font-size: 0.74rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--ink);
+  background: #fff;
+  padding: 0.95rem 1.75rem;
+  border-radius: var(--radius);
+  transition: transform 0.25s ease, background 0.25s ease;
+}
+
+.btn-line:hover {
+  text-decoration: none;
+  transform: translateY(-2px);
+  background: #f1ede8;
+}
+
+.btn-link {
+  font-size: 0.74rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: #fff;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  padding-bottom: 2px;
+  transition: border-color 0.25s ease;
+}
+
+.btn-link:hover {
+  text-decoration: none;
+  border-color: #fff;
+}
+
+.hero-credit {
+  position: absolute;
+  z-index: 2;
+  top: clamp(1.25rem, 3vw, 2rem);
+  right: clamp(1.5rem, 5vw, 4rem);
+  font-size: 0.65rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: rgba(255, 255, 255, 0.7);
+  writing-mode: vertical-rl;
+}
+
+/* Scrolling editorial marquee */
+.marquee {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  background: var(--bg-elevated);
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.marquee-track {
+  display: inline-flex;
+  animation: marquee 26s linear infinite;
+}
+
+.marquee-group {
+  display: inline-flex;
+}
+
+.marquee-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 1.75rem;
+  font-family: var(--font-serif);
+  font-size: clamp(1.1rem, 2.2vw, 1.75rem);
+  font-style: italic;
+  color: var(--ink);
+  padding: 0.85rem 1.75rem;
+}
+
+.marquee-star {
+  font-style: normal;
+  font-size: 0.7em;
+  color: var(--ink-muted);
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* The edit section */
+.edit {
+  scroll-margin-top: calc(var(--header-h) + 1rem);
+  padding-top: clamp(3rem, 6vw, 4.5rem);
+}
+
+.edit-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 1.5rem;
+}
+
+.edit-title {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: clamp(1.75rem, 4vw, 2.6rem);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+.edit-count {
+  margin: 0;
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--ink-muted);
+  white-space: nowrap;
 }
 
 .filters-bar {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
-  margin-bottom: 2rem;
+  margin-bottom: 2.25rem;
 }
 
 .filter-pill {
@@ -179,74 +397,98 @@ img {
   font-size: 0.72rem;
   font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
-  padding: 0.55rem 0.9rem;
+  letter-spacing: 0.08em;
+  padding: 0.55rem 1rem;
   border: 1px solid var(--line);
-  background: var(--bg-elevated);
+  background: transparent;
   color: var(--ink-muted);
   cursor: pointer;
-  border-radius: var(--radius);
+  border-radius: 999px;
   transition: color 0.2s, border-color 0.2s, background 0.2s;
 }
 
 .filter-pill:hover {
   color: var(--ink);
-  border-color: var(--ink-muted);
+  border-color: var(--ink);
 }
 
 .filter-pill.active {
-  background: var(--accent);
-  color: #f5f5f5;
-  border-color: var(--accent);
+  background: var(--ink);
+  color: var(--bg);
+  border-color: var(--ink);
 }
 
+/* Staggered, magazine-style gallery wall via masonry columns */
 .gallery-wall {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-auto-rows: auto;
-  gap: 0.65rem;
+  column-count: 1;
+  column-gap: 0.85rem;
 }
 
-@media (min-width: 900px) {
+@media (min-width: 640px) {
   .gallery-wall {
-    gap: 0.85rem;
+    column-count: 2;
+  }
+}
+
+@media (min-width: 960px) {
+  .gallery-wall {
+    column-count: 3;
+    column-gap: 1.1rem;
   }
 }
 
 .wall-card {
   position: relative;
+  display: block;
+  break-inside: avoid;
+  margin-bottom: 0.85rem;
   overflow: hidden;
   background: var(--line);
   border-radius: var(--radius);
   color: inherit;
   text-decoration: none;
-  transition: transform 0.35s ease, box-shadow 0.35s ease;
 }
 
-.wall-card:hover {
-  text-decoration: none;
-  transform: translateY(-2px);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+@media (min-width: 960px) {
+  .wall-card {
+    margin-bottom: 1.1rem;
+  }
+}
+
+.reveal {
+  animation: fadeUp 0.7s ease both;
+  animation-delay: var(--delay, 0ms);
 }
 
 .wall-card-inner {
   position: relative;
-  height: 100%;
-  min-height: 100%;
-  display: flex;
-  flex-direction: column;
 }
 
 .wall-img {
-  flex: 1;
   width: 100%;
-  height: 100%;
+  height: auto;
+  aspect-ratio: var(--ratio, 3 / 4);
   object-fit: cover;
-  min-height: 140px;
+  transition: transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 
-.gallery-wall .wall-img {
-  aspect-ratio: 3 / 4;
+.wall-card:hover {
+  text-decoration: none;
+}
+
+.wall-card:hover .wall-img {
+  transform: scale(1.05);
+}
+
+.wall-index {
+  position: absolute;
+  top: 0.75rem;
+  left: 0.85rem;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.92);
+  mix-blend-mode: difference;
 }
 
 .wall-meta {
@@ -254,31 +496,88 @@ img {
   left: 0;
   right: 0;
   bottom: 0;
-  padding: 1rem 1rem 0.85rem;
+  padding: 2.5rem 1rem 0.95rem;
   background: linear-gradient(
     to top,
-    rgba(0, 0, 0, 0.65) 0%,
+    rgba(0, 0, 0, 0.7) 0%,
     transparent 100%
   );
 }
 
 .wall-tag {
   display: block;
-  font-size: 0.65rem;
+  font-size: 0.62rem;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: rgba(255, 255, 255, 0.85);
-  margin-bottom: 0.25rem;
+  letter-spacing: 0.12em;
+  color: rgba(255, 255, 255, 0.82);
+  margin-bottom: 0.3rem;
 }
 
 .wall-title {
   font-family: var(--font-serif);
-  font-size: 1.25rem;
+  font-size: 1.3rem;
   font-weight: 400;
   color: #fff;
   margin: 0;
-  line-height: 1.2;
+  line-height: 1.15;
+}
+
+/* Closing atelier note */
+.atelier {
+  text-align: center;
+  max-width: 44rem;
+  margin: clamp(3.5rem, 8vw, 6rem) auto 0;
+  padding-top: clamp(2.5rem, 6vw, 4rem);
+  border-top: 1px solid var(--line);
+}
+
+.atelier-mark {
+  margin: 0 0 1.25rem;
+  font-size: 1.1rem;
+  color: var(--ink-muted);
+}
+
+.atelier-note {
+  font-family: var(--font-serif);
+  font-size: clamp(1.35rem, 3vw, 2rem);
+  font-weight: 400;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  margin: 0 0 1.5rem;
+  text-wrap: balance;
+}
+
+.atelier-sign {
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--ink-muted);
+  margin: 0;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-img,
+  .hero-content,
+  .reveal,
+  .marquee-track {
+    animation: none !important;
+  }
+  .wall-card:hover .wall-img {
+    transform: none;
+  }
 }
 
 .page-loading,
