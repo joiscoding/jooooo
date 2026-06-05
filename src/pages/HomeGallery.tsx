@@ -38,10 +38,30 @@ export function HomeGallery() {
   return (
     <div className="home">
       <section className="home-hero">
-        <p className="eyebrow">Men · Seasonal edit</p>
-        <h1 className="home-title">
-          Looks built for <em>quiet</em> confidence.
-        </h1>
+        <img
+          src="/looks/1521572267360-ee0c2909d518-w1200h1600.jpg"
+          alt=""
+          className="home-hero-img"
+        />
+        <div className="home-hero-overlay">
+          <p className="eyebrow">The Heritage Collection · Menswear</p>
+          <h1 className="home-title">
+            Timeless style, <em>handed down</em> through the seasons.
+          </h1>
+          <p className="home-hero-sub">
+            An edit of tailored classics and weekend essentials, cut for the
+            life you actually live.
+          </p>
+          <a href="#gallery" className="hero-cta">
+            Explore the Lookbook
+          </a>
+        </div>
+      </section>
+
+      <section id="gallery" className="gallery-intro">
+        <span className="rule-mark" aria-hidden="true">⚜</span>
+        <h2 className="section-title">The Lookbook</h2>
+        <p className="section-sub">Curated edits by occasion and season.</p>
       </section>
 
       <section className="filters-bar" aria-label="Style filters">
