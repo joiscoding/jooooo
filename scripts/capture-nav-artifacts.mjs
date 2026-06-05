@@ -58,6 +58,8 @@ async function main() {
     const page = await context.newPage();
 
     await page.goto(`${BASE}/`, { waitUntil: 'domcontentloaded', timeout: 60000 });
+    await page.evaluate(() => localStorage.removeItem('lookbook_nav_collapsed_v1'));
+    await page.reload({ waitUntil: 'domcontentloaded' });
     await page.waitForSelector('.nav-collapse-toggle', {
       state: 'visible',
       timeout: 20000,
