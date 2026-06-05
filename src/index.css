@@ -317,7 +317,7 @@ img {
 
 .marquee-track {
   display: inline-flex;
-  animation: marquee 26s linear infinite;
+  animation: marquee 18s linear infinite;
 }
 
 .marquee-group {
