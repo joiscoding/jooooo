@@ -719,6 +719,21 @@ img {
   .wall-card:nth-child(8n + 7) { grid-column: span 2; grid-row: span 5; }
   /* Wide */
   .wall-card:nth-child(8n + 0) { grid-column: span 4; grid-row: span 4; }
+
+  /* Compact mode — used for short filter results, uniform editorial grid */
+  .gallery-wall.compact { grid-auto-rows: 7vw; }
+  .gallery-wall.compact .wall-card,
+  .gallery-wall.compact .wall-card:nth-child(8n + 1),
+  .gallery-wall.compact .wall-card:nth-child(8n + 2),
+  .gallery-wall.compact .wall-card:nth-child(8n + 3),
+  .gallery-wall.compact .wall-card:nth-child(8n + 4),
+  .gallery-wall.compact .wall-card:nth-child(8n + 5),
+  .gallery-wall.compact .wall-card:nth-child(8n + 6),
+  .gallery-wall.compact .wall-card:nth-child(8n + 7),
+  .gallery-wall.compact .wall-card:nth-child(8n + 0) {
+    grid-column: span 2;
+    grid-row: span 5;
+  }
 }
 
 .wall-card-inner {

@@ -263,7 +263,11 @@ export function HomeGallery() {
           {filtered.length === 0 ? (
             <p className="empty-state">No looks in this filter.</p>
           ) : (
-            <div className="gallery-wall">
+            <div
+              className={
+                filtered.length < 6 ? 'gallery-wall compact' : 'gallery-wall'
+              }
+            >
               {filtered.map((look, i) => (
                 <Link
                   key={look.id}
