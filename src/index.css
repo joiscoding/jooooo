@@ -126,6 +126,10 @@ img {
   pointer-events: none;
 }
 
+.search-input:not(:placeholder-shown) ~ .search-kbd-hint {
+  display: none;
+}
+
 .search-kbd {
   display: inline-block;
   padding: 0.1rem 0.32rem;
