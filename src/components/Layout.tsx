@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import type { ReactNode } from 'react';
 
@@ -5,6 +6,10 @@ export function Layout({ children }: { children: ReactNode }) {
   const { pathname } = useLocation();
   const isAlbums = pathname.startsWith('/albums');
   const isHome = pathname === '/';
+
+  useEffect(() => {
+    document.title = isHome ? "ZARA — Men's Editorial" : 'Studio Lookbook — Men';
+  }, [isHome]);
 
   if (isHome) {
     return (
