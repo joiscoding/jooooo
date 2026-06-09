@@ -12,8 +12,8 @@ const STYLE_TILE_LABELS: Record<StyleTag, string> = {
   workwear: 'Workwear',
 };
 
-const HERO_IMAGE = '/looks/1600117025146-5092075da653-w1200h1600.jpg';
-const CTA_IMAGE = '/looks/1630877268428-616cc533239a-w1200h1500.jpg';
+const HERO_IMAGE = '/looks/1630877268428-616cc533239a-w1200h1500.jpg';
+const CTA_IMAGE = '/looks/1768809250854-2f4b1e8f19cc-w1200h1600.jpg';
 
 export function HomeGallery() {
   const [looks, setLooks] = useState<Look[]>([]);
