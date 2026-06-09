@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { fetchLooks } from '../data/fetchLooks';
+import { CopyLinkButton } from '../components/CopyLinkButton';
 import type { Look, StyleTag } from '../types';
 import { STYLE_LABELS, STYLE_ORDER } from '../types';
 
@@ -70,25 +71,29 @@ export function HomeGallery() {
         <div className="gallery-wall">
           {filtered.map((look, i) => {
             return (
-              <Link
-                key={look.id}
-                to={`/look/${look.id}`}
-                className="wall-card"
-              >
-                <div className="wall-card-inner">
-                  <img
-                    key={`${look.id}-${look.hero}`}
-                    src={look.hero}
-                    alt=""
-                    className="wall-img"
-                    loading={i < 4 ? 'eager' : 'lazy'}
-                  />
-                  <div className="wall-meta">
-                    <span className="wall-tag">{STYLE_LABELS[look.tag]}</span>
-                    <h2 className="wall-title">{look.title}</h2>
+              <div key={look.id} className="wall-card-wrap">
+                <Link to={`/look/${look.id}`} className="wall-card">
+                  <div className="wall-card-inner">
+                    <img
+                      key={`${look.id}-${look.hero}`}
+                      src={look.hero}
+                      alt=""
+                      className="wall-img"
+                      loading={i < 4 ? 'eager' : 'lazy'}
+                    />
+                    <div className="wall-meta">
+                      <span className="wall-tag">{STYLE_LABELS[look.tag]}</span>
+                      <h2 className="wall-title">{look.title}</h2>
+                    </div>
                   </div>
-                </div>
-              </Link>
+                </Link>
+                <CopyLinkButton
+                  path={`/look/${look.id}`}
+                  className="btn wall-copy-link"
+                  label="Copy link"
+                  aria-label={`Copy link to ${look.title}`}
+                />
+              </div>
             );
           })}
         </div>
