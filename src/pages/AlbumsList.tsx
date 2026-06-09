@@ -1,9 +1,11 @@
 import { useState, type FormEvent } from 'react';
 import { Link } from 'react-router-dom';
 import { useAlbumsContext } from '../context/AlbumsContext';
+import { useCopyPageLink } from '../hooks/useCopyPageLink';
 
 export function AlbumsList() {
   const { albums, createAlbum, deleteAlbum } = useAlbumsContext();
+  const copyPageLink = useCopyPageLink();
   const [name, setName] = useState('');
 
   function handleCreate(e: FormEvent) {
@@ -50,6 +52,14 @@ export function AlbumsList() {
                   {a.lookIds.length} look{a.lookIds.length === 1 ? '' : 's'}
                 </span>
               </Link>
+              <button
+                type="button"
+                className="btn ghost album-row-copy"
+                aria-label={`Copy link to album ${a.name}`}
+                onClick={() => void copyPageLink(`/albums/${a.id}`)}
+              >
+                Copy link
+              </button>
               <button
                 type="button"
                 className="btn text-danger"
