@@ -9,7 +9,7 @@ export function Layout({ children }: { children: ReactNode }) {
     <div className="layout">
       <header className="site-header">
         <Link to="/" className="logo">
-          <span className="logo-serif">Studio</span>
+          <span className="logo-serif">Estate</span>
           <span className="logo-sans">Lookbook</span>
         </Link>
         <nav className="nav">
@@ -38,7 +38,7 @@ export function Layout({ children }: { children: ReactNode }) {
           >
             Unsplash
           </a>
-          . Modern style, designed to last.
+          . Heritage style, designed to last.
         </p>
       </footer>
     </div>
