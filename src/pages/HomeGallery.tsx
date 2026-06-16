@@ -82,7 +82,7 @@ export function HomeGallery() {
         </div>
         <div>
           <span>02</span>
-          <p>Soft tailoring balances polished and off-duty pieces.</p>
+          <p>Soft tailoring balances polished and relaxed pieces.</p>
         </div>
         <div>
           <span>03</span>
