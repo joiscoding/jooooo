@@ -38,7 +38,7 @@ export function HomeGallery() {
     return looks.filter((l) => l.tag === filter);
   }, [looks, filter]);
 
-  const featuredLook = filtered[0] ?? looks[0];
+  const featuredLook = looks[0];
   const filterLabel =
     filter === 'all' ? 'all styles' : STYLE_LABELS[filter].toLowerCase();
 
@@ -132,7 +132,9 @@ export function HomeGallery() {
                 <Link
                   key={look.id}
                   to={`/look/${look.id}`}
-                  className={i === 0 ? 'wall-card wall-card-large' : 'wall-card'}
+                  className={
+                    i === 0 ? 'wall-card wall-card-large' : 'wall-card'
+                  }
                   aria-label={`View ${look.title} look`}
                 >
                   <div className="wall-card-inner">
