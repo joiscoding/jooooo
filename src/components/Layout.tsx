@@ -7,12 +7,11 @@ export function Layout({ children }: { children: ReactNode }) {
 
   return (
     <div className="layout">
+      <div className="utility-bar">
+        <span>Complimentary shipping on the seasonal collection</span>
+      </div>
       <header className="site-header">
-        <Link to="/" className="logo">
-          <span className="logo-serif">Studio</span>
-          <span className="logo-sans">Lookbook</span>
-        </Link>
-        <nav className="nav">
+        <nav className="nav nav-left">
           <Link
             to="/"
             className={pathname === '/' ? 'nav-link active' : 'nav-link'}
@@ -26,11 +25,22 @@ export function Layout({ children }: { children: ReactNode }) {
             Albums
           </Link>
         </nav>
+        <Link to="/" className="logo">
+          <span className="logo-crest" aria-hidden="true">✦</span>
+          <span className="logo-serif">Ralph &amp; Co.</span>
+          <span className="logo-sans">Heritage Lookbook</span>
+        </Link>
+        <div className="nav nav-right">
+          <Link to="/albums" className="nav-link">
+            Atelier
+          </Link>
+        </div>
       </header>
       <main className="main">{children}</main>
       <footer className="site-footer">
+        <p className="footer-mark">Ralph &amp; Co.</p>
         <p>
-          Demo — photos via{' '}
+          A heritage lookbook demo — photography via{' '}
           <a
             href="https://unsplash.com"
             target="_blank"
@@ -38,7 +48,7 @@ export function Layout({ children }: { children: ReactNode }) {
           >
             Unsplash
           </a>
-          . Modern style, designed to last.
+          . Timeless style, made to endure.
         </p>
       </footer>
     </div>

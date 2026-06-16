@@ -38,13 +38,45 @@ export function HomeGallery() {
   return (
     <div className="home">
       <section className="home-hero">
-        <p className="eyebrow">Men · Seasonal edit</p>
-        <h1 className="home-title">
-          Looks built for <em>quiet</em> confidence.
-        </h1>
+        <div className="home-hero-media">
+          <img
+            src="/looks/1768809250854-2f4b1e8f19cc-w1200h1600.jpg"
+            alt=""
+            className="home-hero-img"
+          />
+          <div className="home-hero-overlay">
+            <p className="eyebrow eyebrow-light">The Autumn Collection · Men</p>
+            <h1 className="home-title">
+              An enduring <em>heritage</em>,<br />tailored for today.
+            </h1>
+            <p className="home-hero-sub">
+              Crafted silhouettes, considered neutrals, and the quiet
+              confidence of timeless menswear.
+            </p>
+            <a href="#gallery" className="hero-cta">
+              Explore the Lookbook
+            </a>
+          </div>
+        </div>
       </section>
 
-      <section className="filters-bar" aria-label="Style filters">
+      <section className="home-intro">
+        <p className="home-intro-eyebrow">Established in the spirit of craft</p>
+        <h2 className="home-intro-title">
+          Looks built for <em>quiet</em> confidence.
+        </h2>
+        <p className="home-intro-body">
+          A curated wardrobe of seasonal looks — from tailored classics to
+          relaxed weekend ease. Browse by aesthetic and save your favorites
+          to a personal atelier.
+        </p>
+      </section>
+
+      <section
+        id="gallery"
+        className="filters-bar"
+        aria-label="Style filters"
+      >
         <button
           type="button"
           className={filter === 'all' ? 'filter-pill active' : 'filter-pill'}
