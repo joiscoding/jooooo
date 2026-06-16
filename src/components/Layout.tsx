@@ -9,15 +9,20 @@ export function Layout({ children }: { children: ReactNode }) {
     <div className="layout">
       <header className="site-header">
         <Link to="/" className="logo">
-          <span className="logo-serif">Studio</span>
-          <span className="logo-sans">Lookbook</span>
+          <span className="logo-crest" aria-hidden="true">
+            RL
+          </span>
+          <span className="logo-wordmark">
+            <span className="logo-serif">Ralph</span>
+            <span className="logo-sans">Lookbook</span>
+          </span>
         </Link>
         <nav className="nav">
           <Link
             to="/"
             className={pathname === '/' ? 'nav-link active' : 'nav-link'}
           >
-            Gallery
+            Collection
           </Link>
           <Link
             to="/albums"
@@ -29,8 +34,11 @@ export function Layout({ children }: { children: ReactNode }) {
       </header>
       <main className="main">{children}</main>
       <footer className="site-footer">
+        <span className="logo-crest footer-crest" aria-hidden="true">
+          RL
+        </span>
         <p>
-          Demo — photos via{' '}
+          A lookbook demo in the heritage tradition. Photos via{' '}
           <a
             href="https://unsplash.com"
             target="_blank"
@@ -38,7 +46,7 @@ export function Layout({ children }: { children: ReactNode }) {
           >
             Unsplash
           </a>
-          . Modern style, designed to last.
+          . Timeless style, designed to last.
         </p>
       </footer>
     </div>
