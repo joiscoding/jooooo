@@ -27,6 +27,8 @@ export function HomeGallery() {
     return looks.filter((l) => l.tag === filter);
   }, [looks, filter]);
 
+  const featured = looks[0];
+
   if (loading) {
     return (
       <div className="page-loading">
@@ -37,39 +39,81 @@ export function HomeGallery() {
 
   return (
     <div className="home">
-      <section className="home-hero">
-        <p className="eyebrow">Men · Seasonal edit</p>
-        <h1 className="home-title">
-          Looks built for <em>quiet</em> confidence.
-        </h1>
+      <section className="hero">
+        <div className="hero-inner">
+          <p className="eyebrow">Men · Seasonal edit</p>
+          <h1 className="hero-title">
+            Looks built for <em>quiet</em> confidence.
+          </h1>
+          <p className="hero-lead">
+            A calm, image-led wardrobe edit. Browse outfit-first looks across
+            five aesthetics, then save the ones that feel like you into albums.
+          </p>
+          <div className="hero-actions">
+            <a href="#gallery" className="btn-pill primary">
+              Browse the gallery
+            </a>
+            <Link to="/albums" className="btn-pill ghost">
+              Your albums
+            </Link>
+          </div>
+        </div>
       </section>
 
-      <section className="filters-bar" aria-label="Style filters">
-        <button
-          type="button"
-          className={filter === 'all' ? 'filter-pill active' : 'filter-pill'}
-          onClick={() => setFilter('all')}
-        >
-          All looks
-        </button>
-        {STYLE_ORDER.map((tag) => (
+      {featured && (
+        <section className="feature" aria-label="Featured look">
+          <Link to={`/look/${featured.id}`} className="feature-card">
+            <div className="feature-media">
+              <img src={featured.hero} alt="" loading="eager" />
+            </div>
+            <div className="feature-body">
+              <span className="pill-tag">{STYLE_LABELS[featured.tag]}</span>
+              <h2 className="feature-title">{featured.title}</h2>
+              <p className="feature-meta">
+                {featured.season} · {featured.occasion}
+              </p>
+              <p className="feature-items">
+                {featured.keyItems.join(' · ')}
+              </p>
+              <span className="feature-cta">View the look →</span>
+            </div>
+          </Link>
+        </section>
+      )}
+
+      <section className="gallery-section" id="gallery">
+        <div className="section-head">
+          <h2 className="section-title">The gallery</h2>
+          <p className="section-sub">
+            {filtered.length} {filtered.length === 1 ? 'look' : 'looks'}
+          </p>
+        </div>
+
+        <div className="filters-bar" aria-label="Style filters">
           <button
-            key={tag}
             type="button"
-            className={filter === tag ? 'filter-pill active' : 'filter-pill'}
-            onClick={() => setFilter(tag)}
+            className={filter === 'all' ? 'filter-pill active' : 'filter-pill'}
+            onClick={() => setFilter('all')}
           >
-            {STYLE_LABELS[tag]}
+            All looks
           </button>
-        ))}
-      </section>
+          {STYLE_ORDER.map((tag) => (
+            <button
+              key={tag}
+              type="button"
+              className={filter === tag ? 'filter-pill active' : 'filter-pill'}
+              onClick={() => setFilter(tag)}
+            >
+              {STYLE_LABELS[tag]}
+            </button>
+          ))}
+        </div>
 
-      {filtered.length === 0 ? (
-        <p className="empty-state">No looks in this filter.</p>
-      ) : (
-        <div className="gallery-wall">
-          {filtered.map((look, i) => {
-            return (
+        {filtered.length === 0 ? (
+          <p className="empty-state">No looks in this filter.</p>
+        ) : (
+          <div className="gallery-wall">
+            {filtered.map((look, i) => (
               <Link
                 key={look.id}
                 to={`/look/${look.id}`}
@@ -85,14 +129,14 @@ export function HomeGallery() {
                   />
                   <div className="wall-meta">
                     <span className="wall-tag">{STYLE_LABELS[look.tag]}</span>
-                    <h2 className="wall-title">{look.title}</h2>
+                    <h3 className="wall-title">{look.title}</h3>
                   </div>
                 </div>
               </Link>
-            );
-          })}
-        </div>
-      )}
+            ))}
+          </div>
+        )}
+      </section>
     </div>
   );
 }
