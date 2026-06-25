@@ -28,8 +28,7 @@ export function HomeGallery() {
   }, [looks, filter]);
 
   const featuredLook = filtered[0] ?? looks[0];
-  const updateLooks =
-    filtered.length > 1 ? filtered.slice(1, 4) : looks.slice(1, 4);
+  const updateLooks = (filtered.length > 0 ? filtered : looks).slice(0, 3);
 
   if (loading) {
     return (
