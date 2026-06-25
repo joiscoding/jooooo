@@ -3,14 +3,14 @@ import type { ReactNode } from 'react';
 
 export function Layout({ children }: { children: ReactNode }) {
   const { pathname } = useLocation();
+  const isHome = pathname === '/';
   const isAlbums = pathname.startsWith('/albums');
 
   return (
-    <div className="layout">
+    <div className={`layout${isHome ? ' layout-home' : ''}`}>
       <header className="site-header">
         <Link to="/" className="logo">
-          <span className="logo-serif">Studio</span>
-          <span className="logo-sans">Lookbook</span>
+          Studio Lookbook
         </Link>
         <nav className="nav">
           <Link
