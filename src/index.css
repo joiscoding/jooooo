@@ -243,6 +243,7 @@ img {
   justify-content: space-between;
   gap: 1.5rem;
   padding: clamp(2.5rem, 6vw, 4.5rem) 0 1.25rem;
+  scroll-margin-top: calc(var(--header-h) + 1.25rem);
 }
 
 .section-title {
@@ -250,7 +251,7 @@ img {
   font-size: clamp(2rem, 4vw, 3.5rem);
   font-weight: 500;
   line-height: 1;
-  letter-spacing: -0.05em;
+  letter-spacing: -0.035em;
 }
 
 .section-meta {
@@ -397,14 +398,14 @@ img {
   font-weight: 500;
   color: #fff;
   margin: 0;
-  line-height: 1.05;
-  letter-spacing: -0.04em;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
 }
 
 @media (min-width: 980px) {
   .wall-card-featured .wall-title {
     font-size: clamp(2rem, 4vw, 3.75rem);
-    max-width: 10ch;
+    max-width: 12ch;
   }
 }
 
