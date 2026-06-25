@@ -4,6 +4,7 @@ import type { ReactNode } from 'react';
 export function Layout({ children }: { children: ReactNode }) {
   const { pathname } = useLocation();
   const isAlbums = pathname.startsWith('/albums');
+  const isHome = pathname === '/';
 
   return (
     <div className="layout">
@@ -27,7 +28,7 @@ export function Layout({ children }: { children: ReactNode }) {
           </Link>
         </nav>
       </header>
-      <main className="main">{children}</main>
+      <main className={isHome ? 'main main--flush' : 'main'}>{children}</main>
       <footer className="site-footer">
         <p>
           Demo — photos via{' '}
