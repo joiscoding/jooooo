@@ -38,13 +38,49 @@ export function HomeGallery() {
   return (
     <div className="home">
       <section className="home-hero">
-        <p className="eyebrow">Men · Seasonal edit</p>
-        <h1 className="home-title">
-          Looks built for <em>quiet</em> confidence.
-        </h1>
+        <div className="home-hero-copy">
+          <p className="eyebrow">AI style workspace</p>
+          <h1 className="home-title">
+            Build sharper wardrobes with an intelligent lookbook suite.
+          </h1>
+          <p className="home-intro">
+            A polished workspace for browsing seasonal edits, organizing
+            favorites, and turning everyday style decisions into a faster
+            workflow.
+          </p>
+          <div className="hero-actions">
+            <a className="hero-cta primary" href="#product-suite">
+              Explore looks
+            </a>
+            <Link className="hero-cta secondary" to="/albums">
+              View albums
+            </Link>
+          </div>
+        </div>
+        <div className="hero-suite" aria-label="Product suite highlights">
+          <div className="suite-orb" />
+          <div className="suite-card suite-card-main">
+            <span className="suite-kicker">Lookbook Studio</span>
+            <strong>Seasonal intelligence</strong>
+            <p>Curated looks, smart filters, and saved collections.</p>
+          </div>
+          <div className="suite-card suite-card-float">
+            <span>5 categories</span>
+            <strong>{looks.length} looks ready</strong>
+          </div>
+          <div className="suite-grid">
+            {looks.slice(0, 4).map((look) => (
+              <img key={look.id} src={look.hero} alt="" loading="eager" />
+            ))}
+          </div>
+        </div>
       </section>
 
-      <section className="filters-bar" aria-label="Style filters">
+      <section
+        id="product-suite"
+        className="filters-bar"
+        aria-label="Style filters"
+      >
         <button
           type="button"
           className={filter === 'all' ? 'filter-pill active' : 'filter-pill'}
@@ -86,6 +122,10 @@ export function HomeGallery() {
                   <div className="wall-meta">
                     <span className="wall-tag">{STYLE_LABELS[look.tag]}</span>
                     <h2 className="wall-title">{look.title}</h2>
+                    <p className="wall-summary">
+                      {look.occasion} · {look.season}
+                    </p>
+                    <span className="wall-action">Learn more</span>
                   </div>
                 </div>
               </Link>
