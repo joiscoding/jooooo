@@ -27,6 +27,10 @@ export function HomeGallery() {
     return looks.filter((l) => l.tag === filter);
   }, [looks, filter]);
 
+  const featuredLook = filtered[0] ?? looks[0];
+  const updateLooks =
+    filtered.length > 1 ? filtered.slice(1, 4) : looks.slice(1, 4);
+
   if (loading) {
     return (
       <div className="page-loading">
@@ -36,12 +40,87 @@ export function HomeGallery() {
   }
 
   return (
-    <div className="home">
-      <section className="home-hero">
-        <p className="eyebrow">Men · Seasonal edit</p>
-        <h1 className="home-title">
-          Looks built for <em>quiet</em> confidence.
-        </h1>
+    <div className="home home-ir">
+      <section className="ir-hero">
+        <div className="ir-hero-copy">
+          <p className="eyebrow">Investor Home</p>
+          <h1 className="home-title">
+            Seasonal style intelligence, presented with investor-grade clarity.
+          </h1>
+          <p className="home-dek">
+            A polished view of curated looks, recent releases, and wardrobe
+            categories inspired by the structured Kingsoft investor relations
+            experience.
+          </p>
+          <div className="ir-hero-actions">
+            <a href="#featured-items" className="ir-button primary">
+              Featured items
+            </a>
+            <a href="#look-gallery" className="ir-button secondary">
+              View gallery
+            </a>
+          </div>
+        </div>
+
+        {featuredLook ? (
+          <Link to={`/look/${featuredLook.id}`} className="ir-feature-card">
+            <img
+              src={featuredLook.hero}
+              alt=""
+              className="ir-feature-img"
+              loading="eager"
+            />
+            <div className="ir-feature-overlay">
+              <span className="wall-tag">{STYLE_LABELS[featuredLook.tag]}</span>
+              <h2 className="wall-title">{featuredLook.title}</h2>
+              <p>{featuredLook.season} · {featuredLook.occasion}</p>
+            </div>
+          </Link>
+        ) : null}
+      </section>
+
+      <section className="ir-stats" aria-label="Lookbook overview">
+        <article>
+          <span>{looks.length}</span>
+          <p>Total looks</p>
+        </article>
+        <article>
+          <span>{STYLE_ORDER.length}</span>
+          <p>Style categories</p>
+        </article>
+        <article>
+          <span>{filtered.length}</span>
+          <p>Current selection</p>
+        </article>
+      </section>
+
+      <section className="ir-content-grid">
+        <article className="corporate-card">
+          <p className="eyebrow">Corporate Profile</p>
+          <h2>Studio Lookbook curates dependable wardrobe direction.</h2>
+          <p>
+            Each edit combines silhouette, season, and occasion data into a
+            clear discovery flow, echoing the crisp information hierarchy of a
+            public-company investor page.
+          </p>
+        </article>
+
+        <aside className="ir-updates" id="featured-items">
+          <div className="section-heading compact">
+            <p className="eyebrow">Featured Items</p>
+            <h2>Recent releases</h2>
+          </div>
+          <ul>
+            {updateLooks.map((look) => (
+              <li key={look.id}>
+                <Link to={`/look/${look.id}`}>
+                  <span>{STYLE_LABELS[look.tag]}</span>
+                  {look.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </aside>
       </section>
 
       <section className="filters-bar" aria-label="Style filters">
@@ -64,35 +143,42 @@ export function HomeGallery() {
         ))}
       </section>
 
-      {filtered.length === 0 ? (
-        <p className="empty-state">No looks in this filter.</p>
-      ) : (
-        <div className="gallery-wall">
-          {filtered.map((look, i) => {
-            return (
-              <Link
-                key={look.id}
-                to={`/look/${look.id}`}
-                className="wall-card"
-              >
-                <div className="wall-card-inner">
-                  <img
-                    key={`${look.id}-${look.hero}`}
-                    src={look.hero}
-                    alt=""
-                    className="wall-img"
-                    loading={i < 4 ? 'eager' : 'lazy'}
-                  />
-                  <div className="wall-meta">
-                    <span className="wall-tag">{STYLE_LABELS[look.tag]}</span>
-                    <h2 className="wall-title">{look.title}</h2>
-                  </div>
-                </div>
-              </Link>
-            );
-          })}
+      <section className="gallery-section" id="look-gallery">
+        <div className="section-heading">
+          <p className="eyebrow">Press Releases</p>
+          <h2>Latest look releases</h2>
         </div>
-      )}
+
+        {filtered.length === 0 ? (
+          <p className="empty-state">No looks in this filter.</p>
+        ) : (
+          <div className="gallery-wall">
+            {filtered.map((look, i) => {
+              return (
+                <Link
+                  key={look.id}
+                  to={`/look/${look.id}`}
+                  className="wall-card"
+                >
+                  <div className="wall-card-inner">
+                    <img
+                      key={`${look.id}-${look.hero}`}
+                      src={look.hero}
+                      alt=""
+                      className="wall-img"
+                      loading={i < 4 ? 'eager' : 'lazy'}
+                    />
+                    <div className="wall-meta">
+                      <span className="wall-tag">{STYLE_LABELS[look.tag]}</span>
+                      <h2 className="wall-title">{look.title}</h2>
+                    </div>
+                  </div>
+                </Link>
+              );
+            })}
+          </div>
+        )}
+      </section>
     </div>
   );
 }
