@@ -38,13 +38,36 @@ export function HomeGallery() {
   return (
     <div className="home">
       <section className="home-hero">
-        <p className="eyebrow">Men · Seasonal edit</p>
-        <h1 className="home-title">
-          Looks built for <em>quiet</em> confidence.
-        </h1>
+        <div className="hero-copy">
+          <p className="eyebrow">Member week · Men's style rewards</p>
+          <h1 className="home-title">
+            Big outfit energy, bigger cashback feeling.
+          </h1>
+          <p className="hero-subtitle">
+            Explore curated looks, save favorites, and build a wardrobe that
+            feels like a smarter way to shop.
+          </p>
+          <div className="hero-actions">
+            <a href="#looks" className="hero-cta">
+              Shop the edit
+            </a>
+            <span className="hero-promo">Up to 12% back on featured fits</span>
+          </div>
+        </div>
+        <div className="hero-deal-card" aria-label="Featured member offer">
+          <span>Today only</span>
+          <strong>12%</strong>
+          <p>Cashback-style rewards on the seasonal lookbook.</p>
+        </div>
       </section>
 
-      <section className="filters-bar" aria-label="Style filters">
+      <section className="rewards-strip" aria-label="Shopping benefits">
+        <span>Free shipping inspiration</span>
+        <span>Members earn more</span>
+        <span>Save looks to albums</span>
+      </section>
+
+      <section id="looks" className="filters-bar" aria-label="Style filters">
         <button
           type="button"
           className={filter === 'all' ? 'filter-pill active' : 'filter-pill'}
