@@ -48,6 +48,14 @@ export function HomeGallery() {
     return looks.filter((l) => l.tag === filter);
   }, [looks, filter]);
 
+  const applyFilter = (next: StyleTag | 'all') => {
+    setFilter(next);
+    document.getElementById('gallery')?.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start',
+    });
+  };
+
   if (loading) {
     return (
       <div className="page-loading">
@@ -80,11 +88,18 @@ export function HomeGallery() {
 
       <section className="trust-strip" aria-label="Style categories">
         <p className="trust-label">Curated across five aesthetics</p>
-        <ul className="trust-tags">
+        <div className="trust-tags" role="group" aria-label="Quick style filters">
           {STYLE_ORDER.map((tag) => (
-            <li key={tag}>{STYLE_LABELS[tag]}</li>
+            <button
+              key={tag}
+              type="button"
+              className={filter === tag ? 'filter-pill active' : 'filter-pill'}
+              onClick={() => applyFilter(tag)}
+            >
+              {STYLE_LABELS[tag]}
+            </button>
           ))}
-        </ul>
+        </div>
       </section>
 
       <section className="features-section" aria-labelledby="features-heading">
@@ -124,7 +139,7 @@ export function HomeGallery() {
           <button
             type="button"
             className={filter === 'all' ? 'filter-pill active' : 'filter-pill'}
-            onClick={() => setFilter('all')}
+            onClick={() => applyFilter('all')}
           >
             All looks
           </button>
@@ -133,7 +148,7 @@ export function HomeGallery() {
               key={tag}
               type="button"
               className={filter === tag ? 'filter-pill active' : 'filter-pill'}
-              onClick={() => setFilter(tag)}
+              onClick={() => applyFilter(tag)}
             >
               {STYLE_LABELS[tag]}
             </button>
