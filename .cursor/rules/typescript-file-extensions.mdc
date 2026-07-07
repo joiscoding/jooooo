@@ -1,0 +1,15 @@
+---
+description: Require .ts for TypeScript files
+globs:
+  - "**/*.ts"
+alwaysApply: false
+---
+
+# TypeScript file extensions
+
+All TypeScript files must end with `.ts`.
+
+Avoid `.tsx`, `.mts`, and `.cts`. Use `createElement` in React files that would
+otherwise need JSX.
+
+`npm run check:standards` enforces this rule.
