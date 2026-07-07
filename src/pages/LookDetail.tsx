@@ -44,13 +44,14 @@ export function LookDetail() {
   const images = [look.hero, ...look.gallery];
 
   function handleAddToExisting() {
-    if (!selectedAlbumId) return;
+    if (!selectedAlbumId || !look) return;
     addLookToAlbum(selectedAlbumId, look.id);
     setToast('Saved to album.');
   }
 
   function handleCreateAndAdd(e: FormEvent) {
     e.preventDefault();
+    if (!look) return;
     const name = newAlbumName.trim();
     if (!name) return;
     const al = createAlbum(name);
