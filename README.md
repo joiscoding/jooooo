@@ -54,3 +54,10 @@ Clear with: `sessionStorage.removeItem('lookbook_mcp_looks_v13')`.
 npm run build
 npm run preview
 ```
+
+## Coding standards
+
+Run `npm run check:standards` before pushing changes.
+
+- Python identifiers should use `snake_case`, not camelCase.
+- TypeScript files should end with `.ts`. This repo avoids `.tsx`, `.mts`, and `.cts`.

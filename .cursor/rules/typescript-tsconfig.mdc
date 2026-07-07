@@ -2,7 +2,6 @@
 description: Match tsconfig strict settings and type-only imports in src
 globs:
   - src/**/*.ts
-  - src/**/*.tsx
 alwaysApply: false
 ---
 
@@ -22,3 +21,5 @@ import { Look } from '../types';
 ```
 
 - Do not relax compiler options in one-off files; fix types or narrow unions instead.
+
+- Keep TypeScript source files on `.ts`. This repo does not use `.tsx`; React views should use `createElement` when they need to stay in TypeScript.

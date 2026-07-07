@@ -1,0 +1,13 @@
+---
+description: Keep Python names snake_case
+globs:
+  - "**/*.py"
+alwaysApply: false
+---
+
+# Python naming
+
+Use `snake_case` for Python identifiers. Do not introduce camelCase names.
+
+`npm run check:standards` enforces this for local Python definitions, arguments,
+assignment targets, aliases, and pattern names.
