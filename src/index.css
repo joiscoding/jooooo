@@ -229,6 +229,9 @@ img {
 }
 
 .filter-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   font-family: var(--font-sans);
   font-size: 0.9rem;
   font-weight: 500;
@@ -240,10 +243,14 @@ img {
   cursor: pointer;
   flex-grow: 0;
   flex-shrink: 0;
-  min-width: 3.25rem;
+  min-width: 4rem;
   white-space: nowrap;
   border-radius: 999px;
   transition: color 0.2s, border-color 0.2s, background 0.2s;
+}
+
+.filter-pill-all {
+  width: 4rem;
 }
 
 .filter-pill:hover {

@@ -63,7 +63,11 @@ export function HomeGallery() {
         <div className="filters-bar" aria-label="Style filters">
           <button
             type="button"
-            className={filter === 'all' ? 'filter-pill active' : 'filter-pill'}
+            className={
+              filter === 'all'
+                ? 'filter-pill filter-pill-all active'
+                : 'filter-pill filter-pill-all'
+            }
             onClick={() => setFilter('all')}
           >
             All
