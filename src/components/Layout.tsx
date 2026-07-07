@@ -7,23 +7,26 @@ export function Layout({ children }: { children: ReactNode }) {
 
   return (
     <div className="layout">
+      <div className="promo-strip">
+        Super Points Sale — earn up to 10× points on every look. Ends soon!
+      </div>
       <header className="site-header">
         <Link to="/" className="logo">
-          <span className="logo-serif">Studio</span>
-          <span className="logo-sans">Lookbook</span>
+          <span className="logo-mark">R</span>
+          <span className="logo-word">Rakuten Lookbook</span>
         </Link>
         <nav className="nav">
           <Link
             to="/"
             className={pathname === '/' ? 'nav-link active' : 'nav-link'}
           >
-            Gallery
+            Shop
           </Link>
           <Link
             to="/albums"
             className={isAlbums ? 'nav-link active' : 'nav-link'}
           >
-            Albums
+            My Lists
           </Link>
         </nav>
       </header>

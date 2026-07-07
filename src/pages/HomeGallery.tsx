@@ -38,10 +38,18 @@ export function HomeGallery() {
   return (
     <div className="home">
       <section className="home-hero">
-        <p className="eyebrow">Men · Seasonal edit</p>
+        <span className="hero-flag">Cash Back Event</span>
         <h1 className="home-title">
-          Looks built for <em>quiet</em> confidence.
+          Up to <strong>15%</strong> back on every men&apos;s look
         </h1>
+        <p className="hero-sub">
+          Shop the seasonal edit and rack up Super Points on every outfit you
+          save. Members earn more.
+        </p>
+        <div className="hero-cta-row">
+          <span className="btn primary hero-cta">Shop deals</span>
+          <span className="hero-points">★ 2,500 pts welcome bonus</span>
+        </div>
       </section>
 
       <section className="filters-bar" aria-label="Style filters">
@@ -76,6 +84,9 @@ export function HomeGallery() {
                 className="wall-card"
               >
                 <div className="wall-card-inner">
+                  <span className="wall-cashback">
+                    {5 + (i % 6) * 2}% back
+                  </span>
                   <img
                     key={`${look.id}-${look.hero}`}
                     src={look.hero}
