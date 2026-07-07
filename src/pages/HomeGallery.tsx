@@ -38,30 +38,51 @@ export function HomeGallery() {
   return (
     <div className="home">
       <section className="home-hero">
-        <p className="eyebrow">Men · Seasonal edit</p>
-        <h1 className="home-title">
-          Looks built for <em>quiet</em> confidence.
-        </h1>
+        <div className="hero-copy">
+          <p className="eyebrow">Men · Seasonal edit</p>
+          <h1 className="home-title">
+            A quiet system for getting dressed well.
+          </h1>
+        </div>
+        <div className="hero-aside">
+          <p>
+            Explore refined everyday looks, save the ones that work, and build
+            a wardrobe around calm confidence.
+          </p>
+          <Link to="/albums" className="hero-link">
+            View saved albums
+          </Link>
+        </div>
       </section>
 
-      <section className="filters-bar" aria-label="Style filters">
-        <button
-          type="button"
-          className={filter === 'all' ? 'filter-pill active' : 'filter-pill'}
-          onClick={() => setFilter('all')}
-        >
-          All looks
-        </button>
-        {STYLE_ORDER.map((tag) => (
+      <section className="collection-head">
+        <div>
+          <p className="eyebrow">Collection</p>
+          <h2 className="section-title">Latest looks</h2>
+        </div>
+        <div className="filters-bar" aria-label="Style filters">
           <button
-            key={tag}
             type="button"
-            className={filter === tag ? 'filter-pill active' : 'filter-pill'}
-            onClick={() => setFilter(tag)}
+            className={
+              filter === 'all'
+                ? 'filter-pill filter-pill-all active'
+                : 'filter-pill filter-pill-all'
+            }
+            onClick={() => setFilter('all')}
           >
-            {STYLE_LABELS[tag]}
+            All
           </button>
-        ))}
+          {STYLE_ORDER.map((tag) => (
+            <button
+              key={tag}
+              type="button"
+              className={filter === tag ? 'filter-pill active' : 'filter-pill'}
+              onClick={() => setFilter(tag)}
+            >
+              {STYLE_LABELS[tag]}
+            </button>
+          ))}
+        </div>
       </section>
 
       {filtered.length === 0 ? (
