@@ -9,9 +9,22 @@ export function Layout({ children }: { children: ReactNode }) {
     <div className="layout">
       <header className="site-header">
         <Link to="/" className="logo">
-          <span className="logo-serif">Studio</span>
-          <span className="logo-sans">Lookbook</span>
+          <span className="logo-mark">S</span>
+          <span className="logo-text">
+            Studio<strong>Lookbook</strong>
+          </span>
         </Link>
+        <div className="header-search" role="search">
+          <input
+            type="search"
+            className="header-search-input"
+            placeholder="Search looks, styles, and more"
+            aria-label="Search looks"
+          />
+          <button type="button" className="header-search-btn">
+            Search
+          </button>
+        </div>
         <nav className="nav">
           <Link
             to="/"
@@ -27,6 +40,13 @@ export function Layout({ children }: { children: ReactNode }) {
           </Link>
         </nav>
       </header>
+      <div className="header-subbar">
+        <span className="subbar-item highlight">Super Point Up ★</span>
+        <span className="subbar-item">Daily Deals</span>
+        <span className="subbar-item">New Arrivals</span>
+        <span className="subbar-item">Rankings</span>
+        <span className="subbar-item">Coupons</span>
+      </div>
       <main className="main">{children}</main>
       <footer className="site-footer">
         <p>

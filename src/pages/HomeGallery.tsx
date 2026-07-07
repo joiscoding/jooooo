@@ -38,12 +38,30 @@ export function HomeGallery() {
   return (
     <div className="home">
       <section className="home-hero">
-        <p className="eyebrow">Men · Seasonal edit</p>
-        <h1 className="home-title">
-          Looks built for <em>quiet</em> confidence.
-        </h1>
+        <div className="hero-banner">
+          <p className="hero-kicker">Men · Seasonal Edit</p>
+          <h1 className="home-title">Big Style Sale</h1>
+          <p className="hero-sub">
+            Save your favorite looks to albums &amp; earn style points
+          </p>
+          <span className="hero-points-badge">Point Up Campaign · 5x</span>
+        </div>
+        <div className="hero-side">
+          <div className="hero-tile">
+            <span className="hero-tile-big">30+</span>
+            <span>Curated looks</span>
+          </div>
+          <div className="hero-tile">
+            <span className="hero-tile-big">5</span>
+            <span>Style categories</span>
+          </div>
+        </div>
       </section>
 
+      <h2 className="section-heading">
+        <span className="section-heading-bar" aria-hidden="true" />
+        Shop by Style
+      </h2>
       <section className="filters-bar" aria-label="Style filters">
         <button
           type="button"
@@ -86,6 +104,14 @@ export function HomeGallery() {
                   <div className="wall-meta">
                     <span className="wall-tag">{STYLE_LABELS[look.tag]}</span>
                     <h2 className="wall-title">{look.title}</h2>
+                    <div className="wall-points">
+                      <span className="wall-stars" aria-hidden="true">
+                        ★★★★★
+                      </span>
+                      <span className="wall-points-label">
+                        {((i % 4) + 2)}x points
+                      </span>
+                    </div>
                   </div>
                 </div>
               </Link>

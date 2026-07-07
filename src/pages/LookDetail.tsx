@@ -41,11 +41,13 @@ export function LookDetail() {
     );
   }
 
+  // TS cannot narrow `look` inside the nested handlers, so capture it here.
+  const currentLook = look;
   const images = [look.hero, ...look.gallery];
 
   function handleAddToExisting() {
     if (!selectedAlbumId) return;
-    addLookToAlbum(selectedAlbumId, look.id);
+    addLookToAlbum(selectedAlbumId, currentLook.id);
     setToast('Saved to album.');
   }
 
@@ -54,7 +56,7 @@ export function LookDetail() {
     const name = newAlbumName.trim();
     if (!name) return;
     const al = createAlbum(name);
-    addLookToAlbum(al.id, look.id);
+    addLookToAlbum(al.id, currentLook.id);
     setNewAlbumName('');
     setToast(`Created “${al.name}” and saved this look.`);
   }
