@@ -42,6 +42,10 @@ export function HomeGallery() {
         <h1 className="home-title">
           Looks built for <em>quiet</em> confidence.
         </h1>
+        <p className="home-subtitle">
+          A curated lookbook of considered, everyday menswear — pared back,
+          well made, and easy to build a wardrobe around.
+        </p>
       </section>
 
       <section className="filters-bar" aria-label="Style filters">
