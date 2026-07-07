@@ -239,6 +239,7 @@ img {
   color: var(--ink-muted);
   cursor: pointer;
   flex: 0 0 auto;
+  min-width: max-content;
   white-space: nowrap;
   border-radius: 999px;
   transition: color 0.2s, border-color 0.2s, background 0.2s;
