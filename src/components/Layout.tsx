@@ -9,28 +9,28 @@ export function Layout({ children }: { children: ReactNode }) {
     <div className="layout">
       <header className="site-header">
         <Link to="/" className="logo">
-          <span className="logo-serif">Studio</span>
-          <span className="logo-sans">Lookbook</span>
+          <span className="logo-mark">R</span>
+          <span className="logo-word">Style Rewards</span>
         </Link>
         <nav className="nav">
           <Link
             to="/"
             className={pathname === '/' ? 'nav-link active' : 'nav-link'}
           >
-            Gallery
+            Shop looks
           </Link>
           <Link
             to="/albums"
             className={isAlbums ? 'nav-link active' : 'nav-link'}
           >
-            Albums
+            Saved
           </Link>
         </nav>
       </header>
       <main className="main">{children}</main>
       <footer className="site-footer">
         <p>
-          Demo — photos via{' '}
+          Demo storefront — photos via{' '}
           <a
             href="https://unsplash.com"
             target="_blank"
@@ -38,7 +38,7 @@ export function Layout({ children }: { children: ReactNode }) {
           >
             Unsplash
           </a>
-          . Modern style, designed to last.
+          . Rewards-inspired shopping experience.
         </p>
       </footer>
     </div>
