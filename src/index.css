@@ -238,8 +238,9 @@ img {
   background: transparent;
   color: var(--ink-muted);
   cursor: pointer;
-  flex: 0 0 auto;
-  min-width: max-content;
+  flex-grow: 0;
+  flex-shrink: 0;
+  min-width: 3.25rem;
   white-space: nowrap;
   border-radius: 999px;
   transition: color 0.2s, border-color 0.2s, background 0.2s;
