@@ -3,11 +3,12 @@ import type { ReactNode } from 'react';
 
 export function Layout({ children }: { children: ReactNode }) {
   const { pathname } = useLocation();
+  const isHome = pathname === '/';
   const isAlbums = pathname.startsWith('/albums');
 
   return (
     <div className="layout">
-      <header className="site-header">
+      <header className={`site-header${isHome ? ' site-header--transparent' : ''}`}>
         <Link to="/" className="logo">
           <span className="logo-serif">Studio</span>
           <span className="logo-sans">Lookbook</span>
@@ -17,7 +18,7 @@ export function Layout({ children }: { children: ReactNode }) {
             to="/"
             className={pathname === '/' ? 'nav-link active' : 'nav-link'}
           >
-            Gallery
+            Collection
           </Link>
           <Link
             to="/albums"
@@ -27,19 +28,25 @@ export function Layout({ children }: { children: ReactNode }) {
           </Link>
         </nav>
       </header>
-      <main className="main">{children}</main>
+      <main className={`main${isHome ? ' main--home' : ''}`}>{children}</main>
       <footer className="site-footer">
-        <p>
-          Demo — photos via{' '}
-          <a
-            href="https://unsplash.com"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Unsplash
-          </a>
-          . Modern style, designed to last.
-        </p>
+        <div className="footer-inner">
+          <p className="footer-brand">
+            <span className="logo-serif">Studio</span>
+            <span className="logo-sans">Lookbook</span>
+          </p>
+          <p className="footer-copy">
+            Demo — photos via{' '}
+            <a
+              href="https://unsplash.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Unsplash
+            </a>
+            . Timeless style, designed to last.
+          </p>
+        </div>
       </footer>
     </div>
   );
