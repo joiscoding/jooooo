@@ -27,7 +27,8 @@ export function HomeGallery() {
     return looks.filter((l) => l.tag === filter);
   }, [looks, filter]);
 
-  const featured = looks[0];
+  const featured =
+    looks.find((l) => l.id === 'boardroom-soft') ?? looks[0];
 
   if (loading) {
     return (
