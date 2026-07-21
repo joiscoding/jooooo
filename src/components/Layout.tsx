@@ -7,39 +7,56 @@ export function Layout({ children }: { children: ReactNode }) {
 
   return (
     <div className="layout">
+      <a className="skip-link" href="#main-content">
+        Skip to content
+      </a>
       <header className="site-header">
         <Link to="/" className="logo">
-          <span className="logo-serif">Studio</span>
-          <span className="logo-sans">Lookbook</span>
+          <span className="logo-mark" aria-hidden="true">
+            S
+          </span>
+          <span className="logo-copy">
+            <strong>Studio</strong>
+            <span>Lookbook systems</span>
+          </span>
         </Link>
-        <nav className="nav">
+        <nav className="nav" aria-label="Primary navigation">
           <Link
             to="/"
             className={pathname === '/' ? 'nav-link active' : 'nav-link'}
+            aria-current={pathname === '/' ? 'page' : undefined}
           >
-            Gallery
+            Look systems
           </Link>
           <Link
             to="/albums"
             className={isAlbums ? 'nav-link active' : 'nav-link'}
+            aria-current={isAlbums ? 'page' : undefined}
           >
-            Albums
+            Saved albums
           </Link>
         </nav>
       </header>
-      <main className="main">{children}</main>
+      <main className="main" id="main-content">
+        {children}
+      </main>
       <footer className="site-footer">
-        <p>
-          Demo — photos via{' '}
+        <div className="footer-brand">
+          <span className="footer-kicker">Studio Lookbook / Men</span>
+          <p>Modular style, considered for the long run.</p>
+        </div>
+        <div className="footer-links">
+          <Link to="/">Look systems</Link>
+          <Link to="/albums">Saved albums</Link>
           <a
             href="https://unsplash.com"
             target="_blank"
             rel="noopener noreferrer"
           >
-            Unsplash
+            Photography via Unsplash
           </a>
-          . Modern style, designed to last.
-        </p>
+        </div>
+        <p className="footer-note">Independent concept demo · 2026</p>
       </footer>
     </div>
   );
