@@ -4,42 +4,67 @@ import type { ReactNode } from 'react';
 export function Layout({ children }: { children: ReactNode }) {
   const { pathname } = useLocation();
   const isAlbums = pathname.startsWith('/albums');
+  const isHome = pathname === '/';
 
   return (
-    <div className="layout">
+    <div className={isHome ? 'layout layout--home-sm' : 'layout'}>
+      <div className="utility-bar" aria-hidden="true">
+        <span>Men’s lookbook demo</span>
+        <span className="utility-bar-sep">·</span>
+        <span>Unofficial style study</span>
+      </div>
       <header className="site-header">
         <Link to="/" className="logo">
-          <span className="logo-serif">Studio</span>
-          <span className="logo-sans">Lookbook</span>
+          <span className="logo-mark" aria-hidden="true" />
+          <span className="logo-word">
+            <span className="logo-primary">Studio</span>
+            <span className="logo-secondary">Lookbook</span>
+          </span>
         </Link>
-        <nav className="nav">
+        <nav className="nav" aria-label="Primary">
           <Link
             to="/"
             className={pathname === '/' ? 'nav-link active' : 'nav-link'}
           >
-            Gallery
+            Lookbooks
           </Link>
+          <a
+            className="nav-link"
+            href={isHome ? '#building-blocks' : '/#building-blocks'}
+          >
+            Building Blocks
+          </a>
           <Link
             to="/albums"
             className={isAlbums ? 'nav-link active' : 'nav-link'}
           >
             Albums
           </Link>
+          <a className="nav-link" href={isHome ? '#featured' : '/#featured'}>
+            Featured
+          </a>
         </nav>
       </header>
       <main className="main">{children}</main>
       <footer className="site-footer">
-        <p>
-          Demo — photos via{' '}
-          <a
-            href="https://unsplash.com"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Unsplash
-          </a>
-          . Modern style, designed to last.
-        </p>
+        <div className="footer-inner">
+          <div className="footer-brand">
+            <span className="logo-mark" aria-hidden="true" />
+            <span className="footer-brand-name">Studio Lookbook</span>
+          </div>
+          <p>
+            Demo — photos via{' '}
+            <a
+              href="https://unsplash.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Unsplash
+            </a>
+            . Inspired by enterprise product-site layouts; not affiliated with
+            any hardware brand.
+          </p>
+        </div>
       </footer>
     </div>
   );
