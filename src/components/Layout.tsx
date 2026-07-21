@@ -1,9 +1,27 @@
-import { Link, useLocation } from 'react-router-dom';
-import type { ReactNode } from 'react';
+import { useLayoutEffect, useRef, type ReactNode } from 'react';
+import { Link, useLocation, useNavigationType } from 'react-router-dom';
 
 export function Layout({ children }: { children: ReactNode }) {
-  const { pathname } = useLocation();
+  const location = useLocation();
+  const navigationType = useNavigationType();
+  const scrollPositions = useRef(new Map<string, number>());
+  const { pathname } = location;
   const isAlbums = pathname.startsWith('/albums');
+
+  useLayoutEffect(() => {
+    if (navigationType === 'POP') {
+      const savedPosition = scrollPositions.current.get(location.key);
+      window.requestAnimationFrame(() => {
+        window.scrollTo(0, savedPosition ?? 0);
+      });
+    } else {
+      window.scrollTo(0, 0);
+    }
+
+    return () => {
+      scrollPositions.current.set(location.key, window.scrollY);
+    };
+  }, [location.key, navigationType]);
 
   return (
     <div className="layout">
