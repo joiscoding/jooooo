@@ -8,38 +8,43 @@ export function Layout({ children }: { children: ReactNode }) {
   return (
     <div className="layout">
       <header className="site-header">
-        <Link to="/" className="logo">
-          <span className="logo-serif">Studio</span>
-          <span className="logo-sans">Lookbook</span>
-        </Link>
-        <nav className="nav">
-          <Link
-            to="/"
-            className={pathname === '/' ? 'nav-link active' : 'nav-link'}
-          >
-            Gallery
+        <div className="header-inner">
+          <Link to="/" className="logo">
+            Studio Lookbook
           </Link>
-          <Link
-            to="/albums"
-            className={isAlbums ? 'nav-link active' : 'nav-link'}
-          >
-            Albums
-          </Link>
-        </nav>
+          <nav className="nav" aria-label="Primary navigation">
+            <Link
+              to="/"
+              className={pathname === '/' ? 'nav-link active' : 'nav-link'}
+              aria-current={pathname === '/' ? 'page' : undefined}
+            >
+              Gallery
+            </Link>
+            <Link
+              to="/albums"
+              className={isAlbums ? 'nav-link active' : 'nav-link'}
+              aria-current={isAlbums ? 'page' : undefined}
+            >
+              Albums
+            </Link>
+          </nav>
+        </div>
       </header>
       <main className="main">{children}</main>
       <footer className="site-footer">
-        <p>
-          Demo — photos via{' '}
-          <a
-            href="https://unsplash.com"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Unsplash
-          </a>
-          . Modern style, designed to last.
-        </p>
+        <div className="footer-inner">
+          <p>Studio Lookbook</p>
+          <p>
+            Images via{' '}
+            <a
+              href="https://unsplash.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Unsplash
+            </a>
+          </p>
+        </div>
       </footer>
     </div>
   );
