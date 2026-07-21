@@ -40,8 +40,12 @@ export function HomeGallery() {
       <section className="home-hero">
         <p className="eyebrow">Men · Seasonal edit</p>
         <h1 className="home-title">
-          Looks built for <em>quiet</em> confidence.
+          Looks built for <em>quiet confidence</em>.
         </h1>
+        <p className="muted home-subtitle">
+          A gallery of outfits, curated and tagged by style. Browse, filter,
+          and save the ones you'd wear.
+        </p>
       </section>
 
       <section className="filters-bar" aria-label="Style filters">
