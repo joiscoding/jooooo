@@ -3,19 +3,19 @@ import type { ReactNode } from 'react';
 
 export function Layout({ children }: { children: ReactNode }) {
   const { pathname } = useLocation();
+  const isHome = pathname === '/';
   const isAlbums = pathname.startsWith('/albums');
 
   return (
-    <div className="layout">
+    <div className={isHome ? 'layout layout--home' : 'layout'}>
       <header className="site-header">
         <Link to="/" className="logo">
-          <span className="logo-serif">Studio</span>
-          <span className="logo-sans">Lookbook</span>
+          Studio <span className="logo-mark">Lookbook</span>
         </Link>
-        <nav className="nav">
+        <nav className="nav" aria-label="Primary">
           <Link
             to="/"
-            className={pathname === '/' ? 'nav-link active' : 'nav-link'}
+            className={isHome ? 'nav-link active' : 'nav-link'}
           >
             Gallery
           </Link>
@@ -26,6 +26,11 @@ export function Layout({ children }: { children: ReactNode }) {
             Albums
           </Link>
         </nav>
+        <div className="header-actions">
+          <Link to="/albums" className="btn btn-header">
+            Open albums
+          </Link>
+        </div>
       </header>
       <main className="main">{children}</main>
       <footer className="site-footer">
