@@ -1,4 +1,4 @@
-import { useLayoutEffect, useRef, type ReactNode } from 'react';
+import { useEffect, useLayoutEffect, useRef, type ReactNode } from 'react';
 import { Link, useLocation, useNavigationType } from 'react-router-dom';
 
 export function Layout({ children }: { children: ReactNode }) {
@@ -7,6 +7,16 @@ export function Layout({ children }: { children: ReactNode }) {
   const scrollPositions = useRef(new Map<string, number>());
   const { pathname } = location;
   const isAlbums = pathname.startsWith('/albums');
+
+  useEffect(() => {
+    const saveScrollPosition = () => {
+      scrollPositions.current.set(location.key, window.scrollY);
+    };
+
+    saveScrollPosition();
+    window.addEventListener('scroll', saveScrollPosition, { passive: true });
+    return () => window.removeEventListener('scroll', saveScrollPosition);
+  }, [location.key]);
 
   useLayoutEffect(() => {
     if (navigationType === 'POP') {
@@ -17,10 +27,6 @@ export function Layout({ children }: { children: ReactNode }) {
     } else {
       window.scrollTo(0, 0);
     }
-
-    return () => {
-      scrollPositions.current.set(location.key, window.scrollY);
-    };
   }, [location.key, navigationType]);
 
   return (
