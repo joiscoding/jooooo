@@ -27,6 +27,9 @@ export function HomeGallery() {
     return looks.filter((l) => l.tag === filter);
   }, [looks, filter]);
 
+  const featured =
+    looks.find((l) => l.id === 'boardroom-soft') ?? looks[0];
+
   if (loading) {
     return (
       <div className="page-loading">
@@ -37,43 +40,72 @@ export function HomeGallery() {
 
   return (
     <div className="home">
-      <section className="home-hero">
-        <p className="eyebrow">Men · Seasonal edit</p>
-        <h1 className="home-title">
-          Looks built for <em>quiet</em> confidence.
-        </h1>
+      <section className="hero-vp" aria-labelledby="hero-heading">
+        <div className="hero-vp__copy">
+          <p className="hero-vp__brand">Studio Lookbook</p>
+          <h1 id="hero-heading" className="hero-vp__title">
+            Quiet confidence, season by season.
+          </h1>
+          <p className="hero-vp__lede">
+            A curated edit of men’s looks — minimal, tailored, and everything
+            between.
+          </p>
+          <div className="hero-vp__cta">
+            <a href="#gallery" className="btn btn-primary">
+              Browse looks
+            </a>
+            <Link to="/albums" className="btn btn-secondary">
+              Your albums →
+            </Link>
+          </div>
+        </div>
+        {featured ? (
+          <div className="hero-vp__media" aria-hidden="true">
+            <img
+              src={featured.hero}
+              alt=""
+              className="hero-vp__img"
+              fetchPriority="high"
+            />
+          </div>
+        ) : null}
       </section>
 
-      <section className="filters-bar" aria-label="Style filters">
-        <button
-          type="button"
-          className={filter === 'all' ? 'filter-pill active' : 'filter-pill'}
-          onClick={() => setFilter('all')}
-        >
-          All looks
-        </button>
-        {STYLE_ORDER.map((tag) => (
+      <section
+        id="gallery"
+        className="gallery-section"
+        aria-label="Look gallery"
+      >
+        <div className="filters-bar" aria-label="Style filters">
           <button
-            key={tag}
             type="button"
-            className={filter === tag ? 'filter-pill active' : 'filter-pill'}
-            onClick={() => setFilter(tag)}
+            className={filter === 'all' ? 'filter-pill active' : 'filter-pill'}
+            onClick={() => setFilter('all')}
           >
-            {STYLE_LABELS[tag]}
+            All looks
           </button>
-        ))}
-      </section>
+          {STYLE_ORDER.map((tag) => (
+            <button
+              key={tag}
+              type="button"
+              className={filter === tag ? 'filter-pill active' : 'filter-pill'}
+              onClick={() => setFilter(tag)}
+            >
+              {STYLE_LABELS[tag]}
+            </button>
+          ))}
+        </div>
 
-      {filtered.length === 0 ? (
-        <p className="empty-state">No looks in this filter.</p>
-      ) : (
-        <div className="gallery-wall">
-          {filtered.map((look, i) => {
-            return (
+        {filtered.length === 0 ? (
+          <p className="empty-state">No looks in this filter.</p>
+        ) : (
+          <div className="gallery-wall gallery-wall--offset" key={filter}>
+            {filtered.map((look, i) => (
               <Link
                 key={look.id}
                 to={`/look/${look.id}`}
-                className="wall-card"
+                className={`wall-card wall-card--offset-${i % 6}`}
+                style={{ ['--i' as string]: i }}
               >
                 <div className="wall-card-inner">
                   <img
@@ -89,10 +121,10 @@ export function HomeGallery() {
                   </div>
                 </div>
               </Link>
-            );
-          })}
-        </div>
-      )}
+            ))}
+          </div>
+        )}
+      </section>
     </div>
   );
 }
