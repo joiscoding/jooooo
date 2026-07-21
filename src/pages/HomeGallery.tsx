@@ -42,9 +42,21 @@ export function HomeGallery() {
         <h1 className="home-title">
           Looks built for <em>quiet</em> confidence.
         </h1>
+        <p className="home-sub">
+          An image-led lookbook of considered outfits — browse by mood, save
+          what resonates, build your own albums.
+        </p>
+        <div className="hero-actions">
+          <a href="#gallery" className="btn-pill dark">
+            Browse the gallery
+          </a>
+          <Link to="/albums" className="btn-pill light">
+            Your albums
+          </Link>
+        </div>
       </section>
 
-      <section className="filters-bar" aria-label="Style filters">
+      <section id="gallery" className="filters-bar" aria-label="Style filters">
         <button
           type="button"
           className={filter === 'all' ? 'filter-pill active' : 'filter-pill'}
