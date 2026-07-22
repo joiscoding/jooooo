@@ -27,6 +27,8 @@ export function HomeGallery() {
     return looks.filter((l) => l.tag === filter);
   }, [looks, filter]);
 
+  const campaign = looks[0];
+
   if (loading) {
     return (
       <div className="page-loading">
@@ -37,45 +39,74 @@ export function HomeGallery() {
 
   return (
     <div className="home">
-      <section className="home-hero">
-        <p className="eyebrow">Men · Seasonal edit</p>
-        <h1 className="home-title">
-          Looks built for <em>quiet</em> confidence.
-        </h1>
-      </section>
+      {campaign && (
+        <section className="campaign-hero" aria-label="Seasonal campaign">
+          <div className="campaign-hero-media">
+            <img
+              src={campaign.hero}
+              alt=""
+              className="campaign-hero-img"
+              loading="eager"
+            />
+          </div>
+          <div className="campaign-hero-copy">
+            <p className="campaign-brand">Studio</p>
+            <h1 className="campaign-title">House Codes</h1>
+            <p className="campaign-deck">
+              Men’s looks edited with quiet luxury — silhouette first, season
+              second.
+            </p>
+            <a href="#lookbook" className="campaign-cta">
+              Explore the lookbook
+            </a>
+          </div>
+        </section>
+      )}
 
-      <section className="filters-bar" aria-label="Style filters">
-        <button
-          type="button"
-          className={filter === 'all' ? 'filter-pill active' : 'filter-pill'}
-          onClick={() => setFilter('all')}
-        >
-          All looks
-        </button>
-        {STYLE_ORDER.map((tag) => (
+      <section id="lookbook" className="lookbook" aria-label="Lookbook">
+        <header className="lookbook-head">
+          <h2 className="lookbook-title">The collection</h2>
+          <p className="lookbook-deck">
+            Five aesthetics. One house language.
+          </p>
+        </header>
+
+        <div className="filters-bar" aria-label="Style filters" role="tablist">
           <button
-            key={tag}
             type="button"
-            className={filter === tag ? 'filter-pill active' : 'filter-pill'}
-            onClick={() => setFilter(tag)}
+            role="tab"
+            aria-selected={filter === 'all'}
+            className={filter === 'all' ? 'filter-link active' : 'filter-link'}
+            onClick={() => setFilter('all')}
           >
-            {STYLE_LABELS[tag]}
+            All looks
           </button>
-        ))}
-      </section>
+          {STYLE_ORDER.map((tag) => (
+            <button
+              key={tag}
+              type="button"
+              role="tab"
+              aria-selected={filter === tag}
+              className={filter === tag ? 'filter-link active' : 'filter-link'}
+              onClick={() => setFilter(tag)}
+            >
+              {STYLE_LABELS[tag]}
+            </button>
+          ))}
+        </div>
 
-      {filtered.length === 0 ? (
-        <p className="empty-state">No looks in this filter.</p>
-      ) : (
-        <div className="gallery-wall">
-          {filtered.map((look, i) => {
-            return (
+        {filtered.length === 0 ? (
+          <p className="empty-state">No looks in this filter.</p>
+        ) : (
+          <div className="gallery-wall">
+            {filtered.map((look, i) => (
               <Link
                 key={look.id}
                 to={`/look/${look.id}`}
                 className="wall-card"
+                style={{ animationDelay: `${Math.min(i, 8) * 60}ms` }}
               >
-                <div className="wall-card-inner">
+                <div className="wall-card-media">
                   <img
                     key={`${look.id}-${look.hero}`}
                     src={look.hero}
@@ -83,16 +114,16 @@ export function HomeGallery() {
                     className="wall-img"
                     loading={i < 4 ? 'eager' : 'lazy'}
                   />
-                  <div className="wall-meta">
-                    <span className="wall-tag">{STYLE_LABELS[look.tag]}</span>
-                    <h2 className="wall-title">{look.title}</h2>
-                  </div>
+                </div>
+                <div className="wall-meta">
+                  <span className="wall-tag">{STYLE_LABELS[look.tag]}</span>
+                  <h3 className="wall-title">{look.title}</h3>
                 </div>
               </Link>
-            );
-          })}
-        </div>
-      )}
+            ))}
+          </div>
+        )}
+      </section>
     </div>
   );
 }
