@@ -3,21 +3,18 @@ import type { ReactNode } from 'react';
 
 export function Layout({ children }: { children: ReactNode }) {
   const { pathname } = useLocation();
+  const isHome = pathname === '/';
   const isAlbums = pathname.startsWith('/albums');
 
   return (
-    <div className="layout">
-      <header className="site-header">
-        <Link to="/" className="logo">
-          <span className="logo-serif">Studio</span>
-          <span className="logo-sans">Lookbook</span>
-        </Link>
-        <nav className="nav">
+    <div className={isHome ? 'layout layout-home' : 'layout'}>
+      <header className={isHome ? 'site-header site-header-home' : 'site-header'}>
+        <nav className="nav nav-left" aria-label="Primary">
           <Link
             to="/"
             className={pathname === '/' ? 'nav-link active' : 'nav-link'}
           >
-            Gallery
+            Man
           </Link>
           <Link
             to="/albums"
@@ -26,8 +23,19 @@ export function Layout({ children }: { children: ReactNode }) {
             Albums
           </Link>
         </nav>
+        <Link to="/" className="logo" aria-label="Studio home">
+          <span className="logo-mark">Studio</span>
+        </Link>
+        <nav className="nav nav-right" aria-label="Secondary">
+          <Link className="nav-link" to="/#looks">
+            Search
+          </Link>
+          <Link to="/albums" className="nav-link">
+            Saved
+          </Link>
+        </nav>
       </header>
-      <main className="main">{children}</main>
+      <main className={isHome ? 'main main-home' : 'main'}>{children}</main>
       <footer className="site-footer">
         <p>
           Demo — photos via{' '}
@@ -38,7 +46,7 @@ export function Layout({ children }: { children: ReactNode }) {
           >
             Unsplash
           </a>
-          . Modern style, designed to last.
+          .
         </p>
       </footer>
     </div>
