@@ -7,6 +7,9 @@ export function Layout({ children }: { children: ReactNode }) {
 
   return (
     <div className="layout">
+      <div className="announce-bar">
+        The seasonal edit is here — new looks for the months ahead
+      </div>
       <header className="site-header">
         <Link to="/" className="logo">
           <span className="logo-serif">Studio</span>
@@ -29,6 +32,9 @@ export function Layout({ children }: { children: ReactNode }) {
       </header>
       <main className="main">{children}</main>
       <footer className="site-footer">
+        <p className="footer-statement">
+          Modern style, <em>designed to last.</em>
+        </p>
         <p>
           Demo — photos via{' '}
           <a
@@ -38,7 +44,6 @@ export function Layout({ children }: { children: ReactNode }) {
           >
             Unsplash
           </a>
-          . Modern style, designed to last.
         </p>
       </footer>
     </div>

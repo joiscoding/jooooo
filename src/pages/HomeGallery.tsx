@@ -35,16 +35,39 @@ export function HomeGallery() {
     );
   }
 
+  const heroLook = looks[0];
+
   return (
     <div className="home">
       <section className="home-hero">
-        <p className="eyebrow">Men · Seasonal edit</p>
-        <h1 className="home-title">
-          Looks built for <em>quiet</em> confidence.
-        </h1>
+        <div className="home-hero-copy">
+          <p className="eyebrow">Men · Seasonal edit</p>
+          <h1 className="home-title">
+            Dressing well, <em>made for you.</em>
+          </h1>
+          <p className="home-sub">
+            An edit of considered looks — quiet fabrics, honest construction,
+            and silhouettes built for your every day.
+          </p>
+          <div className="hero-actions">
+            <a href="#gallery" className="btn-pill primary">
+              Explore the looks
+            </a>
+            <Link to="/albums" className="btn-pill ghost">
+              Your albums
+            </Link>
+          </div>
+        </div>
+        {heroLook && (
+          <Link to={`/look/${heroLook.id}`} className="home-hero-media">
+            <img src={heroLook.hero} alt="" loading="eager" />
+          </Link>
+        )}
       </section>
 
-      <section className="filters-bar" aria-label="Style filters">
+      <section className="filters-bar" id="gallery" aria-label="Style filters">
+        <p className="filters-kicker">Style edits</p>
+        <div className="filters-pills">
         <button
           type="button"
           className={filter === 'all' ? 'filter-pill active' : 'filter-pill'}
@@ -62,6 +85,7 @@ export function HomeGallery() {
             {STYLE_LABELS[tag]}
           </button>
         ))}
+        </div>
       </section>
 
       {filtered.length === 0 ? (
@@ -76,13 +100,15 @@ export function HomeGallery() {
                 className="wall-card"
               >
                 <div className="wall-card-inner">
-                  <img
-                    key={`${look.id}-${look.hero}`}
-                    src={look.hero}
-                    alt=""
-                    className="wall-img"
-                    loading={i < 4 ? 'eager' : 'lazy'}
-                  />
+                  <div className="wall-img-wrap">
+                    <img
+                      key={`${look.id}-${look.hero}`}
+                      src={look.hero}
+                      alt=""
+                      className="wall-img"
+                      loading={i < 4 ? 'eager' : 'lazy'}
+                    />
+                  </div>
                   <div className="wall-meta">
                     <span className="wall-tag">{STYLE_LABELS[look.tag]}</span>
                     <h2 className="wall-title">{look.title}</h2>
@@ -93,6 +119,13 @@ export function HomeGallery() {
           })}
         </div>
       )}
+
+      <section className="brand-band">
+        <p className="brand-band-kicker">The studio philosophy</p>
+        <p className="brand-band-line">
+          Fewer, better pieces — <em>worn longer.</em>
+        </p>
+      </section>
     </div>
   );
 }
