@@ -28,9 +28,9 @@ export function HomeGallery() {
   }, [looks, filter]);
 
   const heroImage =
-    looks.find((l) => l.id === 'boardroom-soft')?.hero ??
+    looks.find((l) => l.id === 'crosswalk-khaki')?.hero ??
     looks[0]?.hero ??
-    '/looks/1768809250854-2f4b1e8f19cc-w1200h1600.jpg';
+    '/looks/streetwear-urban-01-v2.jpg';
 
   return (
     <div className="home home--oura">

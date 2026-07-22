@@ -204,15 +204,15 @@ img {
   background:
     linear-gradient(
       105deg,
-      rgba(20, 18, 14, 0.72) 0%,
-      rgba(20, 18, 14, 0.45) 42%,
-      rgba(20, 18, 14, 0.18) 70%,
-      rgba(20, 18, 14, 0.08) 100%
+      rgba(34, 30, 24, 0.58) 0%,
+      rgba(34, 30, 24, 0.32) 46%,
+      rgba(34, 30, 24, 0.12) 72%,
+      rgba(247, 241, 232, 0.08) 100%
     ),
     linear-gradient(
       to top,
-      rgba(20, 18, 14, 0.55) 0%,
-      transparent 45%
+      rgba(34, 30, 24, 0.5) 0%,
+      transparent 48%
     );
 }
 
@@ -235,11 +235,11 @@ img {
 }
 
 .oura-headline {
-  margin: 0 0 1rem;
+  margin: 0 0 1.1rem;
   font-family: var(--font-serif);
   font-size: clamp(1.85rem, 4.2vw, 3rem);
   font-weight: 300;
-  line-height: 1.15;
+  line-height: 1.2;
   letter-spacing: -0.025em;
   color: #fefaef;
   max-width: 16ch;
@@ -269,7 +269,7 @@ img {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0.875rem 1.75rem;
+  padding: 0.95rem 1.85rem;
   border-radius: var(--radius-pill);
   font-family: var(--font-sans);
   font-size: 1rem;
@@ -285,26 +285,27 @@ img {
   transform: translateY(-1px);
 }
 
+/* Light primary reads clearly on dark lifestyle photography */
 .oura-btn--solid {
-  background: var(--accent);
-  color: #ffffff;
-  border: 1px solid var(--accent);
+  background: #fefaef;
+  color: var(--accent);
+  border: 1px solid #fefaef;
 }
 
 .oura-btn--solid:hover {
-  background: #000000;
-  border-color: #000000;
-  color: #ffffff;
+  background: #ffffff;
+  border-color: #ffffff;
+  color: #000000;
 }
 
 .oura-btn--ghost {
   background: transparent;
   color: #fefaef;
-  border: 1px solid rgba(254, 250, 239, 0.72);
+  border: 1px solid rgba(254, 250, 239, 0.78);
 }
 
 .oura-btn--ghost:hover {
-  background: rgba(254, 250, 239, 0.1);
+  background: rgba(254, 250, 239, 0.12);
   border-color: #fefaef;
   color: #fefaef;
 }
