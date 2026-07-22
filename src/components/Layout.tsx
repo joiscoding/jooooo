@@ -9,36 +9,41 @@ export function Layout({ children }: { children: ReactNode }) {
     <div className="layout">
       <header className="site-header">
         <Link to="/" className="logo">
-          <span className="logo-serif">Studio</span>
-          <span className="logo-sans">Lookbook</span>
+          <span className="logo-mark">SL</span>
+          <span className="logo-word">Studio Lookbook</span>
         </Link>
         <nav className="nav">
           <Link
             to="/"
             className={pathname === '/' ? 'nav-link active' : 'nav-link'}
           >
-            Gallery
+            The edit
           </Link>
           <Link
             to="/albums"
             className={isAlbums ? 'nav-link active' : 'nav-link'}
           >
-            Albums
+            Saved looks
           </Link>
         </nav>
+        <Link to="/albums" className="header-save-link">
+          <span>Albums</span>
+          <span aria-hidden="true">↗</span>
+        </Link>
       </header>
       <main className="main">{children}</main>
       <footer className="site-footer">
         <p>
-          Demo — photos via{' '}
+          Studio Lookbook <span aria-hidden="true">·</span> Modern style,
+          designed to last.
+          {' '}
           <a
             href="https://unsplash.com"
             target="_blank"
             rel="noopener noreferrer"
           >
-            Unsplash
+            Image source
           </a>
-          . Modern style, designed to last.
         </p>
       </footer>
     </div>
