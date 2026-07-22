@@ -3,16 +3,16 @@ import type { ReactNode } from 'react';
 
 export function Layout({ children }: { children: ReactNode }) {
   const { pathname } = useLocation();
+  const isHome = pathname === '/';
   const isAlbums = pathname.startsWith('/albums');
 
   return (
-    <div className="layout">
+    <div className={isHome ? 'layout layout--home' : 'layout'}>
       <header className="site-header">
         <Link to="/" className="logo">
-          <span className="logo-serif">Studio</span>
-          <span className="logo-sans">Lookbook</span>
+          <span className="logo-mark">Studio</span>
         </Link>
-        <nav className="nav">
+        <nav className="nav" aria-label="Primary">
           <Link
             to="/"
             className={pathname === '/' ? 'nav-link active' : 'nav-link'}
@@ -38,7 +38,7 @@ export function Layout({ children }: { children: ReactNode }) {
           >
             Unsplash
           </a>
-          . Modern style, designed to last.
+          . Inspired by calm, considered design.
         </p>
       </footer>
     </div>
