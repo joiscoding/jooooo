@@ -84,8 +84,8 @@ export function HomeGallery() {
             worn daily.
           </h1>
           <p className="hero-sub">
-            Twenty curated looks across five style directions — built to last,
-            styled to disappear into your life.
+            {looks.length} curated looks across five style directions — built
+            to last, styled to disappear into your life.
           </p>
           <div className="hero-actions">
             <button
