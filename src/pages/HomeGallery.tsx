@@ -53,7 +53,7 @@ export function HomeGallery() {
             <p className="campaign-brand">Studio</p>
             <h1 className="campaign-title">House Codes</h1>
             <p className="campaign-deck">
-              Men’s looks edited with quiet luxury — silhouette first, season
+              Men's looks edited with quiet luxury - silhouette first, season
               second.
             </p>
             <a href="#lookbook" className="campaign-cta">

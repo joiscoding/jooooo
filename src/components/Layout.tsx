@@ -33,7 +33,7 @@ export function Layout({ children }: { children: ReactNode }) {
       <footer className="site-footer">
         <p className="footer-mark">Studio</p>
         <p>
-          Demo — photos via{' '}
+          Demo - photos via{' '}
           <a
             href="https://unsplash.com"
             target="_blank"
