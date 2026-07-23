@@ -38,10 +38,46 @@ export function HomeGallery() {
   return (
     <div className="home">
       <section className="home-hero">
-        <p className="eyebrow">Men · Seasonal edit</p>
-        <h1 className="home-title">
-          Looks built for <em>quiet</em> confidence.
-        </h1>
+        <div className="home-hero-inner">
+          <p className="eyebrow">Men · Seasonal edit</p>
+          <h1 className="home-title">
+            Bring style to your wardrobe,
+            <br />
+            wherever you go
+          </h1>
+          <p className="home-sub">
+            One lookbook for every aesthetic — curated outfits across five
+            styles, from quiet minimal to heritage workwear. Browse, save,
+            repeat.
+          </p>
+          <div className="hero-actions">
+            <a href="#gallery" className="btn-hero primary">
+              Explore looks
+            </a>
+            <Link to="/albums" className="btn-hero ghost">
+              View albums
+            </Link>
+          </div>
+        </div>
+        <div className="hero-stats" aria-label="Lookbook stats">
+          <div className="hero-stat">
+            <span className="hero-stat-num">{looks.length}+</span>
+            <span className="hero-stat-label">Curated looks</span>
+          </div>
+          <div className="hero-stat">
+            <span className="hero-stat-num">5</span>
+            <span className="hero-stat-label">Style aesthetics</span>
+          </div>
+          <div className="hero-stat">
+            <span className="hero-stat-num">100%</span>
+            <span className="hero-stat-label">Saved locally</span>
+          </div>
+        </div>
+      </section>
+
+      <section className="section-head" id="gallery">
+        <p className="eyebrow eyebrow-accent">The lookbook</p>
+        <h2 className="section-title">One platform for every aesthetic</h2>
       </section>
 
       <section className="filters-bar" aria-label="Style filters">
@@ -86,6 +122,9 @@ export function HomeGallery() {
                   <div className="wall-meta">
                     <span className="wall-tag">{STYLE_LABELS[look.tag]}</span>
                     <h2 className="wall-title">{look.title}</h2>
+                    <span className="wall-cta">
+                      Explore look <span aria-hidden="true">→</span>
+                    </span>
                   </div>
                 </div>
               </Link>

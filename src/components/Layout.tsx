@@ -9,8 +9,10 @@ export function Layout({ children }: { children: ReactNode }) {
     <div className="layout">
       <header className="site-header">
         <Link to="/" className="logo">
-          <span className="logo-serif">Studio</span>
-          <span className="logo-sans">Lookbook</span>
+          <span className="logo-mark" aria-hidden="true" />
+          <span className="logo-word">
+            STUDIO<span className="logo-word-accent">LOOKBOOK</span>
+          </span>
         </Link>
         <nav className="nav">
           <Link
@@ -25,21 +27,33 @@ export function Layout({ children }: { children: ReactNode }) {
           >
             Albums
           </Link>
+          <Link to="/" className="nav-cta">
+            Explore looks
+          </Link>
         </nav>
       </header>
       <main className="main">{children}</main>
       <footer className="site-footer">
-        <p>
-          Demo — photos via{' '}
-          <a
-            href="https://unsplash.com"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Unsplash
-          </a>
-          . Modern style, designed to last.
-        </p>
+        <div className="footer-inner">
+          <div className="footer-brand">
+            <span className="logo-mark" aria-hidden="true" />
+            <span className="footer-brand-name">StudioLookbook</span>
+          </div>
+          <nav className="footer-links" aria-label="Footer">
+            <Link to="/">Gallery</Link>
+            <Link to="/albums">Albums</Link>
+            <a
+              href="https://unsplash.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Photos via Unsplash
+            </a>
+          </nav>
+          <p className="footer-note">
+            Demo — modern style, designed to last. Wherever you wear it.
+          </p>
+        </div>
       </footer>
     </div>
   );
