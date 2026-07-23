@@ -69,14 +69,9 @@ img {
   justify-content: space-between;
   padding: 0 1.25rem;
   height: var(--header-h);
-  background: rgba(247, 247, 244, 0.82);
+  background: rgba(247, 247, 244, 0.86);
   backdrop-filter: blur(14px) saturate(1.1);
-  border-bottom: 1px solid transparent;
-}
-
-.layout:not(.layout-home) .site-header,
-.site-header:hover {
-  border-bottom-color: var(--line);
+  border-bottom: 1px solid var(--line);
 }
 
 .logo,
@@ -93,11 +88,11 @@ img {
 }
 
 .logo-mark {
-  width: 0.7rem;
-  height: 0.7rem;
+  width: 0.65rem;
+  height: 0.65rem;
   border-radius: 2px;
   background: var(--accent);
-  box-shadow: 0 0 0 3px rgba(245, 78, 0, 0.12);
+  flex-shrink: 0;
 }
 
 .logo-word {
