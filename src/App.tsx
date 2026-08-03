@@ -1,4 +1,5 @@
 import { Routes, Route } from 'react-router-dom';
+import { SearchProvider } from './context/SearchContext';
 import { Layout } from './components/Layout';
 import { HomeGallery } from './pages/HomeGallery';
 import { LookDetail } from './pages/LookDetail';
@@ -7,6 +8,7 @@ import { AlbumDetail } from './pages/AlbumDetail';
 
 export default function App() {
   return (
+    <SearchProvider>
     <Layout>
       <Routes>
         <Route path="/" element={<HomeGallery />} />
@@ -15,5 +17,6 @@ export default function App() {
         <Route path="/albums/:albumId" element={<AlbumDetail />} />
       </Routes>
     </Layout>
+    </SearchProvider>
   );
 }
