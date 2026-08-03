@@ -1,5 +1,6 @@
 import { Link, useLocation } from 'react-router-dom';
 import type { ReactNode } from 'react';
+import { ThemeToggle } from './ThemeToggle';
 
 export function Layout({ children }: { children: ReactNode }) {
   const { pathname } = useLocation();
@@ -12,7 +13,9 @@ export function Layout({ children }: { children: ReactNode }) {
           <span className="logo-serif">Studio</span>
           <span className="logo-sans">Lookbook</span>
         </Link>
-        <nav className="nav">
+        <div className="header-end">
+          <ThemeToggle />
+          <nav className="nav">
           <Link
             to="/"
             className={pathname === '/' ? 'nav-link active' : 'nav-link'}
@@ -25,7 +28,8 @@ export function Layout({ children }: { children: ReactNode }) {
           >
             Albums
           </Link>
-        </nav>
+          </nav>
+        </div>
       </header>
       <main className="main">{children}</main>
       <footer className="site-footer">
