@@ -6,6 +6,7 @@ import {
   getStoredOrDefaultPreference,
   getSystemTheme,
   isThemePreference,
+  nextExplicitTheme,
   readStoredPreference,
   resolveTheme,
   writeStoredPreference,
@@ -52,6 +53,13 @@ describe('resolveTheme', () => {
   it('follows system theme when preference is system', () => {
     expect(resolveTheme('system', 'light')).toBe('light');
     expect(resolveTheme('system', 'dark')).toBe('dark');
+  });
+});
+
+describe('nextExplicitTheme', () => {
+  it('toggles light and dark', () => {
+    expect(nextExplicitTheme('light')).toBe('dark');
+    expect(nextExplicitTheme('dark')).toBe('light');
   });
 });
 

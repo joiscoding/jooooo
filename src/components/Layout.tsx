@@ -14,7 +14,6 @@ export function Layout({ children }: { children: ReactNode }) {
           <span className="logo-sans">Lookbook</span>
         </Link>
         <div className="header-end">
-          <ThemeToggle />
           <nav className="nav">
             <Link
               to="/"
@@ -29,6 +28,7 @@ export function Layout({ children }: { children: ReactNode }) {
               Albums
             </Link>
           </nav>
+          <ThemeToggle />
         </div>
       </header>
       <main className="main">{children}</main>

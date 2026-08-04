@@ -39,8 +39,30 @@ export function resolveTheme(
   preference: ThemePreference,
   systemTheme: ResolvedTheme = getSystemTheme(),
 ): ResolvedTheme {
-  if (preference === 'system') return systemTheme;
-  return preference;
+  switch (preference) {
+    case 'system':
+      return systemTheme;
+    case 'light':
+    case 'dark':
+      return preference;
+    default: {
+      const _exhaustive: never = preference;
+      return _exhaustive;
+    }
+  }
+}
+
+export function nextExplicitTheme(resolved: ResolvedTheme): Exclude<ThemePreference, 'system'> {
+  switch (resolved) {
+    case 'light':
+      return 'dark';
+    case 'dark':
+      return 'light';
+    default: {
+      const _exhaustive: never = resolved;
+      return _exhaustive;
+    }
+  }
 }
 
 export function applyResolvedTheme(resolved: ResolvedTheme): void {
