@@ -99,6 +99,143 @@ img {
   gap: 1.75rem;
 }
 
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.header-menu {
+  position: relative;
+}
+
+.header-menu-trigger {
+  font-family: var(--font-sans);
+  font-size: 1.25rem;
+  line-height: 1;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--bg-elevated);
+  color: var(--ink-muted);
+  cursor: pointer;
+}
+
+.header-menu-trigger:hover,
+.header-menu-trigger[aria-expanded='true'] {
+  color: var(--ink);
+  border-color: var(--ink-muted);
+}
+
+.header-menu-panel {
+  position: absolute;
+  top: calc(100% + 0.35rem);
+  right: 0;
+  min-width: 10rem;
+  padding: 0.35rem;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  z-index: 60;
+}
+
+.header-menu-item {
+  display: block;
+  width: 100%;
+  padding: 0.55rem 0.75rem;
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-align: left;
+  background: none;
+  border: none;
+  border-radius: var(--radius);
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.header-menu-item:hover {
+  background: var(--bg);
+}
+
+.copy-link-btn {
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid var(--line);
+  color: var(--ink);
+  font-size: 0.65rem;
+  padding: 0.35rem 0.55rem;
+  white-space: nowrap;
+}
+
+.copy-link-btn:hover {
+  background: #fff;
+  border-color: var(--ink-muted);
+}
+
+.wall-copy-btn {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  z-index: 2;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.wall-card:hover .wall-copy-btn,
+.wall-copy-btn:focus-visible {
+  opacity: 1;
+}
+
+.album-look-copy-btn {
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+  z-index: 2;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.album-look-card:hover .album-look-copy-btn,
+.album-look-copy-btn:focus-visible {
+  opacity: 1;
+}
+
+.look-title-row,
+.page-title-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.look-title-row .look-detail-title {
+  margin-bottom: 0;
+}
+
+.page-title-row .page-title {
+  margin-bottom: 0;
+}
+
+.global-toast {
+  position: fixed;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+  padding: 0.75rem 1.25rem;
+  font-size: 0.85rem;
+  color: #fff;
+  background: var(--accent);
+  border-radius: var(--radius);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  pointer-events: none;
+}
+
+
 .nav-link {
   font-size: 0.8rem;
   font-weight: 500;
