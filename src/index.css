@@ -583,11 +583,13 @@ img {
   left: 0;
   right: 0;
   bottom: 0;
-  padding: 1rem 1rem 0.85rem;
+  padding: 2rem 1rem 0.9rem;
+  /* Photos run from pale to dark, so the scrim has to carry the text on its own. */
   background: linear-gradient(
     to top,
-    rgba(0, 0, 0, 0.65) 0%,
-    transparent 100%
+    rgba(0, 0, 0, 0.82) 0%,
+    rgba(0, 0, 0, 0.45) 55%,
+    rgba(0, 0, 0, 0) 100%
   );
 }
 
@@ -602,12 +604,12 @@ img {
 }
 
 .wall-title {
-  font-family: var(--font-serif);
-  font-size: 1.25rem;
-  font-weight: 400;
+  font-size: 1.1rem;
+  font-weight: 700;
   color: #fff;
   margin: 0;
-  line-height: 1.2;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
 }
 
 .page-loading,
@@ -1047,6 +1049,7 @@ img {
   font-size: clamp(1.35rem, 2.4vw, 1.85rem);
   font-weight: 700;
   letter-spacing: -0.02em;
+  text-wrap: balance;
 }
 
 .hp-see-all {
@@ -1135,6 +1138,7 @@ img {
   font-weight: 700;
   line-height: 1.08;
   letter-spacing: -0.03em;
+  text-wrap: balance;
 }
 
 .hp-hero-text {
@@ -1143,6 +1147,7 @@ img {
   line-height: 1.5;
   max-width: 38ch;
   opacity: 0.9;
+  text-wrap: pretty;
 }
 
 .hp-hero-offer {
@@ -1573,6 +1578,7 @@ img {
   max-width: 34ch;
   font-size: 0.95rem;
   color: rgba(255, 255, 255, 0.88);
+  text-wrap: pretty;
 }
 
 /* Editorial tiles */
