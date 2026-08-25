@@ -2,6 +2,12 @@
 
 Local demo aligned with **PROJECT_BRIEF.md**: editorial gallery, five style filters, look detail, albums persisted in **localStorage** (no database).
 
+## Landing page direction
+
+The home page follows **hp.com** merchandising patterns rather than the COS reference in `PROJECT_BRIEF.md`: utility bar, sticky header with search and a saved-looks counter, site-wide promo band, rotating hero, round style tiles, horizontal card rails, dual promo banners, a filtered card grid, editorial tiles, a service strip, a newsletter band and a multi-column footer. Look detail and album pages keep the original quieter styling.
+
+To support that layout, `looks.json` carries **fictional** retail metadata (`priceUsd`, `wasPriceUsd`, `rating`, `reviewCount`, `badge`) read as a bundle price for the whole outfit. Nothing is for sale and no payment path exists.
+
 **Figma** (reverse from the landing page): [men’s lookbook demo — localhost](https://www.figma.com/design/OjlGUtFACU9iTR0sWgKKpR/mens-lookbook-demo-localhost?node-id=1-48&t=r9I681ZGqssj8ojh-0)
 
 **Figma template** (Community): [FASCO — Fashion Ecommerce Website Page](https://www.figma.com/design/r8UAbgDHpyntbBc0Jo7YDX/FASCO--Fashion-Ecommerce-Website-Page--Community-?node-id=0-384&t=pyaoQE1dqwNrEQuw-0)
@@ -19,8 +25,9 @@ Open the URL shown (usually `http://localhost:5173`).
 
 | Feature | Status |
 |--------|--------|
-| Offset gallery wall on home | Yes |
-| Five aesthetic filters | Yes |
+| Offset gallery wall on home | Yes — “From the lookbook” section |
+| Five aesthetic filters | Yes — pills plus round style tiles, synced to `?style=` |
+| Search across looks | Yes — header search, synced to `?q=` |
 | Look detail + add to album | Yes |
 | Album list & detail; survives refresh | Yes |
 | Seed looks (JSON) | `src/data/looks.json` |
