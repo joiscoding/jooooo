@@ -2,7 +2,6 @@
 description: Match tsconfig strict settings and type-only imports in src
 globs:
   - src/**/*.ts
-  - src/**/*.tsx
 alwaysApply: false
 ---
 
@@ -11,6 +10,7 @@ alwaysApply: false
 Align new and edited code with `tsconfig.json` (strict mode, `noUnusedLocals`, `noUnusedParameters`, `noFallthroughCasesInSwitch`).
 
 - Prefer `import type` for imports that are only used as types.
+- Keep TypeScript source files on the `.ts` extension. React components should use `createElement` rather than JSX syntax.
 
 ```typescript
 // ✅ GOOD — type-only import
