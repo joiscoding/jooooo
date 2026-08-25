@@ -14,6 +14,12 @@ export interface Look {
   keyItems: string[];
   hero: string;
   gallery: string[];
+  /** Mock retail metadata for the bundle price of the whole outfit. Demo only. */
+  priceUsd?: number;
+  wasPriceUsd?: number;
+  rating?: number;
+  reviewCount?: number;
+  badge?: string;
 }
 
 export interface Album {
@@ -29,6 +35,10 @@ export const STYLE_LABELS: Record<StyleTag, string> = {
   athleisure: 'Athleisure / sporty',
   workwear: 'Workwear / heritage',
 };
+
+export function isStyleTag(value: string | null): value is StyleTag {
+  return value !== null && value in STYLE_LABELS;
+}
 
 export const STYLE_ORDER: StyleTag[] = [
   'minimal',

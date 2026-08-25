@@ -14,7 +14,12 @@
     "gallery": [
       "/looks/streetwear-urban-01-v2.jpg",
       "/looks/streetwear-urban-02-v2.jpg"
-    ]
+    ],
+    "priceUsd": 268,
+    "wasPriceUsd": 335,
+    "rating": 4.6,
+    "reviewCount": 214,
+    "badge": "Best seller"
   },
   {
     "id": "neon-borough",
@@ -31,7 +36,12 @@
     "gallery": [
       "/looks/streetwear-urban-02-v2.jpg",
       "/looks/streetwear-urban-01-v2.jpg"
-    ]
+    ],
+    "priceUsd": 412,
+    "wasPriceUsd": 495,
+    "rating": 4.4,
+    "reviewCount": 96,
+    "badge": "New"
   },
   {
     "id": "boardroom-soft",
@@ -54,7 +64,12 @@
       "/looks/1552252059-9d77e4059ad1-w1000h1250.jpg",
       "/looks/1573513500284-ca52c282f78a-w1200h1600.jpg",
       "/looks/1597815413302-8037c47f5a75-w1200h1600.jpg"
-    ]
+    ],
+    "priceUsd": 545,
+    "wasPriceUsd": 640,
+    "rating": 4.8,
+    "reviewCount": 331,
+    "badge": "Best seller"
   },
   {
     "id": "track-recovery",
@@ -77,7 +92,11 @@
       "/looks/1597815413302-8037c47f5a75-w1200h1600.jpg",
       "/looks/1600117025146-5092075da653-w1200h1500.jpg",
       "/looks/1676144998604-aa10e96b5157-w1000h1250.jpg"
-    ]
+    ],
+    "priceUsd": 198,
+    "wasPriceUsd": 245,
+    "rating": 4.5,
+    "reviewCount": 178
   },
   {
     "id": "sand-stone",
@@ -99,7 +118,12 @@
       "/looks/1679412330231-4a049ffd294b-w1200h1500.jpg",
       "/looks/1712514045707-a060b7307bc6-w1000h1300.jpg",
       "/looks/1476480862126-209bfaa8edc8-w1200h1600.jpg"
-    ]
+    ],
+    "priceUsd": 232,
+    "wasPriceUsd": 290,
+    "rating": 4.7,
+    "reviewCount": 142,
+    "badge": "Editor's pick"
   },
   {
     "id": "navy-precision",
@@ -120,7 +144,12 @@
       "/looks/1552252059-9d77e4059ad1-w1000h1250.jpg",
       "/looks/1476480862126-209bfaa8edc8-w1200h1600.jpg",
       "/looks/1549153166-54374660cb65-w1200h1500.jpg"
-    ]
+    ],
+    "priceUsd": 690,
+    "wasPriceUsd": 820,
+    "rating": 4.9,
+    "reviewCount": 87,
+    "badge": "Limited run"
   },
   {
     "id": "morning-lap",
@@ -143,7 +172,11 @@
       "/looks/1552252059-9d77e4059ad1-w1000h1250.jpg",
       "/looks/1573513500284-ca52c282f78a-w1200h1600.jpg",
       "/looks/1597815413302-8037c47f5a75-w1200h1600.jpg"
-    ]
+    ],
+    "priceUsd": 176,
+    "wasPriceUsd": 220,
+    "rating": 4.3,
+    "reviewCount": 205
   },
   {
     "id": "paper-white",
@@ -165,7 +198,11 @@
       "/looks/1630877268428-616cc533239a-w1200h1500.jpg",
       "/looks/1679412330231-4a049ffd294b-w1200h1500.jpg",
       "/looks/1712514045707-a060b7307bc6-w1000h1300.jpg"
-    ]
+    ],
+    "priceUsd": 245,
+    "wasPriceUsd": 298,
+    "rating": 4.6,
+    "reviewCount": 119
   },
   {
     "id": "soft-monochrome",
@@ -184,7 +221,12 @@
       "/looks/1521572267360-ee0c2909d518-w1200h1600.jpg",
       "/looks/1732492211688-b1984227af93-w1000h1300.jpg",
       "/looks/1768809250854-2f4b1e8f19cc-w1200h1600.jpg"
-    ]
+    ],
+    "priceUsd": 289,
+    "wasPriceUsd": 350,
+    "rating": 4.8,
+    "reviewCount": 264,
+    "badge": "Best seller"
   },
   {
     "id": "city-charcoal",
@@ -204,7 +246,11 @@
       "/looks/1521572267360-ee0c2909d518-w1200h1600.jpg",
       "/looks/1600117025146-5092075da653-w1200h1500.jpg",
       "/looks/1552252059-9d77e4059ad1-w1000h1250.jpg"
-    ]
+    ],
+    "priceUsd": 468,
+    "wasPriceUsd": 560,
+    "rating": 4.5,
+    "reviewCount": 73
   },
   {
     "id": "weekend-stride",
@@ -223,7 +269,11 @@
       "/looks/1476480862126-209bfaa8edc8-w1200h1600.jpg",
       "/looks/1762575910569-46971cd69df3-w1000h1250.jpg",
       "/looks/1521572267360-ee0c2909d518-w1200h1600.jpg"
-    ]
+    ],
+    "priceUsd": 164,
+    "wasPriceUsd": 205,
+    "rating": 4.2,
+    "reviewCount": 158
   },
   {
     "id": "court-warmup",
@@ -243,7 +293,12 @@
       "/looks/1476480862126-209bfaa8edc8-w1200h1600.jpg",
       "/looks/1600117025146-5092075da653-w1200h1500.jpg",
       "/looks/1676144998604-aa10e96b5157-w1000h1250.jpg"
-    ]
+    ],
+    "priceUsd": 189,
+    "wasPriceUsd": 235,
+    "rating": 4.4,
+    "reviewCount": 91,
+    "badge": "New"
   },
   {
     "id": "utility-grain",
@@ -261,7 +316,12 @@
       "/looks/1597815413302-8037c47f5a75-w1200h1600.jpg",
       "/looks/1676144998604-aa10e96b5157-w1000h1250.jpg",
       "/looks/1573513500284-ca52c282f78a-w1200h1600.jpg"
-    ]
+    ],
+    "priceUsd": 355,
+    "wasPriceUsd": 420,
+    "rating": 4.7,
+    "reviewCount": 186,
+    "badge": "Best seller"
   },
   {
     "id": "forge-layer",
@@ -279,6 +339,10 @@
       "/looks/1549153166-54374660cb65-w1200h1500.jpg",
       "/looks/1600117025146-5092075da653-w1200h1500.jpg",
       "/looks/1630877268428-616cc533239a-w1200h1500.jpg"
-    ]
+    ],
+    "priceUsd": 298,
+    "wasPriceUsd": 365,
+    "rating": 4.6,
+    "reviewCount": 132
   }
 ]
