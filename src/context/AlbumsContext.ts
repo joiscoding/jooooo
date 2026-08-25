@@ -1,4 +1,4 @@
-import { createContext, useContext, type ReactNode } from 'react';
+import { createContext, createElement as h, useContext, type ReactNode } from 'react';
 import { useAlbums } from '../hooks/useAlbums';
 import type { Album } from '../types';
 
@@ -8,9 +8,7 @@ const AlbumsContext = createContext<Ctx | null>(null);
 
 export function AlbumsProvider({ children }: { children: ReactNode }) {
   const value = useAlbums();
-  return (
-    <AlbumsContext.Provider value={value}>{children}</AlbumsContext.Provider>
-  );
+  return h(AlbumsContext.Provider, { value }, children);
 }
 
 export function useAlbumsContext(): Ctx {
