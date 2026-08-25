@@ -1,33 +1,46 @@
 import { useTheme } from '../theme/ThemeProvider';
-import type { ThemePreference } from '../theme/theme';
 
-const OPTIONS: { value: ThemePreference; label: string; title: string }[] = [
-  { value: 'system', label: 'System', title: 'Match system appearance' },
-  { value: 'light', label: 'Light', title: 'Light mode' },
-  { value: 'dark', label: 'Dark', title: 'Dark mode' },
-];
+function MoonIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path
+        d="M21 14.5A7.5 7.5 0 0 1 9.5 3a6.5 6.5 0 1 0 11.5 11.5Z"
+        stroke="currentColor"
+        strokeWidth="1.75"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
+function SunIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <circle cx="12" cy="12" r="4" stroke="currentColor" strokeWidth="1.75" />
+      <path
+        d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"
+        stroke="currentColor"
+        strokeWidth="1.75"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}
 
 export function ThemeToggle() {
-  const { preference, setPreference } = useTheme();
+  const { resolved, toggleTheme } = useTheme();
+  const isDark = resolved === 'dark';
 
   return (
-    <div className="theme-toggle" role="group" aria-label="Color theme">
-      {OPTIONS.map(({ value, label, title }) => (
-        <button
-          key={value}
-          type="button"
-          className={
-            preference === value
-              ? 'theme-toggle-btn active'
-              : 'theme-toggle-btn'
-          }
-          aria-pressed={preference === value}
-          title={title}
-          onClick={() => setPreference(value)}
-        >
-          {label}
-        </button>
-      ))}
-    </div>
+    <button
+      type="button"
+      className="theme-toggle-btn"
+      onClick={toggleTheme}
+      aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
+      title={isDark ? 'Light mode' : 'Dark mode'}
+    >
+      {isDark ? <SunIcon /> : <MoonIcon />}
+    </button>
   );
 }

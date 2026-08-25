@@ -11,6 +11,7 @@ import {
   applyThemePreference,
   getStoredOrDefaultPreference,
   getSystemTheme,
+  getToggledPreference,
   readStoredPreference,
   resolveTheme,
   writeStoredPreference,
@@ -22,6 +23,7 @@ type ThemeContextValue = {
   preference: ThemePreference;
   resolved: ResolvedTheme;
   setPreference: (next: ThemePreference) => void;
+  toggleTheme: () => void;
 };
 
 const ThemeContext = createContext<ThemeContextValue | null>(null);
@@ -38,6 +40,15 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     writeStoredPreference(next);
     setPreferenceState(next);
     setResolved(applyThemePreference(next));
+  }, []);
+
+  const toggleTheme = useCallback(() => {
+    setResolved((currentResolved) => {
+      const next = getToggledPreference(currentResolved);
+      writeStoredPreference(next);
+      setPreferenceState(next);
+      return applyThemePreference(next);
+    });
   }, []);
 
   useEffect(() => {
@@ -58,8 +69,8 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   }, [preference]);
 
   const value = useMemo(
-    () => ({ preference, resolved, setPreference }),
-    [preference, resolved, setPreference],
+    () => ({ preference, resolved, setPreference, toggleTheme }),
+    [preference, resolved, setPreference, toggleTheme],
   );
 
   return (

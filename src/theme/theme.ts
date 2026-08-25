@@ -55,3 +55,7 @@ export function applyThemePreference(
   applyResolvedTheme(resolved);
   return resolved;
 }
+
+export function getToggledPreference(resolved: ResolvedTheme): ThemePreference {
+  return resolved === 'dark' ? 'light' : 'dark';
+}

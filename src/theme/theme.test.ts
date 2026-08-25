@@ -4,6 +4,7 @@ import {
   applyResolvedTheme,
   applyThemePreference,
   getStoredOrDefaultPreference,
+  getToggledPreference,
   getSystemTheme,
   isThemePreference,
   readStoredPreference,
@@ -52,6 +53,13 @@ describe('resolveTheme', () => {
   it('follows system theme when preference is system', () => {
     expect(resolveTheme('system', 'light')).toBe('light');
     expect(resolveTheme('system', 'dark')).toBe('dark');
+  });
+});
+
+describe('getToggledPreference', () => {
+  it('flips between light and dark', () => {
+    expect(getToggledPreference('light')).toBe('dark');
+    expect(getToggledPreference('dark')).toBe('light');
   });
 });
 
