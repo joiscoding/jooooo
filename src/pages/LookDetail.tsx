@@ -42,10 +42,11 @@ export function LookDetail() {
   }
 
   const images = [look.hero, ...look.gallery];
+  const lookIdToSave = look.id;
 
   function handleAddToExisting() {
     if (!selectedAlbumId) return;
-    addLookToAlbum(selectedAlbumId, look.id);
+    addLookToAlbum(selectedAlbumId, lookIdToSave);
     setToast('Saved to album.');
   }
 
@@ -54,7 +55,7 @@ export function LookDetail() {
     const name = newAlbumName.trim();
     if (!name) return;
     const al = createAlbum(name);
-    addLookToAlbum(al.id, look.id);
+    addLookToAlbum(al.id, lookIdToSave);
     setNewAlbumName('');
     setToast(`Created “${al.name}” and saved this look.`);
   }
