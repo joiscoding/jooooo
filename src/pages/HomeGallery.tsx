@@ -48,7 +48,8 @@ export function HomeGallery() {
 
   useEffect(() => {
     if (!toast) return;
-    const t = window.setTimeout(() => setToast(''), 3200);
+    // The toast holds a link, so it has to outlast a quick glance.
+    const t = window.setTimeout(() => setToast(''), 6000);
     return () => window.clearTimeout(t);
   }, [toast]);
 
