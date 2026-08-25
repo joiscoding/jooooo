@@ -1,0 +1,14 @@
+---
+description: Project coding standards for Python naming and TypeScript file extensions
+globs:
+  - "**/*.py"
+  - "**/*.ts"
+  - "**/*.tsx"
+alwaysApply: false
+---
+
+# Coding standards
+
+- Python identifiers should use snake_case. Do not introduce camelCase-style names.
+- TypeScript source files should use the `.ts` extension. Do not add `.tsx` files.
+- Run `npm run check:standards` after edits that add or rename Python or TypeScript files.
