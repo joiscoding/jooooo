@@ -7,39 +7,65 @@ export function Layout({ children }: { children: ReactNode }) {
 
   return (
     <div className="layout">
+      <a href="#main-content" className="skip-link">
+        Skip to content
+      </a>
+      <div className="announcement">
+        <p>Seasonal edit · 14 curated looks</p>
+        <span>Modern style, designed to last</span>
+      </div>
       <header className="site-header">
-        <Link to="/" className="logo">
-          <span className="logo-serif">Studio</span>
-          <span className="logo-sans">Lookbook</span>
-        </Link>
-        <nav className="nav">
-          <Link
-            to="/"
-            className={pathname === '/' ? 'nav-link active' : 'nav-link'}
-          >
-            Gallery
+        <div className="header-inner">
+          <Link to="/" className="logo" aria-label="Studio Lookbook home">
+            <span className="logo-mark" aria-hidden="true">
+              sl
+            </span>
+            <span className="logo-name">
+              <span className="logo-serif">Studio</span>
+              <span className="logo-sans">Lookbook</span>
+            </span>
           </Link>
-          <Link
-            to="/albums"
-            className={isAlbums ? 'nav-link active' : 'nav-link'}
-          >
-            Albums
+          <nav className="nav" aria-label="Primary navigation">
+            <Link
+              to="/"
+              className={pathname === '/' ? 'nav-link active' : 'nav-link'}
+              aria-current={pathname === '/' ? 'page' : undefined}
+            >
+              Looks
+            </Link>
+            <Link
+              to="/albums"
+              className={isAlbums ? 'nav-link active' : 'nav-link'}
+              aria-current={isAlbums ? 'page' : undefined}
+            >
+              Albums
+            </Link>
+          </nav>
+          <Link to="/albums" className="header-action">
+            View albums
           </Link>
-        </nav>
+        </div>
       </header>
-      <main className="main">{children}</main>
+      <main className="main" id="main-content">
+        {children}
+      </main>
       <footer className="site-footer">
-        <p>
-          Demo — photos via{' '}
-          <a
-            href="https://unsplash.com"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Unsplash
-          </a>
-          . Modern style, designed to last.
-        </p>
+        <div className="footer-inner">
+          <div>
+            <p className="footer-brand">Studio Lookbook</p>
+            <p>Modern style, designed to last.</p>
+          </div>
+          <p>
+            Demo · Photos via{' '}
+            <a
+              href="https://unsplash.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Unsplash
+            </a>
+          </p>
+        </div>
       </footer>
     </div>
   );
