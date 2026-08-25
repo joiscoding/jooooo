@@ -30,6 +30,15 @@ export const STYLE_LABELS: Record<StyleTag, string> = {
   workwear: 'Workwear / heritage',
 };
 
+/** Short labels for HP-style category rails and product tiles. */
+export const STYLE_SHORT_LABELS: Record<StyleTag, string> = {
+  minimal: 'Minimal',
+  streetwear: 'Streetwear',
+  classic: 'Classic',
+  athleisure: 'Athleisure',
+  workwear: 'Workwear',
+};
+
 export const STYLE_ORDER: StyleTag[] = [
   'minimal',
   'streetwear',
