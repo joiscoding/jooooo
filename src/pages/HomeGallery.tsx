@@ -58,10 +58,10 @@ export function HomeGallery() {
   );
 
   const filtered = useMemo(() => {
-    const needle = query.toLowerCase();
+    const terms = query.toLowerCase().split(/\s+/).filter(Boolean);
     return looks.filter((look) => {
       if (filter !== 'all' && look.tag !== filter) return false;
-      if (!needle) return true;
+      if (terms.length === 0) return true;
       const haystack = [
         look.title,
         STYLE_LABELS[look.tag],
@@ -71,7 +71,12 @@ export function HomeGallery() {
       ]
         .join(' ')
         .toLowerCase();
-      return haystack.includes(needle);
+      // Seed copy is singular ("service boot"), so a plural query still has to match.
+      return terms.every(
+        (term) =>
+          haystack.includes(term) ||
+          (term.endsWith('s') && haystack.includes(term.slice(0, -1)))
+      );
     });
   }, [looks, filter, query]);
 

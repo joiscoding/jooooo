@@ -58,7 +58,15 @@ export function LookCard({
   return (
     <li className="hp-card">
       <Link to={`/look/${look.id}`} className="hp-card-media">
-        {look.badge && <span className="hp-chip">{look.badge}</span>}
+        {look.badge && (
+          <span
+            className={
+              look.badge === 'New' ? 'hp-chip hp-chip-new' : 'hp-chip'
+            }
+          >
+            {look.badge}
+          </span>
+        )}
         <img src={look.hero} alt="" loading={eager ? 'eager' : 'lazy'} />
       </Link>
       <div className="hp-card-body">

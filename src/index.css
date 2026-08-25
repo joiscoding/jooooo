@@ -1305,14 +1305,25 @@ img {
 }
 
 /* Product-style cards */
+/* Arrow buttons drive the rails, so the native scrollbar is hidden like HP's. */
 .hp-rail {
   display: flex;
   gap: 1.25rem;
   margin: 0;
-  padding: 0.25rem 0.25rem 1rem;
+  padding: 0.25rem 0.25rem 0.5rem;
   list-style: none;
   overflow-x: auto;
   scroll-snap-type: x proximity;
+  scrollbar-width: none;
+}
+
+.hp-rail::-webkit-scrollbar,
+.hp-circle-row::-webkit-scrollbar {
+  display: none;
+}
+
+.hp-circle-row {
+  scrollbar-width: none;
 }
 
 .hp-rail > .hp-card {
@@ -1356,18 +1367,23 @@ img {
   object-fit: cover;
 }
 
+/* Red is reserved for savings, so status chips stay neutral. */
 .hp-chip {
   position: absolute;
   top: 0.65rem;
   left: 0.65rem;
   padding: 0.25rem 0.5rem;
   border-radius: 3px;
-  background: var(--hp-sale);
+  background: rgba(20, 20, 20, 0.88);
   color: #fff;
   font-size: 0.68rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.06em;
+}
+
+.hp-chip-new {
+  background: var(--hp-blue-dark);
 }
 
 .hp-card-body {
