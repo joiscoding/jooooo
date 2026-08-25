@@ -79,7 +79,7 @@ img {
 }
 
 .ilink:hover {
-  color: var(--clay-deep);
+  text-decoration-thickness: 2px;
 }
 
 .wrap {
@@ -105,10 +105,12 @@ img {
 }
 
 .logo-mark {
+  display: inline-block;
   font-size: 0.75rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.16em;
+  white-space: nowrap;
 }
 
 .nav {
@@ -130,11 +132,6 @@ img {
   color: var(--ink);
 }
 
-.nav-cta {
-  padding: 0.5rem 1.1rem;
-  font-size: 0.9375rem;
-}
-
 .main {
   flex: 1;
   width: 100%;
@@ -146,7 +143,7 @@ img {
 /* The landing page runs edge to edge so its dark band can bleed full width. */
 .main-wide {
   max-width: none;
-  padding: 0 0 var(--section-gap);
+  padding: 0;
 }
 
 /* Footer — the only inversion in the system */
@@ -290,6 +287,23 @@ img {
 
 .btn.text-danger:hover {
   text-decoration: underline;
+}
+
+/* Declared after .btn so the compact nav sizing wins on equal specificity. */
+.nav-cta {
+  padding: 0.5rem 1.1rem;
+  font-size: 0.9375rem;
+}
+
+/* Below this width the wordmark, links and CTA stop fitting on one line. */
+@media (max-width: 600px) {
+  .nav {
+    gap: 1.25rem;
+  }
+
+  .nav-cta {
+    display: none;
+  }
 }
 
 /* Landing page */
@@ -546,12 +560,17 @@ img {
   border-radius: var(--radius-card);
   overflow: hidden;
   color: inherit;
-  transition: border-color 0.25s ease, background 0.25s ease;
+  transition: border-color 0.25s ease;
 }
 
 .look-card:hover {
   border-color: var(--cloud-dark);
-  background: var(--oat);
+}
+
+.look-card:hover .look-card-title {
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+  text-decoration-thickness: 1px;
 }
 
 .look-card-img {
