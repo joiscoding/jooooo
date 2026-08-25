@@ -1,0 +1,9 @@
+---
+description: Enforce Python snake_case and TypeScript .ts source files
+alwaysApply: true
+---
+
+# Coding standards
+
+- Python identifiers use snake_case. Do not introduce lower-camel identifiers.
+- TypeScript source files use the `.ts` extension. For React files, avoid JSX so `.ts` remains valid.
