@@ -32,6 +32,11 @@ export function HomeGallery() {
     looks.find((l) => l.tag === 'classic') ??
     looks[0];
 
+  const spotlights = useMemo(() => {
+    const rest = featured ? looks.filter((l) => l.id !== featured.id) : looks;
+    return rest.slice(0, 2);
+  }, [looks, featured]);
+
   if (loading) {
     return (
       <div className="home">
@@ -79,6 +84,21 @@ export function HomeGallery() {
           <span aria-hidden="true">↓</span>
         </a>
       </section>
+
+      {spotlights.length === 2 ? (
+        <section className="spotlight-band" aria-label="Featured looks">
+          {spotlights.map((look) => (
+            <Link key={look.id} to={`/look/${look.id}`} className="spotlight-card">
+              <img src={look.hero} alt="" className="spotlight-img" />
+              <div className="spotlight-copy">
+                <p className="eyebrow">{STYLE_LABELS[look.tag]}</p>
+                <h2 className="spotlight-title">{look.title}</h2>
+                <span className="btn ghost">View look</span>
+              </div>
+            </Link>
+          ))}
+        </section>
+      ) : null}
 
       <section id="collection" className="collection-band" aria-label="Lookbook collection">
         <header className="collection-head">
