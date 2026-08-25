@@ -1020,6 +1020,12 @@ img {
   padding: 2.5rem 0;
 }
 
+/* Anchor targets must clear the sticky header, or their headings land under it. */
+.hp-section[id],
+.hp-support[id] {
+  scroll-margin-top: calc(var(--header-h) + 1.25rem);
+}
+
 .hp-section-head {
   display: flex;
   align-items: flex-end;
