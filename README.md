@@ -51,6 +51,13 @@ Clear with: `sessionStorage.removeItem('lookbook_mcp_looks_v13')`.
 ## Build
 
 ```bash
+npm run check:standards
+npm run typecheck
 npm run build
 npm run preview
 ```
+
+## Coding standards
+
+- Python identifiers should stay snake_case, not camelCase.
+- TypeScript source files should use the `.ts` extension. JSX is written with `createElement` so React components stay in `.ts` files.
