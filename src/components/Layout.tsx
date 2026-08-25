@@ -6,10 +6,18 @@ export function Layout({ children }: { children: ReactNode }) {
   const isHome = pathname === '/';
   const isAlbums = pathname.startsWith('/albums');
 
+  function handleHomeNav() {
+    if (!isHome) return;
+    if (window.location.hash) {
+      window.history.replaceState(null, '', '/');
+    }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
   return (
     <div className={isHome ? 'layout layout--home' : 'layout'}>
       <header className="site-header">
-        <Link to="/" className="logo">
+        <Link to="/" className="logo" onClick={handleHomeNav}>
           <span className="logo-word">studio</span>
         </Link>
         <nav className="nav" aria-label="Primary">
@@ -17,6 +25,7 @@ export function Layout({ children }: { children: ReactNode }) {
             to="/"
             className={pathname === '/' ? 'nav-link active' : 'nav-link'}
             aria-current={pathname === '/' ? 'page' : undefined}
+            onClick={handleHomeNav}
           >
             Gallery
           </Link>
@@ -38,7 +47,9 @@ export function Layout({ children }: { children: ReactNode }) {
           </div>
           <div>
             <p className="footer-heading">Product</p>
-            <Link to="/">Gallery</Link>
+            <Link to="/" onClick={handleHomeNav}>
+              Gallery
+            </Link>
             <Link to="/albums">Albums</Link>
           </div>
           <div>
