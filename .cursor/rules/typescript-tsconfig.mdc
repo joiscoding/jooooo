@@ -2,7 +2,6 @@
 description: Match tsconfig strict settings and type-only imports in src
 globs:
   - src/**/*.ts
-  - src/**/*.tsx
 alwaysApply: false
 ---
 
