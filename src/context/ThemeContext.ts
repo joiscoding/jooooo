@@ -1,5 +1,6 @@
 import {
   createContext,
+  createElement,
   useCallback,
   useContext,
   useEffect,
@@ -90,8 +91,10 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     [theme, resolvedTheme, setTheme],
   );
 
-  return (
-    <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>
+  return createElement(
+    ThemeContext.Provider,
+    { value },
+    children,
   );
 }
 

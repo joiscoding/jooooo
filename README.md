@@ -55,6 +55,14 @@ Header control: **System / Light / Dark**. Preference is stored in `localStorage
 ## Build
 
 ```bash
+npm run check:standards
+npm run typecheck
+npm test
 npm run build
 npm run preview
 ```
+
+## Coding standards
+
+- Python identifiers use snake_case; camelCase is rejected by `npm run check:standards`.
+- TypeScript source and test files use `.ts`; `.tsx`, `.mts`, and `.cts` files are rejected.

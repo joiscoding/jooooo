@@ -5,9 +5,11 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "npm run check:standards && npm run typecheck && vite build",
     "preview": "vite preview",
-    "test": "vitest run"
+    "test": "npm run check:standards && vitest run",
+    "typecheck": "tsc --noEmit",
+    "check:standards": "python3 scripts/check_coding_standards.py"
   },
   "dependencies": {
     "react": "^18.3.1",

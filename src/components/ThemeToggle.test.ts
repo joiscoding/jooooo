@@ -2,7 +2,7 @@
  * @vitest-environment jsdom
  */
 import { createRoot, type Root } from 'react-dom/client';
-import { act } from 'react';
+import { act, createElement } from 'react';
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 import { THEME_STORAGE_KEY } from '../theme/constants';
 import { ThemeProvider } from '../context/ThemeContext';
@@ -51,9 +51,7 @@ describe('ThemeToggle', () => {
   function renderToggle() {
     act(() => {
       root.render(
-        <ThemeProvider>
-          <ThemeToggle />
-        </ThemeProvider>,
+        createElement(ThemeProvider, null, createElement(ThemeToggle)),
       );
     });
   }
