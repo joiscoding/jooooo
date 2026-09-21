@@ -8,7 +8,7 @@ const OPTIONS: { value: ThemePreference; label: string }[] = [
 ];
 
 export function ThemeToggle() {
-  const { preference, setPreference } = useTheme();
+  const { theme, setTheme } = useTheme();
 
   return (
     <div className="theme-toggle" role="group" aria-label="Color theme">
@@ -17,12 +17,11 @@ export function ThemeToggle() {
           key={value}
           type="button"
           className={
-            preference === value
-              ? 'theme-toggle-btn active'
-              : 'theme-toggle-btn'
+            theme === value ? 'theme-toggle-btn active' : 'theme-toggle-btn'
           }
-          aria-pressed={preference === value}
-          onClick={() => setPreference(value)}
+          aria-pressed={theme === value}
+          aria-label={`${label} theme`}
+          onClick={() => setTheme(value)}
         >
           {label}
         </button>

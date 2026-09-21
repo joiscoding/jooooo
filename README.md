@@ -48,6 +48,10 @@ location.reload();
 
 Clear with: `sessionStorage.removeItem('lookbook_mcp_looks_v13')`.
 
+## Theme
+
+Header control: **System / Light / Dark**. Preference is stored in `localStorage` under `lookbook-theme`. `system` (the default) follows `prefers-color-scheme` until the user picks Light or Dark. An inline boot script in `index.html` sets `data-theme` before paint so the first frame matches the stored choice.
+
 ## Build
 
 ```bash

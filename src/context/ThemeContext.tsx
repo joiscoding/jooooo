@@ -7,17 +7,18 @@ import {
   useState,
 } from 'react';
 import type { ReactNode } from 'react';
+import { applyThemeToDocument } from '../theme/applyTheme';
 import { THEME_STORAGE_KEY } from '../theme/constants';
 import {
   parseStoredPreference,
   resolveEffectiveTheme,
 } from '../theme/preference';
-import type { ThemePreference } from '../theme/types';
+import type { ResolvedTheme, ThemePreference } from '../theme/types';
 
 type ThemeContextValue = {
-  preference: ThemePreference;
-  effectiveTheme: 'light' | 'dark';
-  setPreference: (next: ThemePreference) => void;
+  theme: ThemePreference;
+  resolvedTheme: ResolvedTheme;
+  setTheme: (next: ThemePreference) => void;
 };
 
 const ThemeContext = createContext<ThemeContextValue | null>(null);
@@ -41,45 +42,52 @@ function readSystemPrefersDark(): boolean {
 }
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
-  const [preference, setPreferenceState] =
-    useState<ThemePreference>(readStoredPreference);
+  const [theme, setThemeState] = useState<ThemePreference>(readStoredPreference);
   const [systemPrefersDark, setSystemPrefersDark] = useState(
     readSystemPrefersDark,
   );
 
   useEffect(() => {
+    if (theme !== 'system') {
+      return;
+    }
     const mq = window.matchMedia('(prefers-color-scheme: dark)');
     const onChange = () => setSystemPrefersDark(mq.matches);
+    onChange();
     mq.addEventListener('change', onChange);
     return () => mq.removeEventListener('change', onChange);
-  }, []);
+  }, [theme]);
 
-  const effectiveTheme = useMemo(
-    () => resolveEffectiveTheme(preference, systemPrefersDark),
-    [preference, systemPrefersDark],
+  const resolvedTheme = useMemo(
+    () => resolveEffectiveTheme(theme, systemPrefersDark),
+    [theme, systemPrefersDark],
   );
 
   useEffect(() => {
-    document.documentElement.dataset.theme = effectiveTheme;
-    document.documentElement.dataset.themePreference = preference;
-  }, [effectiveTheme, preference]);
+    applyThemeToDocument(resolvedTheme, theme);
+  }, [resolvedTheme, theme]);
 
-  const setPreference = useCallback((next: ThemePreference) => {
-    setPreferenceState(next);
+  const setTheme = useCallback((next: ThemePreference) => {
+    setThemeState(next);
     try {
       localStorage.setItem(THEME_STORAGE_KEY, next);
     } catch {
-      /* ignore */
+      /* private mode / quota */
     }
+    const prefersDark =
+      next === 'system'
+        ? window.matchMedia('(prefers-color-scheme: dark)').matches
+        : next === 'dark';
+    applyThemeToDocument(resolveEffectiveTheme(next, prefersDark), next);
   }, []);
 
   const value = useMemo(
     () => ({
-      preference,
-      effectiveTheme,
-      setPreference,
+      theme,
+      resolvedTheme,
+      setTheme,
     }),
-    [preference, effectiveTheme, setPreference],
+    [theme, resolvedTheme, setTheme],
   );
 
   return (

@@ -1,4 +1,4 @@
-import type { ThemePreference } from './types';
+import type { ResolvedTheme, ThemePreference } from './types';
 
 export function parseStoredPreference(raw: string | null): ThemePreference {
   if (raw === 'light' || raw === 'dark' || raw === 'system') {
@@ -10,7 +10,7 @@ export function parseStoredPreference(raw: string | null): ThemePreference {
 export function resolveEffectiveTheme(
   preference: ThemePreference,
   prefersDark: boolean,
-): 'light' | 'dark' {
+): ResolvedTheme {
   switch (preference) {
     case 'dark':
       return 'dark';
