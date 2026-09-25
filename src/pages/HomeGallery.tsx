@@ -43,8 +43,12 @@ export function HomeGallery() {
     };
   }, []);
 
-  const featured = useMemo(() => looks.slice(0, FEATURED_COUNT), [looks]);
   const heroLook = looks[0];
+  // Skip the hero look so the strip under it never repeats the same card.
+  const featured = useMemo(
+    () => looks.slice(1, 1 + FEATURED_COUNT),
+    [looks],
+  );
 
   const filtered = useMemo(() => {
     if (filter === 'all') return looks;
