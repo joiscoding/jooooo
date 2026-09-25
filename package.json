@@ -5,6 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "typecheck": "tsc --noEmit",
+    "check:standards": "python3 scripts/check_coding_standards.py",
     "build": "vite build",
     "preview": "vite preview"
   },
