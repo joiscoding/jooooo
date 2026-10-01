@@ -11,8 +11,7 @@ export function Layout({ children }: { children: ReactNode }) {
   return (
     <div className="layout">
       <p className="announce">
-        New season looks are in. Albums save in this browser — no account
-        needed.
+        New season looks are in · Albums save in this browser
       </p>
       <header className="site-header">
         <Link to="/" className="logo">

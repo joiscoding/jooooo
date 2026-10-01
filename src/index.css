@@ -389,7 +389,7 @@ button {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 40%;
+  object-position: center 30%;
 }
 
 .campaign-hero::after {
@@ -457,8 +457,18 @@ button {
   display: none;
 }
 
+/* Wide screens: five tiles fill the row; narrower: a swipeable rail with a
+   partial tile peeking in to signal overflow. */
+@media (min-width: 1000px) {
+  .style-rail {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    overflow: visible;
+  }
+}
+
 .style-tile {
-  flex: 0 0 clamp(150px, 18vw, 220px);
+  flex: 0 0 clamp(140px, 36vw, 200px);
   scroll-snap-align: start;
   display: flex;
   flex-direction: column;
@@ -666,12 +676,6 @@ button {
   gap: 0.75rem;
 }
 
-@media (min-width: 900px) {
-  .pdp-media {
-    grid-template-columns: 68px minmax(0, 1fr);
-  }
-}
-
 .pdp-thumbs {
   display: flex;
   gap: 0.5rem;
@@ -684,11 +688,31 @@ button {
   display: none;
 }
 
+/* Desktop: thumbnails run down the left and scroll within the hero's height,
+   so the hero (not the thumb count) sets the block's height. */
 @media (min-width: 900px) {
+  .pdp-media {
+    position: relative;
+    display: block;
+    padding-left: calc(68px + 0.75rem);
+  }
+
   .pdp-thumbs {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 68px;
     flex-direction: column;
     order: 0;
-    overflow: visible;
+    overflow-x: hidden;
+    overflow-y: auto;
+    scrollbar-width: thin;
+  }
+
+  .pdp-thumbs::-webkit-scrollbar {
+    display: block;
+    width: 4px;
   }
 }
 
