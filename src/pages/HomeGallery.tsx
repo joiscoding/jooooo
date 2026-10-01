@@ -36,7 +36,9 @@ export function HomeGallery() {
     return looks.filter((l) => l.tag === filter);
   }, [looks, filter]);
 
+  // Campaign band: the lead look plus a companion frame, side by side on desktop.
   const campaign = looks[0];
+  const campaignFrames = looks.slice(0, 2);
 
   if (loading) {
     return (
@@ -50,12 +52,15 @@ export function HomeGallery() {
     <div className="home">
       {campaign && (
         <Link to={`/look/${campaign.id}`} className="campaign">
-          <img
-            src={campaign.hero}
-            alt=""
-            className="campaign-img"
-            fetchPriority="high"
-          />
+          {campaignFrames.map((look) => (
+            <img
+              key={look.id}
+              src={look.hero}
+              alt=""
+              className="campaign-img"
+              fetchPriority="high"
+            />
+          ))}
           <div className="campaign-copy">
             <span className="caps">Men &middot; New season</span>
             <h1>The Edit</h1>

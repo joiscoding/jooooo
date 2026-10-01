@@ -45,8 +45,12 @@ img {
   vertical-align: middle;
 }
 
+/* Buttons do not inherit type from the UA stylesheet; make them behave like text. */
 button {
-  font-family: inherit;
+  font: inherit;
+  text-transform: inherit;
+  letter-spacing: inherit;
+  color: inherit;
 }
 
 :focus-visible {
@@ -155,10 +159,13 @@ button {
   text-decoration: underline;
 }
 
-/* Home: campaign hero */
+/* Home: campaign hero. Portrait frames sit side by side so the photography
+   is cropped from the top (faces intact) instead of stretched to a wide band. */
 .campaign {
   position: relative;
-  display: block;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--grid-gap);
   width: 100%;
   height: min(88vh, 900px);
   overflow: hidden;
@@ -166,16 +173,29 @@ button {
   color: #fff;
 }
 
+@media (min-width: 720px) {
+  .campaign {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 .campaign-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 20%;
+  object-position: center top;
   transition: transform 1.2s var(--ease);
 }
 
 .campaign:hover .campaign-img {
   transform: scale(1.02);
+}
+
+/* On narrow screens only the first frame fits the band. */
+@media (max-width: 719px) {
+  .campaign-img + .campaign-img {
+    display: none;
+  }
 }
 
 .campaign-copy {
@@ -406,10 +426,6 @@ button {
   .look-stack {
     grid-template-columns: repeat(2, 1fr);
   }
-
-  .look-stack > :first-child {
-    grid-column: 1 / -1;
-  }
 }
 
 .look-stack img {
@@ -598,6 +614,7 @@ button {
 
 .inline-link {
   display: inline-block;
+  justify-self: start;
   border-bottom: 1px solid var(--ink);
   padding-bottom: 1px;
 }
