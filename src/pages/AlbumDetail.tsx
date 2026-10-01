@@ -1,22 +1,23 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { fetchLooks } from '../data/fetchLooks';
 import { useAlbumsContext } from '../context/AlbumsContext';
-import { LookCard } from '../components/LookCard';
+import { LookCard, pickHoverImage } from '../components/LookCard';
 import type { Look } from '../types';
 
 export function AlbumDetail() {
   const { albumId } = useParams<{ albumId: string }>();
   const { albums, removeLookFromAlbum } = useAlbumsContext();
-  const [looksMap, setLooksMap] = useState<Map<string, Look>>(new Map());
+  const [allLooks, setAllLooks] = useState<Look[]>([]);
 
   const album = albums.find((a) => a.id === albumId);
+  const looksMap = useMemo(
+    () => new Map(allLooks.map((l) => [l.id, l])),
+    [allLooks]
+  );
 
   useEffect(() => {
-    fetchLooks().then((all) => {
-      const m = new Map(all.map((l) => [l.id, l]));
-      setLooksMap(m);
-    });
+    fetchLooks().then(setAllLooks);
   }, []);
 
   if (!albumId || !album) {
@@ -71,6 +72,7 @@ export function AlbumDetail() {
               <li key={id}>
                 <LookCard
                   look={look}
+                  hoverImage={pickHoverImage(look, allLooks)}
                   action={
                     <button
                       type="button"

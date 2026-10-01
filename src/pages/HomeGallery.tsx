@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { fetchLooks } from '../data/fetchLooks';
-import { LookCard } from '../components/LookCard';
+import { LookCard, pickHoverImage } from '../components/LookCard';
 import type { Look, StyleTag } from '../types';
 import { STYLE_LABELS, STYLE_ORDER, STYLE_SHORT_LABELS } from '../types';
 
@@ -172,7 +172,12 @@ export function HomeGallery() {
         ) : (
           <div className="gallery-wall">
             {filtered.map((look, i) => (
-              <LookCard key={look.id} look={look} eager={i < 3} />
+              <LookCard
+                key={look.id}
+                look={look}
+                hoverImage={pickHoverImage(look, looks)}
+                eager={i < 3}
+              />
             ))}
           </div>
         )}

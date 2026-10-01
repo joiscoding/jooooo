@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState, type FormEvent } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { fetchLooks } from '../data/fetchLooks';
 import { useAlbumsContext } from '../context/AlbumsContext';
-import { LookCard } from '../components/LookCard';
+import { LookCard, pickHoverImage } from '../components/LookCard';
 import type { Look } from '../types';
 import { STYLE_LABELS } from '../types';
 
@@ -219,7 +219,11 @@ export function LookDetail() {
           </div>
           <div className="related-grid">
             {related.map((l) => (
-              <LookCard key={l.id} look={l} />
+              <LookCard
+                key={l.id}
+                look={l}
+                hoverImage={pickHoverImage(l, allLooks)}
+              />
             ))}
           </div>
         </section>

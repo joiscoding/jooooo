@@ -3,8 +3,24 @@ import { Link } from 'react-router-dom';
 import type { Look } from '../types';
 import { STYLE_SHORT_LABELS } from '../types';
 
+/**
+ * Second photo shown on hover. Skips any image that is another look's cover,
+ * so a card never appears to turn into its neighbour.
+ */
+export function pickHoverImage(look: Look, allLooks: Look[]): string | null {
+  const otherCovers = new Set(
+    allLooks.filter((l) => l.id !== look.id).map((l) => l.hero)
+  );
+  return (
+    look.gallery.find((src) => src !== look.hero && !otherCovers.has(src)) ??
+    null
+  );
+}
+
 interface LookCardProps {
   look: Look;
+  /** Result of pickHoverImage; omit to disable the hover swap. */
+  hoverImage?: string | null;
   /** Eager-load above-the-fold cards. */
   eager?: boolean;
   /** Optional overlay control (e.g. "Remove" in an album). */
@@ -12,9 +28,12 @@ interface LookCardProps {
 }
 
 /** Product-style card: image with hover swap to a second photo, meta below. */
-export function LookCard({ look, eager = false, action }: LookCardProps) {
-  const altImage = look.gallery.find((src) => src !== look.hero);
-
+export function LookCard({
+  look,
+  hoverImage = null,
+  eager = false,
+  action,
+}: LookCardProps) {
   return (
     <article className="look-card">
       <Link to={`/look/${look.id}`} className="look-card-link">
@@ -26,9 +45,9 @@ export function LookCard({ look, eager = false, action }: LookCardProps) {
             className="look-card-img"
             loading={eager ? 'eager' : 'lazy'}
           />
-          {altImage && (
+          {hoverImage && (
             <img
-              src={altImage}
+              src={hoverImage}
               alt=""
               className="look-card-img look-card-img-alt"
               loading="lazy"
