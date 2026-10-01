@@ -1,22 +1,23 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { fetchLooks } from '../data/fetchLooks';
 import { useAlbumsContext } from '../context/AlbumsContext';
+import { LookCard, pickHoverImage } from '../components/LookCard';
 import type { Look } from '../types';
-import { STYLE_LABELS } from '../types';
 
 export function AlbumDetail() {
   const { albumId } = useParams<{ albumId: string }>();
   const { albums, removeLookFromAlbum } = useAlbumsContext();
-  const [looksMap, setLooksMap] = useState<Map<string, Look>>(new Map());
+  const [allLooks, setAllLooks] = useState<Look[]>([]);
 
   const album = albums.find((a) => a.id === albumId);
+  const looksMap = useMemo(
+    () => new Map(allLooks.map((l) => [l.id, l])),
+    [allLooks]
+  );
 
   useEffect(() => {
-    fetchLooks().then((all) => {
-      const m = new Map(all.map((l) => [l.id, l]));
-      setLooksMap(m);
-    });
+    fetchLooks().then(setAllLooks);
   }, []);
 
   if (!albumId || !album) {
@@ -28,6 +29,8 @@ export function AlbumDetail() {
     );
   }
 
+  const count = album.lookIds.length;
+
   return (
     <div className="album-detail-page">
       <Link to="/albums" className="back-link">
@@ -35,20 +38,25 @@ export function AlbumDetail() {
       </Link>
       <header className="page-head">
         <h1 className="page-title">{album.name}</h1>
-        <p className="muted">{album.lookIds.length} saved look(s)</p>
+        <p className="muted">
+          {count} saved look{count === 1 ? '' : 's'}
+        </p>
       </header>
 
-      {album.lookIds.length === 0 ? (
-        <p className="empty-state">
-          Empty album. Add looks from the gallery or look pages.
-        </p>
+      {count === 0 ? (
+        <div className="empty-state">
+          <p>Nothing saved here yet.</p>
+          <Link to="/" className="btn primary">
+            Browse looks
+          </Link>
+        </div>
       ) : (
         <ul className="album-looks-grid">
           {album.lookIds.map((id) => {
             const look = looksMap.get(id);
             if (!look) {
               return (
-                <li key={id} className="album-look-card missing">
+                <li key={id} className="album-look-missing">
                   <p>Look removed from catalog</p>
                   <button
                     type="button"
@@ -61,26 +69,20 @@ export function AlbumDetail() {
               );
             }
             return (
-              <li key={id} className="album-look-card">
-                <Link to={`/look/${look.id}`} className="album-look-link">
-                  <img
-                    key={`${look.id}-${look.hero}`}
-                    src={look.hero}
-                    alt=""
-                    className="album-look-img"
-                  />
-                  <div className="album-look-meta">
-                    <span className="wall-tag">{STYLE_LABELS[look.tag]}</span>
-                    <h2 className="wall-title">{look.title}</h2>
-                  </div>
-                </Link>
-                <button
-                  type="button"
-                  className="btn remove-from-album"
-                  onClick={() => removeLookFromAlbum(album.id, id)}
-                >
-                  Remove
-                </button>
+              <li key={id}>
+                <LookCard
+                  look={look}
+                  hoverImage={pickHoverImage(look, allLooks)}
+                  action={
+                    <button
+                      type="button"
+                      className="btn remove-from-album"
+                      onClick={() => removeLookFromAlbum(album.id, id)}
+                    >
+                      Remove
+                    </button>
+                  }
+                />
               </li>
             );
           })}

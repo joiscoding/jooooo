@@ -19,7 +19,7 @@ export function AlbumsList() {
       <header className="page-head">
         <h1 className="page-title">Albums</h1>
         <p className="muted">
-          Saved locally in this browser — persists after refresh.
+          Saved locally in this browser — still here after a refresh.
         </p>
       </header>
 
@@ -37,9 +37,12 @@ export function AlbumsList() {
       </form>
 
       {albums.length === 0 ? (
-        <p className="empty-state">
-          No albums yet. Create one above, or add a look from any look page.
-        </p>
+        <div className="empty-state">
+          <p>No albums yet. Create one above, or save a look from any look page.</p>
+          <Link to="/" className="btn ghost">
+            Browse looks
+          </Link>
+        </div>
       ) : (
         <ul className="album-list">
           {albums.map((a) => (
