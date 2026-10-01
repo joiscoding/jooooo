@@ -21,26 +21,30 @@ export function AlbumDetail() {
 
   if (!albumId || !album) {
     return (
-      <div className="page-narrow">
+      <div className="page-narrow caps">
         <p className="muted">Album not found.</p>
-        <Link to="/albums">← Albums</Link>
+        <Link to="/albums" className="inline-link">
+          Albums
+        </Link>
       </div>
     );
   }
 
   return (
     <div className="album-detail-page">
-      <Link to="/albums" className="back-link">
-        ← Albums
+      <Link to="/albums" className="back-link caps">
+        Albums
       </Link>
       <header className="page-head">
         <h1 className="page-title">{album.name}</h1>
-        <p className="muted">{album.lookIds.length} saved look(s)</p>
+        <p className="muted caps">
+          {album.lookIds.length} saved {album.lookIds.length === 1 ? 'look' : 'looks'}
+        </p>
       </header>
 
       {album.lookIds.length === 0 ? (
-        <p className="empty-state">
-          Empty album. Add looks from the gallery or look pages.
+        <p className="empty-state caps">
+          Empty album. Save looks from the lookbook or any look page.
         </p>
       ) : (
         <ul className="album-looks-grid">
@@ -48,7 +52,7 @@ export function AlbumDetail() {
             const look = looksMap.get(id);
             if (!look) {
               return (
-                <li key={id} className="album-look-card missing">
+                <li key={id} className="album-look-card missing caps">
                   <p>Look removed from catalog</p>
                   <button
                     type="button"
@@ -62,16 +66,13 @@ export function AlbumDetail() {
             }
             return (
               <li key={id} className="album-look-card">
-                <Link to={`/look/${look.id}`} className="album-look-link">
-                  <img
-                    key={`${look.id}-${look.hero}`}
-                    src={look.hero}
-                    alt=""
-                    className="album-look-img"
-                  />
-                  <div className="album-look-meta">
-                    <span className="wall-tag">{STYLE_LABELS[look.tag]}</span>
+                <Link to={`/look/${look.id}`} className="wall-card">
+                  <div className="wall-frame">
+                    <img src={look.hero} alt="" className="wall-img" />
+                  </div>
+                  <div className="wall-caption">
                     <h2 className="wall-title">{look.title}</h2>
+                    <span className="wall-tag caps">{STYLE_LABELS[look.tag]}</span>
                   </div>
                 </Link>
                 <button

@@ -34,18 +34,27 @@ export function LookDetail() {
 
   if (!look) {
     return (
-      <div className="page-narrow">
+      <div className="page-narrow caps">
         <p className="muted">Look not found.</p>
-        <Link to="/">Back to gallery</Link>
+        <Link to="/" className="inline-link">
+          Back to lookbook
+        </Link>
       </div>
     );
   }
 
-  const images = [look.hero, ...look.gallery];
+  // Narrowed copy so the handlers below keep the non-null type.
+  const current = look;
+
+  // Hero first, then the remaining frames without repeating the hero.
+  const images = [
+    current.hero,
+    ...current.gallery.filter((src) => src !== current.hero),
+  ];
 
   function handleAddToExisting() {
     if (!selectedAlbumId) return;
-    addLookToAlbum(selectedAlbumId, look.id);
+    addLookToAlbum(selectedAlbumId, current.id);
     setToast('Saved to album.');
   }
 
@@ -54,40 +63,37 @@ export function LookDetail() {
     const name = newAlbumName.trim();
     if (!name) return;
     const al = createAlbum(name);
-    addLookToAlbum(al.id, look.id);
+    addLookToAlbum(al.id, current.id);
     setNewAlbumName('');
-    setToast(`Created “${al.name}” and saved this look.`);
+    setToast(`Created ${al.name} and saved this look.`);
   }
 
   return (
     <article className="look-detail">
-      <button type="button" className="back-link" onClick={() => navigate(-1)}>
-        ← Back
+      <button
+        type="button"
+        className="back-link caps"
+        onClick={() => navigate(-1)}
+      >
+        Back
       </button>
 
       <div className="look-detail-grid">
-        <div className="look-visual">
-          <div className="look-hero-wrap">
+        <div className="look-stack">
+          {images.map((src, i) => (
             <img
-              key={look.hero}
-              src={look.hero}
+              key={src}
+              src={src}
               alt=""
-              className="look-hero"
+              loading={i === 0 ? 'eager' : 'lazy'}
             />
-          </div>
-          {look.gallery.length > 0 && (
-            <div className="look-thumbs">
-              {images.map((src, i) => (
-                <img key={i} src={src} alt="" className="look-thumb" />
-              ))}
-            </div>
-          )}
+          ))}
         </div>
 
-        <div className="look-copy">
-          <p className="eyebrow">{STYLE_LABELS[look.tag]}</p>
+        <div className="look-panel">
+          <p className="look-eyebrow caps">{STYLE_LABELS[look.tag]}</p>
           <h1 className="look-detail-title">{look.title}</h1>
-          <dl className="look-facts">
+          <dl className="look-facts caps">
             <div>
               <dt>Season</dt>
               <dd>{look.season}</dd>
@@ -97,8 +103,8 @@ export function LookDetail() {
               <dd>{look.occasion}</dd>
             </div>
           </dl>
-          <div className="key-items">
-            <h2 className="h-small">Key items</h2>
+          <div className="key-items caps">
+            <h2 className="h-small caps">Composition</h2>
             <ul>
               {look.keyItems.map((item) => (
                 <li key={item}>{item}</li>
@@ -107,7 +113,7 @@ export function LookDetail() {
           </div>
 
           <div className="album-panel">
-            <h2 className="h-small">Add to album</h2>
+            <h2 className="h-small caps">Add to album</h2>
             <div className="album-row">
               <select
                 className="select-input"
@@ -115,7 +121,7 @@ export function LookDetail() {
                 onChange={(e) => setSelectedAlbumId(e.target.value)}
                 aria-label="Choose album"
               >
-                <option value="">Select album…</option>
+                <option value="">Select album</option>
                 {albums.map((a) => (
                   <option key={a.id} value={a.id}>
                     {a.name} ({a.lookIds.length})
@@ -128,7 +134,7 @@ export function LookDetail() {
                 disabled={!selectedAlbumId}
                 onClick={handleAddToExisting}
               >
-                Add
+                Add to album
               </button>
             </div>
             <form onSubmit={handleCreateAndAdd} className="album-new">
@@ -140,12 +146,16 @@ export function LookDetail() {
                 aria-label="New album name"
               />
               <button type="submit" className="btn ghost">
-                Create &amp; add
+                Create and add
               </button>
             </form>
-            {toast && <p className="toast" role="status">{toast}</p>}
-            <Link to="/albums" className="inline-link">
-              View all albums →
+            {toast && (
+              <p className="toast caps" role="status">
+                {toast}
+              </p>
+            )}
+            <Link to="/albums" className="inline-link caps">
+              View all albums
             </Link>
           </div>
         </div>
