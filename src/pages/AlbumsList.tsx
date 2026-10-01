@@ -18,9 +18,7 @@ export function AlbumsList() {
     <div className="page-narrow albums-page">
       <header className="page-head">
         <h1 className="page-title">Albums</h1>
-        <p className="muted">
-          Saved locally in this browser — persists after refresh.
-        </p>
+        <p className="muted caps">Saved in this browser. Persists after refresh.</p>
       </header>
 
       <form onSubmit={handleCreate} className="create-album-form">
@@ -37,11 +35,11 @@ export function AlbumsList() {
       </form>
 
       {albums.length === 0 ? (
-        <p className="empty-state">
-          No albums yet. Create one above, or add a look from any look page.
+        <p className="empty-state caps">
+          No albums yet. Create one, or save a look from any look page.
         </p>
       ) : (
-        <ul className="album-list">
+        <ul className="album-list caps">
           {albums.map((a) => (
             <li key={a.id} className="album-list-item">
               <Link to={`/albums/${a.id}`} className="album-link">
@@ -54,7 +52,7 @@ export function AlbumsList() {
                 type="button"
                 className="btn text-danger"
                 onClick={() => {
-                  if (confirm(`Delete album “${a.name}”?`)) deleteAlbum(a.id);
+                  if (confirm(`Delete album "${a.name}"?`)) deleteAlbum(a.id);
                 }}
               >
                 Delete
