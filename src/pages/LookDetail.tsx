@@ -84,6 +84,7 @@ export function LookDetail() {
     if (!name || !look) return;
     const al = createAlbum(name);
     addLookToAlbum(al.id, look.id);
+    setSelectedAlbumId(al.id);
     setNewAlbumName('');
     setToast(`Created “${al.name}” and saved this look.`);
   }
