@@ -51,6 +51,13 @@ Clear with: `sessionStorage.removeItem('lookbook_mcp_looks_v13')`.
 ## Build
 
 ```bash
+npm run check:standards
+npm run typecheck
 npm run build
 npm run preview
 ```
+
+## Coding standards
+
+- Python identifiers use snake_case, not camelCase.
+- TypeScript source files use the `.ts` extension.
