@@ -51,6 +51,8 @@ Clear with: `sessionStorage.removeItem('lookbook_mcp_looks_v13')`.
 ## Build
 
 ```bash
+npm run check:standards
+npm run typecheck
 npm run build
 npm run preview
 ```
