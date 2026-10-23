@@ -63,16 +63,10 @@ export function Layout({ children }: { children: ReactNode }) {
       </header>
       <main className="main">{children}</main>
       <footer className="site-footer">
-        <div className="footer-top">
-          <span>Studio Lookbook — Men · Seasonal Edit</span>
-        </div>
         <div className="footer-bottom">
           <div className="footer-links">
             <Link to="/">Gallery</Link>
             <Link to="/albums">Albums</Link>
-          </div>
-          <p className="footer-credit">
-            Demo — photos via{' '}
             <a
               href="https://unsplash.com"
               target="_blank"
@@ -80,8 +74,7 @@ export function Layout({ children }: { children: ReactNode }) {
             >
               Unsplash
             </a>
-            . Modern style, designed to last.
-          </p>
+          </div>
         </div>
       </footer>
     </div>

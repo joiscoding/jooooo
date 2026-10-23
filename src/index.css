@@ -229,18 +229,11 @@ img {
   margin-top: auto;
 }
 
-.footer-top {
-  padding: 15px 30px;
-  border-bottom: 1px solid var(--line);
-  font-size: 14px;
-  color: var(--ink-muted);
-}
-
 .footer-bottom {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   gap: 12px 24px;
   padding: 15px 30px;
 }
@@ -288,7 +281,7 @@ img {
   font-weight: 600;
   letter-spacing: -0.04em;
   line-height: 1.05;
-  margin-bottom: 8px;
+  margin: 0 0 28px;
   user-select: none;
 }
 
@@ -309,21 +302,6 @@ img {
   letter-spacing: 0.08em;
   color: var(--ink-muted);
   margin: 0 0 4px;
-}
-
-.home-title {
-  font-family: var(--font-display);
-  font-size: clamp(1rem, 2vw, 1.2rem);
-  font-weight: 400;
-  line-height: 1.4;
-  color: var(--ink-muted);
-  margin: 0 0 24px;
-}
-
-.home-title em {
-  font-style: normal;
-  color: var(--ink);
-  font-weight: 500;
 }
 
 .search-box-wrap {
@@ -433,28 +411,21 @@ img {
   outline: none;
 }
 
-/* Google Search / Images style filter chips & stats bar */
+/* Google Search / Images style filter chips bar */
 .results-toolbar {
   border-top: 1px solid var(--line-soft);
   border-bottom: 1px solid var(--line-soft);
-  padding: 14px 0 12px;
+  padding: 14px 0;
   margin-bottom: 24px;
   display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-@media (min-width: 900px) {
-  .results-toolbar {
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-  }
+  align-items: center;
+  justify-content: center;
 }
 
 .filters-bar {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 8px;
 }
 

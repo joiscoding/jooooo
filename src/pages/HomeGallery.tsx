@@ -66,19 +66,13 @@ export function HomeGallery() {
   return (
     <div className="home">
       <section className="home-hero">
-        <div className="google-wordmark" aria-hidden="true">
+        <h1 className="google-wordmark" aria-label="Studio">
           <span className="g-blue">S</span>
           <span className="g-red">t</span>
           <span className="g-yellow">u</span>
           <span className="g-blue">d</span>
           <span className="g-green">i</span>
           <span className="g-red">o</span>
-          <span className="wordmark-sub">Lookbook</span>
-        </div>
-
-        <p className="eyebrow">Men · Seasonal edit</p>
-        <h1 className="home-title">
-          Looks built for <em>quiet</em> confidence.
         </h1>
 
         <div className="search-box-wrap">
@@ -172,11 +166,6 @@ export function HomeGallery() {
             </button>
           ))}
         </section>
-        <p className="results-stats">
-          Showing {filtered.length} of {looks.length} looks
-          {filter !== 'all' ? ` in ${STYLE_LABELS[filter]}` : ''}
-          {query.trim() ? ` matching “${query.trim()}”` : ''}
-        </p>
       </div>
 
       {filtered.length === 0 ? (
@@ -203,6 +192,7 @@ export function HomeGallery() {
                 key={look.id}
                 to={`/look/${look.id}`}
                 className="wall-card"
+                aria-label={look.title}
               >
                 <div className="wall-card-inner">
                   <div className="wall-image-frame">
@@ -213,22 +203,6 @@ export function HomeGallery() {
                       className="wall-img"
                       loading={i < 4 ? 'eager' : 'lazy'}
                     />
-                  </div>
-                  <div className="wall-meta">
-                    <div className="wall-source-row">
-                      <span className="wall-favicon" aria-hidden="true">
-                        S
-                      </span>
-                      <span className="wall-tag">{STYLE_LABELS[look.tag]}</span>
-                      <span className="wall-dot" aria-hidden="true">
-                        ·
-                      </span>
-                      <span className="wall-season">{look.season}</span>
-                    </div>
-                    <h2 className="wall-title">{look.title}</h2>
-                    <p className="wall-snippet">
-                      {look.occasion} — {look.keyItems.join(', ')}
-                    </p>
                   </div>
                 </div>
               </Link>
