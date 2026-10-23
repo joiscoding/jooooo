@@ -48,6 +48,10 @@ location.reload();
 
 Clear with: `sessionStorage.removeItem('lookbook_mcp_looks_v13')`.
 
+Custom look entries must match the `Look` shape and use unique, non-empty `id`
+values. Invalid custom data is ignored and cleared so gallery cards cannot point
+at the wrong detail page.
+
 ## Build
 
 ```bash
