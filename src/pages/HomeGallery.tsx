@@ -29,7 +29,7 @@ export function HomeGallery() {
 
   if (loading) {
     return (
-      <div className="page-loading">
+      <div className="page-loading" role="status" aria-live="polite">
         <p className="muted">Loading lookbook…</p>
       </div>
     );
@@ -87,6 +87,7 @@ export function HomeGallery() {
             type="button"
             className={filter === 'all' ? 'filter-pill active' : 'filter-pill'}
             onClick={() => setFilter('all')}
+            aria-pressed={filter === 'all'}
           >
             All looks
           </button>
@@ -96,6 +97,7 @@ export function HomeGallery() {
               type="button"
               className={filter === tag ? 'filter-pill active' : 'filter-pill'}
               onClick={() => setFilter(tag)}
+              aria-pressed={filter === tag}
             >
               {STYLE_LABELS[tag]}
             </button>
@@ -103,7 +105,9 @@ export function HomeGallery() {
         </div>
 
         {filtered.length === 0 ? (
-          <p className="empty-state">No looks in this filter.</p>
+          <p className="empty-state" role="status" aria-live="polite">
+            No looks in this filter.
+          </p>
         ) : (
           <div className="gallery-wall">
             {filtered.map((look, i) => {
