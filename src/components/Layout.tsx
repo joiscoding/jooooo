@@ -5,14 +5,16 @@ export function Layout({ children }: { children: ReactNode }) {
   const { pathname } = useLocation();
   const isAlbums = pathname.startsWith('/albums');
 
+  const isHome = pathname === '/';
+
   return (
     <div className="layout">
       <header className="site-header">
-        <Link to="/" className="logo">
-          <span className="logo-serif">Studio</span>
-          <span className="logo-sans">Lookbook</span>
+        <Link to="/" className="logo" aria-label="Studio Lookbook home">
+          <span className="logo-mark" aria-hidden="true" />
+          <span className="logo-word">Studio</span>
         </Link>
-        <nav className="nav">
+        <nav className="nav" aria-label="Primary">
           <Link
             to="/"
             className={pathname === '/' ? 'nav-link active' : 'nav-link'}
@@ -26,10 +28,39 @@ export function Layout({ children }: { children: ReactNode }) {
             Albums
           </Link>
         </nav>
+        <div className="header-actions">
+          <Link to="/albums" className="header-text">
+            Saved looks
+          </Link>
+          <Link to={isHome ? '/#looks' : '/'} className="btn primary header-cta">
+            {isHome ? 'Browse looks' : 'Gallery'}
+          </Link>
+        </div>
       </header>
-      <main className="main">{children}</main>
+      <main className={isHome ? 'main main-home' : 'main'}>{children}</main>
       <footer className="site-footer">
-        <p>
+        <div className="footer-grid">
+          <div>
+            <p className="footer-brand">Studio Lookbook</p>
+            <p className="footer-note">Modern style, designed to last.</p>
+          </div>
+          <div className="footer-col">
+            <p className="footer-label">Lookbook</p>
+            <Link to="/">Gallery</Link>
+            <Link to="/albums">Albums</Link>
+          </div>
+          <div className="footer-col">
+            <p className="footer-label">Photos</p>
+            <a
+              href="https://unsplash.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Unsplash
+            </a>
+          </div>
+        </div>
+        <p className="footer-legal">
           Demo — photos via{' '}
           <a
             href="https://unsplash.com"
@@ -38,7 +69,7 @@ export function Layout({ children }: { children: ReactNode }) {
           >
             Unsplash
           </a>
-          . Modern style, designed to last.
+          .
         </p>
       </footer>
     </div>
