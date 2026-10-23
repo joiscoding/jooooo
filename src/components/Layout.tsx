@@ -9,8 +9,8 @@ export function Layout({ children }: { children: ReactNode }) {
     <div className="layout">
       <header className="site-header">
         <Link to="/" className="logo">
-          <span className="logo-serif">Studio</span>
-          <span className="logo-sans">Lookbook</span>
+          <span className="logo-mark" aria-hidden="true">S</span>
+          <span className="logo-word">Studio Lookbook</span>
         </Link>
         <nav className="nav">
           <Link
@@ -29,17 +29,21 @@ export function Layout({ children }: { children: ReactNode }) {
       </header>
       <main className="main">{children}</main>
       <footer className="site-footer">
-        <p>
-          Demo — photos via{' '}
+        <div>
+          <Link to="/" className="footer-brand">Studio Lookbook</Link>
+          <p>Modern style, designed to last.</p>
+        </div>
+        <div className="footer-links">
+          <Link to="/">Gallery</Link>
+          <Link to="/albums">Albums</Link>
           <a
             href="https://unsplash.com"
             target="_blank"
             rel="noopener noreferrer"
           >
-            Unsplash
+            Photos via Unsplash
           </a>
-          . Modern style, designed to last.
-        </p>
+        </div>
       </footer>
     </div>
   );
