@@ -42,7 +42,16 @@ export function HomeGallery() {
         <h1 className="home-title">
           Looks built for <em>quiet</em> confidence.
         </h1>
+        <p className="home-lede">
+          A seasonal edit of modern menswear, designed to last.
+        </p>
+        <div className="home-ctas">
+          <a href="#gallery" className="btn-primary">Browse the gallery</a>
+          <Link to="/albums" className="btn-ghost">View albums</Link>
+        </div>
       </section>
+
+      <h2 id="gallery" className="section-heading">The latest looks</h2>
 
       <section className="filters-bar" aria-label="Style filters">
         <button
