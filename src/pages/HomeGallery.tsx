@@ -42,9 +42,20 @@ export function HomeGallery() {
         <h1 className="home-title">
           Looks built for <em>quiet</em> confidence.
         </h1>
+        <p className="home-dek">
+          A seasonal edit of men&apos;s clothes, sorted by how they wear.
+        </p>
+        <div className="home-actions">
+          <a className="home-cta solid" href="#looks">
+            See the edit
+          </a>
+          <Link className="home-cta ghost" to="/albums">
+            Open albums
+          </Link>
+        </div>
       </section>
 
-      <section className="filters-bar" aria-label="Style filters">
+      <section id="looks" className="filters-bar" aria-label="Style filters">
         <button
           type="button"
           className={filter === 'all' ? 'filter-pill active' : 'filter-pill'}

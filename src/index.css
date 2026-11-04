@@ -617,3 +617,224 @@ img {
   font-size: 0.65rem;
   padding: 0.35rem 0.5rem;
 }
+
+/* Landing only — black field, tight grotesk, sparse nav (x.ai-like). Other routes stay on the cream theme. */
+.layout-xai {
+  --xai-bg: #000;
+  --xai-fg: #fff;
+  --xai-muted: rgba(255, 255, 255, 0.55);
+  --xai-line: rgba(255, 255, 255, 0.14);
+  --xai-font: 'Inter', system-ui, sans-serif;
+  background: var(--xai-bg);
+  color: var(--xai-fg);
+  font-family: var(--xai-font);
+}
+
+.layout-xai a {
+  color: inherit;
+}
+
+.layout-xai .site-header {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 4.25rem;
+  padding: 0 1.75rem;
+  background: transparent;
+  border-bottom: none;
+  backdrop-filter: none;
+}
+
+.layout-xai .logo-serif,
+.layout-xai .logo-sans {
+  font-family: var(--xai-font);
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  color: #fff;
+}
+
+.layout-xai .logo-serif {
+  font-size: 1.15rem;
+}
+
+.layout-xai .logo-sans {
+  font-size: 1.15rem;
+  text-transform: none;
+  letter-spacing: -0.04em;
+  font-weight: 500;
+  opacity: 0.72;
+}
+
+.layout-xai .nav-link {
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-transform: none;
+  letter-spacing: 0;
+  color: var(--xai-muted);
+}
+
+.layout-xai .nav-link:hover,
+.layout-xai .nav-link.active {
+  color: #fff;
+}
+
+.layout-xai .main {
+  max-width: none;
+  padding: 0 1.75rem 5rem;
+}
+
+.layout-xai .home-hero {
+  min-height: 100vh;
+  max-width: 58rem;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 0 0 4.5rem;
+  box-sizing: border-box;
+}
+
+.layout-xai .eyebrow {
+  font-family: var(--xai-font);
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--xai-muted);
+  margin: 0 0 1.25rem;
+}
+
+.layout-xai .home-title {
+  font-family: var(--xai-font);
+  font-weight: 500;
+  font-size: clamp(3.25rem, 8.2vw, 6.75rem);
+  line-height: 0.92;
+  letter-spacing: -0.045em;
+  margin: 0;
+  max-width: 14ch;
+}
+
+.layout-xai .home-title em {
+  font-style: normal;
+  font-weight: 500;
+}
+
+.layout-xai .home-dek {
+  margin: 1.5rem 0 0;
+  max-width: 28rem;
+  font-size: 1.125rem;
+  line-height: 1.45;
+  color: var(--xai-muted);
+}
+
+.layout-xai .home-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 2rem;
+}
+
+.layout-xai .home-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.75rem;
+  padding: 0 1.25rem;
+  border-radius: 999px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  text-decoration: none;
+  border: 1px solid transparent;
+}
+
+.layout-xai .home-cta:hover {
+  text-decoration: none;
+}
+
+.layout-xai .home-cta.solid {
+  background: #fff;
+  color: #000;
+}
+
+.layout-xai .home-cta.ghost {
+  background: transparent;
+  color: #fff;
+  border-color: var(--xai-line);
+}
+
+.layout-xai .filters-bar {
+  gap: 0.4rem;
+  margin: 0 0 1.75rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--xai-line);
+}
+
+.layout-xai .filter-pill {
+  font-family: var(--xai-font);
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: 0.85rem;
+  font-weight: 500;
+  border-radius: 999px;
+  border-color: var(--xai-line);
+  background: transparent;
+  color: var(--xai-muted);
+  padding: 0.5rem 0.95rem;
+}
+
+.layout-xai .filter-pill:hover {
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.layout-xai .filter-pill.active {
+  background: #fff;
+  color: #000;
+  border-color: #fff;
+}
+
+.layout-xai .gallery-wall {
+  gap: 0.75rem;
+}
+
+.layout-xai .wall-card {
+  border-radius: 1rem;
+  background: #111;
+  border: 1px solid var(--xai-line);
+  box-shadow: none;
+}
+
+.layout-xai .wall-card:hover {
+  transform: none;
+  box-shadow: none;
+  border-color: rgba(255, 255, 255, 0.35);
+}
+
+.layout-xai .wall-title {
+  font-family: var(--xai-font);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+.layout-xai .wall-tag {
+  font-weight: 500;
+  letter-spacing: 0.08em;
+}
+
+.layout-xai .site-footer {
+  border-top: 1px solid var(--xai-line);
+  text-align: left;
+  padding: 1.5rem 1.75rem 2rem;
+}
+
+.layout-xai .site-footer p,
+.layout-xai .site-footer a {
+  color: var(--xai-muted);
+  font-family: var(--xai-font);
+}
+
+.layout-xai .page-loading,
+.layout-xai .empty-state,
+.layout-xai .muted {
+  color: var(--xai-muted);
+}
