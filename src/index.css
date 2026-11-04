@@ -617,3 +617,41 @@ img {
   font-size: 0.65rem;
   padding: 0.35rem 0.5rem;
 }
+
+/* PROTOTYPE: facebook.com logged-out style — landing page only */
+.layout:has(.fb-home) { background: #f0f2f5; font-family: Helvetica, Arial, sans-serif; }
+.layout:has(.fb-home) .site-header { background: #fff; border-bottom: none; box-shadow: 0 2px 4px rgba(0,0,0,.1); backdrop-filter: none; height: 3.5rem; }
+.layout:has(.fb-home) .logo-serif, .layout:has(.fb-home) .logo-sans { font-family: Helvetica, Arial, sans-serif; color: #1877f2; text-transform: lowercase; letter-spacing: -0.04em; }
+.layout:has(.fb-home) .logo-serif { font-size: 1.7rem; font-weight: 700; }
+.layout:has(.fb-home) .logo-sans { font-size: 1.7rem; font-weight: 700; opacity: 1; margin-left: -0.3rem; }
+.layout:has(.fb-home) .nav-link { font-family: Helvetica, Arial, sans-serif; text-transform: none; letter-spacing: 0; font-size: .9375rem; font-weight: 600; color: #050505; }
+.layout:has(.fb-home) .main { max-width: 980px; padding: 0 1rem 3rem; }
+.layout:has(.fb-home) .site-footer { background: #fff; border-top: none; text-align: left; padding: 1.5rem; }
+.layout:has(.fb-home) .site-footer p { max-width: 980px; margin: 0 auto; color: #737373; font-size: .75rem; }
+.fb-home { font-family: Helvetica, Arial, sans-serif; color: #1c1e21; }
+.fb-hero { display: grid; grid-template-columns: 1.15fr .85fr; gap: 2rem; align-items: start; padding: 5.5rem 0 4.5rem; }
+.fb-wordmark { margin: 0 0 .5rem -4px; color: #1877f2; font-size: clamp(2.6rem, 6vw, 4rem); font-weight: 700; letter-spacing: -0.05em; line-height: 1; }
+.fb-tagline { margin: 0; max-width: 30rem; font-size: 1.75rem; font-weight: 400; line-height: 1.2; color: #1c1e21; }
+.fb-subtag { margin: 1rem 0 0; color: #606770; font-size: 1rem; }
+.fb-card { background: #fff; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,.1), 0 8px 16px rgba(0,0,0,.1); padding: 1rem 1rem 1.25rem; text-align: center; }
+.fb-input { display: block; width: 100%; margin-bottom: .75rem; padding: .875rem 1rem; font: inherit; font-size: 1.05rem; border: 1px solid #dddfe2; border-radius: 6px; background: #fff; color: #1d2129; }
+.fb-input::placeholder { color: #606770; }
+.fb-input:disabled { opacity: 1; -webkit-text-fill-color: #606770; }
+.fb-login { display: block; width: 100%; padding: .7rem; border: none; border-radius: 6px; background: #1877f2; color: #fff; font: inherit; font-size: 1.25rem; font-weight: 700; }
+.fb-login:disabled { opacity: 1; cursor: default; }
+.fb-forgot { display: inline-block; margin-top: 1rem; color: #1877f2; font-size: .875rem; }
+.fb-divider { border-bottom: 1px solid #dadde1; margin: 1.25rem 0; }
+.fb-create { display: inline-block; padding: .75rem 1rem; border-radius: 6px; background: #42b72a; color: #fff; font-size: 1.05rem; font-weight: 700; text-decoration: none; }
+.fb-create:hover { background: #36a420; text-decoration: none; }
+.fb-prototype-note { margin: .9rem 0 0; color: #606770; font-size: .75rem; }
+.fb-page-note { margin: 1.5rem 0 0; text-align: center; font-size: .875rem; color: #1c1e21; }
+.fb-home .filters-bar { background: #fff; border-radius: 8px; box-shadow: 0 1px 2px rgba(0,0,0,.1); padding: .75rem; margin-bottom: 1rem; }
+.fb-home .filter-pill { font-family: Helvetica, Arial, sans-serif; text-transform: none; letter-spacing: 0; font-size: .9375rem; font-weight: 600; border: none; border-radius: 6px; background: #e4e6eb; color: #050505; padding: .6rem 1rem; }
+.fb-home .filter-pill.active { background: #1877f2; color: #fff; }
+.fb-home .gallery-wall { gap: 1rem; }
+.fb-home .wall-card { border-radius: 8px; background: #fff; box-shadow: 0 1px 2px rgba(0,0,0,.12); }
+.fb-home .wall-card:hover { transform: none; box-shadow: 0 2px 8px rgba(0,0,0,.16); }
+.fb-home .wall-meta { position: static; background: #fff; padding: .75rem 1rem 1rem; }
+.fb-home .wall-tag { color: #1877f2; text-transform: none; letter-spacing: 0; font-size: .8rem; }
+.fb-home .wall-title { font-family: Helvetica, Arial, sans-serif; color: #050505; font-size: 1rem; font-weight: 600; }
+@media (max-width: 760px) { .fb-hero { grid-template-columns: 1fr; padding-top: 2.5rem; text-align: center; } .fb-tagline { margin: 0 auto; font-size: 1.5rem; } }
