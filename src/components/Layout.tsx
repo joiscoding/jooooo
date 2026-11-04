@@ -5,8 +5,10 @@ export function Layout({ children }: { children: ReactNode }) {
   const { pathname } = useLocation();
   const isAlbums = pathname.startsWith('/albums');
 
+  const isHome = pathname === '/';
+
   return (
-    <div className="layout">
+    <div className={isHome ? 'layout layout-xai' : 'layout'}>
       <header className="site-header">
         <Link to="/" className="logo">
           <span className="logo-serif">Studio</span>
